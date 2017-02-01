@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Inrerface2</string>
+    <string-array name="tabsss">
+        <item>TAB1</item>
+        <item>TAB2</item>
+        <item>TAB3</item>
+    </string-array>
+    <string name="tab1">TAB1</string>
+    <string name="tab2">TAB2</string>
+    <string name="tab3">TAB3</string>
+</resources>
