@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-   android:padding="20dp">
+    android:padding="15dp"
+    android:background="@drawable/touch_selector">
 
     <ImageView
         android:id="@+id/imageTab"
@@ -16,5 +17,5 @@
         android:id="@+id/textTab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:gravity="bottom|center" />
 </LinearLayout>

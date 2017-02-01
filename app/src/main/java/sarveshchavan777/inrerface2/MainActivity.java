@@ -3,6 +3,7 @@ package sarveshchavan777.inrerface2;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -22,7 +23,6 @@ public  class MainActivity extends AppCompatActivity {
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,18 +30,17 @@ public  class MainActivity extends AppCompatActivity {
 
         mPager=(ViewPager)findViewById(R.id.pager);
         mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),getApplicationContext()));
+
         mTabs=(SlidingTabLayout)findViewById(R.id.tabs);
-        mTabs.setDistributeEvenly(true);
         mTabs.setCustomTabView(R.layout.customtablayout,R.id.textTab);
-        mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.colorPrimary);
-            }
-        });
+        mTabs.setDistributeEvenly(true);
+        mTabs.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimaryDark));
+        mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
         mTabs.setViewPager(mPager);
 
     }
+
 }
+
 
 
