@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Emptylibrary/Emptylibrary.iml" filepath="$PROJECT_DIR$/Emptylibrary/Emptylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/Inrerface2.iml" filepath="$PROJECT_DIR$/Inrerface2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

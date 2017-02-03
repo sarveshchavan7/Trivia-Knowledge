@@ -22,6 +22,8 @@ import android.widget.TableLayout;
 public  class MainActivity extends AppCompatActivity {
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
+    int numboftabs =3;
+    public int icon[] = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
     //mainactivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public  class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mPager=(ViewPager)findViewById(R.id.pager);
-        mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),getApplicationContext()));
+        mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(),icon,numboftabs,getApplicationContext()));
 
         mTabs=(SlidingTabLayout)findViewById(R.id.tabs);
         mTabs.setCustomTabView(R.layout.customtablayout,R.id.textTab);
