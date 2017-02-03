@@ -22,7 +22,7 @@ import android.widget.TableLayout;
 public  class MainActivity extends AppCompatActivity {
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
-
+    //mainactivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
