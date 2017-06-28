@@ -11,6 +11,7 @@ import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 
+import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +20,6 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.os.Handler;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
@@ -30,7 +30,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,19 +49,15 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
 
 import com.chartboost.sdk.Chartboost;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
-import com.google.example.games.basegameutils.BaseGameActivity;
 import com.jirbo.adcolony.AdColonyAdapter;
-import com.jirbo.adcolony.AdColonyBundleBuilder;
 
 import info.hoang8f.widget.FButton;
-import sarveshchavan777.inrerface2.application.AppController;
 
 
 public class Personality extends AppCompatActivity implements RewardedVideoAdListener {
@@ -378,7 +373,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         }
                     }
                 }
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.knife);
+                    ring.start();
+                }
             }
+
         });
 
         hint1.setOnClickListener(new View.OnClickListener() {
@@ -611,7 +611,14 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                     hint1.setVisibility(View.INVISIBLE);
                                 }
                                 if (hintLength <= 3) {
-                                    Toast.makeText(Personality.this, "Free hint not available for less than 4 boxes", Toast.LENGTH_LONG).show();
+                                  //  Toast.makeText(Personality.this, "Free hint not available for less than 4 ", Toast.LENGTH_LONG).show();
+                                    Toast toast = Toast.makeText(Personality.this,  "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
+                                    toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                                    TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                                    v.setTextColor(getResources().getColor(R.color.white));
+                                    v.setTypeface(typeface);
+                                    v.setTextSize(12);
+                                    toast.show();
                                 }
                             }
 
@@ -763,13 +770,26 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 hint1.setVisibility(View.INVISIBLE);
                             }
                             if (hintLength <= 3) {
-                                Toast.makeText(Personality.this, "Free hint not available for less than 4 boxes", Toast.LENGTH_LONG).show();
+                               // Toast.makeText(Personality.this, "Free hint not available for less than 4 boxes", Toast.LENGTH_LONG).show();
+
+                                Toast toast = Toast.makeText(Personality.this,  "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
+                                toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                                TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                                v.setTextColor(getResources().getColor(R.color.white));
+                                v.setTypeface(typeface);
+                                v.setTextSize(12);
+                                toast.show();
                             }
                         }
                         dialog.dismiss();
                         if (mGoogleApiClient.isConnected()) {
                             checkAchievementOne();
                             checkAchievementTwo();
+                        }
+
+                        if(checkSound()){
+                            MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                            ring.start();
                         }
                     }
                 });
@@ -1388,12 +1408,23 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             }
 
                             dialog.cancel();
+
+                            if(checkSound()){
+                                MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.wooden_stick);
+                                ring.start();
+                            }
                         }
                     });
 
                     dialog.show();
                     stringBuffer.setLength(0);
                     stringBuffer2.setLength(0);
+
+
+                    if(checkSound()){
+                        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.victory);
+                        ring.start();
+                    }
                 }
                 //@@ 7
                 else if (qid == 1119 || qid == 179 || qid == 359 || qid == 599 || qid == 779 || qid == 899) {
@@ -1672,6 +1703,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
         };
         handler.postDelayed(runnable, 100); //for initial delay..*/
+
+        if(checkSound()){
+            MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.incorrect);
+            ring.start();
+        }
     }
 
 
@@ -2061,91 +2097,127 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     public void text21(View view) {
         textView2 = tv21;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text22(View view) {
         textView2 = tv22;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text23(View view) {
         textView2 = tv23;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text24(View view) {
         textView2 = tv24;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text25(View view) {
         textView2 = tv25;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text26(View view) {
         textView2 = tv26;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text27(View view) {
         textView2 = tv27;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text28(View view) {
         textView2 = tv28;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text29(View view) {
         textView2 = tv29;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text21b(View view) {
         textView2 = tv21b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text22b(View view) {
         textView2 = tv22b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text23b(View view) {
         textView2 = tv23b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text24b(View view) {
         textView2 = tv24b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text25b(View view) {
         textView2 = tv25b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text26b(View view) {
         textView2 = tv26b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text27b(View view) {
         textView2 = tv27b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text28b(View view) {
         textView2 = tv28b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void text29b(View view) {
         textView2 = tv29b;
         Comman2();
+        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring.start();
     }
 
     public void left(View view) {
@@ -2226,6 +2298,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             if (qid <= 1118) {
                 rightImage.setVisibility(View.VISIBLE);
             }
+        }
+
+
+        if(checkSound()){
+            MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.wooden_stick);
+            ring.start();
         }
 
     }
@@ -2311,6 +2389,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         }
 
+
+        if(checkSound()){
+            MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.wooden_stick);
+            ring.start();
+        }
     }
 
     public void correctlayout() {
@@ -2580,6 +2663,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     watchVideo.setText("Watch Video" + "\n" + loading);
                     loadAdRewardedVideo();
                 }
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
         final List listgems = demoHelperClass.getGems();
@@ -2592,6 +2680,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             public void onClick(View view) {
                 Intent intent = new Intent(Personality.this, InAppPurchase.class);
                 startActivity(intent);
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
 
@@ -2641,6 +2734,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         //checking if button was clicked or not
                         clicked = true;
 
+                        for(int i=0;i<textViewArrayBelow.length;i++){
+                            textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                        }
 
                         if (mGoogleApiClient.isConnected()) {
                             Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_reveal));
@@ -2654,6 +2750,10 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 }
                 dialog.dismiss();
 
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
         TextView watchvideo = (TextView) dialog.findViewById(R.id.watchvideo);
@@ -3126,6 +3226,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             diamondtext.setText(Integer.toString(gemstext));
                             crackerAnimation();
 
+
+                            if(checkSound()){
+                                MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.bombexplosion);
+                                ring.start();
+                            }
+
                         }
                     }
                 }
@@ -3158,6 +3264,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     String loading = "Loading..";
                     watchVideoBoom.setText("Watch Video" + "\n" + loading);
                     loadAdRewardedVideo();
+                }
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                    ring.start();
                 }
             }
         });
@@ -3731,6 +3842,17 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     public void onSignInSucceeded() {
 
     }*/
+
+    public Boolean checkSound(){
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 

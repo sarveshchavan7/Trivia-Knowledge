@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.hardware.camera2.params.Face;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -38,6 +39,8 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 import info.hoang8f.widget.FButton;
 import sarveshchavan777.inrerface2.application.AppController;
@@ -150,6 +153,11 @@ public class FaceBookLogin extends AppCompatActivity {
 
                 }
 
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                    ring.start();
+                }
+
             }
         });
 
@@ -179,6 +187,10 @@ public class FaceBookLogin extends AppCompatActivity {
 
                 }
 
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
 
@@ -192,6 +204,11 @@ public class FaceBookLogin extends AppCompatActivity {
                        // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
                     }
 
+                }
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                    ring.start();
                 }
             }
         });
@@ -237,6 +254,11 @@ public class FaceBookLogin extends AppCompatActivity {
                 }
                 );
                 requestQueue.add(jsonObjectRequest);
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
 
@@ -281,4 +303,16 @@ public class FaceBookLogin extends AppCompatActivity {
     public void onSignInSucceeded() {
 
     }*/
+
+    public Boolean checkSound(){
+        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
+    }
 }

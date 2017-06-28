@@ -3,12 +3,15 @@ package sarveshchavan777.inrerface2;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
 
 import info.hoang8f.widget.FButton;
 
@@ -41,6 +44,10 @@ public class ImageCredit extends Activity {
            @Override
            public void onClick(View view) {
                finish();
+               if(checkSound()){
+                   MediaPlayer ring= MediaPlayer.create(ImageCredit.this,R.raw.knife);
+                   ring.start();
+               }
            }
        });
         icons8.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +55,11 @@ public class ImageCredit extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent (Intent.ACTION_VIEW , Uri.parse("https://icons8.com/"));
                 startActivity(intent);
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(ImageCredit.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
     }
@@ -56,6 +68,18 @@ public class ImageCredit extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    public Boolean checkSound(){
+        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
     }
 }
 

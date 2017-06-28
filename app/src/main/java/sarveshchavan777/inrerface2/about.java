@@ -4,6 +4,7 @@ package sarveshchavan777.inrerface2;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,8 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
 
 
 public class about extends Activity{
@@ -62,6 +65,11 @@ public class about extends Activity{
             @Override
             public void onClick(View view) {
                 finish();
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(about.this,R.raw.knife);
+                    ring.start();
+                }
+
             }
         });
 
@@ -127,5 +135,17 @@ public class about extends Activity{
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    public Boolean checkSound(){
+        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
     }
 }

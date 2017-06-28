@@ -11,6 +11,7 @@ import android.content.IntentSender;
 import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -87,6 +88,10 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
             @Override
             public void onClick(View view) {
                 finish();
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(InAppPurchase.this,R.raw.knife);
+                    ring.start();
+                }
             }
         });
 
@@ -210,6 +215,11 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
             complain("Error launching purchase flow. Another async operation in progress.");
 
         }
+        if(checkSound()){
+            MediaPlayer ring= MediaPlayer.create(InAppPurchase.this,R.raw.gameaudio2);
+            ring.start();
+        }
+
     }
 
     @Override
@@ -377,5 +387,18 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
     @Override
     public void onBackPressed() {
         finish();
+
+    }
+
+    public Boolean checkSound(){
+        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
     }
 }

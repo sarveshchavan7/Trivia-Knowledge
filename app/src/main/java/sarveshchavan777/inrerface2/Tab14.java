@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -270,6 +271,11 @@ public class Tab14 extends Fragment  {
                     intent.putExtra("Key",Integer.toString(finalI));
                     startActivity(intent);
                     getActivity().finish();
+
+                    if(checkSound()){
+                        MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                        ring.start();
+                    }
                 }
             });
         }
@@ -488,5 +494,17 @@ public class Tab14 extends Fragment  {
         perpack1.setTypeface(typeface);
         perpack2.setTypeface(typeface);
        // unlock.setTypeface(typeface);
+    }
+
+    public Boolean checkSound(){
+        DemoHelperClass demoHelperClass=new DemoHelperClass(getActivity());
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
     }
 }

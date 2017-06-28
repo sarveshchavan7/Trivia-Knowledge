@@ -21,7 +21,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
     Context context;
     private static final String DATABASE_NAME = "DEMOGAMEDBB";
 
-    static int DATABASE_VERSION = 807;
+    static int DATABASE_VERSION = 816;
     static final String TABLE_NAME = "TRIVIAQUIZ";
     private static final String UID = "_UID";
     private static final String QUESTION = "QUESTION";
@@ -90,6 +90,11 @@ public class DemoHelperClass extends SQLiteOpenHelper {
     private static final String CREATE_TABLE12 = "CREATE TABLE " + TABLE_NAME12 + " ( " + BOOM + " INTEGER );";
     private static final String DROP_TABLE12 = "DROP TABLE IF EXISTS " + TABLE_NAME12;
 
+    static String TABLE_NAME13 = "TRIVIAQUIZ13";
+    private static final String SOUND = "SOUND";
+    private static final String CREATE_TABLE13 = "CREATE TABLE " + TABLE_NAME13 + " ( " + SOUND + " INTEGER );";
+    private static final String DROP_TABLE13 = "DROP TABLE IF EXISTS " + TABLE_NAME13;
+
     public DemoHelperClass(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
@@ -112,6 +117,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TABLE10);
         sqLiteDatabase.execSQL(CREATE_TABLE11);
         sqLiteDatabase.execSQL(CREATE_TABLE12);
+        sqLiteDatabase.execSQL(CREATE_TABLE13);
       // Toast.makeText(context,"oncreate called",Toast.LENGTH_LONG).show();
     }
 
@@ -130,6 +136,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL(DROP_TABLE10);
             sqLiteDatabase.execSQL(DROP_TABLE11);
             sqLiteDatabase.execSQL(DROP_TABLE12);
+               sqLiteDatabase.execSQL(DROP_TABLE13);
     //   Toast.makeText(context,"onUpgrade called",Toast.LENGTH_LONG).show();
         onCreate(sqLiteDatabase);
     }
@@ -2710,6 +2717,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         db.execSQL("delete from " + TABLE_NAME10);
         db.execSQL("delete from " + TABLE_NAME11);
         db.execSQL("delete from " + TABLE_NAME12);
+        db.execSQL("delete from " + TABLE_NAME13);
         db.close();
     }
 
@@ -2753,6 +2761,29 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_NAME8, coloumns, null, null, null, null, null);
         List list2 = new ArrayList();
         list2.add(150);
+        while (cursor.moveToNext()) {
+            int questionId = cursor.getInt(0);
+            list2.add(questionId);
+        }
+        cursor.close();
+        db.close();
+        return list2;
+    }
+
+    //Sound
+    public void insertSound(int id) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(SOUND, id);
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(TABLE_NAME13, null, contentValues);
+        db.close();
+    }
+
+    public List getSound() {
+        String coloumns[] = {SOUND};
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_NAME13, coloumns, null, null, null, null, null);
+        List list2 = new ArrayList();
         while (cursor.moveToNext()) {
             int questionId = cursor.getInt(0);
             list2.add(questionId);

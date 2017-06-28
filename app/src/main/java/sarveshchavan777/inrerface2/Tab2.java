@@ -1,5 +1,6 @@
 package sarveshchavan777.inrerface2;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.content.pm.PackageInstaller;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,17 +32,19 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.util.List;
+
 import info.hoang8f.widget.FButton;
 
 public class Tab2 extends Fragment {
 
-   ListView lv;
+    ListView lv;
     Context context;
     DemoHelperClass demoHelperClass;
-    String abc="";
+    String abc = "";
     String x;
     String idOfUser;
-    CallbackManager callbackManager= CallbackManager.Factory.create();
+    CallbackManager callbackManager = CallbackManager.Factory.create();
 
 
     @Override
@@ -52,9 +57,9 @@ public class Tab2 extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Integer[] img = {R.drawable.international_music, R.drawable.reset, R.drawable.google_play,
-                R.drawable.facebook, R.drawable.share, R.drawable.error, R.drawable.about,R.drawable.shop};
+                R.drawable.facebook, R.drawable.share, R.drawable.error, R.drawable.about, R.drawable.shop};
 
-        final String[] s = {"Sound", "Reset  Game", "Rate  on  PlayStore", "Like/join Us on Fb", "Share", "Report bug/contact us", "About ","Shop"};
+        final String[] s = {"Sound", "Reset  Game", "Rate  on  PlayStore", "Like/join Us on Fb", "Share", "Report bug/contact us", "About ", "Shop"};
 
         mylistAdapter adapter = new mylistAdapter(getActivity(), img, s);
         lv = (ListView) getView().findViewById(R.id.listview10);
@@ -64,57 +69,112 @@ public class Tab2 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 /*Toast.makeText(getActivity(), "U clicked" + s[position], Toast.LENGTH_SHORT).show();*/
-               if(position==1){
-                   final Dialog dialog = new Dialog(getActivity());
-                   dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                   dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                   dialog.setContentView(R.layout.resetgamedialog);
-                   dialog.setCancelable(true);
-                   TextView attention=(TextView)dialog.findViewById(R.id.attentiontext);
-                    TextView resetText=(TextView)dialog.findViewById(R.id.resetText);
-                   final Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/shablagooital.ttf");
-                   attention.setTypeface(typeface);
-                   resetText.setTypeface(typeface);
-                   Button cancelreset=(Button)dialog.findViewById(R.id.cancelreset);
-                   cancelreset.setTypeface(typeface);
-                   cancelreset.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                           dialog.dismiss();
-                       }
-                   });
-                   Button okreset=(Button)dialog.findViewById(R.id.okrest);
-                   okreset.setTypeface(typeface);
-                   okreset.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                           demoHelperClass = new DemoHelperClass(getActivity());
-                           demoHelperClass.deleteAllRecord();
-                           Toast toast= Toast.makeText(getActivity(), "\tGame restored successfully"+" ", Toast.LENGTH_LONG);
-                           toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
-                           TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                           v.setTextColor(getResources().getColor(R.color.white));
-                           v.setTypeface(typeface);
-                           v.setTextSize(16);
-                           toast.show();
-                           dialog.dismiss();
-                       }
-                   });
-                   dialog.show();
+                if (position == 0) {
+                    demoHelperClass = new DemoHelperClass(getActivity());
+                    final List list = demoHelperClass.getSound();
+                    final Dialog dialog = new Dialog(getActivity());
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.sound);
+                    final ImageView soundImage = (ImageView) dialog.findViewById(R.id.sound);
+                    FButton canelSound = (FButton) dialog.findViewById(R.id.cancelSound);
+                    TextView soundText = (TextView) dialog.findViewById(R.id.soundText);
+                    final Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/shablagooital.ttf");
+                    soundText.setTypeface(typeface);
 
-               }
+                    canelSound.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
 
-                if(position==2){
-                   try {
-                       Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=sarveshchavan777.inrerface2"));
-                       startActivity(intent);
-                   }catch (ActivityNotFoundException e){
-                       startActivity(new Intent(Intent.ACTION_VIEW,
-                               Uri.parse("http://play.google.com/store/apps/details?id=sarveshchavan777.inrerface2" )));
-                   }
+                    if (list != null) {
+                        if (list.size() % 2 == 0) {
+                            soundImage.setImageResource(R.drawable.on);
+                        } else {
+                            soundImage.setImageResource(R.drawable.off);
+                        }
+                    }
+                    soundImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            demoHelperClass.insertSound(1);
+                            if (list != null) {
+                                final List list2 = demoHelperClass.getSound();
+                                if (list2.size() % 2 == 0) {
+                                    soundImage.setImageResource(R.drawable.on);
+                                    // Toast.makeText(getActivity(),"Sound: ON",Toast.LENGTH_LONG).show();
+                                    // dialog.dismiss();
+                                } else {
+                                    soundImage.setImageResource(R.drawable.off);
+                                    //   Toast.makeText(getActivity(),"Sound: OFF",Toast.LENGTH_LONG).show();
+                                    //   dialog.dismiss();
+                                }
+                            }
+
+                        }
+                    });
+                    dialog.show();
+                }
+
+
+                if (position == 1) {
+                    final Dialog dialog = new Dialog(getActivity());
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.setContentView(R.layout.resetgamedialog);
+                    dialog.setCancelable(true);
+                    TextView attention = (TextView) dialog.findViewById(R.id.attentiontext);
+                    TextView resetText = (TextView) dialog.findViewById(R.id.resetText);
+                    final Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/shablagooital.ttf");
+                    attention.setTypeface(typeface);
+                    resetText.setTypeface(typeface);
+                    Button cancelreset = (Button) dialog.findViewById(R.id.cancelreset);
+                    cancelreset.setTypeface(typeface);
+                    cancelreset.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+                    Button okreset = (Button) dialog.findViewById(R.id.okrest);
+                    okreset.setTypeface(typeface);
+                    okreset.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            demoHelperClass = new DemoHelperClass(getActivity());
+                            demoHelperClass.deleteAllRecord();
+                            Toast toast = Toast.makeText(getActivity(), "\tGame restored successfully" + " ", Toast.LENGTH_LONG);
+                            toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                            TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                            v.setTextColor(getResources().getColor(R.color.white));
+                            v.setTypeface(typeface);
+                            v.setTextSize(16);
+                            toast.show();
+                            dialog.dismiss();
+
+                            if(checkSound()){
+                                MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                                ring.start();
+                            }
+                        }
+                    });
+                    dialog.show();
+
+                }
+
+                if (position == 2) {
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=sarveshchavan777.inrerface2"));
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException e) {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("http://play.google.com/store/apps/details?id=sarveshchavan777.inrerface2")));
+                    }
                 }
                 if (position == 3) {
-                    Intent intent=new Intent(getActivity(),FaceBookLogin.class);
+                    Intent intent = new Intent(getActivity(), FaceBookLogin.class);
                     startActivity(intent);
                    /* final Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Translucent_NoTitleBar);
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -183,12 +243,12 @@ public class Tab2 extends Fragment {
                         sendIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
                         sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"charetakergames@gmail.com"});
                         sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Report Bug / Suggestions");
-                        sendIntent.putExtra(Intent.EXTRA_TEXT,"Device:"+getDeviceName() + "\n"+ "\n\n");
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, "Device:" + getDeviceName() + "\n" +"Message:"+"\n\n");
                         startActivity(sendIntent);
                     } catch (Exception e) {
-                        Intent intent = new Intent (Intent.ACTION_VIEW , Uri.parse("mailto:" + "charetakergames@gmail.com"));
-                        intent.putExtra(Intent.EXTRA_SUBJECT,"Report Bug / Suggestions");
-                        intent.putExtra(Intent.EXTRA_TEXT, "Device:"+getDeviceName() + "\n"+ "\n\n");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:" + "charetakergames@gmail.com"));
+                        intent.putExtra(Intent.EXTRA_SUBJECT, "Report Bug / Suggestions");
+                        intent.putExtra(Intent.EXTRA_TEXT, "Device:" + getDeviceName() + "\n"+"Message:"+"\n\n");
                         startActivity(intent);
                     }
                 }
@@ -196,26 +256,26 @@ public class Tab2 extends Fragment {
                     Intent intent = new Intent(getActivity(), about.class);
                     startActivity(intent);
                 }
-                if(position==7){
+                if (position == 7) {
                     Intent intent = new Intent(getActivity(), InAppPurchase.class);
                     startActivity(intent);
                 }
             }
         });
     }
-        public static Intent getOpenFacebookIntent(Context context,String facebookId) {
 
-            try {
-                context.getPackageManager()
-                        .getPackageInfo("com.facebook.katana", 0); //Checks if FB is even installed.
-                return new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("fb://page/"+facebookId)); //Trys to make intent with FB's URI
-            } catch (Exception e) {
-                return new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://www.facebook.com/Trivia-knowledge-1357616140975878/")); //catches and opens a url to the desired page
-            }
+    public static Intent getOpenFacebookIntent(Context context, String facebookId) {
+
+        try {
+            context.getPackageManager()
+                    .getPackageInfo("com.facebook.katana", 0); //Checks if FB is even installed.
+            return new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("fb://page/" + facebookId)); //Trys to make intent with FB's URI
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.facebook.com/Trivia-knowledge-1357616140975878/")); //catches and opens a url to the desired page
         }
-
+    }
 
 
     public String getDeviceName() {
@@ -227,6 +287,7 @@ public class Tab2 extends Fragment {
             return capitalize(manufacturer) + " " + model;
         }
     }
+
     private String capitalize(String s) {
         if (s == null || s.length() == 0) {
             return "";
@@ -252,4 +313,15 @@ public class Tab2 extends Fragment {
             //do nothing
         }
     }*/
+
+    public Boolean checkSound(){
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
+    }
 }

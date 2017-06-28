@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.List;
 
 import sarveshchavan777.inrerface2.application.AppController;
 
@@ -80,6 +83,11 @@ public class Category extends Activity {
               Intent intent=new Intent(Category.this,MainActivity.class);
                 startActivity(intent);
                 finish();
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.knife);
+                    ring.start();
+                }
+
             }
         });
         imageView1.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +99,11 @@ public class Category extends Activity {
                 SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
                 demoHelperClass.optimiseDatabase();
                 finish();
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
         imageView2.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +115,10 @@ public class Category extends Activity {
                 SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
                 demoHelperClass.optimiseDatabase();
                 finish();
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
         imageView3.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +130,10 @@ public class Category extends Activity {
                 SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
                 demoHelperClass.optimiseDatabase();
                 finish();
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+                    ring.start();
+                }
 
             }
         });
@@ -125,6 +146,10 @@ public class Category extends Activity {
                 SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
                 demoHelperClass.optimiseDatabase();
                 finish();
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
         imageView5.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +161,10 @@ public class Category extends Activity {
                 SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
                 demoHelperClass.optimiseDatabase();
                 finish();
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
         imageView6.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +176,10 @@ public class Category extends Activity {
                 SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
                 demoHelperClass.optimiseDatabase();
                 finish();
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
 
@@ -199,4 +232,15 @@ public class Category extends Activity {
         finish();
     }
 
+    public Boolean checkSound(){
+        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -34,6 +35,7 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.BaseGameUtils;
 
 import java.io.IOException;
+import java.util.List;
 
 import sarveshchavan777.inrerface2.application.AppController;
 
@@ -141,6 +143,11 @@ public class MainActivity extends AppCompatActivity
                     if (!mGoogleApiClient.isConnected()) {
                         fab.setImageResource(R.drawable.gsignin);
                     }
+                }
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(MainActivity.this,R.raw.gameaudio2);
+                    ring.start();
                 }
             }
         });
@@ -256,6 +263,16 @@ public class MainActivity extends AppCompatActivity
     public void onSignInSucceeded() {
 
     }*/
-
+   public Boolean checkSound(){
+      DemoHelperClass demoHelperClass=new DemoHelperClass(this);
+       List list=demoHelperClass.getSound();
+       if(list!=null){
+           if( list.size()%2==0 ){
+               //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+               return true;
+           }
+       }
+       return false;
+   }
 }
 

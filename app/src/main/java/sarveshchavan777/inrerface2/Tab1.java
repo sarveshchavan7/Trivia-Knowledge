@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.FeatureInfo;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -97,12 +98,20 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
         b2.startAnimation(myAnim);
         b3.startAnimation(myAnim);
 
+
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), Category.class);
                 startActivity(intent);
                getActivity().finish();
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                    ring.start();
+                }
+
             }
         });
 
@@ -117,6 +126,11 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 } else {
                     BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.leaderboards_not_available)).show();
                 }
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
 
@@ -124,6 +138,11 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
             @Override
             public void onClick(View view) {
                 getActivity().finish();
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                    ring.start();
+                }
             }
         });
 
@@ -134,6 +153,11 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 demoHelperClass.insertPauseValue(0);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.detach(Tab1.this).attach(Tab1.this).commit();
+
+                if(checkSound()){
+                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                    ring.start();
+                }
             }
 
         });
@@ -215,5 +239,16 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
         mDemoSlider.setDuration(4000);
         mDemoSlider.setPresetTransformer("Accordion");
+    }
+
+    public Boolean checkSound(){
+        List list=demoHelperClass.getSound();
+        if(list!=null){
+            if( list.size()%2==0 ){
+              //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+    return false;
     }
 }
