@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/grey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/darkpink"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/attentiontext"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/darkpink"
+            android:gravity="center"
+            android:text="Reset Game!"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/cancelreset"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                app:buttonColor="@color/cancelred" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/grey" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/resetText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/resetgameinfo"
+        android:textColor="@color/grey"
+        android:textSize="35sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/okrest"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:text="OK"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:buttonColor="@color/darkpink">
+        </info.hoang8f.widget.FButton>
+    </LinearLayout>
+</LinearLayout>

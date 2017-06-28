@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/transparent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:orientation="horizontal"
+        android:padding="18dp"
+        android:background="@color/transparent">
+        <TextView
+            android:id="@+id/freehinttext"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:text="Free Hint"
+            android:textColor="@color/white"
+            android:textSize="60sp" />
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <info.hoang8f.widget.FButton
+                android:id="@+id/cancel"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:textColor="@color/white"
+                android:text="@string/cancel"
+                app:buttonColor="@color/cancelred" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/transparent2"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+    <TextView
+        android:textSize="50sp"
+        android:gravity="center"
+        android:id="@+id/reavel11"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Absolutely  Free!!!!!"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:gravity="center"
+        android:id="@+id/reavel1"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fill some random answer boxes."/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/ok"
+            android:text="OK"
+            android:textSize="40sp"
+           app:buttonColor="@color/white"
+            android:textColor="@color/grey"
+            android:layout_width="200dp"
+            android:layout_height="90dp">
+
+        </info.hoang8f.widget.FButton>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+</LinearLayout>

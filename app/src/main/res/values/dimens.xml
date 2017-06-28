@@ -2,4 +2,27 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fbutton_default_conner_radius">7dp</dimen>
+    <dimen name="fbutton_default_padding_left">10dp</dimen>
+    <dimen name="fbutton_default_padding_right">10dp</dimen>
+    <dimen name="fbutton_default_padding_top">5dp</dimen>
+    <dimen name="fbutton_default_padding_bottom">5dp</dimen>
+    <dimen name="fbutton_default_shadow_height">6dp</dimen>
+    <dimen name="chart_width">100dp</dimen>
+
+
+    <dimen name="text_view_heightLarge">85dp</dimen>
+    <dimen name="text_view_widthLarge">85dp</dimen>
+
+    <dimen name="text_view_heightNormalLess">58dp</dimen>
+    <dimen name="text_view_widthNormalLess">58dp</dimen>
+
+    <dimen name="text_view_heightNormalDefault">62dp</dimen>
+    <dimen name="text_view_widthNormalDefault">62dp</dimen>
+
+    <dimen name="text_view_heightSmall">45dp</dimen>
+    <dimen name="text_view_widthSmall">45dp</dimen>
+
+    <dimen name="text_view_heightXlarge">110dp</dimen>
+    <dimen name="text_view_widthXlarge">110dp</dimen>
 </resources>

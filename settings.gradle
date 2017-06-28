@@ -1,1 +1,1 @@
-include ':app', ':Emptylibrary'
+include ':app', ':Emptylibrary', ':unity-ads', ':BaseGameUtils'

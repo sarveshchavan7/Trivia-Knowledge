@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/backgroundcolor"
+    android:layout_height="match_parent">
+ <android.support.v7.widget.Toolbar
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/toolbar"
+     android:layout_width="match_parent"
+     android:layout_height="60dp"
+     android:background="@color/darkpink"
+     android:minHeight="?actionBarSize">
+  <ImageView
+      android:layout_width="40dp"
+      android:layout_height="match_parent"
+      android:src="@drawable/left_filled"
+      android:id="@+id/leftShop"/>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/shopText"
+      android:textSize="27sp"
+      android:text="Shop"
+      android:paddingLeft="12dp"
+      android:paddingRight="12dp"
+      android:textColor="#ffffff"/>
+ </android.support.v7.widget.Toolbar>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:padding="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/shopGems"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:id="@+id/shopGemsText"
+        android:paddingBottom="30dp"
+        android:textColor="@color/white"/>
+   <info.hoang8f.widget.FButton
+       android:gravity="center"
+       android:paddingLeft="10dp"
+       android:paddingStart="10dp"
+       android:paddingRight="10dp"
+       app:paddingEnd="10dp"
+       android:id="@+id/shop1"
+       android:text="@string/buyDiamond2"
+       android:textColor="@color/grey"
+       android:drawableRight="@drawable/gems"
+       android:onClick="buyGems"
+       android:textSize="20sp"
+       app:buttonColor="@color/white"
+       android:layout_width="match_parent"
+       android:layout_height="120dp" />
+
+  </LinearLayout>
+
+</LinearLayout>

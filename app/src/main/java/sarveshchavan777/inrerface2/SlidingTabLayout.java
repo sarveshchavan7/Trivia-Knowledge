@@ -1,10 +1,5 @@
 package sarveshchavan777.inrerface2;
 
-/**
- * Created by LENOVO on 1/31/2017.
- */
-
-
 
         import android.content.Context;
         import android.graphics.Typeface;

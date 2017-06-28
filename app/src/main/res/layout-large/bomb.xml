@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/transparent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+       android:padding="15dp"
+        android:background="@color/transparent">
+
+        <TextView
+            android:id="@+id/boom"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Boom"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <info.hoang8f.widget.FButton
+                android:id="@+id/cancelbomb"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:textColor="@color/white"
+                android:text="@string/cancel"
+                app:buttonColor="@color/cancelred" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/transparent2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+        <TextView
+            android:textSize="35sp"
+            android:gravity="center"
+            android:id="@+id/removeExtra"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remove extra letters!!"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+
+        <TextView
+            android:textSize="33sp"
+            android:gravity="center"
+            android:id="@+id/removeExtraCost"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cost : 1 gem"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <info.hoang8f.widget.FButton
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:drawableRight="@drawable/pow"
+                android:textSize="25sp"
+                android:text="@string/boom"
+                app:buttonColor="@color/white"
+                android:textColor="@color/grey"
+                android:id="@+id/boomfbutton"
+                android:layout_width="match_parent"
+                android:layout_height="170dp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+
+        <TextView
+            android:id="@+id/reward"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-------REWARD-------"
+            android:gravity="center"
+            android:textColor="@color/lightred"
+            android:textSize="25sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+        <info.hoang8f.widget.FButton
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:drawableRight="@drawable/youtube_2"
+            android:textSize="25sp"
+            android:text="@string/watchvideo"
+            app:buttonColor="@color/white"
+            android:textColor="@color/grey"
+            android:id="@+id/watchvideoBoom"
+            android:layout_width="match_parent"
+            android:layout_height="170dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7dp"/>
+
+    </LinearLayout>
+</LinearLayout>

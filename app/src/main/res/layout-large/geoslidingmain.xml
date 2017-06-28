@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/geography"
+        android:minHeight="?actionBarSize">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/left_filled"
+                    android:id="@+id/leftdifficultygeo"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textviewdifficultygeo"
+                    android:textSize="40sp"
+                    android:text="CHOOSE DIFFICULTY"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/easy"
+                    android:id="@+id/easygeo"
+                    android:textSize="27sp"
+                    android:gravity="center"
+                    android:paddingRight="20dp"
+                    android:layout_weight="1"
+                    android:textColor="#ffffff"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medium"
+                    android:gravity="center"
+                    android:id="@+id/mediumgeo"
+                    android:layout_weight="1"
+                    android:textSize="27sp"
+                    android:textColor="#ffffff"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hard"
+                    android:gravity="center"
+                    android:id="@+id/hardgeo"
+                    android:layout_weight="1"
+                    android:textSize="27sp"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <sarveshchavan777.inrerface2.SlidingTabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

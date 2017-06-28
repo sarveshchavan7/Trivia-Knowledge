@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "274453395095",
+    "firebase_url": "https://trivia-knowledge.firebaseio.com",
+    "project_id": "trivia-knowledge",
+    "storage_bucket": "trivia-knowledge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274453395095:android:20a548a68a3561aa",
+        "android_client_info": {
+          "package_name": "sarveshchavan777.inrerface2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274453395095-u6jdl3q5dc9b4b35ohucv6kdrmschnn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1uFLpw1ItNgRa8RlySCVTK_QPsnLtWu4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

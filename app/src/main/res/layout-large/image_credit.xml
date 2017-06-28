@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/darkpink"
+            android:minHeight="?actionBarSize">
+
+            <ImageView
+                android:id="@+id/left"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/left_filled" />
+
+            <TextView
+                android:id="@+id/textviewimagecredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15sp"
+                android:paddingRight="15sp"
+                android:text="Text"
+                android:textColor="#ffffff"
+                android:textSize="40sp" />
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/imagecredit2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:text="@string/imagecredits2"
+        android:textColor="@color/grey"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/imagecredit3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center"
+        android:paddingBottom="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="30dp"
+        android:text="@string/imagecredits3"
+        android:textColor="@color/grey"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/icons8"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:text="@string/icons8"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

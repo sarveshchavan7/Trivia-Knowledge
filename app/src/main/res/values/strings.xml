@@ -1,5 +1,72 @@
 <resources>
-    <string name="app_name">Inrerface2</string>
+    <string name="app_name">Trivia Knowledge</string>
+    <string name="facebook_app_id">1044794215655698</string>
+    <string name="fb_login_protocol_scheme">fb1044794215655698</string>
+    <string name="fbText">We will never post without\nyour permission !</string>
+    <string name="likeusonfb">Visit or Like us On fB\n\nso you won\'t miss any news,updates..</string>
+   <string name="joinfb">Join our fb group\n\nsuggest,rate questions in our fb group</string>
+
+    <string name="taptoviewachievement">Tap to view\nAchievements</string>
+    <string name="achievement_not_available">Achievement not available.\nPlease sign in and try again.</string>
+    <string name="webclient_id">52302397877-v3e2hb9i38v64q11q84dv6jo0l11pdr9.apps.googleusercontent.com</string>
+    <string name="signin_other_error">There was an issue with sign-in, please try again later.</string>
+    <string name="signin_failure">Unable to sign in.</string>
+    <string name="loading_from_cloud">Loading your progress.</string>
+    <string name="format_days_ago">%d days ago</string>
+    <string name="format_hours_ago">%d hours ago</string>
+    <string name="format_minutes_ago">%d minutes ago</string>
+    <string name="format_seconds_ago">%d seconds ago</string>
+    <string name="moments_ago">moments ago</string>
+    <string name="snapshotimage_description">Saved image for snapshot</string>
+    <string name="select_conflicted_game">Select which game to load</string>
+    <string name="leaderboards_not_available">Leaderboards not available.\nPlease sign in and try again.</string>
+
+    <string name="joingroup">+ Join Group</string>
+    <string name="triviaknowledge">Trivia Knowledge</string>
+    <string name="useDiamond">Use Gems</string>
+    <string name="icons8">Icons8</string>
+    <string name="boom">boom\nCost : 1 gem</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="arts_gk">Arts &amp; gk</string>
+    <string name="science">Science</string>
+    <string name="geography">Geography</string>
+    <string name="sports">Sports</string>
+    <string name="personality">Famous Personalities</string>
+    <string name="Cost_2_Diamond">Cost: 2 Gems\n</string>
+    <string name="diamond_left_in_your_bucket">Gems left in your bucket.</string>
+    <string name="Shop_diamonds_at_cheap_price">Shop Gems at cheap price.</string>
+    <string name="admob_unit_id_banner">ca-app-pub-3533790242716669/6266214638</string>
+    <string name="admob_unit_id_rewardedVideo">ca-app-pub-3533790242716669/1173207032</string>
+    <string name="admob_app_id">ca-app-pub-3533790242716669~3871151430</string>
+    <string name="admob_Nativeads_id">ca-app-pub-3533790242716669/1936113036</string>
+    <string name="Test_admob_unit_id_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="Test_admob_unit_id_rewardedVideo">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="Test_admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="Test_admob_Native_ads">ca-app-pub-3940256099942544/2247696110</string>
+
+    <string name="adcolony_zone_id">vzeb59e668b2884e0d8a</string>
+
+    <string name="buyDiamond">Buy Gems</string>
+    <string name="watchvideo">Watch Video\nWatch rewarded video get 1 gem</string>
+    <string name="posttofb">Post to Facebook</string>
+    <string name="textjoin">Join fb group to start suggesting questions.</string>
+    <string name="textnotice">Notice: You can post after admin accepts your joining request thanks for your patience.</string>
+    <string name="textnotice2"> Answer will be given by other group members in comment section of post.</string>
+    <string name="textnoticeabove">Notice: This will post inside fb group "Trivia Knowledge".</string>
+    <string name="suggestquestion2">Suggest questions and join the community</string>
+    <string name="rateandanswer2">Rate or Answer questions suggested by community</string>
+    <string name="suggestquestion1">Suggest questions</string>
+    <string name="rateandanswer1">Rate or Answer questions</string>
+    <string name="shopGems">--------Gems--------</string>
+    <string name="buyDiamond2">30 Gems\n\nUSD 0.99</string>
+    <string name="resetgameinfo">You are about to delete your game progress from your device.\n\n Your score, answers and hints will be deleted.</string>
+    <string name="cancel">✖</string>
+    <string name="pause">||</string>
+    <string name="artsandgk">Arts &amp; gk</string>
+        <string name="facebook1">Facebook</string>
+    <string name="facebook2">Login with facebook to start suggesting questions in facebook group</string>
+    <string name="googleplus1">Google plus</string>
+    <string name="googleplus2">Login with google + to start suggesting questions in google plus community</string>
     <string-array name="tabsss">
         <item>TAB1</item>
         <item>TAB2</item>
@@ -8,4 +75,30 @@
     <string name="tab1">TAB1</string>
     <string name="tab2">TAB2</string>
     <string name="tab3">TAB3</string>
+    <string-array name="country_codes">
+        <item>facebook</item>
+        <item>gmail</item>
+        <item>whatsapp</item>
+        <item>fb messanger</item>
+    </string-array>
+    <string name="easy">EASY</string>
+    <string name="medium">MEDIUM</string>
+   <string name="hard">HARD</string>
+<string name="imagecredit">Image Credit</string>
+<string name="imagecredits2">
+    <item>\u00A0\u00A0 Trivia Knowledge \n\n
+            \u00A0\u00A0Some images where purchased\n
+            \u00A0\u00A0from Shutterstock under the\nstandard license.\n
+
+    </item>
+</string>
+    <string name="imagecredits3">
+        <item>
+           \u00A0\u00A0Icons where used from Icons8\n
+            \u00A0\u00A0under the license called\n
+            Creative Commons Attribution-NoDerivs 3.0 Unported.
+        </item>
+    </string>
+
+
 </resources>

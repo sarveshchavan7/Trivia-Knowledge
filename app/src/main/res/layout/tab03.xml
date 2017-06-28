@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+
+   <info.hoang8f.widget.FButton
+       android:id="@+id/achievementButton"
+       android:layout_width="200dp"
+       android:textSize="16sp"
+       android:textColor="@color/white"
+       android:text="@string/taptoviewachievement"
+       app:buttonColor="@color/darkpink"
+       android:drawableTop="@drawable/trophy2"
+       android:layout_height="150dp"/>
+
+</RelativeLayout>

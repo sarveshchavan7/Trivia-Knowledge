@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical"
+    android:paddingBottom="3dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp">
+
+    <com.beardedhen.androidbootstrap.BootstrapProgressBar
+        android:id="@+id/aboveslider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="primary"
+        app:bootstrapMaxProgress="100"
+        app:bootstrapProgress="100"
+        app:striped="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.4">
+
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/cancelSlider"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:text="@string/pause"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:buttonColor="@color/lightgreen2">
+
+        </info.hoang8f.widget.FButton>
+
+        <TextView
+            android:id="@+id/text11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:gravity="center" />
+
+    </RelativeLayout>
+    <com.beardedhen.androidbootstrap.BootstrapProgressBar
+        android:id="@+id/belowslider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slider"
+        app:bootstrapBrand="primary"
+        app:bootstrapMaxProgress="100"
+        app:bootstrapProgress="100"
+        app:striped="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="30dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Play   Game"
+            android:textColor="@color/white"
+            android:textSize="38sp"
+            custom:buttonColor="@color/darkpink" />
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Leader Boards"
+            android:textColor="@color/white"
+            android:textSize="38sp"
+            android:theme="@style/MyButton"
+            custom:buttonColor="@color/darkpink" />
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Quit"
+            android:textColor="@color/white"
+            android:textSize="38sp"
+            custom:buttonColor="@color/darkpink" />
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_weight="1.7"
+    android:layout_height="match_parent">
+
+</LinearLayout>
+</LinearLayout>

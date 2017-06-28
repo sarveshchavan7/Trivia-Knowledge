@@ -1,10 +1,23 @@
 <resources>
 
     <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#40000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme3" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/pink</item>
+        <item name="colorPrimaryDark">@color/darkpink</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="MyCustomTabTextAppearance">
@@ -12,4 +25,77 @@
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="textAllCaps">true</item>
     </style>
+    <style name="MyButton"
+        parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#1B5E20</item>
+        <item name="colorButtonNormal">@color/lightgreen2</item>
+        </style>
+    <style name="MyButton4"
+        parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#FFC0CB</item>
+        <item name="colorButtonNormal">#FFB6C1</item>
+    </style>
+    <style name="MyButton3"
+        parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#cccccc</item>
+        <item name="colorButtonNormal">@color/red</item>
+    </style>
+    <style name="MyButton2"
+    parent="Theme.AppCompat.Light">
+
+    <item name="colorControlHighlight">@color/indigo</item>
+    <item name="colorButtonNormal">@color/deeppink</item>
+</style>
+    <style name="sports"
+        parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/sports</item>
+        <item name="colorPrimaryDark">@color/sports</item>
+    </style>
+    <style name="geo"
+        parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/geography</item>
+        <item name="colorPrimaryDark">@color/geography</item>
+    </style>
+    <style name="sci"
+        parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/science</item>
+        <item name="colorPrimaryDark">@color/science</item>
+    </style>
+    <style name="arts"
+        parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/arts</item>
+        <item name="colorPrimaryDark">@color/arts</item>
+    </style>
+    <style name="entertainment"
+        parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/entartenment</item>
+        <item name="colorPrimaryDark">@color/entartenment</item>
+    </style>
+
+
+    <style name="ConflictDisplay">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+
+    <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">#33000000</item> <!-- Or any transparency or color you need -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
+
 </resources>

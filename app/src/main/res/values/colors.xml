@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#009688</color>
-    <color name="colorPrimaryDark">#26A69A</color>
+    <color name="colorPrimary">#1B5E20</color>
+    <color name="colorPrimaryDark">#43A047</color>
     <color name="colorAccent">#ffffff</color>
-    <color name="lightgreen">#D3D3D3</color>
+    <color name="backgroundcolor">#3E454F</color>
+    <color name="questioncolor">#757171</color>
+    <color name="transparent2">#77000000</color>
+    <color name="transparent4">#99000000</color>
+    <color name="yellow">#CCCC00</color>
+    <color name="transparent">#44000000</color>
+    <color name="pur">#F1948A</color>
+    <color name="darkpur">#E74C3C</color>
+    <color name="greyview">#D3D3D3</color>
+    <color name="facebookcolor">#3B5990</color>
+    <color name="orange2">#F96C22</color>
+    <color name="googlepluscolor">#E14A32</color>
+    <color name="grey">#2F4F4F</color>
+    <color name="Teal100">#B2DFDB</color>
+    <color name="orange">#C8E6C9</color>
+    <color name="white">#ffffff</color>
+    <color name="lightgreen2">#8BC34A</color>
+    <color name="darkgreen2">#1B5E20</color>
+    <color name="pink">#ffa5d2</color>>
+    <color name="darkpink">#7f7fff</color>
+    <color name="deeppink">#FF1493</color>
+    <color name="indigo">#4B0082</color>
+    <color name="transparent3">#D8000000</color>
+    <color name="science">#A1D510</color>
+    <color name="sciencedark">#81ab0d</color>
+    <color name="lightcream">#f2d485</color>
+    <color name="lightcream2">#c0a55c</color>
+    <color name="dollarcolor">#8bcd2b</color>
+    <color name="diamondcolor">#4fdefe</color>
+    <color name="cancelred">#ee3e36</color>
+    <color name="piapple">#d7af69</color>
+    <color name="starcolor">#f3ec00</color>
+    <color name="strawberry">#f7532d</color>f6aa98
+    <color name="lightred">#f6aa98</color>
+    <color name="lightred2">#f3947e</color>
+    <color name="lightyellow">#cae480</color>
+    <color name="lightyellow2">#a7c25b</color>
+    <color name="arts">#F2B001</color>
+    <color name="artsdark">#bf8d08</color>
+    <color name="entartenment">#E14A32</color>
+    <color name="entartenmentdark">#b43d2a</color>
+    <color name="geography">#02A1E5</color>
+    <color name="geographydark">#087daf</color>
+    <color name="lightblue">#aed6e7</color>
+    <color name="lightblue2">#7db4cb</color>
+    <color name="boamcolor">#787aa3</color>
+
+    <color name="sports">#9400D3</color>#9400D3
+    <color name="sportsdark">#800080</color>
+    <color name="lightpurple">#c1aad3</color>
+    <color name="lightpurple2">#b0a0bd</color>
+    <color name="personality">#48871B</color>
+    <color name="red">#ff0000</color>
+    <color name="darkgreen">#1B4426</color>
+    <color name="fbutton_default_color">#43A047</color>
+    <color name="fbutton_default_shadow_color">#1B5E20</color>
+
 </resources>

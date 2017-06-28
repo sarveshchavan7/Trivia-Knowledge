@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent2"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/gps_popup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center">
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/cancelButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            app:buttonColor="@color/cancelred" />
+
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cancelButton"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/fbText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_button"
+            android:gravity="center"
+            android:text="@string/fbText"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="5dp">
+        <info.hoang8f.widget.FButton
+            android:id="@+id/likeFb"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:drawableEnd="@drawable/likefb"
+            android:drawableRight="@drawable/likefb"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/likeusonfb"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:buttonColor="@color/white" />
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/joinFb"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:drawableEnd="@drawable/joinfb"
+            android:drawableRight="@drawable/joinfb"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/joinfb"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:buttonColor="@color/white" />
+
+        <TextView
+            android:id="@+id/rewards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="--------Collect Achievements--------"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/rewards2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:text="tap to collect achievements after completing the task"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/earnAchievement"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:drawableTop="@drawable/achievementunclock"
+                    android:textColor="@color/grey"
+                    android:textSize="15sp"
+                    app:buttonColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/earnAchievementText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="13sp"
+                    android:text="Achievement\nThe visitor"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/earnAchievementTwo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:drawableTop="@drawable/achievementunclock"
+                    android:textColor="@color/grey"
+                    android:textSize="13sp"
+                    app:buttonColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/earnAchievementTwoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="13sp"
+                    android:text="Achievement\nCrew member"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

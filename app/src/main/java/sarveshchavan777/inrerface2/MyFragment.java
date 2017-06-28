@@ -11,21 +11,19 @@ import android.widget.TextView;
 
 import java.util.zip.Inflater;
 
-/**
- * Created by LENOVO on 1/31/2017.
- */
 
 public  class MyFragment extends Fragment {
  private    TextView textView;
     @Override
     public View onCreateView(LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
-        View layout= inflater.inflate(R.layout.fragment_my,container,false);
+          View layout= inflater.inflate(R.layout.fragment_my,container,false);
         textView=(TextView)layout.findViewById(R.id.postion);
         Bundle bundle=getArguments();
         if(bundle!=null){
             textView.setText("The page selected is"+bundle.getInt("position"));
         }
         return layout;
+
     }
 
     public static MyFragment getInstance(int position){
@@ -35,6 +33,4 @@ public  class MyFragment extends Fragment {
         myFragment.setArguments(args);
         return myFragment;
     }
-
-
 }
