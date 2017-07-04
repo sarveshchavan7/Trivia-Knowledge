@@ -13,7 +13,8 @@ import java.util.zip.Inflater;
 
 
 public  class MyFragment extends Fragment {
- private    TextView textView;
+    private  TextView textView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState) {
           View layout= inflater.inflate(R.layout.fragment_my,container,false);

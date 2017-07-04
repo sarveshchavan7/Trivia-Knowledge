@@ -14,67 +14,73 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public  class ArtsSlidingMain extends AppCompatActivity {
-    private ViewPager mPager;
-    private SlidingTabLayout mTabs;
-    int numboftabs =3;
-  // public int icon[] = {R.drawable.heart1, R.drawable.heart2, R.drawable.heart3};
-    public int[] text= {R.string.easy,R.string.medium,R.string.hard};
+public class ArtsSlidingMain extends AppCompatActivity {
+    int numboftabs = 3;
+    DemoHelperClass demoHelperClass;
+    // public int icon[] = {R.drawable.heart1, R.drawable.heart2, R.drawable.heart3};
+    public int[] text = {R.string.easy, R.string.medium, R.string.hard};
     public int icon[] = {R.drawable.heart1, R.drawable.heart2, R.drawable.heart3};
     ImageView leftdifficultyarts;
-    TextView textViewDifficultyarts,easyarts,mediumarts,hardarts;
+    TextView textViewDifficultyarts, easyarts, mediumarts, hardarts;
+    Typeface typeface;
+    MediaPlayer ring;
+
     //mainactivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.artsslidingmain);
-        leftdifficultyarts=(ImageView)findViewById(R.id.leftdifficultyarts);
-        textViewDifficultyarts=(TextView)findViewById(R.id.textviewdifficultyarts);
-        easyarts=(TextView)findViewById(R.id.easyarts);
-        mediumarts=(TextView)findViewById(R.id.mediumarts);
-        hardarts=(TextView)findViewById(R.id.hardarts);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
+        ViewPager mPager;
+        SlidingTabLayout mTabs;
+
+        demoHelperClass = new DemoHelperClass(getApplicationContext());
+        leftdifficultyarts = (ImageView) findViewById(R.id.leftdifficultyarts);
+        textViewDifficultyarts = (TextView) findViewById(R.id.textviewdifficultyarts);
+        easyarts = (TextView) findViewById(R.id.easyarts);
+        mediumarts = (TextView) findViewById(R.id.mediumarts);
+        hardarts = (TextView) findViewById(R.id.hardarts);
+        typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
         textViewDifficultyarts.setTypeface(typeface);
         easyarts.setTypeface(typeface);
         mediumarts.setTypeface(typeface);
         hardarts.setTypeface(typeface);
+
         leftdifficultyarts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ArtsSlidingMain.this,Category.class);
+                Intent intent = new Intent(ArtsSlidingMain.this, Category.class);
                 startActivity(intent);
                 finish();
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(ArtsSlidingMain.this,R.raw.knife);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(ArtsSlidingMain.this, R.raw.knife);
                     ring.start();
                 }
-
             }
         });
 
-        mPager=(ViewPager)findViewById(R.id.pager);
-        mPager.setAdapter(new MyPageerAdapterArts(getSupportFragmentManager(),icon,numboftabs,getApplicationContext()));
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager.setAdapter(new MyPageerAdapterArts(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
 
-        mTabs=(SlidingTabLayout)findViewById(R.id.tabs);
-        mTabs.setCustomTabView(R.layout.customtablayoutarts,R.id.textTab);
+        mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        mTabs.setCustomTabView(R.layout.customtablayoutarts, R.id.textTab);
         mTabs.setDistributeEvenly(true);
-        mTabs.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.arts));
-        mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
+        mTabs.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.arts));
+        mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
         mTabs.setViewPager(mPager);
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent=new Intent(this,Category.class);
+        Intent intent = new Intent(this, Category.class);
         startActivity(intent);
         finish();
     }
 
-    public Boolean checkSound(){
-        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
+    public Boolean checkSound() {
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
                 //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }

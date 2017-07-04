@@ -4,74 +4,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/arts"
         android:minHeight="?actionBarSize">
-        <LinearLayout
+
+        <ImageView
+            android:id="@+id/leftdifficultyarts"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/goback"
+            android:src="@drawable/left_filled" />
+
+        <TextView
+            android:id="@+id/textviewdifficultyarts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/left_filled"
-                    android:id="@+id/leftdifficultyarts"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textviewdifficultyarts"
-                    android:textSize="30sp"
-                    android:text="CHOOSE DIFFICULTY"
-                    android:paddingLeft="10dp"
-                    android:textColor="#ffffff"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="EASY"
-                    android:id="@+id/easyarts"
-                    android:textSize="17sp"
-                    android:gravity="center"
-                    android:paddingRight="25dp"
-                    android:layout_weight="1"
-                    android:textColor="#ffffff"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="MEDIUM"
-                    android:gravity="center"
-                    android:id="@+id/mediumarts"
-                    android:layout_weight="1"
-                    android:textSize="17sp"
-                    android:textColor="#ffffff"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="HARD"
-                    android:gravity="center"
-                    android:id="@+id/hardarts"
-                    android:layout_weight="1"
-                    android:textSize="17sp"
-                    android:textColor="#ffffff"/>
-            </LinearLayout>
-
-        </LinearLayout>
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/CHOOSEDIFFICULTY"
+            android:textColor="#ffffff"
+            android:textSize="27sp" />
     </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/arts">
+
+        <TextView
+            android:id="@+id/easyarts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/easy"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/mediumarts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/medium"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/hardarts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/hard"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
 
     <sarveshchavan777.inrerface2.SlidingTabLayout
         android:id="@+id/tabs"

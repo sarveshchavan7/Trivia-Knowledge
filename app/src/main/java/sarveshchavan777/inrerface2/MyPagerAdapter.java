@@ -1,6 +1,6 @@
 package sarveshchavan777.inrerface2;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Point;
@@ -14,7 +14,7 @@ import android.text.Spanned;
 import android.text.style.ImageSpan;
 import android.view.Display;
 import android.view.WindowManager;
-import android.widget.Toast;
+
 
 
 class MyPagerAdapter extends FragmentStatePagerAdapter {
@@ -25,7 +25,7 @@ class MyPagerAdapter extends FragmentStatePagerAdapter {
     int numbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
 
 
-    public MyPagerAdapter(FragmentManager fm, int micon[], int mNumOfTabs, Context context) {
+    MyPagerAdapter(FragmentManager fm, int micon[], int mNumOfTabs, Context context) {
         super(fm);
         this.context = context;
         this.icon = micon;
@@ -42,12 +42,12 @@ class MyPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        if (position == 0) // if the position is 0 we are returning the First tab
+        if (position == 0) // if the position is 0 we are returning the First tab01.xml
         {
 
             Tab1 tab1 = new Tab1();
             return tab1;
-        } else if (position == 1) // As we are having 3 tabs if the position is now 0 it must be 1 so we are returning second tab
+        } else if (position == 1) // As we are having 3 tabs if the position is now 0 it must be 1 so we are returning second tab01.xml
         {
             Tab2 tab2 = new Tab2();
             return tab2;

@@ -1,17 +1,11 @@
 package sarveshchavan777.inrerface2;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
+
 import android.content.Intent;
-import android.content.pm.FeatureInfo;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -20,7 +14,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,11 +24,7 @@ import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
-import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.BaseGameUtils;
 
 
@@ -51,45 +40,45 @@ import info.hoang8f.widget.FButton;
 import sarveshchavan777.inrerface2.application.AppController;
 
 public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListener {
-     private static final java.lang.String LEADERBOARD_ID = "CgkItYPd68IBEAIQBw";
+    private static final java.lang.String LEADERBOARD_ID = "CgkItYPd68IBEAIQBw";
     private static final int REQUEST_LEADERBOARD = 100;
     private SliderLayout mDemoSlider;
     TextView tv;
     Button b1, b2, b3;
-    FButton cancelSlider, undoSlider;
-    Boolean clicked = false;
+    FButton cancelSlider;
+
     int i = 2;
     // Billionaires json url
     private static final String getURL = "https://api.myjson.com/bins/8wgo1";
     HashMap<String, String> url_maps;
     DemoHelperClass demoHelperClass;
+    MediaPlayer ring;
        /*GoogleApiClient mGoogleApiClient= AppController.getInstance().getClient();*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab01, container, false);
+        View v = inflater.inflate(R.layout.tab1, container, false);
+        mDemoSlider = (SliderLayout) v.findViewById(R.id.slider);
+        tv = (TextView) v.findViewById(R.id.text11);
+        b1 = (Button) v.findViewById(R.id.button1);
+        b2 = (Button) v.findViewById(R.id.button2);
+        b3 = (Button) v.findViewById(R.id.button3);
+        cancelSlider = (FButton) v.findViewById(R.id.cancelSlider);
         return v;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mDemoSlider = (SliderLayout) getView().findViewById(R.id.slider);
-        tv = (TextView) getView().findViewById(R.id.text11);
         // Creating volley request obj
-        b1 = (Button) getView().findViewById(R.id.button1);
-        b2 = (Button) getView().findViewById(R.id.button2);
-        b3 = (Button) getView().findViewById(R.id.button3);
-        demoHelperClass = new DemoHelperClass(getActivity());
-        // textSignIn = (TextView) getView().findViewById(R.id.textSignIn);
-        cancelSlider = (FButton) getView().findViewById(R.id.cancelSlider);
-        // undoSlider=(FButton)getView().findViewById(R.id.undoSlider);
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/shablagooital.ttf");
+        demoHelperClass = new DemoHelperClass(getActivity().getApplicationContext());
+
+        Typeface typeface = Typeface.createFromAsset(getActivity().getApplicationContext().getAssets(), "fonts/shablagooital.ttf");
         b1.setTypeface(typeface);
         b2.setTypeface(typeface);
         b3.setTypeface(typeface);
         //Animation
-        final Animation myAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.bounce);
+        final Animation myAnim = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.bounce);
         // Use bounce interpolator with amplitude 0.2 and frequency 20
         MyBounceInterpolator interpolator = new MyBounceInterpolator(0.25, 20);
         myAnim.setInterpolator(interpolator);
@@ -99,16 +88,15 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
         b3.startAnimation(myAnim);
 
 
-
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Category.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), Category.class);
                 startActivity(intent);
-               getActivity().finish();
+                getActivity().finish();
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
 
@@ -119,7 +107,6 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
             @Override
             public void onClick(View view) {
                 //GoogleApiClient client = AppController.getInstance().getClient();
-
                 if (MainActivity.mGoogleApiClient.isConnected()) {
                     startActivityForResult(Games.Leaderboards.getLeaderboardIntent(MainActivity.mGoogleApiClient,
                             LEADERBOARD_ID), REQUEST_LEADERBOARD);
@@ -127,8 +114,8 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                     BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.leaderboards_not_available)).show();
                 }
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                if (checkSound()) {
+                     ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -138,9 +125,8 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
             @Override
             public void onClick(View view) {
                 getActivity().finish();
-
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                if (checkSound()) {
+                     ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -153,9 +139,8 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 demoHelperClass.insertPauseValue(0);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.detach(Tab1.this).attach(Tab1.this).commit();
-
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                if (checkSound()) {
+                   ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -193,7 +178,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        url_maps = new HashMap<String, String>();
+                        url_maps = new HashMap<>();
                         // Parsing json
                         for (int i = 0; i < response.length(); i++) {
                             try {
@@ -226,14 +211,13 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        tv.setText("network issue: Slow network / No network");
+                        tv.setText(getResources().getString(R.string.networkIssue));
                     }
                 });
 
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(billionaireReq);
-
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Stack);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
@@ -241,14 +225,14 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
         mDemoSlider.setPresetTransformer("Accordion");
     }
 
-    public Boolean checkSound(){
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
-              //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+    public Boolean checkSound() {
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }
         }
-    return false;
+        return false;
     }
 }

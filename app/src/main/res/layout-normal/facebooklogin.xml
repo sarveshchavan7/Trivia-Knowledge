@@ -25,6 +25,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:text="@string/cancel"
+            android:textSize="12sp"
             android:textColor="@color/white"
             app:buttonColor="@color/cancelred" />
 

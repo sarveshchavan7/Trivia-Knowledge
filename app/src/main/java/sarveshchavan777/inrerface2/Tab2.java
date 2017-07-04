@@ -1,20 +1,17 @@
 package sarveshchavan777.inrerface2;
 
-import android.app.AlertDialog;
+
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInstaller;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,12 +23,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-
 import java.util.List;
 
 import info.hoang8f.widget.FButton;
@@ -39,17 +30,15 @@ import info.hoang8f.widget.FButton;
 public class Tab2 extends Fragment {
 
     ListView lv;
-    Context context;
+    //Context context;
+    MediaPlayer ring;
     DemoHelperClass demoHelperClass;
-    String abc = "";
     String x;
-    String idOfUser;
-    CallbackManager callbackManager = CallbackManager.Factory.create();
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab02, container, false);
+        View v = inflater.inflate(R.layout.tab2, container, false);
+        lv = (ListView) v.findViewById(R.id.listview10);
         return v;
     }
 
@@ -62,15 +51,15 @@ public class Tab2 extends Fragment {
         final String[] s = {"Sound", "Reset  Game", "Rate  on  PlayStore", "Like/join Us on Fb", "Share", "Report bug/contact us", "About ", "Shop"};
 
         mylistAdapter adapter = new mylistAdapter(getActivity(), img, s);
-        lv = (ListView) getView().findViewById(R.id.listview10);
         lv.setAdapter(adapter);
+
+        demoHelperClass = new DemoHelperClass(getActivity());
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 /*Toast.makeText(getActivity(), "U clicked" + s[position], Toast.LENGTH_SHORT).show();*/
                 if (position == 0) {
-                    demoHelperClass = new DemoHelperClass(getActivity());
                     final List list = demoHelperClass.getSound();
                     final Dialog dialog = new Dialog(getActivity());
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -122,7 +111,8 @@ public class Tab2 extends Fragment {
                 if (position == 1) {
                     final Dialog dialog = new Dialog(getActivity());
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    // dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.setContentView(R.layout.resetgamedialog);
                     dialog.setCancelable(true);
                     TextView attention = (TextView) dialog.findViewById(R.id.attentiontext);
@@ -143,25 +133,24 @@ public class Tab2 extends Fragment {
                     okreset.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            demoHelperClass = new DemoHelperClass(getActivity());
+
                             demoHelperClass.deleteAllRecord();
                             Toast toast = Toast.makeText(getActivity(), "\tGame restored successfully" + " ", Toast.LENGTH_LONG);
-                            toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                            toast.getView().setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.darkpink));
                             TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                            v.setTextColor(getResources().getColor(R.color.white));
+                            v.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                             v.setTypeface(typeface);
                             v.setTextSize(16);
                             toast.show();
                             dialog.dismiss();
 
-                            if(checkSound()){
-                                MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gameaudio2);
+                            if (checkSound()) {
+                                 ring = MediaPlayer.create(getActivity(), R.raw.gameaudio2);
                                 ring.start();
                             }
                         }
                     });
                     dialog.show();
-
                 }
 
                 if (position == 2) {
@@ -243,12 +232,12 @@ public class Tab2 extends Fragment {
                         sendIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
                         sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"charetakergames@gmail.com"});
                         sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Report Bug / Suggestions");
-                        sendIntent.putExtra(Intent.EXTRA_TEXT, "Device:" + getDeviceName() + "\n" +"Message:"+"\n\n");
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, "Device:" + getDeviceName() + "\n" + "Message:" + "\n\n");
                         startActivity(sendIntent);
                     } catch (Exception e) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:" + "charetakergames@gmail.com"));
                         intent.putExtra(Intent.EXTRA_SUBJECT, "Report Bug / Suggestions");
-                        intent.putExtra(Intent.EXTRA_TEXT, "Device:" + getDeviceName() + "\n"+"Message:"+"\n\n");
+                        intent.putExtra(Intent.EXTRA_TEXT, "Device:" + getDeviceName() + "\n" + "Message:" + "\n\n");
                         startActivity(intent);
                     }
                 }
@@ -264,7 +253,7 @@ public class Tab2 extends Fragment {
         });
     }
 
-    public static Intent getOpenFacebookIntent(Context context, String facebookId) {
+    /*public static Intent getOpenFacebookIntent(Context context, String facebookId) {
 
         try {
             context.getPackageManager()
@@ -275,7 +264,7 @@ public class Tab2 extends Fragment {
             return new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.facebook.com/Trivia-knowledge-1357616140975878/")); //catches and opens a url to the desired page
         }
-    }
+    }*/
 
 
     public String getDeviceName() {
@@ -314,10 +303,10 @@ public class Tab2 extends Fragment {
         }
     }*/
 
-    public Boolean checkSound(){
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
+    public Boolean checkSound() {
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
                 //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }

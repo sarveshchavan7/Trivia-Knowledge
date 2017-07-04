@@ -14,24 +14,29 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public  class EntertainmentSlidingMain extends AppCompatActivity {
-    private ViewPager mPager;
-    private SlidingTabLayout mTabs;
-    int numboftabs =3;
+public class EntertainmentSlidingMain extends AppCompatActivity {
+
+    int numboftabs = 3;
     public int icon[] = {R.drawable.strawberry1, R.drawable.strawberry2, R.drawable.strawberry3};
-    public String[] text= {"easy", "medium","hard"};
+    public String[] text = {"easy", "medium", "hard"};
     ImageView leftdifficultyent;
-    TextView textViewDifficultyent,easyent,mediument,hardent;
+    TextView textViewDifficultyent, easyent, mediument, hardent;
+    DemoHelperClass demoHelperClass;
+    MediaPlayer ring;
+
     //mainactivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entertainmentslidingmain);
-        leftdifficultyent=(ImageView)findViewById(R.id.leftdifficultyent);
-        textViewDifficultyent=(TextView)findViewById(R.id.textviewdifficultyent);
-        easyent=(TextView)findViewById(R.id.easyent);
-        mediument=(TextView)findViewById(R.id.mediument);
-        hardent=(TextView)findViewById(R.id.hardent);
+        ViewPager mPager;
+        SlidingTabLayout mTabs;
+        demoHelperClass = new DemoHelperClass(this);
+        leftdifficultyent = (ImageView) findViewById(R.id.leftdifficultyent);
+        textViewDifficultyent = (TextView) findViewById(R.id.textviewdifficultyent);
+        easyent = (TextView) findViewById(R.id.easyent);
+        mediument = (TextView) findViewById(R.id.mediument);
+        hardent = (TextView) findViewById(R.id.hardent);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
         textViewDifficultyent.setTypeface(typeface);
         easyent.setTypeface(typeface);
@@ -40,41 +45,41 @@ public  class EntertainmentSlidingMain extends AppCompatActivity {
         leftdifficultyent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(EntertainmentSlidingMain.this,Category.class);
+                Intent intent = new Intent(EntertainmentSlidingMain.this, Category.class);
                 startActivity(intent);
                 finish();
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(EntertainmentSlidingMain.this,R.raw.knife);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(EntertainmentSlidingMain.this, R.raw.knife);
                     ring.start();
                 }
             }
         });
 
-        mPager=(ViewPager)findViewById(R.id.pager);
-        mPager.setAdapter(new MyPageerAdapterEntertainment(getSupportFragmentManager(),icon,numboftabs,getApplicationContext()));
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager.setAdapter(new MyPageerAdapterEntertainment(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
 
-        mTabs=(SlidingTabLayout)findViewById(R.id.tabs);
-        mTabs.setCustomTabView(R.layout.customtablayoutentertainment,R.id.textTab);
+        mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        mTabs.setCustomTabView(R.layout.customtablayoutentertainment, R.id.textTab);
         mTabs.setDistributeEvenly(true);
-        mTabs.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.entartenment));
-        mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
+        mTabs.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.entartenment));
+        mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
         mTabs.setViewPager(mPager);
 
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent=new Intent(this,Category.class);
+        Intent intent = new Intent(getApplicationContext(), Category.class);
         startActivity(intent);
         finish();
     }
 
-    public Boolean checkSound(){
-        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
+    public Boolean checkSound() {
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
                 //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }

@@ -1,72 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundcolor">
-    <android.support.v7.widget.Toolbar
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/darkpink"
         android:minHeight="?actionBarSize">
+
         <ImageView
+            android:id="@+id/leftabout"
             android:layout_width="40sp"
             android:layout_height="match_parent"
-            android:src="@drawable/left_filled"
-            android:id="@+id/leftabout"/>
+            android:contentDescription="@string/goback"
+            android:src="@drawable/left_filled" />
+
         <TextView
+            android:id="@+id/textviewabout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textviewabout"
-            android:textSize="27sp"
-            android:text="About"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            android:textColor="#ffffff"/>
+            android:text="@string/About"
+            android:textColor="#ffffff"
+            android:textSize="27sp" />
     </android.support.v7.widget.Toolbar>
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="6dp">
-    <TextView
-        android:textColor="#ffffff"
-        android:id="@+id/imagecredittext"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Image credit"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:textSize="25sp"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000">
-    </View>
-    <TextView
-        android:textColor="#ffffff"
-        android:id="@+id/privacypolicytext"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Privacy policy"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:textSize="25sp"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000">
-    </View>
-    <TextView
-        android:textColor="#ffffff"
-        android:id="@+id/abouttk"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="About Trivia Knowledge"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:textSize="25sp"/>
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/imagecredittext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/imagecredit"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000">
+
+        </View>
+
+        <TextView
+            android:id="@+id/privacypolicytext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/Privacypolicy"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000">
+
+        </View>
+
+        <TextView
+            android:id="@+id/abouttk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/AboutTriviaKnowledge"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+    </LinearLayout>
 
 </LinearLayout>

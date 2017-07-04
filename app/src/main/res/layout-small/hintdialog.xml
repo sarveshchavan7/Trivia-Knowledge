@@ -33,7 +33,7 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center">
             <info.hoang8f.widget.FButton
                 android:id="@+id/cancel"
@@ -41,6 +41,7 @@
                 android:layout_height="35dp"
                 android:textColor="@color/white"
                 android:text="@string/cancel"
+                android:textSize="12sp"
                 app:buttonColor="@color/cancelred" />
         </RelativeLayout>
     </LinearLayout>

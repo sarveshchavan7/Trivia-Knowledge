@@ -4,74 +4,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/arts"
         android:minHeight="?actionBarSize">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+
                 <ImageView
+                    android:id="@+id/leftdifficultyarts"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/left_filled"
-                    android:id="@+id/leftdifficultyarts"/>
+                    android:contentDescription="@string/goback"
+                    android:src="@drawable/left_filled" />
+
                 <TextView
+                    android:id="@+id/textviewdifficultyarts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textviewdifficultyarts"
-                    android:textSize="27sp"
-                    android:text="CHOOSE DIFFICULTY"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:textColor="#ffffff"/>
-            </LinearLayout>
+                    android:text="@string/CHOOSEDIFFICULTY"
+                    android:textColor="#ffffff"
+                    android:textSize="27sp" />
+            </android.support.v7.widget.Toolbar>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@color/arts">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/easy"
                     android:id="@+id/easyarts"
-                    android:textSize="18sp"
-                    android:paddingRight="20dp"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:textColor="#ffffff"/>
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/medium"
+                    android:layout_weight="1"
                     android:gravity="center"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:text="@string/easy"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                <TextView
                     android:id="@+id/mediumarts"
-                    android:layout_weight="1"
-                    android:textSize="18sp"
-                    android:textColor="#ffffff"/>
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/hard"
-                    android:gravity="center"
-                    android:id="@+id/hardarts"
                     android:layout_weight="1"
-                    android:textSize="18sp"
-                    android:textColor="#ffffff"/>
-            </LinearLayout>
+                    android:gravity="center"
+                    android:text="@string/medium"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/hardarts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/hard"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
 
         </LinearLayout>
-    </android.support.v7.widget.Toolbar>
+
 
     <sarveshchavan777.inrerface2.SlidingTabLayout
         android:id="@+id/tabs"

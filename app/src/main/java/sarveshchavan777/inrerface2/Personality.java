@@ -611,7 +611,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                     hint1.setVisibility(View.INVISIBLE);
                                 }
                                 if (hintLength <= 3) {
-                                  //  Toast.makeText(Personality.this, "Free hint not available for less than 4 ", Toast.LENGTH_LONG).show();
+                                    //  Toast.makeText(Personality.this, "Free hint not available for less than 4 ", Toast.LENGTH_LONG).show();
                                     Toast toast = Toast.makeText(Personality.this,  "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
                                     toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
                                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
@@ -770,7 +770,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 hint1.setVisibility(View.INVISIBLE);
                             }
                             if (hintLength <= 3) {
-                               // Toast.makeText(Personality.this, "Free hint not available for less than 4 boxes", Toast.LENGTH_LONG).show();
+                                // Toast.makeText(Personality.this, "Free hint not available for less than 4 boxes", Toast.LENGTH_LONG).show();
 
                                 Toast toast = Toast.makeText(Personality.this,  "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
                                 toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
@@ -1722,19 +1722,19 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
                     int weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
 
-                  try{
-                      if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
-                          height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
-                          weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
-                      }
+                    try{
+                        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+                            height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
+                            weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
+                        }
 
-                      if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
-                          height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
-                          weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
-                      }
-                  }catch (Exception e){
-                     // Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
-                  }
+                        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+                            height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
+                            weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
+                        }
+                    }catch (Exception e){
+                        // Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
+                    }
 
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                             weidth, height);
@@ -1815,7 +1815,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             weidth, height);
                     params.setMargins(1, 1, 1, 1);
                     tvQ.setTextSize(13);
-                  //  Toast.makeText(Personality.this, "Normal -less", Toast.LENGTH_LONG).show();
+                    //  Toast.makeText(Personality.this, "Normal -less", Toast.LENGTH_LONG).show();
                 } else {
                     height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 34, getResources().getDisplayMetrics());
                     weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 34, getResources().getDisplayMetrics());
@@ -1823,54 +1823,54 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             weidth, height);
                     params.setMargins(3, 3, 3, 3);
                     tvQ.setTextSize(14);
-                 //   Toast.makeText(Personality.this, "NORMAL", Toast.LENGTH_LONG).show();
+                    //   Toast.makeText(Personality.this, "NORMAL", Toast.LENGTH_LONG).show();
                 }
             }
         }catch (Exception e){
-         //   Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
+            //   Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
         }
 
         //LARGE
-       try{
-           if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
-               height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
-               weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
-               params = new LinearLayout.LayoutParams(
-                       weidth, height);
-               params.setMargins(4, 4, 4, 4);
-               tvQ.setTextSize(23);
-           //    Toast.makeText(Personality.this, "large", Toast.LENGTH_LONG).show();
-               for(int i=0;i<textViewArrayAbove.length;i++){
-                   textViewArrayAbove[i].setTextSize(27);
-               }
-               for(int i=0;i<textViewArrayBelow.length;i++){
-                   textViewArrayBelow[i].setTextSize(27);
-               }
-           }
-       }catch (Exception e){
-         //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
-       }
+        try{
+            if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+                height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
+                weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
+                params = new LinearLayout.LayoutParams(
+                        weidth, height);
+                params.setMargins(4, 4, 4, 4);
+                tvQ.setTextSize(23);
+                //    Toast.makeText(Personality.this, "large", Toast.LENGTH_LONG).show();
+                for(int i=0;i<textViewArrayAbove.length;i++){
+                    textViewArrayAbove[i].setTextSize(27);
+                }
+                for(int i=0;i<textViewArrayBelow.length;i++){
+                    textViewArrayBelow[i].setTextSize(27);
+                }
+            }
+        }catch (Exception e){
+            //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
+        }
 
         //X-LARGE
-       try{
-           if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
-               height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, getResources().getDisplayMetrics());
-               weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, getResources().getDisplayMetrics());
-               params = new LinearLayout.LayoutParams(
-                       weidth, height);
-               params.setMargins(7, 7, 7, 7);
-               tvQ.setTextSize(25);
-             //  Toast.makeText(Personality.this, "x-large", Toast.LENGTH_LONG).show();
-               for(int i=0;i<textViewArrayAbove.length;i++){
-                   textViewArrayAbove[i].setTextSize(27);
-               }
-               for(int i=0;i<textViewArrayBelow.length;i++){
-                   textViewArrayBelow[i].setTextSize(30);
-               }
-           }
-       }catch (Exception e){
-         //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
-       }
+        try{
+            if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+                height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, getResources().getDisplayMetrics());
+                weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, getResources().getDisplayMetrics());
+                params = new LinearLayout.LayoutParams(
+                        weidth, height);
+                params.setMargins(7, 7, 7, 7);
+                tvQ.setTextSize(25);
+                //  Toast.makeText(Personality.this, "x-large", Toast.LENGTH_LONG).show();
+                for(int i=0;i<textViewArrayAbove.length;i++){
+                    textViewArrayAbove[i].setTextSize(27);
+                }
+                for(int i=0;i<textViewArrayBelow.length;i++){
+                    textViewArrayBelow[i].setTextSize(30);
+                }
+            }
+        }catch (Exception e){
+            //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
+        }
 
         /*if (width1 < 700 && height1 < 1000) {
             if ((getResources().getConfiguration().screenLayout &
@@ -1939,21 +1939,21 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     private void comman3() {
         int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
         int weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
-       try{
-           if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
-               height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
-               weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
-            //   Toast.makeText(Personality.this,"called yo yo",Toast.LENGTH_LONG).show();
-           }
+        try{
+            if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+                height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
+                weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
+                //   Toast.makeText(Personality.this,"called yo yo",Toast.LENGTH_LONG).show();
+            }
 
-           if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
-               height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
-               weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
-            //   Toast.makeText(Personality.this,"called yo yo",Toast.LENGTH_LONG).show();
-           }
-       }catch (Exception e){
-         //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
-       }
+            if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+                height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
+                weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
+                //   Toast.makeText(Personality.this,"called yo yo",Toast.LENGTH_LONG).show();
+            }
+        }catch (Exception e){
+            //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
+        }
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 weidth, height);
@@ -3854,8 +3854,3 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         return false;
     }
 }
-
-
-
-
-

@@ -1,28 +1,22 @@
 package sarveshchavan777.inrerface2;
 
-import android.app.Activity;
+
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DemoHelperClass extends SQLiteOpenHelper {
-    SQLiteDatabase db;
     Context context;
     private static final String DATABASE_NAME = "DEMOGAMEDBB";
 
-    static int DATABASE_VERSION = 816;
-    static final String TABLE_NAME = "TRIVIAQUIZ";
+    private static int DATABASE_VERSION = 942;
+    private static final String TABLE_NAME = "TRIVIAQUIZ";
     private static final String UID = "_UID";
     private static final String QUESTION = "QUESTION";
     private static final String OPTION1 = "OPTION1";
@@ -34,28 +28,28 @@ public class DemoHelperClass extends SQLiteOpenHelper {
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ( " + UID + " INTEGER PRIMARY KEY AUTOINCREMENT , " + QUESTION + " VARCHAR(255), " + OPTION1 + " VARCHAR(255), " + ANSWER + " VARCHAR(255), " + ANSWER2 + " VARCHAR(255), " + RANDOMANS1 + " VARCHAR(255), " + RANDOMANS2 + " VARCHAR(255), " + USELESSSTRING + " VARCHAR(255));";
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
-    static String TABLE_NAME2 = "TRIVIAQUIZ2";
+    private static String TABLE_NAME2 = "TRIVIAQUIZ2";
     private static final String CORRECTNO = "CORRECTNO";
     private static final String CREATE_TABLE2 = "CREATE TABLE " + TABLE_NAME2 + " ( " + CORRECTNO + " INTEGER );";
     private static final String DROP_TABLE2 = "DROP TABLE IF EXISTS " + TABLE_NAME2;
 
-    static String TABLE_NAME3 = "TRIVIAQUIZ3";
+    private static String TABLE_NAME3 = "TRIVIAQUIZ3";
     private static final String HINTID = "HINTID";
     private static final String CREATE_TABLE3 = "CREATE TABLE " + TABLE_NAME3 + " ( " + HINTID + " INTEGER );";
     private static final String DROP_TABLE3 = "DROP TABLE IF EXISTS " + TABLE_NAME3;
-    private static final String DELETE_TABLE3 = " DELETE FROM " + TABLE_NAME3;
 
-    static String TABLE_NAME4 = "TRIVIAQUIZ4";
+
+    private static String TABLE_NAME4 = "TRIVIAQUIZ4";
     private static final String AONE = "AONE";
     private static final String CREATE_TABLE4 = "CREATE TABLE " + TABLE_NAME4 + " ( " + AONE + " INTEGER );";
     private static final String DROP_TABLE4 = "DROP TABLE IF EXISTS " + TABLE_NAME4;
 
-    static String TABLE_NAME5 = "TRIVIAQUIZ5";
+    private static String TABLE_NAME5 = "TRIVIAQUIZ5";
     private static final String ATWO = "ATWO";
     private static final String CREATE_TABLE5 = "CREATE TABLE " + TABLE_NAME5 + " ( " + ATWO + " INTEGER );";
     private static final String DROP_TABLE5 = "DROP TABLE IF EXISTS " + TABLE_NAME5;
 
-    static String TABLE_NAME6 = "TRIVIAQUIZ6";
+    private static String TABLE_NAME6 = "TRIVIAQUIZ6";
     private static final String ATHREE = "ATHREE";
     private static final String CREATE_TABLE6 = "CREATE TABLE " + TABLE_NAME6 + " ( " + ATHREE + " INTEGER );";
     private static final String DROP_TABLE6 = "DROP TABLE IF EXISTS " + TABLE_NAME6;
@@ -65,32 +59,32 @@ public class DemoHelperClass extends SQLiteOpenHelper {
     private static final String CREATE_TABLE7 = "CREATE TABLE " + TABLE_NAME7 + " ( " + DOLLAR + " INTEGER );";
     private static final String DROP_TABLE7 = "DROP TABLE IF EXISTS " + TABLE_NAME7;*/
 
-    static String TABLE_NAME8 = "TRIVIAQUIZ8";
+    private static String TABLE_NAME8 = "TRIVIAQUIZ8";
     private static final String GEMS = "GEMS";
     private static final String CREATE_TABLE8 = "CREATE TABLE " + TABLE_NAME8 + " ( " + GEMS + " INTEGER );";
     private static final String DROP_TABLE8 = "DROP TABLE IF EXISTS " + TABLE_NAME8;
 
-    static String TABLE_NAME9 = "TRIVIAQUIZ9";
+    private static String TABLE_NAME9 = "TRIVIAQUIZ9";
     private static final String AFOUR = "AFOUR";
     private static final String CREATE_TABLE9 = "CREATE TABLE " + TABLE_NAME9 + " ( " + AFOUR + " INTEGER );";
     private static final String DROP_TABLE9 = "DROP TABLE IF EXISTS " + TABLE_NAME9;
 
-    static String TABLE_NAME10 = "TRIVIAQUIZ10";
+    private static String TABLE_NAME10 = "TRIVIAQUIZ10";
     private static final String AFIVE = "AFIVE";
     private static final String CREATE_TABLE10 = "CREATE TABLE " + TABLE_NAME10 + " ( " + AFIVE + " INTEGER );";
     private static final String DROP_TABLE10 = "DROP TABLE IF EXISTS " + TABLE_NAME10;
 
-    static String TABLE_NAME11 = "TRIVIAQUIZ11";
+    private static String TABLE_NAME11 = "TRIVIAQUIZ11";
     private static final String storePauseValue = "storePauseValue";
     private static final String CREATE_TABLE11 = "CREATE TABLE " + TABLE_NAME11 + " ( " + storePauseValue + " INTEGER );";
     private static final String DROP_TABLE11 = "DROP TABLE IF EXISTS " + TABLE_NAME11;
 
-    static String TABLE_NAME12 = "TRIVIAQUIZ12";
+    private static String TABLE_NAME12 = "TRIVIAQUIZ12";
     private static final String BOOM = "BOOM";
     private static final String CREATE_TABLE12 = "CREATE TABLE " + TABLE_NAME12 + " ( " + BOOM + " INTEGER );";
     private static final String DROP_TABLE12 = "DROP TABLE IF EXISTS " + TABLE_NAME12;
 
-    static String TABLE_NAME13 = "TRIVIAQUIZ13";
+    private static String TABLE_NAME13 = "TRIVIAQUIZ13";
     private static final String SOUND = "SOUND";
     private static final String CREATE_TABLE13 = "CREATE TABLE " + TABLE_NAME13 + " ( " + SOUND + " INTEGER );";
     private static final String DROP_TABLE13 = "DROP TABLE IF EXISTS " + TABLE_NAME13;
@@ -104,9 +98,8 @@ public class DemoHelperClass extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-
         sqLiteDatabase.execSQL(CREATE_TABLE);
-       sqLiteDatabase.execSQL(CREATE_TABLE2);
+        sqLiteDatabase.execSQL(CREATE_TABLE2);
         sqLiteDatabase.execSQL(CREATE_TABLE3);
         sqLiteDatabase.execSQL(CREATE_TABLE4);
         sqLiteDatabase.execSQL(CREATE_TABLE5);
@@ -118,39 +111,39 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TABLE11);
         sqLiteDatabase.execSQL(CREATE_TABLE12);
         sqLiteDatabase.execSQL(CREATE_TABLE13);
-      // Toast.makeText(context,"oncreate called",Toast.LENGTH_LONG).show();
+        // Toast.makeText(context,"oncreate called",Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1)     {
-       // i=oldVersion i1=new newVersion
-            sqLiteDatabase.execSQL(DROP_TABLE);
-            sqLiteDatabase.execSQL(DROP_TABLE2);
-            sqLiteDatabase.execSQL(DROP_TABLE3);
-            sqLiteDatabase.execSQL(DROP_TABLE4);
-            sqLiteDatabase.execSQL(DROP_TABLE5);
-            sqLiteDatabase.execSQL(DROP_TABLE6);
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        // i=oldVersion i1=new newVersion
+        sqLiteDatabase.execSQL(DROP_TABLE);
+        sqLiteDatabase.execSQL(DROP_TABLE2);
+        sqLiteDatabase.execSQL(DROP_TABLE3);
+        sqLiteDatabase.execSQL(DROP_TABLE4);
+        sqLiteDatabase.execSQL(DROP_TABLE5);
+        sqLiteDatabase.execSQL(DROP_TABLE6);
 
-            sqLiteDatabase.execSQL(DROP_TABLE8);
-            sqLiteDatabase.execSQL(DROP_TABLE9);
-            sqLiteDatabase.execSQL(DROP_TABLE10);
-            sqLiteDatabase.execSQL(DROP_TABLE11);
-            sqLiteDatabase.execSQL(DROP_TABLE12);
-               sqLiteDatabase.execSQL(DROP_TABLE13);
-    //   Toast.makeText(context,"onUpgrade called",Toast.LENGTH_LONG).show();
+        sqLiteDatabase.execSQL(DROP_TABLE8);
+        sqLiteDatabase.execSQL(DROP_TABLE9);
+        sqLiteDatabase.execSQL(DROP_TABLE10);
+        sqLiteDatabase.execSQL(DROP_TABLE11);
+        sqLiteDatabase.execSQL(DROP_TABLE12);
+        sqLiteDatabase.execSQL(DROP_TABLE13);
+        //   Toast.makeText(context,"onUpgrade called",Toast.LENGTH_LONG).show();
         onCreate(sqLiteDatabase);
     }
 
-    public void addquestions() {
-        ArrayList<Questions> allQuestions = new ArrayList<Questions>();
+    void addquestions() {
+        ArrayList<Questions> allQuestions = new ArrayList<>();
 
-        allQuestions.add(new Questions("Who was the first African American to have served as president of United States of America ?", "BAROBAACKMAQCAEMBD", "BarACK", "ObaMA","BARIACKTE","OBMAMAPSF","ITEMPSF"));
+        allQuestions.add(new Questions("Who was the first African American to have served as president of United States of America ?", "BAROBAACKMAQCAEMBD", "BarACK", "ObaMA", "BARIACKTE", "OBMAMAPSF", "ITEMPSF"));
 
-        allQuestions.add(new Questions("Who co-founded Apple company with Steve Wozniak, Ronald Wayne ?", "TSOVWIBYUBZRGOEJSE", "STEVE", "JOBS","OAEESVSC","AWOBFOTJ","COAOFWA"));
+        allQuestions.add(new Questions("Who co-founded Apple company with Steve Wozniak & Ronald Wayne ?", "TSOVWIBYUBZRGOEJSE", "STEVE", "JOBS", "OAEESVSC", "AWOBFOTJ", "COAOFWA"));
 
-        allQuestions.add(new Questions("Who was the first elected President of South Africa ?", "NSLLONSLMDKPQAEENA", "NELSON", "MANDELA","PNDAYLELS","ONNEWMCCA","CCYPW"));
+        allQuestions.add(new Questions("Who was the first elected President of South Africa ?", "NSLLONSLMDKPQAEENA", "NELSON", "MANDELA", "PNDAYLELS", "ONNEWMCCA", "CCYPW"));
 
-        allQuestions.add(new Questions("Which German born physicist developed the Special theory of relativity which has the famous equation E = mc^2 ?", "NEANRESBAICNNTTEIL", "ALBERT", "EINSTEIN","ISTENIRTN","LERKELCBA","LRKC"));
+       allQuestions.add(new Questions("Which German born physicist developed the Special theory of relativity which has the famous equation E = mc^2 ?", "NEANRESBAICNNTTEIL", "ALBERT", "EINSTEIN","ISTENIRTN","LERKELCBA","LRKC"));
 
         allQuestions.add(new Questions("Disneyland theme park located in US is the brainchild of which creative genius ?", "UHUYPLYZDIANTISEWC", "WALT", "DISNEY","ERISWYLA","DYTNLLVG","RVLGLY"));
 
@@ -1239,7 +1232,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("What city is the capital of India ?", "NDMDFWHFUWGIKEELRZ", "New", "Delhi","EHWSDRN","EOLLHIM","MOSHLR"));
 
-        allQuestions.add(new Questions("In what city in California was Disneyland opened ?", "AEMUHIIAKIYAACZRNK", " Anaheim", "","MEYFANA","YSOIOHP","POYOYFS"));
+        allQuestions.add(new Questions("In what city in California was Disneyland opened ?", "AEMUHIIAKIYAACZRNK", "Anaheim", "","MEYFANA","YSOIOHP","POYOYFS"));
 
         allQuestions.add(new Questions("Frankenmuth, a U.S. city nicknamed \"Little Bavaria\", is located in what state ?", "NGMHSTGZWITCIDAJAH", "Michigan", "","EUHICXM","RIKNAIG","KUIXRE"));
 
@@ -2038,7 +2031,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("\"Not Afraid\" is a song by which American rapper from his album Recovery (2010) ?", "GPAMHDEMINRNLETOZE", "Eminem", "","EMMINRU","NMEMUEU","MMRUUNUE"));
 
-        allQuestions.add(new Questions("Who’s hit single ‘Dangerous Woman’ has earned her a nomination for the ‘2017 Grammy Awards’ ?", "NRREEAINNACHAGAVDA", "Ariana", "Grande","GMNAJGE","RSSNDFR","JFSRMNSG"));
+        allQuestions.add(new Questions("Who’s hit single ‘Dangerous Woman’ has earned her a nomination for the ‘2017 Grammy Awards’ ?", "NRREEAINNACHAGAVDA", "Ariana", "Grande","NFANNGCIR","OADEAAZIR","ZINFOC"));
 
         allQuestions.add(new Questions("\"Cheap Thrills\" is a song recorded by which Australian recording artist ?", "SEACAMHSILYSRASIQC", "Sia", "","SIAAK","UXLAI","UALAKXI"));
 
@@ -2455,12 +2448,14 @@ public class DemoHelperClass extends SQLiteOpenHelper {
          db = this.getWritableDatabase();
          db.insert(TABLE_NAME, null, values);
      }*/
+
+
     private void addAllQuestions(ArrayList<Questions> allQuestions) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
         try {
             ContentValues values = new ContentValues();
-            for (Questions question: allQuestions) {
+            for (Questions question : allQuestions) {
                 values.put(QUESTION, question.getQUESTION());
                 values.put(OPTION1, question.getOPT1());
                 values.put(ANSWER, question.getANSWER());
@@ -2468,7 +2463,6 @@ public class DemoHelperClass extends SQLiteOpenHelper {
                 values.put(RANDOMANS1, question.getRANDOMANS1());
                 values.put(RANDOMANS2, question.getRANDOMANS2());
                 values.put(USELESSSTRING, question.getUSELESSSTRING());
-                db = this.getWritableDatabase();
                 db.insert(TABLE_NAME, null, values);
             }
             db.setTransactionSuccessful();
@@ -2478,12 +2472,16 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         }
     }
 
-    public List<Questions> getAllOfTheQuestions() {
+
+    List<Questions> getAllOfTheQuestions() {
 
         List<Questions> questionsList = new ArrayList<>();
+
         SQLiteDatabase db = this.getWritableDatabase();
-        String coloumn[] = {UID, QUESTION, OPTION1, ANSWER, ANSWER2, RANDOMANS1, RANDOMANS2,USELESSSTRING};
+        db.beginTransaction();
+        String coloumn[] = {UID, QUESTION, OPTION1, ANSWER, ANSWER2, RANDOMANS1, RANDOMANS2, USELESSSTRING};
         Cursor cursor = db.query(TABLE_NAME, coloumn, null, null, null, null, null);
+
 
         while (cursor.moveToNext()) {
             Questions question = new Questions();
@@ -2497,213 +2495,280 @@ public class DemoHelperClass extends SQLiteOpenHelper {
             question.setUSELESSSTRING(cursor.getString(7));
             questionsList.add(question);
         }
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return questionsList;
     }
 
-    public void InsertQid(int id) {
+    void InsertQid(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(CORRECTNO, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME2, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
        /* Toast.makeText(context,"the answer was correct"+id+"was added",Toast.LENGTH_SHORT).show();*/
         db.close();
     }
 
-   public List GetQid() {
+    public List GetQid() {
         String coloumns[] = {CORRECTNO};
         SQLiteDatabase db = this.getWritableDatabase();
+
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME2, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
+
         while (cursor.moveToNext()) {
             int questionId = cursor.getInt(0);
             list.add(questionId);
         }
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
-    public void insertHint(int id) {
+    void insertHint(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(HINTID, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME3, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
     public List getHint() {
         String coloumns[] = {HINTID};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME3, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
+
         while (cursor.moveToNext()) {
             int hintId = cursor.getInt(0);
             list.add(hintId);
         }
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
-    public void insertA1(int id) {
+    void insertA1(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(AONE, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME4, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
-    public List getA1() {
+    List getA1() {
         String coloumns[] = {AONE};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME4, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
+
         while (cursor.moveToNext()) {
             int a1Id = cursor.getInt(0);
             list.add(a1Id);
         }
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
-    public void insertA2(int id) {
+    void insertA2(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ATWO, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME5, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
-    public List getA2() {
+    List getA2() {
         String coloumns[] = {ATWO};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME5, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
+
         while (cursor.moveToNext()) {
             int a2Id = cursor.getInt(0);
             list.add(a2Id);
         }
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
-    public void insertA3(int id) {
+    void insertA3(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ATHREE, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME6, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
-    public List getA3() {
+    List getA3() {
         String coloumns[] = {ATHREE};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME6, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
+
         while (cursor.moveToNext()) {
             int a3Id = cursor.getInt(0);
             list.add(a3Id);
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
-    public void insertA4(int id) {
+    void insertA4(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(AFOUR, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME9, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
-    public List getA4() {
+    List getA4() {
         String coloumns[] = {AFOUR};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME9, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
         while (cursor.moveToNext()) {
             int a4Id = cursor.getInt(0);
             list.add(a4Id);
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
-    public void insertA5(int id) {
+    void insertA5(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(AFIVE, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME10, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
-    public List getA5() {
+    List getA5() {
         String coloumns[] = {AFIVE};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME10, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
         while (cursor.moveToNext()) {
             int a5Id = cursor.getInt(0);
             list.add(a5Id);
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
     //pause button of slider
-    public void insertPauseValue(int id) {
+    void insertPauseValue(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(storePauseValue, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME11, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
-    public List getPauseButtonValue() {
+    List getPauseButtonValue() {
         String coloumns[] = {storePauseValue};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME11, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
         while (cursor.moveToNext()) {
             int pauseValue = cursor.getInt(0);
             list.add(pauseValue);
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
     //inserting and getting boom qid .
-    public void insertBoom(int id) {
+    void insertBoom(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(BOOM, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME12, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
-    public List getBoomId() {
+    List getBoomId() {
         String coloumns[] = {BOOM};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME12, coloumns, null, null, null, null, null);
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
         while (cursor.moveToNext()) {
             int boomValue = cursor.getInt(0);
             list.add(boomValue);
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list;
     }
 
-    public void deleteAllRecord() {
+    void deleteAllRecord() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("delete from " + TABLE_NAME);
         db.execSQL("delete from " + TABLE_NAME2);
@@ -2721,11 +2786,14 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void optimiseDatabase(){
+    /*void optimiseDatabase() {
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.execSQL("delete from " + TABLE_NAME);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
-    }
+    }*/
 
    /* public void InsertDollar(int id) {
         ContentValues contentValues = new ContentValues();
@@ -2747,47 +2815,61 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         return list2;
     }*/
 
-    public void InsertGems(int id) {
+    void InsertGems(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(GEMS, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME8, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
-   public List getGems() {
+    public List getGems() {
         String coloumns[] = {GEMS};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME8, coloumns, null, null, null, null, null);
-        List list2 = new ArrayList();
-        list2.add(150);
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(300);
+
         while (cursor.moveToNext()) {
             int questionId = cursor.getInt(0);
             list2.add(questionId);
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list2;
     }
 
     //Sound
-    public void insertSound(int id) {
+    void insertSound(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(SOUND, id);
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         db.insert(TABLE_NAME13, null, contentValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
         db.close();
     }
 
     public List getSound() {
         String coloumns[] = {SOUND};
         SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME13, coloumns, null, null, null, null, null);
-        List list2 = new ArrayList();
+        List<Integer> list2 = new ArrayList<>();
+
         while (cursor.moveToNext()) {
             int questionId = cursor.getInt(0);
             list2.add(questionId);
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
         cursor.close();
         db.close();
         return list2;

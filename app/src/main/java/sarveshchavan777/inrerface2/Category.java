@@ -2,7 +2,6 @@ package sarveshchavan777.inrerface2;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,28 +10,27 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
+import android.content.ComponentCallbacks2;
 
 import java.util.List;
 
-import sarveshchavan777.inrerface2.application.AppController;
 
-
-public class Category extends Activity {
+public class Category extends Activity implements ComponentCallbacks2 {
     ImageView imageView;
-    TextView tv,tvPersonality,tvSports,tvGeography,tvScience,tvArts,tvEntertainment;
-    ImageView imageView1,imageView2,imageView3,imageView4,imageView5,imageView6;
+    TextView tv, tvPersonality, tvSports, tvGeography, tvScience, tvArts, tvEntertainment;
+    ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6;
     DemoHelperClass demoHelperClass;
-   /* private AdView mAdView;*/
+    Typeface typeface;
+    MediaPlayer ring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category);
+
+        demoHelperClass = new DemoHelperClass(getApplicationContext());
         //initialize
         imageView = (ImageView) findViewById(R.id.leftcategory);
         imageView1 = (ImageView) findViewById(R.id.image1);
@@ -49,18 +47,15 @@ public class Category extends Activity {
         tvScience = (TextView) findViewById(R.id.Science);
         tvArts = (TextView) findViewById(R.id.Arts);
         tvEntertainment = (TextView) findViewById(R.id.Entertainment);
-        tv.setText("Select Category");
+        tv.setText(getString(R.string.selectCategory));
 
       /*  //admob
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);*/
 
-
-
-
         //typefaces
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
+        typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
         tv.setTypeface(typeface);
         tvPersonality.setTypeface(typeface);
         tvSports.setTypeface(typeface);
@@ -69,7 +64,7 @@ public class Category extends Activity {
         tvArts.setTypeface(typeface);
         tvEntertainment.setTypeface(typeface);
 
-       //animations
+        //animations
         imageView1.startAnimation(inFromLeftAnimation());
         imageView2.startAnimation(inFromRightAnimation());
         imageView3.startAnimation(inFromLeftAnimation());
@@ -80,11 +75,11 @@ public class Category extends Activity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              Intent intent=new Intent(Category.this,MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.knife);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
                     ring.start();
                 }
 
@@ -93,30 +88,28 @@ public class Category extends Activity {
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Category.this,SecoundSlidingMain.class);
+                Intent intent = new Intent(getApplicationContext(), SecoundSlidingMain.class);
+                 // intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-                demoHelperClass = new DemoHelperClass(Category.this);
-                SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
-                demoHelperClass.optimiseDatabase();
                 finish();
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
         });
+
         imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Category.this,SportsSlidingMain.class);
+                Intent intent = new Intent(getApplicationContext(), SportsSlidingMain.class);
                 startActivity(intent);
-                demoHelperClass = new DemoHelperClass(Category.this);
-                SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
-                demoHelperClass.optimiseDatabase();
                 finish();
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -124,14 +117,12 @@ public class Category extends Activity {
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Category.this,GeoSlidingMain.class);
+                Intent intent = new Intent(getApplicationContext(), GeoSlidingMain.class);
                 startActivity(intent);
-                demoHelperClass = new DemoHelperClass(Category.this);
-                SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
-                demoHelperClass.optimiseDatabase();
                 finish();
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
 
@@ -140,14 +131,12 @@ public class Category extends Activity {
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Category.this,ScienceSlidingMain.class);
+                Intent intent = new Intent(getApplicationContext(), ScienceSlidingMain.class);
                 startActivity(intent);
-                demoHelperClass = new DemoHelperClass(Category.this);
-                SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
-                demoHelperClass.optimiseDatabase();
                 finish();
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -155,14 +144,12 @@ public class Category extends Activity {
         imageView5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Category.this,ArtsSlidingMain.class);
+                Intent intent = new Intent(getApplicationContext(), ArtsSlidingMain.class);
                 startActivity(intent);
-                demoHelperClass = new DemoHelperClass(Category.this);
-                SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
-                demoHelperClass.optimiseDatabase();
                 finish();
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -170,14 +157,12 @@ public class Category extends Activity {
         imageView6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Category.this,EntertainmentSlidingMain.class);
+                Intent intent = new Intent(getApplicationContext(), EntertainmentSlidingMain.class);
                 startActivity(intent);
-                demoHelperClass = new DemoHelperClass(Category.this);
-                SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
-                demoHelperClass.optimiseDatabase();
                 finish();
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Category.this,R.raw.gameaudio2);
+
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -202,17 +187,18 @@ public class Category extends Activity {
         handler6.postDelayed(runnable6, 4000); //for initial delay..*/
     }
 
-        private Animation inFromRightAnimation() {
+    private Animation inFromRightAnimation() {
 
-            Animation inFromRight = new TranslateAnimation(
-                    Animation.RELATIVE_TO_PARENT, +1.0f,
-                    Animation.RELATIVE_TO_PARENT, 0.0f,
-                    Animation.RELATIVE_TO_PARENT, 0.0f,
-                    Animation.RELATIVE_TO_PARENT, 0.0f);
-            inFromRight.setDuration(600);
-            inFromRight.setInterpolator(new AccelerateInterpolator());
-            return inFromRight;
-        }
+        Animation inFromRight = new TranslateAnimation(
+                Animation.RELATIVE_TO_PARENT, +1.0f,
+                Animation.RELATIVE_TO_PARENT, 0.0f,
+                Animation.RELATIVE_TO_PARENT, 0.0f,
+                Animation.RELATIVE_TO_PARENT, 0.0f);
+        inFromRight.setDuration(600);
+        inFromRight.setInterpolator(new AccelerateInterpolator());
+        return inFromRight;
+    }
+
     private Animation inFromLeftAnimation() {
         Animation inFromLeft = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, -1.0f,
@@ -227,16 +213,15 @@ public class Category extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-       Intent intent=new Intent(Category.this,MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    public Boolean checkSound(){
-        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
+    public Boolean checkSound() {
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
                 //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }

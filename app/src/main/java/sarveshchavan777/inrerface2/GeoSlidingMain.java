@@ -22,6 +22,8 @@ public  class GeoSlidingMain extends AppCompatActivity {
     public String[] text= {"easy", "medium","hard"};
     ImageView leftdifficultygeo;
     TextView textViewDifficultygeo,easygeo,mediumgeo,hardgeo;
+    MediaPlayer ring;
+    DemoHelperClass demoHelperClass;
     //mainactivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public  class GeoSlidingMain extends AppCompatActivity {
                 finish();
 
                 if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(GeoSlidingMain.this,R.raw.knife);
+                    ring= MediaPlayer.create(GeoSlidingMain.this,R.raw.knife);
                     ring.start();
                 }
             }
@@ -65,13 +67,13 @@ public  class GeoSlidingMain extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-      Intent intent=new Intent(this,Category.class);
+        Intent intent=new Intent(getApplicationContext(),Category.class);
         startActivity(intent);
         finish();
     }
 
     public Boolean checkSound(){
-        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
+       demoHelperClass=new DemoHelperClass(this);
         List list=demoHelperClass.getSound();
         if(list!=null){
             if( list.size()%2==0 ){

@@ -100,5 +100,24 @@
         </item>
     </string>
 
-
+    <string name="networkIssue">network issue: Slow network / No network</string>
+    <string name="selectCategory">Select Category</string>
+    <string name="AboutTriviaKnowledge">About Trivia Knowledge</string>
+    <string name="Privacypolicy">Privacy policy</string>
+    <string name="Imagecredit">Image credit</string>
+    <string name="About">About</string>
+    <string name="goback">Go back</string>
+    <string name="CHOOSEDIFFICULTY">CHOOSE DIFFICULTY</string>
+    <string name="reward">-------REWARD-------</string>
+    <string name="cost1gem">Cost : 1 gem</string>
+    <string name="removeextraletters">Remove extra letters!!</string>
+    <string name="boom1">Boom</string>
+    <string name="Text">Text</string>
+    <string name="zero">0</string>
+    <string name="image">image</string>
+    <string name="Progress">Progress</string>
+    <string name="tenhundred">10/100</string>
+    <string name="pack1">PACK 1</string>
+    <string name="pack2">PACK 2</string>
+    <string name="question1">Q1</string>
 </resources>

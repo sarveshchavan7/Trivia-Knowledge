@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/transparent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:background="@color/transparent">
+
+        <TextView
+            android:id="@+id/soundText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SOUND"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <info.hoang8f.widget.FButton
+                android:id="@+id/cancelSound"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:textColor="@color/white"
+                android:text="@string/cancel"
+                app:buttonColor="@color/cancelred" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/transparent2"/>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="40dp"></View>
+    <ImageView
+        android:id="@+id/sound"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/on"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="40dp"></View>
+</LinearLayout>

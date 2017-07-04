@@ -22,7 +22,7 @@ class MyPageerAdapterSports extends FragmentStatePagerAdapter {
 
 
 
-    public MyPageerAdapterSports(FragmentManager fm, int micon[], int mNumOfTabs, Context context) {
+    MyPageerAdapterSports(FragmentManager fm, int micon[], int mNumOfTabs, Context context) {
         super(fm);
         this.context = context;
         this.icon=micon;
@@ -38,19 +38,19 @@ class MyPageerAdapterSports extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        if(position == 0) // if the position is 0 we are returning the First tab
+        if(position == 0) // if the position is 0 we are returning the First tab01.xml
         {
-            Tab7 tab7 = new Tab7();
-            return tab7;
+            Tab04 tab4 = new Tab04();
+            return tab4;
         }
-        else if (position==1)         // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
+        else if (position==1)         // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab01.xml
         {
-            Tab8 tab8 = new Tab8();
-            return tab8;
+            Tab05 tab5 = new Tab05();
+            return tab5;
         }
         else {
-            Tab9 tab9=new Tab9();
-            return tab9;
+            Tab06 tab6=new Tab06();
+            return tab6;
         }
 
     }

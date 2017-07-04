@@ -1,113 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundcolor"
-    android:orientation="vertical"
-    android:paddingBottom="3dp"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    android:paddingTop="0dp">
-
-    <com.beardedhen.androidbootstrap.BootstrapProgressBar
-        android:id="@+id/aboveslider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:bootstrapBrand="primary"
-        app:bootstrapMaxProgress="100"
-        app:bootstrapProgress="100"
-        app:striped="true" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.4">
-
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <info.hoang8f.widget.FButton
-            android:id="@+id/cancelSlider"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="5dp"
-            android:text="@string/pause"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:buttonColor="@color/lightgreen2">
-
-        </info.hoang8f.widget.FButton>
-
-        <TextView
-            android:id="@+id/text11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:gravity="center" />
-
-    </RelativeLayout>
-    <com.beardedhen.androidbootstrap.BootstrapProgressBar
-        android:id="@+id/belowslider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/slider"
-        app:bootstrapBrand="primary"
-        app:bootstrapMaxProgress="100"
-        app:bootstrapProgress="100"
-        app:striped="true" />
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:paddingTop="10dp"
+        android:layout_height="110dp"
+        android:background="#ffffff"
+        android:clickable="true"
         android:gravity="center"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp">
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
-        <info.hoang8f.widget.FButton
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play   Game"
-            android:textColor="@color/white"
-            android:textSize="27sp"
-            custom:buttonColor="@color/darkpink" />
+            android:orientation="vertical">
 
-        <info.hoang8f.widget.FButton
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Leader Boards"
-            android:textColor="@color/white"
-            android:textSize="27sp"
-            android:theme="@style/MyButton"
-            custom:buttonColor="@color/darkpink" />
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="@string/image"
+                android:src="@drawable/piapple1" />
+        </LinearLayout>
 
-        <info.hoang8f.widget.FButton
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Quit"
-            android:textColor="@color/white"
-            android:textSize="27sp"
-            custom:buttonColor="@color/darkpink" />
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/progress1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Progress"
+                android:textColor="@color/grey"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/progressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tenhundred"
+                android:textColor="@color/piapple"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <com.beardedhen.androidbootstrap.BootstrapProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Progress"
+                app:roundedCorners="true"
+                app:bootstrapBrand="warning"
+                app:bootstrapMaxProgress="60"
+                app:bootstrapProgress="60"
+                app:striped="true" />
+        </LinearLayout>
+
     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_weight="1.7"
-    android:layout_height="match_parent">
 
-</LinearLayout>
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
 </LinearLayout>

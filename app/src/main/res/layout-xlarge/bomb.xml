@@ -26,7 +26,7 @@
             android:gravity="center"
             android:paddingLeft="18dp"
             android:paddingRight="18dp"
-            android:text="Boom"
+            android:text="@string/boom1"
             android:textColor="@color/white"
             android:textSize="60sp" />
 
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Remove extra letters!!"
+            android:text="@string/removeextraletters"
             android:textColor="@color/white"
             android:textSize="50sp" />
 
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Cost : 1 gem"
+            android:text="@string/cost1gem"
             android:textColor="@color/white"
             android:textSize="45sp" />
 
@@ -97,6 +97,7 @@
                 android:id="@+id/boomfbutton"
                 android:layout_width="match_parent"
                 android:layout_height="210dp"
+                android:drawableEnd="@drawable/pow"
                 android:drawableRight="@drawable/pow"
                 android:gravity="center"
                 android:paddingLeft="18dp"
@@ -117,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="-------REWARD-------"
+            android:text="@string/reward"
             android:textColor="@color/lightred"
             android:textSize="40sp" />
 
@@ -129,6 +130,7 @@
             android:id="@+id/watchvideoBoom"
             android:layout_width="match_parent"
             android:layout_height="220dp"
+            android:drawableEnd="@drawable/youtube_2"
             android:drawableRight="@drawable/youtube_2"
             android:gravity="center"
             android:paddingLeft="18dp"

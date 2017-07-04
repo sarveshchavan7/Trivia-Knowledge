@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -70,10 +71,12 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
     TextView shopText;
     ImageView leftShop;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_app_purchase);
+        demoHelperClass=new DemoHelperClass(getApplicationContext());
         //declaring java activity
         fButton=(FButton)findViewById(R.id.shop1);
         fButton.setEnabled(false);
@@ -328,10 +331,11 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
 
                 alert("30 more Gems add in your bucket");
                 final Typeface typeface2 = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Semibold.ttf");
+
                 Toast toast = Toast.makeText(InAppPurchase.this, "30 more Gems add in your bucket ", Toast.LENGTH_LONG);
-                toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.darkpink));
                 TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                v.setTextColor(getResources().getColor(R.color.white));
+                v.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
                 v.setTypeface(typeface2);
                 v.setTextSize(10);
                 toast.show();
@@ -362,7 +366,6 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
         }
     }
 
-
     void complain(String message) {
         Log.e(TAG, "**** Trivia Knowledge Error: " + message);
         alert("Error: " + message);
@@ -391,7 +394,7 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
     }
 
     public Boolean checkSound(){
-        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
+
         List list=demoHelperClass.getSound();
         if(list!=null){
             if( list.size()%2==0 ){

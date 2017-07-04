@@ -1,43 +1,25 @@
 package sarveshchavan777.inrerface2;
 
-import android.app.Activity;
-import android.content.Context;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
-import com.google.android.gms.games.snapshot.Snapshot;
-import com.google.android.gms.games.snapshot.SnapshotMetadata;
-import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
-import com.google.android.gms.games.snapshot.Snapshots;
-import com.google.example.games.basegameutils.BaseGameActivity;
 import com.google.example.games.basegameutils.BaseGameUtils;
 
-import java.io.IOException;
 import java.util.List;
-
-import sarveshchavan777.inrerface2.application.AppController;
 
 
 public class MainActivity extends AppCompatActivity
@@ -46,38 +28,34 @@ public class MainActivity extends AppCompatActivity
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
-    private static final java.lang.String LEADERBOARD_ID = "CgkItYPd68IBEAIQBw";
-    private static final int REQUEST_LEADERBOARD = 100;
     FloatingActionButton fab;
 
-    private ViewPager mPager;
-    private SlidingTabLayout mTabs;
+
     int numboftabs = 3;
     public int icon[] = {R.drawable.home, R.drawable.settings, R.drawable.trophy};
 
 
     //google variable
     private static int RC_SIGN_IN = 9001;
-    private static final int RC_UNUSED = 5001;
-
     private boolean mResolvingConnectionFailure = false;
-    private boolean mAutoStartSignInflow = true;
-
 
     private boolean mSignInClicked = false;
     boolean mExplicitSignOut = false;
 
-    boolean mInSignInFlow = false; // set to true when you're in the middle of the
+    //boolean mInSignInFlow = false; // set to true when you're in the middle of the
     // sign in flow, to know you should not attempt
     // to connect in onStart()
     static GoogleApiClient mGoogleApiClient;  // initialized in onCreate
 
+    MediaPlayer ring;
+    DemoHelperClass demoHelperClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ViewPager mPager;
+        SlidingTabLayout mTabs;
 
         // Create the Google Api Client with access to the Play Games services
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -85,13 +63,9 @@ public class MainActivity extends AppCompatActivity
                 .addOnConnectionFailedListener(this)
                 .addApi(Games.API).addScope(Games.SCOPE_GAMES)
                 .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
-
                 // add other APIs and scopes here as needed
                 .build();
 
-        //set
-        Intent intent = getIntent();
-        AppController.getInstance().setClient(mGoogleApiClient);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("firstTime", false)) {
@@ -103,7 +77,7 @@ public class MainActivity extends AppCompatActivity
             }
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("firstTime", true);
-            editor.commit();
+            editor.apply();
         }
 
 
@@ -118,11 +92,9 @@ public class MainActivity extends AppCompatActivity
         mTabs.setViewPager(mPager);
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
-        final DemoHelperClass demoHelperClass = new DemoHelperClass(this);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //sign in
                 if (mGoogleApiClient != null && !mGoogleApiClient.isConnected()) {
                     // start the asynchronous sign in flow
@@ -145,8 +117,8 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(MainActivity.this,R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -209,8 +181,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
+   @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         if (mResolvingConnectionFailure) {
             // Already resolving
             return;
@@ -254,25 +226,16 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-   /* @Override
-    public void onSignInFailed() {
-
+    public Boolean checkSound() {
+      demoHelperClass = new DemoHelperClass(getApplicationContext());
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
+                //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
     }
-
-    @Override
-    public void onSignInSucceeded() {
-
-    }*/
-   public Boolean checkSound(){
-      DemoHelperClass demoHelperClass=new DemoHelperClass(this);
-       List list=demoHelperClass.getSound();
-       if(list!=null){
-           if( list.size()%2==0 ){
-               //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
-               return true;
-           }
-       }
-       return false;
-   }
 }
 

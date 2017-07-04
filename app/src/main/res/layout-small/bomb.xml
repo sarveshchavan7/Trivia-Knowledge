@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent">
+    android:background="@color/transparent"
+    android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:background="@color/transparent"
         android:orientation="horizontal"
-        android:padding="5dp"
-        android:background="@color/transparent">
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/boom"
@@ -23,116 +24,126 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Boom"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
+            android:text="@string/boom1"
             android:textColor="@color/white"
             android:textSize="25sp" />
-
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center">
+
             <info.hoang8f.widget.FButton
                 android:id="@+id/cancelbomb"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:textColor="@color/white"
                 android:text="@string/cancel"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 app:buttonColor="@color/cancelred" />
         </RelativeLayout>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/transparent2"/>
+        android:background="@color/transparent2" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="10dp"/>
+            android:layout_height="10dp" />
+
         <TextView
-            android:textSize="20sp"
-            android:gravity="center"
             android:id="@+id/removeExtra"
-            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Remove extra letters!!"/>
+            android:gravity="center"
+            android:text="@string/removeextraletters"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="10dp"/>
+            android:layout_height="10dp" />
 
         <TextView
-            android:textSize="18sp"
-            android:gravity="center"
             android:id="@+id/removeExtraCost"
-            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cost : 1 gem"/>
+            android:gravity="center"
+            android:text="@string/cost1gem"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="10dp"/>
+            android:layout_height="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <info.hoang8f.widget.FButton
+                android:id="@+id/boomfbutton"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:drawableEnd="@drawable/pow"
+                android:drawableRight="@drawable/pow"
                 android:gravity="center"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
-                android:drawableRight="@drawable/pow"
-                android:textSize="14sp"
                 android:text="@string/boom"
-                app:buttonColor="@color/white"
                 android:textColor="@color/grey"
-                android:id="@+id/boomfbutton"
-                android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:textSize="14sp"
+                app:buttonColor="@color/white" />
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="5dp"/>
+            android:layout_height="5dp" />
 
         <TextView
             android:id="@+id/reward"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="-------REWARD-------"
             android:gravity="center"
+            android:text="@string/reward"
             android:textColor="@color/lightred"
-            android:textSize="14sp"/>
+            android:textSize="12sp" />
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="5dp"/>
+            android:layout_height="5dp" />
+
         <info.hoang8f.widget.FButton
+            android:id="@+id/watchvideoBoom"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:drawableEnd="@drawable/youtube_2"
+            android:drawableRight="@drawable/youtube_2"
             android:gravity="center"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            android:drawableRight="@drawable/youtube_2"
-            android:textSize="14sp"
             android:text="@string/watchvideo"
-            app:buttonColor="@color/white"
             android:textColor="@color/grey"
-            android:id="@+id/watchvideoBoom"
-            android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:textSize="14sp"
+            app:buttonColor="@color/white" />
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"/>
+            android:layout_height="2dp" />
 
     </LinearLayout>
 </LinearLayout>

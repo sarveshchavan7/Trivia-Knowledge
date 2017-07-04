@@ -11,29 +11,35 @@ public class Questions extends Activity {
     private String Answer2;
     private String RANDOMANS1;
     private String RANDOMANS2;
-    private String USELESSSTRING    ;
+    private String USELESSSTRING;
+
     public Questions() {
         ID = 0;
         Question = "";
         Opt1 = "";
 
         Answer = "";
-        Answer2= "";
+        Answer2 = "";
 
-        RANDOMANS1="";
-        RANDOMANS2="";
-        USELESSSTRING="";
+        RANDOMANS1 = "";
+        RANDOMANS2 = "";
+        USELESSSTRING = "";
     }
-    public Questions(String qUESTION, String oPT1, String aNSWER,String aNSWER2, String rANDOMANS1,String rANDOMANS2,String uSLESSSTRING) {
+
+    public Questions(String qUESTION, String oPT1, String aNSWER, String aNSWER2, String rANDOMANS1, String rANDOMANS2, String uSLESSSTRING) {
         Question = qUESTION;
         Opt1 = oPT1;
 
         Answer = aNSWER;
         Answer2 = aNSWER2;
 
-        RANDOMANS1=rANDOMANS1;
-        RANDOMANS2=rANDOMANS2;
-        USELESSSTRING=uSLESSSTRING;
+        RANDOMANS1 = rANDOMANS1;
+        RANDOMANS2 = rANDOMANS2;
+        USELESSSTRING = uSLESSSTRING;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public String getQUESTION() {
@@ -89,12 +95,11 @@ public class Questions extends Activity {
     }
 
     public void setRANDOMANS2(String randomans2) {
-        RANDOMANS2= randomans2;
+        RANDOMANS2 = randomans2;
     }
 
     public void setUSELESSSTRING(String uselessstring) {
-        USELESSSTRING= uselessstring;
+        USELESSSTRING = uselessstring;
     }
-
 
 }

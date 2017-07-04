@@ -11,17 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-
-
-
-public class mylistAdapter extends ArrayAdapter<String>{
+class mylistAdapter extends ArrayAdapter<String> {
     private final Activity context;
-    private final   Integer [] img;
-    private final  String [] s;
+    private final Integer[] img;
+    private final String[] s;
     TextView tv;
 
-    public mylistAdapter(Activity context, Integer[] img, String[] s) {
-        super(context , R.layout.list_view2,s);
+    mylistAdapter(Activity context, Integer[] img, String[] s) {
+        super(context, R.layout.list_view2, s);
         this.context = context;
         this.img = img;
         this.s = s;
@@ -30,13 +27,13 @@ public class mylistAdapter extends ArrayAdapter<String>{
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View view=inflater.inflate(R.layout.list_view2,null,true);
-        tv=(TextView)view.findViewById(R.id.tv11);
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(),"fonts/shablagooital.ttf");
+        LayoutInflater inflater = context.getLayoutInflater();
+        View view = inflater.inflate(R.layout.list_view2, null, true);
+        tv = (TextView) view.findViewById(R.id.tv11);
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/shablagooital.ttf");
         tv.setTypeface(typeface);
-        
-        ImageView iv=(ImageView) view.findViewById(R.id.iv11);
+
+        ImageView iv = (ImageView) view.findViewById(R.id.iv11);
         tv.setText(s[position]);
         tv.setTextSize(25);
         iv.setImageResource(img[position]);

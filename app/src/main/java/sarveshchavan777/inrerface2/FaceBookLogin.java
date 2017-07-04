@@ -1,19 +1,13 @@
 package sarveshchavan777.inrerface2;
 
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.hardware.camera2.params.Face;
 import android.media.MediaPlayer;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -26,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -34,7 +27,6 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
-import com.google.example.games.basegameutils.BaseGameActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,7 +35,6 @@ import org.json.JSONObject;
 import java.util.List;
 
 import info.hoang8f.widget.FButton;
-import sarveshchavan777.inrerface2.application.AppController;
 
 
 public class FaceBookLogin extends AppCompatActivity {
@@ -56,11 +47,11 @@ public class FaceBookLogin extends AppCompatActivity {
     TextView fbText,earnAchievementText,earnAchievementTwoText,rewards,rewardstwo;
     RequestQueue requestQueue;
     int i=0;
-
-   //get
-   GoogleApiClient mGoogleApiClient/*=AppController.getInstance().getClient()*/;
-
-
+    DemoHelperClass demoHelperClass;
+    //get
+    GoogleApiClient mGoogleApiClient/*=AppController.getInstance().getClient()*/;
+    Typeface typeface;
+    MediaPlayer ring;
 
     private static final String Group_ID = "288637851555189";
     private static final String PAGE_ID="1357616140975878";
@@ -68,12 +59,13 @@ public class FaceBookLogin extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facebooklogin);
+        demoHelperClass=new DemoHelperClass(getApplicationContext());
         loginButton = (LoginButton) findViewById(R.id.login_button);
         fButton = (FButton) findViewById(R.id.cancelButton);
         likeFb = (FButton) findViewById(R.id.likeFb);
         joinFb = (FButton) findViewById(R.id.joinFb);
         fbText = (TextView) findViewById(R.id.fbText);
-        final Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
+        typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
         joinFb.setTypeface(typeface);
         likeFb.setTypeface(typeface);
         fbText.setTypeface(typeface);
@@ -95,7 +87,6 @@ public class FaceBookLogin extends AppCompatActivity {
         if(mGoogleApiClient.isConnected()){
             Games.setViewForPopups( MainActivity.mGoogleApiClient, findViewById(R.id.gps_popup));
         }
-
 
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -133,9 +124,9 @@ public class FaceBookLogin extends AppCompatActivity {
 
                 if (isLoggedIn()) {
                   Toast toast= Toast.makeText(FaceBookLogin.this, "\tPlease login first"+" ", Toast.LENGTH_SHORT);
-                    toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(getResources().getColor(R.color.white));
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
                     v.setTypeface(typeface);
                     v.setTextSize(16);
                     toast.show();
@@ -154,8 +145,8 @@ public class FaceBookLogin extends AppCompatActivity {
                 }
 
                 if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
-                    ring.start();
+                     ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                     ring.start();
                 }
 
             }
@@ -167,9 +158,9 @@ public class FaceBookLogin extends AppCompatActivity {
 
                 if(isLoggedIn()){
                     Toast toast= Toast.makeText(FaceBookLogin.this, "\tPlease login first"+" ", Toast.LENGTH_SHORT);
-                    toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(getResources().getColor(R.color.white));
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
                     v.setTypeface(typeface);
                     v.setTextSize(16);
                     toast.show();
@@ -188,7 +179,7 @@ public class FaceBookLogin extends AppCompatActivity {
                 }
 
                 if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                     ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -207,7 +198,7 @@ public class FaceBookLogin extends AppCompatActivity {
                 }
 
                 if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                    ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
                     ring.start();
                 }
             }
@@ -269,14 +260,14 @@ public class FaceBookLogin extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         callbackManager.onActivityResult(requestCode, resultCode, data);
-        if (abc.equals("1")) {
+        /*if (abc.equals("1")) {
          //  Toast.makeText(FaceBookLogin.this, "login sussefully", Toast.LENGTH_LONG).show();
 
         } else if (abc.equals("0")) {
             //do nothing
         } else {
             //do nothing
-        }
+        }*/
     }
 
 
@@ -305,7 +296,6 @@ public class FaceBookLogin extends AppCompatActivity {
     }*/
 
     public Boolean checkSound(){
-        DemoHelperClass demoHelperClass=new DemoHelperClass(this);
         List list=demoHelperClass.getSound();
         if(list!=null){
             if( list.size()%2==0 ){
