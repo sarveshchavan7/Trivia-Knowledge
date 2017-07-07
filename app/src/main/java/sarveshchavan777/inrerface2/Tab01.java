@@ -23,7 +23,6 @@ public class Tab01 extends Fragment {
     DemoHelperClass demoHelperClass;
     BootstrapProgressBar Progress;
     TextView progressText;
-
     public Tab01() {
 
     }
@@ -42,7 +41,6 @@ public class Tab01 extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         demoHelperClass = new DemoHelperClass(getActivity().getApplicationContext());
-
         Integer imageView[] = new Integer[60];
         String s[] = new String[60];
 
@@ -111,4 +109,9 @@ public class Tab01 extends Fragment {
         });
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Progress=null;
+    }
 }

@@ -21,7 +21,7 @@ class GeoAdapter extends ArrayAdapter<String> {
 
 
     GeoAdapter(Activity context, Integer[] img, String[] s, String[] strings) {
-        super(context, R.layout.geo_adapter, s);
+        super(context, R.layout.geo_grid_view, s);
         this.context = context;
         this.img = img;
         this.s = s;
@@ -48,7 +48,7 @@ class GeoAdapter extends ArrayAdapter<String> {
         MyViewHolder holder = null;
         if (row == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.geo_adapter,null, true);
+            row = inflater.inflate(R.layout.geo_grid_view,null, true);
             holder = new MyViewHolder(row);
             row.setTag(holder);
         } else {

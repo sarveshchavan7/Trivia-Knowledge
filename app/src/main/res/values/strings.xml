@@ -120,4 +120,18 @@
     <string name="pack1">PACK 1</string>
     <string name="pack2">PACK 2</string>
     <string name="question1">Q1</string>
+    <string name="star">Star</string>
+    <string name="teacher_cartoon">Teacher cartoon</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="correct">Correct</string>
+    <string name="next_question">Next question</string>
+    <string name="Previous_question">Previous question</string>
+    <string name="reveal_hint">Reveal hint</string>
+    <string name="free_hint">Free Hint</string>
+    <string name="Boomblast">Boom</string>
+    <string name="diamond">Diamond</string>
+    <string name="twenty">20</string>
+    <string name="question">Question</string>
+    <string name="useless_alphabet_removed">Useless alphabet removed</string>
+    <string name="sound">Sound</string>
 </resources>

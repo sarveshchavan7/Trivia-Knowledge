@@ -47,8 +47,15 @@ public class SportsSlidingMain extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 if (checkSound()) {
-                    ring = MediaPlayer.create(SportsSlidingMain.this, R.raw.knife);
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -86,4 +93,9 @@ public class SportsSlidingMain extends AppCompatActivity {
         return false;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        icon=null;
+    }
 }

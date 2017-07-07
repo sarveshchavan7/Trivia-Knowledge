@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/darkpink"
+        android:minHeight="?actionBarSize">
+
+        <ImageView
+            android:id="@+id/leftcategory"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/goback"
+            android:src="@drawable/left_filled" />
+
+        <TextView
+            android:id="@+id/textviewcategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="@string/Text"
+            android:textColor="#ffffff"
+            android:textSize="27sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/Personality"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/personality"
+            android:textColor="@color/personality" />
+
+        <TextView
+            android:id="@+id/Sports"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/sports"
+            android:textColor="@color/sports" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_weight="1"
+            android:contentDescription="@string/personality"
+            android:gravity="center"
+            android:padding="5dip"
+            android:src="@drawable/personalityfinal" />
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_weight="1"
+            android:contentDescription="@string/sports"
+            android:gravity="center"
+            android:padding="5dip"
+            android:src="@drawable/sportsfinal" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/Geography"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/geography"
+            android:textColor="@color/geography" />
+
+        <TextView
+            android:id="@+id/Science"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/science"
+            android:textColor="@color/science" />
+    </TableRow>
+
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_weight="1"
+            android:contentDescription="@string/geography"
+            android:gravity="center"
+            android:padding="5dip"
+            android:src="@drawable/geographyfinal" />
+
+        <ImageView
+            android:id="@+id/image4"
+            android:layout_weight="1"
+            android:contentDescription="@string/science"
+            android:gravity="center"
+            android:padding="5dip"
+            android:src="@drawable/sciencefinal" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/Arts"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/arts_gk"
+            android:textColor="@color/arts" />
+
+        <TextView
+            android:id="@+id/Entertainment"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/entertainment"
+            android:textColor="@color/entartenment" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/image5"
+            android:layout_weight="1"
+            android:contentDescription="@string/arts_gk"
+            android:gravity="center"
+            android:padding="5dip"
+            android:src="@drawable/artistfinal" />
+
+        <ImageView
+            android:id="@+id/image6"
+            android:layout_weight="1"
+            android:contentDescription="@string/entertainment"
+            android:gravity="center"
+            android:padding="5dip"
+            android:src="@drawable/entertainmentfinal" />
+    </TableRow>
+</TableLayout>

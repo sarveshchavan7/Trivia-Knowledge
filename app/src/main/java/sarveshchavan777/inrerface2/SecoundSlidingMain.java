@@ -55,6 +55,14 @@ public class SecoundSlidingMain extends AppCompatActivity implements ComponentCa
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
+
                 }
             }
         });
@@ -91,5 +99,9 @@ public class SecoundSlidingMain extends AppCompatActivity implements ComponentCa
         return false;
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        icon=null;
+    }
 }

@@ -28,7 +28,7 @@ public class Category extends Activity implements ComponentCallbacks2 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.category);
+        setContentView(R.layout.catagories);
 
         demoHelperClass = new DemoHelperClass(getApplicationContext());
         //initialize
@@ -81,7 +81,17 @@ public class Category extends Activity implements ComponentCallbacks2 {
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
+
                 }
+
 
             }
         });
@@ -89,7 +99,7 @@ public class Category extends Activity implements ComponentCallbacks2 {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SecoundSlidingMain.class);
-                 // intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                // intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 finish();
 
@@ -97,7 +107,16 @@ public class Category extends Activity implements ComponentCallbacks2 {
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
+
             }
         });
 
@@ -111,6 +130,14 @@ public class Category extends Activity implements ComponentCallbacks2 {
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -124,7 +151,16 @@ public class Category extends Activity implements ComponentCallbacks2 {
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
+
 
             }
         });
@@ -138,7 +174,16 @@ public class Category extends Activity implements ComponentCallbacks2 {
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
+
             }
         });
         imageView5.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +196,17 @@ public class Category extends Activity implements ComponentCallbacks2 {
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
+
+
             }
         });
         imageView6.setOnClickListener(new View.OnClickListener() {
@@ -164,7 +219,16 @@ public class Category extends Activity implements ComponentCallbacks2 {
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
+
             }
         });
 
@@ -228,4 +292,25 @@ public class Category extends Activity implements ComponentCallbacks2 {
         }
         return false;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (ring != null) {
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+
+                    ring.release();
+                }
+            });
+        }
+        imageView1.setImageDrawable(null);
+        imageView2.setImageDrawable(null);
+        imageView3.setImageDrawable(null);
+        imageView4.setImageDrawable(null);
+        imageView5.setImageDrawable(null);
+        imageView6.setImageDrawable(null);
+    }
+
 }

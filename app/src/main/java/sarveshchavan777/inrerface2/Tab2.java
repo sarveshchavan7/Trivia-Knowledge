@@ -247,7 +247,9 @@ public class Tab2 extends Fragment {
                 }
                 if (position == 7) {
                     Intent intent = new Intent(getActivity(), InAppPurchase.class);
+                    intent.putExtra("key",20000);
                     startActivity(intent);
+
                 }
             }
         });
@@ -312,5 +314,19 @@ public class Tab2 extends Fragment {
             }
         }
         return false;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(ring!=null) {
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+
+                    ring.release();
+                }
+            });
+        }
     }
 }

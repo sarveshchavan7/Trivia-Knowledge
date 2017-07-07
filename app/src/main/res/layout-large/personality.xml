@@ -17,51 +17,49 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/leftpersonality"
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/left_filled" />
+            <ImageView
+                android:id="@+id/leftpersonality"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/goback"
+                android:src="@drawable/left_filled" />
 
-                <TextView
-                    android:id="@+id/textviewpersonality"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/personality"
-                    android:textColor="#ffffff"
-                    android:textSize="28sp" />
+            <TextView
+                android:id="@+id/textviewpersonality"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/personality"
+                android:textColor="#ffffff"
+                android:textSize="28sp" />
 
-                <ImageView
-                    android:id="@+id/starcorrect"
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:paddingLeft="3dp"
-                    android:paddingRight="3dp"
-                    android:src="@drawable/starcartoon" />
+            <ImageView
+                android:id="@+id/starcorrect"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:contentDescription="@string/star"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:src="@drawable/starcartoon" />
 
-                <TextView
-                    android:id="@+id/solvedText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="0"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
-            </LinearLayout>
-
+            <TextView
+                android:id="@+id/solvedText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/zero"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
         </LinearLayout>
+
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
@@ -81,17 +79,18 @@
                 android:layout_width="46dp"
                 android:layout_height="44dp"
                 android:background="@color/backgroundcolor"
+                android:contentDescription="@string/diamond"
                 android:src="@drawable/gems" />
 
             <TextView
                 android:id="@+id/diamondtext"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_toRightOf="@id/imageView"
                 android:background="@color/backgroundcolor"
                 android:gravity="center"
                 android:paddingLeft="15dp"
-                android:text="20"
+                android:paddingRight="15dp"
+                android:text="@string/twenty"
                 android:textColor="@color/diamondcolor"
                 android:textSize="35sp" />
         </LinearLayout>
@@ -113,7 +112,7 @@
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:paddingTop="15dp"
-                android:text="Question"
+                android:text="@string/question"
                 android:textAlignment="center"
                 android:textColor="@color/backgroundcolor"
                 android:textSize="14sp" />
@@ -125,6 +124,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:contentDescription="@string/teacher_cartoon"
                 android:src="@drawable/master" />
 
             <TextView
@@ -135,11 +135,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="0dp"
                 android:gravity="bottom"
-                android:text="INCORRECT"
+                android:text="@string/incorrect"
                 android:textColor="@color/red"
                 android:textSize="40sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
+                android:contentDescription="@string/correct"
                 android:id="@+id/correctImage"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -158,7 +159,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
                 android:gravity="bottom"
-                android:text="0"
+                android:text="@string/zero"
                 android:textColor="@color/colorPrimary"
                 android:textSize="40sp" />
 
@@ -171,9 +172,9 @@
                 android:layout_toStartOf="@+id/questionNumber"
                 android:gravity="bottom"
                 android:paddingBottom="0dp"
-                android:text="EASY"
-                android:paddingRight="6dp"
                 android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:text="@string/easy"
                 android:textSize="27sp" />
         </RelativeLayout>
     </LinearLayout>
@@ -187,6 +188,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="75dp"
+            android:baselineAligned="false"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingTop="20dp">
@@ -200,6 +202,7 @@
                     android:id="@+id/lefticon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/Previous_question"
                     android:onClick="left"
                     android:src="@drawable/leftcartoon" />
             </LinearLayout>
@@ -214,6 +217,7 @@
                     android:id="@+id/hint2"
                     android:layout_width="45dp"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/reveal_hint"
                     android:onClick="revealhole"
                     android:src="@drawable/idea2" />
 
@@ -221,12 +225,14 @@
                     android:id="@+id/hint"
                     android:layout_width="45dp"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/free_hint"
                     android:src="@drawable/idea" />
 
                 <ImageView
                     android:id="@+id/bomb"
                     android:layout_width="45dp"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/Boomblast"
                     android:onClick="bomb"
                     android:src="@drawable/bombtimer" />
 
@@ -242,6 +248,7 @@
                     android:id="@+id/righticon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/next_question"
                     android:onClick="right"
                     android:src="@drawable/rightcartoon" />
             </LinearLayout>
@@ -530,6 +537,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text21"
                             android:layout_width="33dp"
@@ -550,6 +558,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text22"
                             android:layout_width="33dp"
@@ -571,6 +580,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text23"
                             android:layout_width="33dp"
@@ -591,6 +601,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text24"
                             android:layout_width="33dp"
@@ -655,6 +666,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text27"
                             android:layout_width="33dp"
@@ -676,6 +688,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text28"
                             android:layout_width="33dp"
@@ -697,6 +710,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text29"
                             android:layout_width="33dp"
@@ -751,6 +765,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text22b"
                             android:layout_width="33dp"
@@ -771,6 +786,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text23b"
                             android:layout_width="33dp"
@@ -791,6 +807,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <info.hoang8f.widget.FButton
                             android:id="@+id/text24b"
                             android:layout_width="33dp"
@@ -921,16 +938,18 @@
                 android:layout_height="95dp"
                 android:layout_marginLeft="70dp"
                 android:layout_marginStart="70dp"
+                android:contentDescription="@string/useless_alphabet_removed"
                 android:src="@drawable/cracker11" />
 
             <ImageView
                 android:id="@+id/cracker2"
                 android:layout_width="95dp"
                 android:layout_height="95dp"
-                android:layout_marginRight="70dp"
-                android:layout_marginEnd="70dp"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="70dp"
+                android:layout_marginRight="70dp"
+                android:contentDescription="@string/useless_alphabet_removed"
                 android:src="@drawable/cracker11" />
 
             <ImageView
@@ -939,6 +958,7 @@
                 android:layout_height="95dp"
                 android:layout_toLeftOf="@+id/cracker2"
                 android:layout_toStartOf="@+id/cracker2"
+                android:contentDescription="@string/useless_alphabet_removed"
                 android:src="@drawable/cracker11" />
 
             <ImageView
@@ -948,6 +968,7 @@
                 android:layout_alignTop="@+id/cracker1"
                 android:layout_toEndOf="@id/cracker1"
                 android:layout_toRightOf="@+id/cracker1"
+                android:contentDescription="@string/useless_alphabet_removed"
                 android:src="@drawable/cracker11" />
         </RelativeLayout>
 
@@ -980,7 +1001,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="Trivia Knowledge"
+                android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:textSize="40sp" />
 
@@ -996,7 +1017,6 @@
 
             </com.google.android.gms.ads.AdView>
         </RelativeLayout>
-
 
     </LinearLayout>
 </LinearLayout>

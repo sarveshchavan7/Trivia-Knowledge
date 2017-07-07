@@ -48,12 +48,19 @@ public class ArtsSlidingMain extends AppCompatActivity {
         leftdifficultyarts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ArtsSlidingMain.this, Category.class);
+                Intent intent = new Intent(getApplicationContext(), Category.class);
                 startActivity(intent);
                 finish();
                 if (checkSound()) {
-                    ring = MediaPlayer.create(ArtsSlidingMain.this, R.raw.knife);
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -86,5 +93,11 @@ public class ArtsSlidingMain extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        icon=null;
     }
 }

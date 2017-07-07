@@ -39,7 +39,6 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
     compile 'com.mcxiaoke.volley:library:1.0.+'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'info.hoang8f:fbutton:1.0.5'
     compile 'com.beardedhen:androidbootstrap:2.3.1'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'

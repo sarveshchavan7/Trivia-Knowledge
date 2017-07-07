@@ -17,14 +17,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
                 <ImageView
+                    android:contentDescription="@string/goback"
                     android:id="@+id/leftpersonality"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
@@ -41,6 +39,7 @@
                     android:textSize="18sp" />
 
                 <ImageView
+                    android:contentDescription="@string/star"
                     android:id="@+id/starcorrect"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
@@ -56,12 +55,12 @@
                     android:gravity="center"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="0"
+                    android:text="@string/zero"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
-            </LinearLayout>
 
-        </LinearLayout>
+
+</LinearLayout>
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
@@ -77,6 +76,7 @@
             android:background="@color/backgroundcolor">
 
             <ImageView
+                android:contentDescription="@string/diamond"
                 android:id="@+id/imageView"
                 android:layout_width="36dp"
                 android:layout_height="34dp"
@@ -87,11 +87,11 @@
                 android:id="@+id/diamondtext"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_toRightOf="@id/imageView"
                 android:background="@color/backgroundcolor"
                 android:gravity="center"
                 android:paddingLeft="10dp"
-                android:text="20"
+                android:paddingRight="10dp"
+                android:text="@string/twenty"
                 android:textColor="@color/diamondcolor"
                 android:textSize="25sp" />
         </LinearLayout>
@@ -113,12 +113,13 @@
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:paddingTop="15dp"
-                android:text="Question"
+                android:text="@string/question"
                 android:textAlignment="center"
                 android:textColor="@color/backgroundcolor"
                 android:textSize="14sp" />
 
             <ImageView
+                android:contentDescription="@string/teacher_cartoon"
                 android:id="@+id/master"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
@@ -135,11 +136,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="0dp"
                 android:gravity="bottom"
-                android:text="INCORRECT"
+                android:text="@string/incorrect"
                 android:textColor="@color/red"
                 android:textSize="30sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
+                android:contentDescription="@string/correct"
                 android:id="@+id/correctImage"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -158,7 +160,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
                 android:gravity="bottom"
-                android:text="0"
+                android:text="@string/zero"
                 android:textColor="@color/colorPrimary"
                 android:textSize="30sp" />
 
@@ -171,7 +173,7 @@
                 android:layout_toStartOf="@+id/questionNumber"
                 android:gravity="bottom"
                 android:paddingBottom="0dp"
-                android:text="EASY"
+                android:text="@string/easy"
                 android:paddingRight="6dp"
                 android:paddingLeft="6dp"
                 android:textSize="17sp" />
@@ -185,6 +187,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
@@ -197,6 +200,7 @@
                 android:layout_weight="1">
 
                 <ImageView
+                    android:contentDescription="@string/Previous_question"
                     android:id="@+id/lefticon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -211,6 +215,7 @@
 
 
                 <ImageView
+                    android:contentDescription="@string/reveal_hint"
                     android:id="@+id/hint2"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
@@ -218,12 +223,14 @@
                     android:src="@drawable/idea2" />
 
                 <ImageView
+                    android:contentDescription="@string/free_hint"
                     android:id="@+id/hint"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/idea" />
 
                 <ImageView
+                    android:contentDescription="@string/Boomblast"
                     android:id="@+id/bomb"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
@@ -239,6 +246,7 @@
                 android:gravity="end">
 
                 <ImageView
+                    android:contentDescription="@string/next_question"
                     android:id="@+id/righticon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -916,6 +924,7 @@
             </LinearLayout>
 
             <ImageView
+                android:contentDescription="@string/useless_alphabet_removed"
                 android:id="@+id/cracker1"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
@@ -924,6 +933,7 @@
                 android:src="@drawable/cracker11" />
 
             <ImageView
+                android:contentDescription="@string/useless_alphabet_removed"
                 android:id="@+id/cracker2"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
@@ -934,6 +944,7 @@
                 android:src="@drawable/cracker11" />
 
             <ImageView
+                android:contentDescription="@string/useless_alphabet_removed"
                 android:id="@+id/cracker3"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
@@ -944,6 +955,7 @@
                 android:src="@drawable/cracker11" />
 
             <ImageView
+                android:contentDescription="@string/useless_alphabet_removed"
                 android:id="@+id/cracker4"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
@@ -984,7 +996,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="Trivia Knowledge"
+                android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 

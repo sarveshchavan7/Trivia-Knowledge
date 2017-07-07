@@ -18,7 +18,7 @@ class SportsAdapter extends ArrayAdapter<String> {
     private final Integer[] img;
     private final String[] s;
     private final String[] strings;
-
+    Typeface typeface;
 
     SportsAdapter(Activity context, Integer[] img, String[] s, String[] strings) {
         super(context, R.layout.sports_grid_view, s);
@@ -56,7 +56,7 @@ class SportsAdapter extends ArrayAdapter<String> {
         }
 
 
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/grobold.ttf");
+       typeface = Typeface.createFromAsset(context.getAssets(), "fonts/grobold.ttf");
         holder.mQueNo.setTypeface(typeface);
         holder.mtext.setTypeface(typeface);
 

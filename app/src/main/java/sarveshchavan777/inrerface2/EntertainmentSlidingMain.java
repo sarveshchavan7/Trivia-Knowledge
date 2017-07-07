@@ -45,13 +45,20 @@ public class EntertainmentSlidingMain extends AppCompatActivity {
         leftdifficultyent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EntertainmentSlidingMain.this, Category.class);
+                Intent intent = new Intent(getApplicationContext(), Category.class);
                 startActivity(intent);
                 finish();
 
                 if (checkSound()) {
-                    ring = MediaPlayer.create(EntertainmentSlidingMain.this, R.raw.knife);
+                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -85,5 +92,11 @@ public class EntertainmentSlidingMain extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        icon=null;
     }
 }

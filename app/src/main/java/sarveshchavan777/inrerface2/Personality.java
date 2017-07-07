@@ -1,5 +1,6 @@
 package sarveshchavan777.inrerface2;
 
+
 import android.app.Dialog;
 
 import android.content.Intent;
@@ -10,9 +11,9 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,7 +25,6 @@ import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -55,7 +55,6 @@ import com.chartboost.sdk.Chartboost;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
-import com.jirbo.adcolony.AdColonyAdapter;
 
 import info.hoang8f.widget.FButton;
 
@@ -63,8 +62,9 @@ import info.hoang8f.widget.FButton;
 public class Personality extends AppCompatActivity implements RewardedVideoAdListener {
     List<Questions> quesList;
     boolean clicked = false;
-    ImageView imageView, imageView2, leftImage, rightImage, hint1, whatsapp, fbmessganger, master, hint2, gems, bomb, correctImage;
-    ImageView cracker1, cracker2, cracker3, cracker4, cracker5, cracker6;
+    ImageView /*imageView,*/ imageView2, leftImage, rightImage, hint1,/* whatsapp, fbmessganger,*/
+            master, hint2, gems, bomb, correctImage;
+    ImageView cracker1, cracker2, cracker3, cracker4/*, cracker5, cracker6*/;
     DemoHelperClass demoHelperClass;
     Questions currentQ;
     int qid;
@@ -74,11 +74,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     FButton tv21b, tv22b, tv23b, tv24b, tv25b, tv26b, tv27b, tv28b, tv29b;
     StringBuffer stringBuffer = new StringBuffer(10);
     StringBuffer stringBuffer2 = new StringBuffer(10);
-    TextView textView, textView2, tvt, incorrect, dollartext, plusTwo, queNum, diffLevel, solvedText, triviaKnowldegText;
-    public static TextView diamondtext;
-    LinearLayout l0, l1, l2;
+    TextView textView, textView2, tvt, incorrect, /*dollartext, plusTwo,*/
+            queNum, diffLevel, solvedText, triviaKnowldegText;
+    TextView diamondtext;
+    LinearLayout l1, l2;
     ArrayList list = new ArrayList();
-    ArrayList<TextView> list3 = new ArrayList();
+    //  ArrayList<TextView> list3 = new ArrayList();
     Toolbar toolbar;
     TextView textViewArrayAbove[] = new TextView[20];
     TextView textfirst[] = new TextView[10];
@@ -95,8 +96,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     Boolean boomClicked = false;
     BootstrapProgressBar bootstrapProgressBar;
     private static final java.lang.String LEADERBOARD_ID = "CgkItYPd68IBEAIQBw";
-    GoogleApiClient mGoogleApiClient;/*= AppController.getInstance().getClient()*/
-    ;
+    GoogleApiClient mGoogleApiClient;/*= AppController.getInstance().getClient();*/
+    MediaPlayer ring;
+    Typeface chunkfive, grobold, openSansBold, openSansSemiBold, shablagooital, titilliumWeb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,9 +145,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         cracker4.setVisibility(View.INVISIBLE);
 
         mGoogleApiClient = MainActivity.mGoogleApiClient;
-        if (mGoogleApiClient.isConnected()) {
-            Games.setViewForPopups(MainActivity.mGoogleApiClient, findViewById(R.id.gps_popup));
+        if (mGoogleApiClient != null) {
+            if (mGoogleApiClient.isConnected()) {
+                Games.setViewForPopups(MainActivity.mGoogleApiClient, findViewById(R.id.gps_popup));
+            }
         }
+
 
         // Initialize the Google Mobile Ads SDK
         MobileAds.initialize(this, getString(R.string.Test_admob_app_id));
@@ -176,7 +181,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("firstTime", true);
-            editor.commit();
+            editor.apply();
         } else {
             // banner  admob.
             new Handler().postDelayed(new Runnable() {
@@ -276,7 +281,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         final TextView textViewArrayAbove2[] = {tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20, tv11b, tv12b, tv13b, tv14b, tv15b, tv16b, tv17b, tv18b, tv19b, tv20b};
         final TextView textfirst2[] = {tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20};
         final TextView textsecound2[] = {tv11b, tv12b, tv13b, tv14b, tv15b, tv16b, tv17b, tv18b, tv19b, tv20b};
-        FButton textViewArrayBelow2[] = {tv21, tv22, tv23, tv24, tv25, tv26, tv27, tv28, tv29, tv21b, tv22b, tv23b, tv24b, tv25b, tv26b, tv27b, tv28b, tv29b};
+        final FButton textViewArrayBelow2[] = {tv21, tv22, tv23, tv24, tv25, tv26, tv27, tv28, tv29, tv21b, tv22b, tv23b, tv24b, tv25b, tv26b, tv27b, tv28b, tv29b};
         final FButton textViewBelowFirst2[] = {tv21, tv22, tv23, tv24, tv25, tv26, tv27, tv28, tv29};
         final FButton textViewBelowsecond2[] = {tv21b, tv22b, tv23b, tv24b, tv25b, tv26b, tv27b, tv28b, tv29b};
 
@@ -284,13 +289,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         for (int i = 0; i < 20; i++) {
             textViewArrayAbove[i] = textViewArrayAbove2[i];
         }
+
         for (int i = 0; i < 10; i++) {
             textfirst[i] = textfirst2[i];
             textsecound[i] = textsecound2[i];
         }
-       /* for (int i = 0; i < 10; i++) {
+
+        for (int i = 0; i < 10; i++) {
             textsecound[i] = textsecound2[i];
-        }*/
+        }
         for (int i = 0; i < 18; i++) {
             textViewArrayBelow[i] = textViewArrayBelow2[i];
         }
@@ -302,25 +309,27 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         }
 
         //type faces--
-        final Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Semibold.ttf");
-        final Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
-        final Typeface typeface3 = Typeface.createFromAsset(getAssets(), "fonts/TitilliumWeb-Bold.ttf");
-        final Typeface typeface4 = Typeface.createFromAsset(getAssets(), "fonts/burnstown_dam.otf");
-        final Typeface typeface5 = Typeface.createFromAsset(getAssets(), "fonts/Chunkfive.otf");
+        // final Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Semibold.ttf");
+        shablagooital = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
+        titilliumWeb = Typeface.createFromAsset(getAssets(), "fonts/TitilliumWeb-Bold.ttf");
+        chunkfive = Typeface.createFromAsset(getAssets(), "fonts/Chunkfive.otf");
+        grobold = Typeface.createFromAsset(getAssets(), "fonts/grobold.ttf");
+        openSansSemiBold = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Semibold.ttf");
+        openSansBold = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Bold.ttf");
 
-        tvt.setTypeface(typeface);
-        diamondtext.setTypeface(typeface3);
-        incorrect.setTypeface(typeface);
+        tvt.setTypeface(shablagooital);
+        diamondtext.setTypeface(titilliumWeb);
+        incorrect.setTypeface(shablagooital);
         for (int i = 0; i < 20; i++) {
-            textViewArrayAbove[i].setTypeface(typeface3);
+            textViewArrayAbove[i].setTypeface(titilliumWeb);
         }
         for (int i = 0; i < 18; i++) {
-            textViewArrayBelow[i].setTypeface(typeface5);
+            textViewArrayBelow[i].setTypeface(chunkfive);
         }
-        queNum.setTypeface(typeface4);
-        diffLevel.setTypeface(typeface);
-        solvedText.setTypeface(typeface3);
-        triviaKnowldegText.setTypeface(typeface);
+        queNum.setTypeface(grobold);
+        diffLevel.setTypeface(shablagooital);
+        solvedText.setTypeface(titilliumWeb);
+        triviaKnowldegText.setTypeface(shablagooital);
 
         //onClick listener for backbutton,hint1image
         imageView2.setOnClickListener(new View.OnClickListener() {
@@ -330,6 +339,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 /* Obtain String from Intent  */
                 if (intent != null) {
                     String clicked = intent.getStringExtra("Key");
+
                     for (int i = 0; i < 180; i++) {
                         if (clicked.equals(Integer.toString(i))) {
                             Intent intent2 = new Intent(Personality.this, SecoundSlidingMain.class);
@@ -373,9 +383,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         }
                     }
                 }
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.knife);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(Personality.this, R.raw.knife);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
             }
 
@@ -394,12 +410,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 TextView freehintdialog = (TextView) dialog.findViewById(R.id.freehinttext);
                 TextView reavel1 = (TextView) dialog.findViewById(R.id.reavel1);
                 TextView reavel11 = (TextView) dialog.findViewById(R.id.reavel11);
-                reavel1.setTypeface(typeface);
-                reavel11.setTypeface(typeface);
-                freehintdialog.setTypeface(typeface);
+                reavel1.setTypeface(shablagooital);
+                reavel11.setTypeface(shablagooital);
+                freehintdialog.setTypeface(shablagooital);
                 dialog.show();
                 Button cancel = (Button) dialog.findViewById(R.id.cancel);
-                cancel.setTypeface(typeface);
+                cancel.setTypeface(shablagooital);
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -407,14 +423,13 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     }
                 });
                 Button ok = (Button) dialog.findViewById(R.id.ok);
-                ok.setTypeface(typeface);
+                ok.setTypeface(shablagooital);
                 ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         String hint = currentQ.getANSWER() + currentQ.getANSWER2();
                         Integer hintLength = currentQ.getANSWER().length() + currentQ.getANSWER2().length();
-
 
                         //if bomb has been used for the qid then dont do reqular hint1
                         //if current question is not solved and answer boxes is greater than 3 then only hint1 is visible and can use.
@@ -424,7 +439,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             if (returnQid() != qid && returnHint1Used() != qid && currentQ.getANSWER().length() + currentQ.getANSWER2().length() > 3) {
 
                                 //random numbers are 0,1,2,3,4
-                                ArrayList<Integer> numbers = new ArrayList<Integer>();
+                                ArrayList<Integer> numbers = new ArrayList<>();
                                 Random randomGenerator = new Random();
                                 //this will generate 5 numbers
                                 if (hintLength > 5) {
@@ -508,7 +523,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 //this list store the postion of visisble boxes of above
                                 int length = currentQ.getANSWER().length();
                                 int length2 = currentQ.getANSWER2().length();
-                                ArrayList<Integer> arrayList = new ArrayList<Integer>();
+                                ArrayList<Integer> arrayList = new ArrayList<>();
 
 
                                 for (int i = 0; i < length; i++) {
@@ -543,14 +558,13 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
                                 //now removing the 1,2,3,4,5, respectively option boxes which has same alphabets that are random generated
-                                String bothAnswer = currentQ.getANSWER() + currentQ.getANSWER2();
                                 //1st
                                 if (hintLength > 3) {
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(xx)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(xx)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -558,11 +572,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 }
                                 //2nd
                                 if (hintLength > 4) {
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(yy)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(yy)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -570,11 +584,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 }
                                 //3rd
                                 if (hintLength > 5) {
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(zz)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(zz)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -583,11 +597,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                                 //4th
                                 if (hintLength > 8) {
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(pp)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(pp)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -597,11 +611,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                                 //5th
                                 if (hintLength > 12) {
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(qq)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(qq)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -612,11 +626,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 }
                                 if (hintLength <= 3) {
                                     //  Toast.makeText(Personality.this, "Free hint not available for less than 4 ", Toast.LENGTH_LONG).show();
-                                    Toast toast = Toast.makeText(Personality.this,  "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
-                                    toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                                    Toast toast = Toast.makeText(Personality.this, "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
+                                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                                    v.setTextColor(getResources().getColor(R.color.white));
-                                    v.setTypeface(typeface);
+                                    v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                                    v.setTypeface(shablagooital);
                                     v.setTextSize(12);
                                     toast.show();
                                 }
@@ -659,7 +673,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 //this list store the postion of visisble boxes of above
                                 int length = currentQ.getANSWER().length();
                                 int length2 = currentQ.getANSWER2().length();
-                                ArrayList<Integer> arrayList = new ArrayList<Integer>();
+                                ArrayList<Integer> arrayList = new ArrayList<>();
 
 
                                 for (int i = 0; i < length; i++) {
@@ -700,11 +714,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 //now removing the below boxes
                                 if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() >= 4) {
                                     String char1 = bothAnswer.substring(0, 1);
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(char1)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(char1)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -713,11 +727,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 //2nd
                                 if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() >= 5) {
                                     String char1 = bothAnswer.substring(1, 2);
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(char1)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(char1)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -726,11 +740,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 //3rd
                                 if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() >= 6) {
                                     String char1 = bothAnswer.substring(2, 3);
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(char1)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(char1)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -739,11 +753,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 //4th
                                 if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() >= 9) {
                                     String char1 = bothAnswer.substring(3, 4);
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(char1)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(char1)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -752,11 +766,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 //5th
                                 if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() >= 13) {
                                     String char1 = bothAnswer.substring(4, 5);
-                                    for (int i = 0; i < textViewArrayBelow.length; i++) {
-                                        if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                                            if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(char1)) {
-                                                textViewArrayBelow[i].setText("");
-                                                textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                                    for (TextView i : textViewArrayBelow) {
+                                        if (i.getVisibility() == View.VISIBLE) {
+                                            if (i.getText().toString().equalsIgnoreCase(char1)) {
+                                                i.setText("");
+                                                i.setVisibility(View.INVISIBLE);
                                                 break;
                                             }
                                         }
@@ -772,11 +786,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             if (hintLength <= 3) {
                                 // Toast.makeText(Personality.this, "Free hint not available for less than 4 boxes", Toast.LENGTH_LONG).show();
 
-                                Toast toast = Toast.makeText(Personality.this,  "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
-                                toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                                Toast toast = Toast.makeText(Personality.this, "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
+                                toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                                 TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                                v.setTextColor(getResources().getColor(R.color.white));
-                                v.setTypeface(typeface);
+                                v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                                v.setTypeface(shablagooital);
                                 v.setTextSize(12);
                                 toast.show();
                             }
@@ -787,9 +801,16 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             checkAchievementTwo();
                         }
 
-                        if(checkSound()){
-                            MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                        if (checkSound()) {
+                            ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
                             ring.start();
+
+                            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                @Override
+                                public void onCompletion(MediaPlayer mediaPlayer) {
+                                    ring.release();
+                                }
+                            });
                         }
                     }
                 });
@@ -836,15 +857,23 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         //someSqlite stuff
-        demoHelperClass = new DemoHelperClass(this);
+        demoHelperClass = new DemoHelperClass(getApplicationContext());
         SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
-        demoHelperClass.addquestions();
+        if (demoHelperClass.getCheckQadded() != null) {
+            if (demoHelperClass.getCheckQadded().size() == 0) {
+                demoHelperClass.addquestions();
+                demoHelperClass.insertCheckQadded(1);
+            }
+        }
+
 
         quesList = demoHelperClass.getAllOfTheQuestions();
         Intent intent = getIntent();
+
         if (intent != null) {
             String clicked = intent.getStringExtra("Key");
             //@@ 11
+
             for (int i = 0; i <= 1119; i++) {
                 if (clicked.equals(Integer.toString(i))) {
                     currentQ = quesList.get(qid = i);
@@ -900,11 +929,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         allAnimation();
         List list = demoHelperClass.getGems();
         int gemstext = (Integer) list.get(list.size() - 1);
-        diamondtext.setText(Integer.toString(gemstext));
+        diamondtext.setText(String.valueOf(gemstext));
         visiblityOfrightleft();
         diffque();
         List list2 = demoHelperClass.GetQid();
-        solvedText.setText(Integer.toString(list2.size()));
+        solvedText.setText(String.valueOf(list2.size()));
         //if boxes less than or eual to 3 then hint1 invisble
         if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() <= 3) {
             //  hint1.setVisibility(View.INVISIBLE);
@@ -912,8 +941,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         } else {
             hint1.setImageResource(R.drawable.idea);
         }
-
-
+        list.clear();
         sqLiteDatabase.close();
     }//onCreate ends here
 
@@ -931,7 +959,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
-            int i = 0;
 
             public void run() {
                 master.startAnimation(inFromLeftAnimation());
@@ -978,10 +1005,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     }
 
     public void crackerAnimation() {
-        final Integer arrayList[] = {R.drawable.cracker11, R.drawable.cracker22, R.drawable.cracker33,
-                R.drawable.cracker44, R.drawable.cracker55, R.drawable.cracker66,
-                R.drawable.cracker77, R.drawable.cracker88, R.drawable.cracker99};
-
 
         final Animation fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
@@ -995,7 +1018,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setVisibility(View.VISIBLE);
@@ -1006,7 +1028,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler2 = new Handler();
         Runnable runnable2 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setImageResource(R.drawable.cracker11);
@@ -1018,7 +1039,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler3 = new Handler();
         Runnable runnable3 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker2.setVisibility(View.VISIBLE);
@@ -1032,7 +1052,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler4 = new Handler();
         Runnable runnable4 = new Runnable() {
-            int i = 0;
 
             public void run() {
 
@@ -1047,7 +1066,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler5 = new Handler();
         Runnable runnable5 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setImageResource(R.drawable.cracker44);
@@ -1060,7 +1078,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler6 = new Handler();
         Runnable runnable6 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setImageResource(R.drawable.cracker55);
@@ -1073,7 +1090,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler7 = new Handler();
         Runnable runnable7 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setImageResource(R.drawable.cracker66);
@@ -1086,7 +1102,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler8 = new Handler();
         Runnable runnable8 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setImageResource(R.drawable.cracker77);
@@ -1101,7 +1116,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler9 = new Handler();
         Runnable runnable9 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setImageResource(R.drawable.cracker88);
@@ -1115,7 +1129,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler10 = new Handler();
         Runnable runnable10 = new Runnable() {
-            int i = 0;
 
             public void run() {
 
@@ -1129,7 +1142,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler11 = new Handler();
         Runnable runnable11 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setAnimation(fadeOut2);
@@ -1142,7 +1154,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler12 = new Handler();
         Runnable runnable12 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker1.setVisibility(View.INVISIBLE);
@@ -1156,7 +1167,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler13 = new Handler();
         Runnable runnable13 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker2.startAnimation(fadeOut);
@@ -1167,7 +1177,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler14 = new Handler();
         Runnable runnable14 = new Runnable() {
-            int i = 0;
 
             public void run() {
 
@@ -1181,7 +1190,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         final Handler handler15 = new Handler();
         Runnable runnable15 = new Runnable() {
-            int i = 0;
 
             public void run() {
                 cracker2.setVisibility(View.INVISIBLE);
@@ -1221,7 +1229,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         return inFromRight;
     }*/
 
-    public AnimationSet animationSet() {
+    /*public AnimationSet animationSet() {
         AnimationSet as = new AnimationSet(true);
         Animation bottomToTop = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, +1.0f,
@@ -1238,15 +1246,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         fadeOut.setDuration(1600);
         as.addAnimation(fadeOut);
         return as;
-    }
+    }*/
 
 
     public void view1() {
         tvQ.setText(currentQ.getQUESTION());
-        Typeface typeface2 = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Bold.ttf");
-        tvQ.setTypeface(typeface2);
-
+        //Typeface typeface2 = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Bold.ttf");
+        tvQ.setTypeface(openSansBold);
     }
+
 
     public void check() {
         int y = tv11.length() + tv12.length() + tv13.length() + tv14.length() + tv15.length() + tv16.length() + tv17.length() + tv18.length() + tv19.length() + tv20.length();
@@ -1267,6 +1275,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         //multiplying the no of solved Questions by 5
                         int leaderboardScore = noOfSolvedQuestion * 5;
                         Games.Leaderboards.submitScore(mGoogleApiClient, LEADERBOARD_ID, leaderboardScore);
+                        xyz.clear();
                     }
 
                     //updating the achievement
@@ -1277,10 +1286,10 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                     //setting the text for number of correct question solved
                     List list2 = demoHelperClass.GetQid();
-                    solvedText.setText(Integer.toString(list2.size()));
+                    solvedText.setText(String.valueOf(list2.size()));
                     //  int adddollar = 2;
                     //  demoHelperClass.InsertDollar(adddollar);
-                    String stringanswer = "";
+                    String stringanswer;
                     stringanswer = currentQ.getANSWER() + " " + currentQ.getANSWER2();
                     qid = qid + 1;
                     currentQ = quesList.get(qid);
@@ -1294,8 +1303,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     if (qid == 1119) {
                         rightImage.setVisibility(View.INVISIBLE);
                     }
-                    Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Chunkfive.otf");
-                    Typeface typeface2 = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
+                    //    Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Chunkfive.otf");
+                    //   Typeface typeface2 = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
                     //set up dialog
                     final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -1308,7 +1317,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     //   TextView dialogTitle = (TextView) dialog.findViewById(R.id.dialogtitle);
                     TextView correct = (TextView) dialog.findViewById(R.id.correct);
                     //   dialogTitle.setTypeface(typeface);
-                    correct.setTypeface(typeface2);
+                    correct.setTypeface(shablagooital);
 
                     //admob
                     /*AdView mAdView2 = (AdView) dialog.findViewById(R.id.adView2);
@@ -1327,7 +1336,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     myAnim.setInterpolator(interpolator);
                     correct.startAnimation(myAnim);
                     TextView answerorrect = (TextView) dialog.findViewById(R.id.answercorrect);
-                    answerorrect.setTypeface(typeface);
+                    answerorrect.setTypeface(chunkfive);
                     answerorrect.setText(stringanswer.toUpperCase());
                     //giving additional information
                     //@@ 6
@@ -1340,7 +1349,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     }*/
                     //set up button (Next Button)
                     Button button = (Button) dialog.findViewById(R.id.Button01);
-                    button.setTypeface(typeface);
+                    button.setTypeface(chunkfive);
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -1350,7 +1359,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             view2();
                             correctlayout();
                             fillingBoxes();
-                            queNum.setText(Integer.toString(qid + 1));
+                            queNum.setText(String.valueOf(qid + 1));
                             visiblityOfrightleft();
                             diffque();
 
@@ -1409,8 +1418,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                             dialog.cancel();
 
-                            if(checkSound()){
-                                MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.wooden_stick);
+                            if (checkSound()) {
+                                ring = MediaPlayer.create(Personality.this, R.raw.wooden_stick);
                                 ring.start();
                             }
                         }
@@ -1421,21 +1430,38 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     stringBuffer2.setLength(0);
 
 
-                    if(checkSound()){
-                        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.victory);
+                    if (checkSound()) {
+                        ring = MediaPlayer.create(Personality.this, R.raw.victory);
                         ring.start();
+
+
+                        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                                ring.release();
+                            }
+                        });
+
                     }
+
+//                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                        @Override
+//                        public void onCompletion(MediaPlayer mediaPlayer) {
+//
+//                            ring.release();
+//                        }
+//                    });
                 }
                 //@@ 7
                 else if (qid == 1119 || qid == 179 || qid == 359 || qid == 599 || qid == 779 || qid == 899) {
-                    int adddollar = 2;
                     // demoHelperClass.InsertDollar(adddollar);
-                    final Typeface typeface = Typeface.createFromAsset(this.getAssets(), "fonts/shablagooital.ttf");
+                    // final Typeface typeface = Typeface.createFromAsset(this.getAssets(), "fonts/shablagooital.ttf");
                     Toast toast = Toast.makeText(this, "\tcorrect \t", Toast.LENGTH_LONG);
-                    toast.getView().setBackgroundColor(getResources().getColor(R.color.transparent2));
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.transparent2));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(getResources().getColor(R.color.lightgreen2));
-                    v.setTypeface(typeface);
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.lightgreen2));
+                    v.setTypeface(shablagooital);
                     v.setTextSize(20);
                     toast.show();
                     stringBuffer.setLength(0);
@@ -1464,7 +1490,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     hint1.setVisibility(View.INVISIBLE);
                     //setting the text for number of correct question solved
                     List list2 = demoHelperClass.GetQid();
-                    solvedText.setText(Integer.toString(list2.size()));
+                    solvedText.setText(String.valueOf(list2.size()));
+                    list2.clear();
 
                     clicked = false;
                 }
@@ -1704,9 +1731,17 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler.postDelayed(runnable, 100); //for initial delay..*/
 
-        if(checkSound()){
-            MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.incorrect);
+        if (checkSound()) {
+            ring = MediaPlayer.create(Personality.this, R.raw.incorrect);
             ring.start();
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+
+                    ring.release();
+                }
+            });
+
         }
     }
 
@@ -1722,7 +1757,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
                     int weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
 
-                    try{
+                    try {
                         if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
                             height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
                             weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
@@ -1732,7 +1767,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
                             weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         // Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
                     }
 
@@ -1754,19 +1789,21 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         }
                     }
 
-                    if (x == qid) {
-                        break;
-                    }
-                } else if (x != qid) {
-                    comman3();
+                    break;
 
                 }
+                /*if (x != qid) {*/
+                comman3();
+               /* }*/
 
             }
         }
-        if (xyz.size() == 0) {
-            comman3();
+        if (xyz != null) {
+            if (xyz.size() == 0) {
+                comman3();
+            }
         }
+
         //1st and 2nd
         for (int i = 0; i < 10; i++) {
             if (currentQ.getANSWER().length() >= i + 1) {
@@ -1785,8 +1822,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
         }
 
-        //setText and typeface part
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Chunkfive.otf");
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -1806,7 +1841,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         tvQ.setTextSize(12);
 
         //NORMAL
-        try{
+        try {
             if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
                 if (checkWidth < 700 && checkHeight < 1000) {
                     height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 33, getResources().getDisplayMetrics());
@@ -1826,12 +1861,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     //   Toast.makeText(Personality.this, "NORMAL", Toast.LENGTH_LONG).show();
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             //   Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
         }
 
         //LARGE
-        try{
+        try {
             if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
                 height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
                 weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
@@ -1840,19 +1875,19 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 params.setMargins(4, 4, 4, 4);
                 tvQ.setTextSize(23);
                 //    Toast.makeText(Personality.this, "large", Toast.LENGTH_LONG).show();
-                for(int i=0;i<textViewArrayAbove.length;i++){
-                    textViewArrayAbove[i].setTextSize(27);
+                for (TextView i : textViewArrayAbove) {
+                    i.setTextSize(27);
                 }
-                for(int i=0;i<textViewArrayBelow.length;i++){
-                    textViewArrayBelow[i].setTextSize(27);
+                for (TextView i : textViewArrayBelow) {
+                    i.setTextSize(27);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
         }
 
         //X-LARGE
-        try{
+        try {
             if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
                 height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, getResources().getDisplayMetrics());
                 weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 55, getResources().getDisplayMetrics());
@@ -1861,14 +1896,14 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 params.setMargins(7, 7, 7, 7);
                 tvQ.setTextSize(25);
                 //  Toast.makeText(Personality.this, "x-large", Toast.LENGTH_LONG).show();
-                for(int i=0;i<textViewArrayAbove.length;i++){
-                    textViewArrayAbove[i].setTextSize(27);
+                for (TextView i : textViewArrayAbove) {
+                    i.setTextSize(27);
                 }
-                for(int i=0;i<textViewArrayBelow.length;i++){
-                    textViewArrayBelow[i].setTextSize(30);
+                for (TextView i : textViewArrayBelow) {
+                    i.setTextSize(30);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
         }
 
@@ -1939,7 +1974,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     private void comman3() {
         int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
         int weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
-        try{
+        try {
             if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
                 height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
                 weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics());
@@ -1951,7 +1986,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 weidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 37, getResources().getDisplayMetrics());
                 //   Toast.makeText(Personality.this,"called yo yo",Toast.LENGTH_LONG).show();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             //  Toast.makeText(Personality.this,"Failed to get size of device",Toast.LENGTH_LONG).show();
         }
 
@@ -2097,127 +2132,261 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     public void text21(View view) {
         textView2 = tv21;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text22(View view) {
         textView2 = tv22;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text23(View view) {
         textView2 = tv23;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text24(View view) {
         textView2 = tv24;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text25(View view) {
         textView2 = tv25;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text26(View view) {
         textView2 = tv26;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text27(View view) {
         textView2 = tv27;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text28(View view) {
         textView2 = tv28;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text29(View view) {
         textView2 = tv29;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text21b(View view) {
         textView2 = tv21b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
+
     }
 
     public void text22b(View view) {
         textView2 = tv22b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
+
     }
 
     public void text23b(View view) {
         textView2 = tv23b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
+
     }
 
     public void text24b(View view) {
         textView2 = tv24b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
+
     }
 
     public void text25b(View view) {
         textView2 = tv25b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
+
     }
 
     public void text26b(View view) {
         textView2 = tv26b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
+
     }
 
     public void text27b(View view) {
         textView2 = tv27b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
+
     }
 
     public void text28b(View view) {
         textView2 = tv28b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
     }
 
     public void text29b(View view) {
         textView2 = tv29b;
         Comman2();
-        MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.woosh);
+        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
         ring.start();
+        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+                ring.release();
+            }
+        });
+
     }
 
     public void left(View view) {
@@ -2250,10 +2419,13 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             visiblityOfrightleft();
             diffque();
             List list2 = demoHelperClass.GetQid();
-            solvedText.setText(Integer.toString(list2.size()));
+            solvedText.setText(String.valueOf(list2.size()));
             List list3 = demoHelperClass.getGems();
             int gemstext = (Integer) list3.get(list3.size() - 1);
-            diamondtext.setText(Integer.toString(gemstext));
+            diamondtext.setText(String.valueOf(gemstext));
+            list2.clear();
+            list3.clear();
+
 
             // if hint is used then hint 1 invisible
             if (returnHint1Used() == qid) {
@@ -2301,10 +2473,18 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         }
 
 
-        if(checkSound()){
-            MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.wooden_stick);
+        if (checkSound()) {
+            ring = MediaPlayer.create(Personality.this, R.raw.wooden_stick);
             ring.start();
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+
+                    ring.release();
+                }
+            });
         }
+
 
     }
 
@@ -2336,11 +2516,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             visiblityOfrightleft();
             diffque();
             List list2 = demoHelperClass.GetQid();
-            solvedText.setText(Integer.toString(list2.size()));
+            solvedText.setText(String.valueOf(list2.size()));
             List list3 = demoHelperClass.getGems();
             int gemstext = (Integer) list3.get(list3.size() - 1);
-            diamondtext.setText(Integer.toString(gemstext));
-
+            diamondtext.setText(String.valueOf(gemstext));
+            list3.clear();
+            list2.clear();
 
             // if hint is used then hint 1 invisible
             if (returnHint1Used() == qid) {
@@ -2390,9 +2571,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         }
 
 
-        if(checkSound()){
-            MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.wooden_stick);
+        if (checkSound()) {
+            ring = MediaPlayer.create(Personality.this, R.raw.wooden_stick);
             ring.start();
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    ring.release();
+                }
+            });
         }
     }
 
@@ -2403,7 +2590,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             l2.setVisibility(View.INVISIBLE);
             hint1.setVisibility(View.INVISIBLE);
             bomb.setVisibility(View.INVISIBLE);
-
         }
     }
 
@@ -2441,7 +2627,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         x55 = (Integer) xyz55.get(i);
                     }
 
-                    StringBuffer stringBuffer = new StringBuffer();
+                    StringBuilder stringBuffer = new StringBuilder();
                     if (hintLength > 3) {
                         stringBuffer.append(storebothanswer.charAt(x11));
                     }
@@ -2462,7 +2648,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     //this list store the postion of visisble boxes of above
                     int length = currentQ.getANSWER().length();
                     int length2 = currentQ.getANSWER2().length();
-                    ArrayList<Integer> arrayList = new ArrayList<Integer>();
+                    ArrayList<Integer> arrayList = new ArrayList<>();
 
 
                     for (int k = 0; k < length; k++) {
@@ -2497,11 +2683,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     //now removing the three option boxes which has same alphabets that are random generate
                     //1st
                     if (hintLength > 3) {
-                        for (int j = 0; j < textViewArrayBelow.length; j++) {
-                            if (textViewArrayBelow[j].getVisibility() == View.VISIBLE) {
-                                if (textViewArrayBelow[j].getText().toString().equalsIgnoreCase(stringBuffer.substring(0, 1))) {
-                                    textViewArrayBelow[j].setText("");
-                                    textViewArrayBelow[j].setVisibility(View.INVISIBLE);
+                        for (TextView j : textViewArrayBelow) {
+                            if (j.getVisibility() == View.VISIBLE) {
+                                if (j.getText().toString().equalsIgnoreCase(stringBuffer.substring(0, 1))) {
+                                    j.setText("");
+                                    j.setVisibility(View.INVISIBLE);
                                     break;
                                 }
                             }
@@ -2509,11 +2695,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     }
                     //2nd
                     if (hintLength > 4) {
-                        for (int j = 0; j < textViewArrayBelow.length; j++) {
-                            if (textViewArrayBelow[j].getVisibility() == View.VISIBLE) {
-                                if (textViewArrayBelow[j].getText().toString().equalsIgnoreCase(stringBuffer.substring(1, 2))) {
-                                    textViewArrayBelow[j].setText("");
-                                    textViewArrayBelow[j].setVisibility(View.INVISIBLE);
+                        for (TextView j : textViewArrayBelow) {
+                            if (j.getVisibility() == View.VISIBLE) {
+                                if (j.getText().toString().equalsIgnoreCase(stringBuffer.substring(1, 2))) {
+                                    j.setText("");
+                                    j.setVisibility(View.INVISIBLE);
                                     break;
                                 }
                             }
@@ -2521,11 +2707,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     }
                     //3rd
                     if (hintLength > 5) {
-                        for (int j = 0; j < textViewArrayBelow.length; j++) {
-                            if (textViewArrayBelow[j].getVisibility() == View.VISIBLE) {
-                                if (textViewArrayBelow[j].getText().toString().equalsIgnoreCase(stringBuffer.substring(2, 3))) {
-                                    textViewArrayBelow[j].setText("");
-                                    textViewArrayBelow[j].setVisibility(View.INVISIBLE);
+                        for (TextView j : textViewArrayBelow) {
+                            if (j.getVisibility() == View.VISIBLE) {
+                                if (j.getText().toString().equalsIgnoreCase(stringBuffer.substring(2, 3))) {
+                                    j.setText("");
+                                    j.setVisibility(View.INVISIBLE);
                                     break;
                                 }
                             }
@@ -2534,11 +2720,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                     //4th
                     if (hintLength > 8) {
-                        for (int j = 0; j < textViewArrayBelow.length; j++) {
-                            if (textViewArrayBelow[j].getVisibility() == View.VISIBLE) {
-                                if (textViewArrayBelow[j].getText().toString().equalsIgnoreCase(stringBuffer.substring(3, 4))) {
-                                    textViewArrayBelow[j].setText("");
-                                    textViewArrayBelow[j].setVisibility(View.INVISIBLE);
+                        for (TextView j : textViewArrayBelow) {
+                            if (j.getVisibility() == View.VISIBLE) {
+                                if (j.getText().toString().equalsIgnoreCase(stringBuffer.substring(3, 4))) {
+                                    j.setText("");
+                                    j.setVisibility(View.INVISIBLE);
                                     break;
                                 }
                             }
@@ -2548,23 +2734,30 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                     //5th
                     if (hintLength > 12) {
-                        for (int j = 0; j < textViewArrayBelow.length; j++) {
-                            if (textViewArrayBelow[j].getVisibility() == View.VISIBLE) {
-                                if (textViewArrayBelow[j].getText().toString().equalsIgnoreCase(stringBuffer.substring(4, 5))) {
-                                    textViewArrayBelow[j].setText("");
-                                    textViewArrayBelow[j].setVisibility(View.INVISIBLE);
+                        for (TextView j : textViewArrayBelow)
+                            if (j.getVisibility() == View.VISIBLE) {
+                                if (j.getText().toString().equalsIgnoreCase(stringBuffer.substring(4, 5))) {
+                                    j.setText("");
+                                    j.setVisibility(View.INVISIBLE);
                                     break;
                                 }
                             }
-                        }
                     }
-
-                    stringBuffer.setLength(0);
                     break;
                 }
+                stringBuffer.setLength(0);
+
             }
         }
+
+        xyz.clear();
+        xyz11.clear();
+        xyz22.clear();
+        xyz33.clear();
+        xyz44.clear();
+        xyz55.clear();
     }
+
 
     public void fillingBoxes() {
         checkIfHintIsUsed();
@@ -2629,13 +2822,13 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         dialog.setContentView(R.layout.reveal);
         dialog.setCancelable(true);
 
-        final Typeface typeface = Typeface.createFromAsset(this.getAssets(), "fonts/shablagooital.ttf");
-        final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
+        //  final Typeface typeface = Typeface.createFromAsset(this.getAssets(), "fonts/shablagooital.ttf");
+        // final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
 
         TextView revealtext2 = (TextView) dialog.findViewById(R.id.revealtext2);
         TextView or = (TextView) dialog.findViewById(R.id.or);
         TextView costReveal = (TextView) dialog.findViewById(R.id.costReavel);
-        costReveal.setTypeface(typeface);
+        costReveal.setTypeface(shablagooital);
         /*final FButton*/
         watchVideo = (FButton) dialog.findViewById(R.id.watchvideo);
 
@@ -2647,10 +2840,10 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 //check if the question is solved if solved then msg=Question alredy solved
                 if (returnQid() == qid) {
                     Toast toast = Toast.makeText(Personality.this, "Question already solved.\nTry for other questions.", Toast.LENGTH_LONG);
-                    toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(getResources().getColor(R.color.white));
-                    v.setTypeface(typeface2);
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                    v.setTypeface(openSansSemiBold);
                     v.setTextSize(10);
                     toast.show();
                     dialog.dismiss();
@@ -2664,9 +2857,16 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     loadAdRewardedVideo();
                 }
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -2679,11 +2879,20 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Personality.this, InAppPurchase.class);
+                intent.putExtra("key", currentQ.getID() - 1);
                 startActivity(intent);
+                finish();
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -2695,29 +2904,31 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 //check if the question is solved if solved then no reveal
                 if (returnQid() == qid) {
                     Toast toast = Toast.makeText(Personality.this, "Question already solved", Toast.LENGTH_LONG);
-                    toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(getResources().getColor(R.color.white));
-                    v.setTypeface(typeface2);
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                    v.setTypeface(openSansSemiBold);
                     v.setTextSize(10);
                     toast.show();
                 } else {
                     //for solvedtext
                     List list2 = demoHelperClass.GetQid();
-                    solvedText.setText(Integer.toString(list2.size()));
+                    solvedText.setText(String.valueOf(list2.size()));
                     //for diamounds/gems
                     int z = 2;
                     List listgems = demoHelperClass.getGems();
                     int gemstext = (Integer) listgems.get(listgems.size() - 1);
                     if (gemstext == 0 || gemstext == 1) {
                         Toast toast = Toast.makeText(Personality.this, "\t\t\tYou ran out of Gems.\n Please Buy them in shop or watch video.", Toast.LENGTH_LONG);
-                        toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                        toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                         TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                        v.setTextColor(getResources().getColor(R.color.white));
-                        v.setTypeface(typeface2);
+                        v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                        v.setTypeface(openSansSemiBold);
                         v.setTextSize(10);
                         toast.show();
                     }
+                    listgems.clear();
+                    list2.clear();
 
                     if (gemstext > 1) {
                         for (int i = 0; i < currentQ.getANSWER().length(); i++) {
@@ -2734,8 +2945,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         //checking if button was clicked or not
                         clicked = true;
 
-                        for(int i=0;i<textViewArrayBelow.length;i++){
-                            textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                        for (TextView i : textViewArrayBelow) {
+                            i.setVisibility(View.INVISIBLE);
                         }
 
                         if (mGoogleApiClient.isConnected()) {
@@ -2746,28 +2957,37 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         gemstext = gemstext - z;
                         demoHelperClass.InsertGems(gemstext);
                     }
-                    diamondtext.setText(Integer.toString(gemstext));
+                    diamondtext.setText(String.valueOf(gemstext));
                 }
                 dialog.dismiss();
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            ring.release();
+                        }
+                    });
                 }
+
             }
         });
         TextView watchvideo = (TextView) dialog.findViewById(R.id.watchvideo);
-        usegems.setTypeface(typeface);
+        usegems.setTypeface(shablagooital);
         TextView buyDiamond = (TextView) dialog.findViewById(R.id.buyGems);
-        buyDiamond.setTypeface(typeface);
+        buyDiamond.setTypeface(shablagooital);
         TextView shop = (TextView) dialog.findViewById(R.id.shop);
-        shop.setTypeface(typeface);
+        shop.setTypeface(shablagooital);
         usegems.setText(getResources().getString(R.string.useDiamond) + "\n\n" + getResources().getString(R.string.Cost_2_Diamond) + Integer.toString(gemstext) + " " + getResources().getString(R.string.diamond_left_in_your_bucket));
         buyDiamond.setText(getResources().getString(R.string.buyDiamond) + "\n\n" + getResources().getString(R.string.Shop_diamonds_at_cheap_price));
-        watchvideo.setTypeface(typeface);
+        watchvideo.setTypeface(shablagooital);
         watchvideo.setText(getResources().getString(R.string.watchvideo));
-        or.setTypeface(typeface);
-        revealtext2.setTypeface(typeface);
+        or.setTypeface(shablagooital);
+        revealtext2.setTypeface(shablagooital);
         Button cancel = (Button) dialog.findViewById(R.id.cance11);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -2787,53 +3007,53 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 0; i < 180; i++)
                 if (clicked.equals(Integer.toString(i))) {
                     tvt.setText(getResources().getString(R.string.personality));
-                    queNum.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    queNum.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
                     break;
                 }
             for (int i = 180; i < 360; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.sports));
+                    toolbar.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.sports));
                     tvt.setText(getResources().getString(R.string.sports));
-                    queNum.setTextColor(getResources().getColor(R.color.sportsdark));
+                    queNum.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.sportsdark));
                     for (int j = 0; j < 18; j++) {
-                        textViewArrayBelow2[j].setButtonColor(getResources().getColor(R.color.sports));
-                        textViewArrayBelow2[j].setShadowColor(getResources().getColor(R.color.sportsdark));
+                        textViewArrayBelow2[j].setButtonColor(ContextCompat.getColor(getApplicationContext(), R.color.sports));
+                        textViewArrayBelow2[j].setShadowColor(ContextCompat.getColor(getApplicationContext(), R.color.sportsdark));
                     }
                     break;
                 }
             }
             for (int i = 360; i < 600; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.geography));
+                    toolbar.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.geography));
                     tvt.setText(getResources().getString(R.string.geography));
-                    queNum.setTextColor(getResources().getColor(R.color.geographydark));
+                    queNum.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.geographydark));
                     for (int j = 0; j < 18; j++) {
-                        textViewArrayBelow2[j].setButtonColor(getResources().getColor(R.color.geography));
-                        textViewArrayBelow2[j].setShadowColor(getResources().getColor(R.color.geographydark));
+                        textViewArrayBelow2[j].setButtonColor(ContextCompat.getColor(getApplicationContext(), R.color.geography));
+                        textViewArrayBelow2[j].setShadowColor(ContextCompat.getColor(getApplicationContext(), R.color.geographydark));
                     }
                     break;
                 }
             }
             for (int i = 600; i < 780; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.science));
+                    toolbar.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.science));
                     tvt.setText(getResources().getString(R.string.science));
-                    queNum.setTextColor(getResources().getColor(R.color.sciencedark));
+                    queNum.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.sciencedark));
                     for (int j = 0; j < 18; j++) {
-                        textViewArrayBelow2[j].setButtonColor(getResources().getColor(R.color.science));
-                        textViewArrayBelow2[j].setShadowColor(getResources().getColor(R.color.sciencedark));
+                        textViewArrayBelow2[j].setButtonColor(ContextCompat.getColor(getApplicationContext(), R.color.science));
+                        textViewArrayBelow2[j].setShadowColor(ContextCompat.getColor(getApplicationContext(), R.color.sciencedark));
                     }
                     break;
                 }
             }
             for (int i = 780; i < 900; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.arts));
+                    toolbar.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.arts));
                     tvt.setText(getResources().getString(R.string.arts_gk));
-                    queNum.setTextColor(getResources().getColor(R.color.artsdark));
+                    queNum.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.artsdark));
                     for (int j = 0; j < 18; j++) {
-                        textViewArrayBelow2[j].setButtonColor(getResources().getColor(R.color.arts));
-                        textViewArrayBelow2[j].setShadowColor(getResources().getColor(R.color.artsdark));
+                        textViewArrayBelow2[j].setButtonColor(ContextCompat.getColor(getApplicationContext(), R.color.arts));
+                        textViewArrayBelow2[j].setShadowColor(ContextCompat.getColor(getApplicationContext(), R.color.artsdark));
                     }
                     break;
                 }
@@ -2841,12 +3061,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
             for (int i = 900; i < 1120; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.entartenment));
+                    toolbar.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.entartenment));
                     tvt.setText(getResources().getString(R.string.entertainment));
-                    queNum.setTextColor(getResources().getColor(R.color.entartenmentdark));
+                    queNum.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.entartenmentdark));
                     for (int j = 0; j < 18; j++) {
-                        textViewArrayBelow2[j].setButtonColor(getResources().getColor(R.color.entartenment));
-                        textViewArrayBelow2[j].setShadowColor(getResources().getColor(R.color.entartenmentdark));
+                        textViewArrayBelow2[j].setButtonColor(ContextCompat.getColor(getApplicationContext(), R.color.entartenment));
+                        textViewArrayBelow2[j].setShadowColor(ContextCompat.getColor(getApplicationContext(), R.color.entartenmentdark));
                     }
                     break;
                 }
@@ -2903,83 +3123,83 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     public void diffque() {
         //personality
         if (qid < 60) {
-            queNum.setText(Integer.toString(qid + 1));
+            queNum.setText(String.valueOf(qid + 1));
             diffLevel.setText(getResources().getString(R.string.easy));
 
         }
         if (qid >= 60 && qid < 120) {
-            queNum.setText(Integer.toString(qid - 59));
+            queNum.setText(String.valueOf(qid - 59));
             diffLevel.setText(getResources().getString(R.string.medium));
         }
         if (qid >= 120 && qid < 180) {
-            queNum.setText(Integer.toString(qid - 119));
+            queNum.setText(String.valueOf(qid - 119));
             diffLevel.setText(getResources().getString(R.string.hard));
         }
         //sports
         if (qid >= 180 && qid < 240) {
-            queNum.setText(Integer.toString(qid - 179));
+            queNum.setText(String.valueOf(qid - 179));
             diffLevel.setText(getResources().getString(R.string.easy));
 
         }
         if (qid >= 240 && qid < 300) {
-            queNum.setText(Integer.toString(qid - 239));
+            queNum.setText(String.valueOf(qid - 239));
             diffLevel.setText(getResources().getString(R.string.medium));
 
         }
         if (qid >= 300 && qid < 360) {
-            queNum.setText(Integer.toString(qid - 299));
+            queNum.setText(String.valueOf(qid - 299));
             diffLevel.setText(getResources().getString(R.string.hard));
         }
         //geography
         if (qid >= 360 && qid < 440) {
-            queNum.setText(Integer.toString(qid - 359));
+            queNum.setText(String.valueOf(qid - 359));
             diffLevel.setText(getResources().getString(R.string.easy));
         }
         if (qid >= 440 && qid < 520) {
-            queNum.setText(Integer.toString(qid - 439));
+            queNum.setText(String.valueOf(qid - 439));
             diffLevel.setText(getResources().getString(R.string.medium));
         }
         if (qid >= 520 && qid < 600) {
-            queNum.setText(Integer.toString(qid - 519));
+            queNum.setText(String.valueOf(qid - 519));
             diffLevel.setText(getResources().getString(R.string.hard));
         }
         //science
         if (qid >= 600 && qid < 660) {
-            queNum.setText(Integer.toString(qid - 599));
+            queNum.setText(String.valueOf(qid - 599));
             diffLevel.setText(getResources().getString(R.string.easy));
         }
         if (qid >= 660 && qid < 720) {
-            queNum.setText(Integer.toString(qid - 659));
+            queNum.setText(String.valueOf(qid - 659));
             diffLevel.setText(getResources().getString(R.string.medium));
         }
         if (qid >= 720 && qid < 780) {
-            queNum.setText(Integer.toString(qid - 719));
+            queNum.setText(String.valueOf(qid - 719));
             diffLevel.setText(getResources().getString(R.string.hard));
         }
         //arts & gk
         if (qid >= 780 && qid < 820) {
-            queNum.setText(Integer.toString(qid - 779));
+            queNum.setText(String.valueOf(qid - 779));
             diffLevel.setText(getResources().getString(R.string.easy));
         }
         if (qid >= 820 && qid < 860) {
-            queNum.setText(Integer.toString(qid - 819));
+            queNum.setText(String.valueOf(qid - 819));
             diffLevel.setText(getResources().getString(R.string.medium));
         }
         if (qid >= 860 && qid < 900) {
-            queNum.setText(Integer.toString(qid - 859));
+            queNum.setText(String.valueOf(qid - 859));
             diffLevel.setText(getResources().getString(R.string.hard));
         }
         //entertainment
         if (qid >= 900 && qid < 980) {
-            queNum.setText(Integer.toString(qid - 899));
+            queNum.setText(String.valueOf(qid - 899));
             diffLevel.setText(getResources().getString(R.string.easy));
         }
         if (qid >= 980 && qid < 1060) {
-            queNum.setText(Integer.toString(qid - 979));
+            queNum.setText(String.valueOf(qid - 979));
             diffLevel.setText(getResources().getString(R.string.medium));
         }
         if (qid >= 1060 && qid < 1120) {
-            queNum.setText(Integer.toString(qid - 1059));
+            queNum.setText(String.valueOf(qid - 1059));
             diffLevel.setText(getResources().getString(R.string.hard));
         }
         //personality
@@ -2988,8 +3208,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         //sports
         if (qid >= 180 && qid < 360) {
             for (int i = 0; i < 10; i++) {
-                textfirst[i].setTextColor(getResources().getColor(R.color.sports));
-                textsecound[i].setTextColor(getResources().getColor(R.color.sports));
+                textfirst[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.sports));
+                textsecound[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.sports));
             }
             rightImage.setImageResource(R.drawable.sportrightcartoon);
             leftImage.setImageResource(R.drawable.sportleftcartoon);
@@ -2998,8 +3218,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         //geography
         if (qid >= 360 && qid < 600) {
             for (int i = 0; i < 10; i++) {
-                textfirst[i].setTextColor(getResources().getColor(R.color.geography));
-                textsecound[i].setTextColor(getResources().getColor(R.color.geography));
+                textfirst[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.geography));
+                textsecound[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.geography));
             }
             rightImage.setImageResource(R.drawable.geographyrightcartoon);
             leftImage.setImageResource(R.drawable.geographyleftcartoon);
@@ -3008,8 +3228,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         //science
         if (qid >= 600 && qid < 780) {
             for (int i = 0; i < 10; i++) {
-                textfirst[i].setTextColor(getResources().getColor(R.color.science));
-                textsecound[i].setTextColor(getResources().getColor(R.color.science));
+                textfirst[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.science));
+                textsecound[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.science));
             }
             rightImage.setImageResource(R.drawable.sciencerightcartoon);
             leftImage.setImageResource(R.drawable.scienceleftcartoon);
@@ -3018,8 +3238,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         //arts & gk
         if (qid >= 780 && qid < 900) {
             for (int i = 0; i < 10; i++) {
-                textfirst[i].setTextColor(getResources().getColor(R.color.arts));
-                textsecound[i].setTextColor(getResources().getColor(R.color.arts));
+                textfirst[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.arts));
+                textsecound[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.arts));
             }
             rightImage.setImageResource(R.drawable.artrightcartoon);
             leftImage.setImageResource(R.drawable.artleftcartoon);
@@ -3028,8 +3248,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         //entertainment
         if (qid >= 900 && qid < 1120) {
             for (int i = 0; i < 10; i++) {
-                textfirst[i].setTextColor(getResources().getColor(R.color.entartenment));
-                textsecound[i].setTextColor(getResources().getColor(R.color.entartenment));
+                textfirst[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.entartenment));
+                textsecound[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.entartenment));
             }
             rightImage.setImageResource(R.drawable.entertainmentrightcartoon);
             leftImage.setImageResource(R.drawable.entertainmentleftcartoon);
@@ -3049,14 +3269,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             Bundle extras = new Bundle();
             extras.putBoolean("_noRefresh", true);
             AdRequest adRequest = new AdRequest.Builder()
-                    .addNetworkExtrasBundle(AdColonyAdapter.class, extras)
                     .addNetworkExtrasBundle(AdMobAdapter.class, extras)
                     .addNetworkExtrasBundle(ChartboostAdapter.class, extras)
                     .addNetworkExtrasBundle(UnityAdapter.class, extras)
                     .build();
             mAd.loadAd(getString(R.string.Test_admob_unit_id_rewardedVideo), adRequest);
             // Toast.makeText(Personality.this,"called",Toast.LENGTH_LONG).show();
-
         }
     }
 
@@ -3096,13 +3314,13 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         int gemstext = (Integer) listgems.get(listgems.size() - 1);
         gemstext = gemstext + plusOneGem;
         demoHelperClass.InsertGems(gemstext);
-        diamondtext.setText(Integer.toString(gemstext));
-        final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
+        diamondtext.setText(String.valueOf(gemstext));
+        //   final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
         Toast toast = Toast.makeText(Personality.this, "+1 gem added in your bucket.", Toast.LENGTH_LONG);
-        toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+        toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
         TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-        v.setTextColor(getResources().getColor(R.color.white));
-        v.setTypeface(typeface2);
+        v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+        v.setTypeface(openSansSemiBold);
         v.setTextSize(10);
         toast.show();
 
@@ -3110,6 +3328,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         if (mGoogleApiClient.isConnected()) {
             Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
         }
+
+        listgems.clear();
     }
 
     @Override
@@ -3158,27 +3378,59 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     public void onDestroy() {
         super.onDestroy();
         Chartboost.onDestroy(this);
+        quesList.clear();
+        if (ring != null) {
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+
+                    ring.release();
+                }
+            });
+        }
+
+//        imageView, imageView2, leftImage, rightImage, hint1,/* whatsapp, fbmessganger,*/
+//                master, hint2, gems, bomb, correctImage;
+//
+//        cracker1, cracker2, cracker3, cracker4
+
+//       imageView.setImageDrawable(null);
+        imageView2.setImageDrawable(null);
+        leftImage.setImageDrawable(null);
+        rightImage.setImageDrawable(null);
+        hint1.setImageDrawable(null);
+        master.setImageDrawable(null);
+        hint2.setImageDrawable(null);
+        gems.setImageDrawable(null);
+        bomb.setImageDrawable(null);
+        correctImage.setImageDrawable(null);
+        cracker1.setImageDrawable(null);
+        cracker2.setImageDrawable(null);
+        cracker3.setImageDrawable(null);
+        cracker4.setImageDrawable(null);
+
+        finish();
     }
 
     public void bomb(View view) {
         final Dialog dialog = new Dialog(Personality.this);
-        //dialog.requestWindowFeature(Window.);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setContentView(R.layout.bomb);
         dialog.setCancelable(true);
-        final Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
-        final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
+        // final Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
+        // final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
         final TextView boom = (TextView) dialog.findViewById(R.id.boom);
         TextView removeEtra = (TextView) dialog.findViewById(R.id.removeExtra);
         TextView removeEtraCost = (TextView) dialog.findViewById(R.id.removeExtraCost);
         TextView reward = (TextView) dialog.findViewById(R.id.reward);
         FButton boomFbutton = (FButton) dialog.findViewById(R.id.boomfbutton);
         FButton cancelBoom = (FButton) dialog.findViewById(R.id.cancelbomb);
-        boom.setTypeface(typeface);
-        removeEtra.setTypeface(typeface);
-        removeEtraCost.setTypeface(typeface);
-        boomFbutton.setTypeface(typeface);
-        reward.setTypeface(typeface);
+        boom.setTypeface(shablagooital);
+        removeEtra.setTypeface(shablagooital);
+        removeEtraCost.setTypeface(shablagooital);
+        boomFbutton.setTypeface(shablagooital);
+        reward.setTypeface(shablagooital);
         // watchVideoBoom.setTypeface(typeface);
         cancelBoom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -3192,29 +3444,20 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             public void onClick(View view) {
 
                 List listgems = demoHelperClass.getGems();
+
                 int gemstext = (Integer) listgems.get(listgems.size() - 1);
                 if (gemstext <= 0) {
                     Toast toast = Toast.makeText(Personality.this, "\t\t\tYou ran out of Gems.\n Please Buy them in shop or watch video.", Toast.LENGTH_LONG);
-                    toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(getResources().getColor(R.color.white));
-                    v.setTypeface(typeface2);
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                    v.setTypeface(openSansSemiBold);
                     v.setTextSize(10);
                     toast.show();
                 }
 
-                int a = 100001;
-                List abc = demoHelperClass.GetQid();
-                if (abc != null) {
-                    for (int i = 0; i < abc.size(); i++) {
-                        a = (Integer) abc.get(i);
-                        if (a == qid) {
-                            break;
-                        }
-                    }
-                }
 
-                if (a != qid) {
+                if (returnQid() != qid) {
                     if (gemstext > 0) {
                         if (returnBoomIdUsed() != qid) {
                             int z = 1;
@@ -3223,24 +3466,34 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             demoHelperClass.insertBoom(qid);
                             gemstext = gemstext - z;
                             demoHelperClass.InsertGems(gemstext);
-                            diamondtext.setText(Integer.toString(gemstext));
+                            diamondtext.setText(String.valueOf(gemstext));
                             crackerAnimation();
 
 
-                            if(checkSound()){
-                                MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.bombexplosion);
+                            if (checkSound()) {
+                                ring = MediaPlayer.create(getApplicationContext(), R.raw.bombexplosion);
                                 ring.start();
+                                ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                    @Override
+                                    public void onCompletion(MediaPlayer mediaPlayer) {
+
+                                        ring.release();
+                                    }
+                                });
+
+
                             }
 
                         }
                     }
                 }
                 dialog.dismiss();
+                listgems.clear();
             }
         });
      /*final   FButton*/
         watchVideoBoom = (FButton) dialog.findViewById(R.id.watchvideoBoom);
-        watchVideoBoom.setTypeface(typeface);
+        watchVideoBoom.setTypeface(shablagooital);
         watchVideoBoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -3249,10 +3502,10 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                 if (returnQid() == qid) {
                     Toast toast = Toast.makeText(Personality.this, "Question already solved.\nTry for other questions.", Toast.LENGTH_LONG);
-                    toast.getView().setBackgroundColor(getResources().getColor(R.color.darkpink));
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(getResources().getColor(R.color.white));
-                    v.setTypeface(typeface2);
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                    v.setTypeface(openSansSemiBold);
                     v.setTextSize(10);
                     toast.show();
                     dialog.dismiss();
@@ -3266,9 +3519,18 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     loadAdRewardedVideo();
                 }
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(Personality.this,R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
                     ring.start();
+
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
+
+
                 }
             }
         });
@@ -3298,229 +3560,229 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     private void removeKachra() {
         // Now we have to remove kachra so we have to check which all textview are visible
         //and check for there text if it matches with the getUselessstring then setText="" and also invisible
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 0) {
                 String first = currentQ.getUSELESSSTRING().substring(0, 1).toUpperCase();
 
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 1) {
                 String first = currentQ.getUSELESSSTRING().substring(1, 2).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 2) {
                 String first = currentQ.getUSELESSSTRING().substring(2, 3).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 3) {
                 String first = currentQ.getUSELESSSTRING().substring(3, 4).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 4) {
                 String first = currentQ.getUSELESSSTRING().substring(4, 5).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 5) {
                 String first = currentQ.getUSELESSSTRING().substring(5, 6).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 6) {
                 String first = currentQ.getUSELESSSTRING().substring(6, 7).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 7) {
                 String first = currentQ.getUSELESSSTRING().substring(7, 8).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 8) {
                 String first = currentQ.getUSELESSSTRING().substring(8, 9).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 9) {
                 String first = currentQ.getUSELESSSTRING().substring(9, 10).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 10) {
                 String first = currentQ.getUSELESSSTRING().substring(10, 11).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 11) {
                 String first = currentQ.getUSELESSSTRING().substring(11, 12).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 12) {
                 String first = currentQ.getUSELESSSTRING().substring(12, 13).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 13) {
                 String first = currentQ.getUSELESSSTRING().substring(13, 14).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 14) {
                 String first = currentQ.getUSELESSSTRING().substring(14, 15).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 15) {
                 String first = currentQ.getUSELESSSTRING().substring(15, 16).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 16) {
                 String first = currentQ.getUSELESSSTRING().substring(16, 17).toUpperCase();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
             }
         }
-        for (int i = 0; i < textViewArrayBelow.length; i++) {
+        for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 17) {
                 String first = currentQ.getUSELESSSTRING().substring(17, 18).toUpperCase();
                 Toast.makeText(Personality.this, "", Toast.LENGTH_LONG).show();
-                if (textViewArrayBelow[i].getVisibility() == View.VISIBLE) {
-                    if (textViewArrayBelow[i].getText().toString().equalsIgnoreCase(first)) {
-                        textViewArrayBelow[i].setText("");
-                        textViewArrayBelow[i].setVisibility(View.INVISIBLE);
+                if (i.getVisibility() == View.VISIBLE) {
+                    if (i.getText().toString().equalsIgnoreCase(first)) {
+                        i.setText("");
+                        i.setVisibility(View.INVISIBLE);
                         break;
                     }
                 }
@@ -3531,8 +3793,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     public void refreshBoxesboth() {
         // If user types some char in boxes then refresh boxes both above and below
 
-        for (int i = 0; i < textViewArrayAbove.length; i++) {
-            textViewArrayAbove[i].setText("");
+        for (TextView i : textViewArrayAbove) {
+            i.setText("");
         }
         for (int i = 0; i < currentQ.getRANDOMANS1().length(); i++) {
             textViewBelowFirst[i].setVisibility(View.VISIBLE);
@@ -3552,7 +3814,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 0; i < abc.size(); i++) {
                 a = (Integer) abc.get(i);
                 if (a == qid) {
-
+                    abc.clear();
                     break;
                 }
             }
@@ -3567,12 +3829,14 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 0; i < xyz.size(); i++) {
                 x = (Integer) xyz.get(i);
                 if (x == qid) {
+                    xyz.clear();
                     break;
                 }
             }
         }
         return x;
     } //This method returns qid of questions where hint1 is used
+
 
     public int returnBoomIdUsed() {
         int y = 1111110;
@@ -3582,6 +3846,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 y = (Integer) pqr.get(i);
                 if (y == qid) {
                     //break here
+                    pqr.clear();
                     break;
                 }
             }
@@ -3594,7 +3859,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         List xyz = demoHelperClass.GetQid();//solved questions ids
         List abc = demoHelperClass.getBoomId(); //question ids for which bomb is used
         List pqr = demoHelperClass.getHint();//question ids for which hint1 is used
-        List lmn = demoHelperClass.getGems();//no of gems in bucket at that moment
+        // List lmn = demoHelperClass.getGems();//no of gems in bucket at that moment
 
 
         //You got it solve any 3Q
@@ -3692,13 +3957,14 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
         //viewer
         /*inside onRewarded*/
-
+        xyz.clear();
+        abc.clear();
+        pqr.clear();
     }
 
     public void checkAchievementTwo() {
         // 27-40  achievement total=14 (free-free-free till the hero)
         List<Integer> xyz = demoHelperClass.GetQid();//solved questions ids
-
         List abc = demoHelperClass.getBoomId(); //question ids for which bomb is used
         List pqr = demoHelperClass.getHint();//question ids for which hint1 is used
 
@@ -3713,7 +3979,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         //personality
-        ArrayList perList = new ArrayList();
+        ArrayList<Integer> perList = new ArrayList<>();
         if (xyz != null) {
             for (int i = 0; i < xyz.size(); i++) {
                 if (xyz.get(i) >= 0 && xyz.get(i) < 180) {
@@ -3731,9 +3997,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         }
         perList.clear();
 
-
         //sports
-        ArrayList sportlist = new ArrayList();
+        ArrayList<Integer> sportlist = new ArrayList<>();
         if (xyz != null) {
             for (int i = 0; i < xyz.size(); i++) {
                 if (xyz.get(i) >= 180 && xyz.get(i) < 360) {
@@ -3754,7 +4019,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         //Geography
-        ArrayList geolist = new ArrayList();
+        ArrayList<Integer> geolist = new ArrayList<>();
         if (xyz != null) {
             for (int i = 0; i < xyz.size(); i++) {
                 if (xyz.get(i) >= 360 && xyz.get(i) < 600) {
@@ -3774,7 +4039,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         //Science
-        ArrayList sciencelist = new ArrayList();
+        ArrayList<Integer> sciencelist = new ArrayList<>();
         if (xyz != null) {
             for (int i = 0; i < xyz.size(); i++) {
                 if (xyz.get(i) >= 600 && xyz.get(i) < 780) {
@@ -3794,7 +4059,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         //arts
-        ArrayList artsList = new ArrayList();
+        ArrayList<Integer> artsList = new ArrayList<>();
         if (xyz != null) {
             for (int i = 0; i < xyz.size(); i++) {
                 if (xyz.get(i) >= 780 && xyz.get(i) < 900) {
@@ -3814,7 +4079,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         //entertainment
-        ArrayList entertainmentList = new ArrayList();
+        ArrayList<Integer> entertainmentList = new ArrayList<>();
         if (xyz != null) {
             for (int i = 0; i < xyz.size(); i++) {
                 if (xyz.get(i) >= 900 && xyz.get(i) < 1120) {
@@ -3831,26 +4096,24 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_hero));
         }
         entertainmentList.clear();
+
+        abc.clear();
+        pqr.clear();
+        if (xyz != null) {
+            xyz.clear();
+        }
+
     }
 
-    /*@Override
-    public void onSignInFailed() {
-
-    }
-
-    @Override
-    public void onSignInSucceeded() {
-
-    }*/
-
-    public Boolean checkSound(){
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
+    public Boolean checkSound() {
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
                 //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }
         }
         return false;
     }
+
 }

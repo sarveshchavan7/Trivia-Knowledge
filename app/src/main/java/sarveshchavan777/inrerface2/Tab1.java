@@ -98,6 +98,12 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 if (checkSound()) {
                     ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
 
             }
@@ -117,6 +123,13 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 if (checkSound()) {
                      ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
+
                 }
             }
         });
@@ -128,7 +141,15 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 if (checkSound()) {
                      ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
+
+                System.exit(0);
             }
         });
 
@@ -142,6 +163,13 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 if (checkSound()) {
                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
+
                 }
             }
 
@@ -235,4 +263,20 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
         }
         return false;
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(ring!=null) {
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+
+                    ring.release();
+                }
+            });
+        }
+    }
+
+
 }

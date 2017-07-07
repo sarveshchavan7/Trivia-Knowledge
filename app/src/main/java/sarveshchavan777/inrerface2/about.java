@@ -73,6 +73,12 @@ public class about extends Activity {
                 if (checkSound()) {
                    ring = MediaPlayer.create(about.this, R.raw.knife);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
 
             }
@@ -151,5 +157,20 @@ public class about extends Activity {
             }
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+       if(ring!=null) {
+           ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+               @Override
+               public void onCompletion(MediaPlayer mediaPlayer) {
+
+                   ring.release();
+               }
+           });
+        }
+
     }
 }

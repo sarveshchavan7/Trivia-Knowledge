@@ -2,19 +2,12 @@ package sarveshchavan777.inrerface2;
 
 
 import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.IntentSender;
-import android.content.ServiceConnection;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -26,11 +19,6 @@ import android.widget.Toast;
 
 import com.android.vending.billing.IInAppBillingService;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import info.hoang8f.widget.FButton;
@@ -70,19 +58,20 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
     TextView shopGemsText;
     TextView shopText;
     ImageView leftShop;
-
-
+    MediaPlayer ring;
+    Integer value;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_app_purchase);
-        demoHelperClass=new DemoHelperClass(getApplicationContext());
+        demoHelperClass = new DemoHelperClass(getApplicationContext());
+        value = getIntent().getIntExtra("key", 0);
         //declaring java activity
-        fButton=(FButton)findViewById(R.id.shop1);
+        fButton = (FButton) findViewById(R.id.shop1);
         fButton.setEnabled(false);
-        shopGemsText=(TextView)findViewById(R.id.shopGemsText);
-        shopText=(TextView)findViewById(R.id.shopText);
-        leftShop=(ImageView)findViewById(R.id.leftShop);
+        shopGemsText = (TextView) findViewById(R.id.shopGemsText);
+        shopText = (TextView) findViewById(R.id.shopText);
+        leftShop = (ImageView) findViewById(R.id.leftShop);
         final Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
         fButton.setTypeface(typeface);
         shopGemsText.setTypeface(typeface);
@@ -90,10 +79,25 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
         leftShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(InAppPurchase.this,R.raw.knife);
+
+              if(value!=20000){
+                  Intent intent = new Intent(getApplicationContext(), Personality.class);
+                  intent.putExtra("Key", String.valueOf(value));
+                  startActivity(intent);
+                  finish();
+              }
+              if(value==20000){
+                  finish();
+              }
+                if (checkSound()) {
+                    ring = MediaPlayer.create(InAppPurchase.this, R.raw.knife);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -120,9 +124,9 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
                 if (!result.isSuccess()) {
                     // Oh noes, there was a problem.
                     complain("Problem setting up in-app billing: " + result);
-                    Toast.makeText(InAppPurchase.this,"There was a Problem setting up in-app billing try again later",Toast.LENGTH_LONG).show();
+                    Toast.makeText(InAppPurchase.this, "There was a Problem setting up in-app billing try again later", Toast.LENGTH_LONG).show();
                     return;
-                }else{
+                } else {
                     fButton.setEnabled(true);
                 }
 
@@ -218,9 +222,15 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
             complain("Error launching purchase flow. Another async operation in progress.");
 
         }
-        if(checkSound()){
-            MediaPlayer ring= MediaPlayer.create(InAppPurchase.this,R.raw.gameaudio2);
+        if (checkSound()) {
+            ring = MediaPlayer.create(InAppPurchase.this, R.raw.gameaudio2);
             ring.start();
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    ring.release();
+                }
+            });
         }
 
     }
@@ -242,7 +252,7 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
     }
 
     boolean verifyDeveloperPayload(Purchase p) {
-        String payload = p.getDeveloperPayload();
+       String payload = p.getDeveloperPayload();
 
         /*
          * TODO: verify that the developer payload of the purchase is correct. It will be
@@ -322,20 +332,19 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
                 // game world's logic, which in our case means filling the gas tank a bit
                 Log.d(TAG, "Consumption successful. Provisioning.");
                 //someSqlite stuff
-                DemoHelperClass demoHelperClass=new DemoHelperClass(InAppPurchase.this);
-                List listgems=demoHelperClass.getGems();
+             demoHelperClass = new DemoHelperClass(getApplicationContext());
+                List listgems = demoHelperClass.getGems();
                 int gems = (Integer) listgems.get(listgems.size() - 1);
-                int totalGems=30+gems;
-                demoHelperClass.InsertGems(30+gems);
-                Personality.diamondtext.setText(Integer.toString(totalGems));
+                int totalGems = 30 + gems;
+                demoHelperClass.InsertGems(totalGems);
 
                 alert("30 more Gems add in your bucket");
                 final Typeface typeface2 = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Semibold.ttf");
 
                 Toast toast = Toast.makeText(InAppPurchase.this, "30 more Gems add in your bucket ", Toast.LENGTH_LONG);
-                toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.darkpink));
+                toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                 TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                v.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+                v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
                 v.setTypeface(typeface2);
                 v.setTextSize(10);
                 toast.show();
@@ -364,12 +373,27 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
             mHelper.disposeWhenFinished();
             mHelper = null;
         }
+
+        if(ring!=null) {
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
+                }
+            });
+        }
     }
 
     void complain(String message) {
         Log.e(TAG, "**** Trivia Knowledge Error: " + message);
         alert("Error: " + message);
     }
+
     void alert(String message) {
         AlertDialog.Builder bld = new AlertDialog.Builder(this);
         bld.setMessage(message);
@@ -389,15 +413,22 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
 
     @Override
     public void onBackPressed() {
-        finish();
-
+        if(value!=2000){
+            Intent intent = new Intent(getApplicationContext(), Personality.class);
+            intent.putExtra("Key", String.valueOf(value));
+            startActivity(intent);
+            finish();
+        }
+        if(value==2000){
+            finish();
+        }
     }
 
-    public Boolean checkSound(){
+    public Boolean checkSound() {
 
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
                 //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }

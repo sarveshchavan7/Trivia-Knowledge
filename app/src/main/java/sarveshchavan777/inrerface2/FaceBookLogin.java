@@ -40,13 +40,13 @@ import info.hoang8f.widget.FButton;
 public class FaceBookLogin extends AppCompatActivity {
     LoginButton loginButton;
     String abc = "";
-    String x="";
+    String x = "";
     String idOfUser;
     CallbackManager callbackManager;
-    FButton fButton, likeFb, joinFb,earnAchievement,earnAchievementTwo;
-    TextView fbText,earnAchievementText,earnAchievementTwoText,rewards,rewardstwo;
+    FButton fButton, likeFb, joinFb, earnAchievement, earnAchievementTwo;
+    TextView fbText, earnAchievementText, earnAchievementTwoText, rewards, rewardstwo;
     RequestQueue requestQueue;
-    int i=0;
+    int i = 0;
     DemoHelperClass demoHelperClass;
     //get
     GoogleApiClient mGoogleApiClient/*=AppController.getInstance().getClient()*/;
@@ -54,12 +54,13 @@ public class FaceBookLogin extends AppCompatActivity {
     MediaPlayer ring;
 
     private static final String Group_ID = "288637851555189";
-    private static final String PAGE_ID="1357616140975878";
+    private static final String PAGE_ID = "1357616140975878";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facebooklogin);
-        demoHelperClass=new DemoHelperClass(getApplicationContext());
+        demoHelperClass = new DemoHelperClass(getApplicationContext());
         loginButton = (LoginButton) findViewById(R.id.login_button);
         fButton = (FButton) findViewById(R.id.cancelButton);
         likeFb = (FButton) findViewById(R.id.likeFb);
@@ -69,13 +70,13 @@ public class FaceBookLogin extends AppCompatActivity {
         joinFb.setTypeface(typeface);
         likeFb.setTypeface(typeface);
         fbText.setTypeface(typeface);
-        earnAchievement=(FButton)findViewById(R.id.earnAchievement);
-        earnAchievementTwo=(FButton)findViewById(R.id.earnAchievementTwo);
+        earnAchievement = (FButton) findViewById(R.id.earnAchievement);
+        earnAchievementTwo = (FButton) findViewById(R.id.earnAchievementTwo);
         requestQueue = Volley.newRequestQueue(this);
-        earnAchievementText=(TextView)findViewById(R.id.earnAchievementText);
-        earnAchievementTwoText=(TextView)findViewById(R.id.earnAchievementTwoText);
-        rewards=(TextView)findViewById(R.id.rewards);
-        rewardstwo=(TextView)findViewById(R.id.rewards2);
+        earnAchievementText = (TextView) findViewById(R.id.earnAchievementText);
+        earnAchievementTwoText = (TextView) findViewById(R.id.earnAchievementTwoText);
+        rewards = (TextView) findViewById(R.id.rewards);
+        rewardstwo = (TextView) findViewById(R.id.rewards2);
 
         rewards.setTypeface(typeface);
         earnAchievementTwoText.setTypeface(typeface);
@@ -83,9 +84,9 @@ public class FaceBookLogin extends AppCompatActivity {
         earnAchievement.setTypeface(typeface);
         earnAchievementTwo.setTypeface(typeface);
         rewardstwo.setTypeface(typeface);
-        mGoogleApiClient=MainActivity.mGoogleApiClient;
-        if(mGoogleApiClient.isConnected()){
-            Games.setViewForPopups( MainActivity.mGoogleApiClient, findViewById(R.id.gps_popup));
+        mGoogleApiClient = MainActivity.mGoogleApiClient;
+        if (mGoogleApiClient.isConnected()) {
+            Games.setViewForPopups(MainActivity.mGoogleApiClient, findViewById(R.id.gps_popup));
         }
 
         callbackManager = CallbackManager.Factory.create();
@@ -100,7 +101,7 @@ public class FaceBookLogin extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-              //  Toast.makeText(FaceBookLogin.this, "canceled", Toast.LENGTH_LONG).show();
+                //  Toast.makeText(FaceBookLogin.this, "canceled", Toast.LENGTH_LONG).show();
                 abc = "0";
             }
 
@@ -123,20 +124,20 @@ public class FaceBookLogin extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (isLoggedIn()) {
-                  Toast toast= Toast.makeText(FaceBookLogin.this, "\tPlease login first"+" ", Toast.LENGTH_SHORT);
-                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.darkpink));
+                    Toast toast = Toast.makeText(FaceBookLogin.this, "\tPlease login first" + " ", Toast.LENGTH_SHORT);
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
                     v.setTypeface(typeface);
                     v.setTextSize(16);
                     toast.show();
                 } else {
-                    i=100;
-                    try{
+                    i = 100;
+                    try {
                         //if user has fb app
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/" + PAGE_ID));
                         startActivity(intent);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         //if users doesn't have fb app
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/charetakergames/"));
                         startActivity(intent);
@@ -144,9 +145,15 @@ public class FaceBookLogin extends AppCompatActivity {
 
                 }
 
-                if(checkSound()){
-                     ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
-                     ring.start();
+                if (checkSound()) {
+                    ring = MediaPlayer.create(FaceBookLogin.this, R.raw.gameaudio2);
+                    ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
 
             }
@@ -156,21 +163,21 @@ public class FaceBookLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(isLoggedIn()){
-                    Toast toast= Toast.makeText(FaceBookLogin.this, "\tPlease login first"+" ", Toast.LENGTH_SHORT);
-                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.darkpink));
+                if (isLoggedIn()) {
+                    Toast toast = Toast.makeText(FaceBookLogin.this, "\tPlease login first" + " ", Toast.LENGTH_SHORT);
+                    toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-                    v.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+                    v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
                     v.setTypeface(typeface);
                     v.setTextSize(16);
                     toast.show();
-                }else{
-                //https://www.facebook.com/groups/charetaker/
-                    try{
+                } else {
+                    //https://www.facebook.com/groups/charetaker/
+                    try {
                         //if user has fb app
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://group/" + Group_ID));
                         startActivity(intent);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         //if users doesn't have fb app
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/groups/charetaker/"));
                         startActivity(intent);
@@ -178,9 +185,15 @@ public class FaceBookLogin extends AppCompatActivity {
 
                 }
 
-                if(checkSound()){
-                     ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(FaceBookLogin.this, R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -189,17 +202,23 @@ public class FaceBookLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (i == 100) {
-                  //  GoogleApiClient client = AppController.getInstance().getClient();
-                    if(mGoogleApiClient!=null && mGoogleApiClient.isConnected()) {
+                    //  GoogleApiClient client = AppController.getInstance().getClient();
+                    if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
                         Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_visitor));
-                       // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
+                        // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
                     }
 
                 }
 
-                if(checkSound()){
-                    ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(FaceBookLogin.this, R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -219,12 +238,12 @@ public class FaceBookLogin extends AppCompatActivity {
                                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                                         if (idOfUser.equals(jsonObject.get("id"))) {
                                             //if user is group member
-                                          //  Toast.makeText(FaceBookLogin.this, "Is a group member"+idOfUser, Toast.LENGTH_LONG).show();
+                                            //  Toast.makeText(FaceBookLogin.this, "Is a group member"+idOfUser, Toast.LENGTH_LONG).show();
 
-                                           if(mGoogleApiClient!=null && mGoogleApiClient.isConnected()){
-                                               Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_crew_member));
-                                              // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
-                                           }
+                                            if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+                                                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_crew_member));
+                                                // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
+                                            }
                                             break;
                                         }/* else {
                                             //if user is not a group member
@@ -239,16 +258,23 @@ public class FaceBookLogin extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                     //   Toast.makeText(FaceBookLogin.this, "Please check your network connection and try again."+error, Toast.LENGTH_LONG).show();
+                        //   Toast.makeText(FaceBookLogin.this, "Please check your network connection and try again."+error, Toast.LENGTH_LONG).show();
                         // finish();
                     }
                 }
                 );
                 requestQueue.add(jsonObjectRequest);
 
-                if(checkSound()){
-                    MediaPlayer ring= MediaPlayer.create(FaceBookLogin.this,R.raw.gameaudio2);
+                if (checkSound()) {
+                    ring = MediaPlayer.create(FaceBookLogin.this, R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
+
                 }
             }
         });
@@ -269,8 +295,6 @@ public class FaceBookLogin extends AppCompatActivity {
             //do nothing
         }*/
     }
-
-
 
 
     @Override
@@ -295,14 +319,27 @@ public class FaceBookLogin extends AppCompatActivity {
 
     }*/
 
-    public Boolean checkSound(){
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
+    public Boolean checkSound() {
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
                 //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (ring != null) {
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    ring.release();
+                }
+            });
+        }
     }
 }

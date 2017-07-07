@@ -16,7 +16,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:padding="12dp"
-        android:background="@color/transparent">
+        android:background="@color/darkpink">
 
         <TextView
             android:id="@+id/soundText"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="SOUND"
+            android:text="@string/sound"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:textColor="@color/white"
@@ -52,13 +52,18 @@
         android:background="@color/transparent2"/>
 <View
     android:layout_width="match_parent"
-    android:layout_height="40dp"></View>
+    android:layout_height="40dp">
+
+</View>
     <ImageView
+        android:contentDescription="@string/sound"
         android:id="@+id/sound"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/on"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="40dp"></View>
+        android:layout_height="40dp">
+
+    </View>
 </LinearLayout>

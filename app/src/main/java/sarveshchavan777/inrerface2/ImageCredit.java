@@ -50,6 +50,12 @@ public class ImageCredit extends Activity {
                 if (checkSound()) {
                     ring = MediaPlayer.create(ImageCredit.this, R.raw.knife);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -62,6 +68,12 @@ public class ImageCredit extends Activity {
                 if (checkSound()) {
                     ring = MediaPlayer.create(ImageCredit.this, R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -83,6 +95,19 @@ public class ImageCredit extends Activity {
             }
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(ring!=null) {
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    ring.release();
+                }
+            });
+        }
     }
 }
 

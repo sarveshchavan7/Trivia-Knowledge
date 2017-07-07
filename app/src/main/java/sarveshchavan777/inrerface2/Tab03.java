@@ -23,7 +23,6 @@ public class Tab03 extends Fragment {
     DemoHelperClass demoHelperClass;
     BootstrapProgressBar Progress;
     TextView progressText;
-
     public Tab03() {
 
     }
@@ -43,10 +42,8 @@ public class Tab03 extends Fragment {
         super.onActivityCreated(savedInstanceState);
         demoHelperClass = new DemoHelperClass(getActivity().getApplicationContext());
 
-
         Integer imageView[] = new Integer[60];
         String s[] = new String[60];
-
         String per[] = {"Politician", "Entrepreneur", "Scientist", "Singer/songwriter", "Actor",
                 "Sportsperson", "Astronaut", "Actress", "Journalist", "Comedian","Programmer",
                 "Revolutionist","Writer","Activist","Philosopher","Personality","Theologist","Neurologist"};
@@ -110,5 +107,9 @@ public class Tab03 extends Fragment {
         });
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Progress=null;
+    }
 }

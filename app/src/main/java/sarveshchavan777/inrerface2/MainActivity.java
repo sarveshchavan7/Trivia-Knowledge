@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         SlidingTabLayout mTabs;
 
         // Create the Google Api Client with access to the Play Games services
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        mGoogleApiClient = new GoogleApiClient.Builder(getApplicationContext())
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(Games.API).addScope(Games.SCOPE_GAMES)
@@ -72,9 +72,12 @@ public class MainActivity extends AppCompatActivity
             // run your one time code
             //  Toast.makeText(MainActivity.this,"this is one time only",Toast.LENGTH_LONG).show();
             mSignInClicked = true;
-            if (!mGoogleApiClient.isConnected()) {
-                mGoogleApiClient.connect();
+            if(mGoogleApiClient!=null){
+                if (!mGoogleApiClient.isConnected()) {
+                    mGoogleApiClient.connect();
+                }
             }
+
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("firstTime", true);
             editor.apply();
@@ -120,6 +123,12 @@ public class MainActivity extends AppCompatActivity
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ring.release();
+                        }
+                    });
                 }
             }
         });
@@ -237,5 +246,19 @@ public class MainActivity extends AppCompatActivity
         }
         return false;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(ring!=null){
+            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    ring.release();
+                }
+            });
+        }
+    }
+
 }
 
