@@ -17,7 +17,7 @@
             android:id="@+id/leftdifficultysci"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/left_filled" />
+            android:src="@drawable/backcartoon" />
 
         <TextView
             android:id="@+id/textviewdifficultysci"

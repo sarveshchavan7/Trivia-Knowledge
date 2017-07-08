@@ -26,7 +26,7 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/goback"
-                android:src="@drawable/left_filled" />
+                android:src="@drawable/backcartoon" />
 
             <TextView
                 android:id="@+id/textviewpersonality"
@@ -219,14 +219,14 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/reveal_hint"
                     android:onClick="revealhole"
-                    android:src="@drawable/idea2" />
+                    android:src="@drawable/idea2cartoon" />
 
                 <ImageView
                     android:id="@+id/hint"
                     android:layout_width="45dp"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/free_hint"
-                    android:src="@drawable/idea" />
+                    android:src="@drawable/idea1cartoon" />
 
                 <ImageView
                     android:id="@+id/bomb"
@@ -234,7 +234,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/Boomblast"
                     android:onClick="bomb"
-                    android:src="@drawable/bombtimer" />
+                    android:src="@drawable/boomcartoon" />
 
             </LinearLayout>
 

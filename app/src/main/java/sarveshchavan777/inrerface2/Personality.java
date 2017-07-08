@@ -195,7 +195,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     mAdView.loadAd(adRequest); //Your code to show add
 
                 }
-            }, 25000);
+            }, 21000);
         }
 
         /*if (DemoHelperClass.adsHelper == 1) {
@@ -937,9 +937,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         //if boxes less than or eual to 3 then hint1 invisble
         if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() <= 3) {
             //  hint1.setVisibility(View.INVISIBLE);
-            hint1.setImageResource(R.drawable.nohint1);
+            hint1.setImageResource(R.drawable.noidea1cartoon);
         } else {
-            hint1.setImageResource(R.drawable.idea);
+            hint1.setImageResource(R.drawable.idea1cartoon);
         }
         list.clear();
         sqLiteDatabase.close();
@@ -1411,9 +1411,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                             if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() <= 3) {
                                 //  hint1.setVisibility(View.INVISIBLE);
-                                hint1.setImageResource(R.drawable.nohint1);
+                                hint1.setImageResource(R.drawable.noidea1cartoon);
                             } else {
-                                hint1.setImageResource(R.drawable.idea);
+                                hint1.setImageResource(R.drawable.idea1cartoon);
                             }
 
                             dialog.cancel();
@@ -2457,9 +2457,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             // if boxes less than or eual to 3 then hint1 invisble
             if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() <= 3) {
                 // hint1.setVisibility(View.INVISIBLE);
-                hint1.setImageResource(R.drawable.nohint1);
+                hint1.setImageResource(R.drawable.noidea1cartoon);
             } else {
-                hint1.setImageResource(R.drawable.idea);
+                hint1.setImageResource(R.drawable.idea1cartoon);
             }
 
             //this is for left and right images visibility and invisibility
@@ -2553,9 +2553,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             //if boxes less than or equal to 3 then hint1 invisible
             if (currentQ.getANSWER().length() + currentQ.getANSWER2().length() <= 3) {
                 //  hint1.setVisibility(View.INVISIBLE);
-                hint1.setImageResource(R.drawable.nohint1);
+                hint1.setImageResource(R.drawable.noidea1cartoon);
             } else {
-                hint1.setImageResource(R.drawable.idea);
+                hint1.setImageResource(R.drawable.idea1cartoon);
             }
 
             //this is for left and right images visibility and invisibility

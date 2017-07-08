@@ -32,11 +32,7 @@ class MyPageerAdapterPersonality extends FragmentStatePagerAdapter {
 
     }
 
-    /*@Override
-    public Fragment getItem(int position) {
-        MyFragment myFragment = MyFragment.getInstance(position);
-        return myFragment;
-    }*/
+
     @Override
     public Fragment getItem(int position) {
 
@@ -78,7 +74,7 @@ class MyPageerAdapterPersonality extends FragmentStatePagerAdapter {
                     drawable.setBounds(0,0,90,90);
                     // Toast.makeText(context, "NORMAL-large", Toast.LENGTH_LONG).show();
                 }else {
-                    drawable.setBounds(0,0,50,50);
+                    drawable.setBounds(0,0,60,60);
                     //    Toast.makeText(context, "NORMAL-default", Toast.LENGTH_LONG).show();
                 }
 

@@ -14,7 +14,7 @@ import java.util.List;
 public class DemoHelperClass extends SQLiteOpenHelper {
     Context context;
     private static final String DATABASE_NAME = "DEMOGAMEDBB";
-    private static int DATABASE_VERSION = 968;
+    private static int DATABASE_VERSION = 971;
     private static final String TABLE_NAME = "TRIVIAQUIZ";
     private static final String UID = "_UID";
     private static final String QUESTION = "QUESTION";
@@ -2895,7 +2895,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List getCheckQadded() {
+     List getCheckQadded() {
         String coloumns[] = {CHEKQADDED};
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();

@@ -74,7 +74,7 @@ public class Tab14 extends Fragment {
             for (int i = 0; i < xyz.size(); i++) {
                 int x = (Integer) xyz.get(i);
                 if (x >= 820 && x< 860) {
-                    imageView[x-820] = R.drawable.correct;
+                    imageView[x-820] = R.drawable.correctcartoon;
                     list.add(1);
                 }
             }

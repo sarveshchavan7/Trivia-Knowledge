@@ -26,7 +26,7 @@
                     android:id="@+id/leftpersonality"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/left_filled" />
+                    android:src="@drawable/backcartoon" />
 
                 <TextView
                     android:id="@+id/textviewpersonality"
@@ -220,14 +220,14 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:onClick="revealhole"
-                    android:src="@drawable/idea2" />
+                    android:src="@drawable/idea2cartoon" />
 
                 <ImageView
                     android:contentDescription="@string/free_hint"
                     android:id="@+id/hint"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/idea" />
+                    android:src="@drawable/idea1cartoon" />
 
                 <ImageView
                     android:contentDescription="@string/Boomblast"
@@ -235,7 +235,7 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:onClick="bomb"
-                    android:src="@drawable/bombtimer" />
+                    android:src="@drawable/boomcartoon" />
 
             </LinearLayout>
 

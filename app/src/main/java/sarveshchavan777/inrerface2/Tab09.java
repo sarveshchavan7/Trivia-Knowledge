@@ -78,7 +78,7 @@ public class Tab09 extends Fragment {
             for (int i = 0; i < xyz.size(); i++) {
                 int x = (Integer) xyz.get(i);
                 if (x >= 520 && x< 600) {
-                    imageView[x-520] = R.drawable.correct;
+                    imageView[x-520] = R.drawable.correctcartoon;
                     list.add(1);
                 }
             }

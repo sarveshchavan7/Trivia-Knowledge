@@ -14,16 +14,17 @@
            android:background="@color/darkpink"
            android:minHeight="?actionBarSize">
             <ImageView
+                android:contentDescription="@string/goback"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/left_filled"
+                android:src="@drawable/backcartoon"
                 android:id="@+id/left"/>
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:id="@+id/textviewimagecredit"
                android:textSize="60sp"
-               android:text="Text"
+               android:text="@string/Text"
                android:paddingLeft="18dp"
                android:paddingRight="18dp"
                android:textColor="#ffffff"/>

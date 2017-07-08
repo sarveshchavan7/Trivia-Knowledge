@@ -33,12 +33,7 @@ class MyPagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
-    /*@Override
-    public Fragment getItem(int position) {
-        MyFragment myFragment = MyFragment.getInstance(position);
-        return myFragment;
 
-    }*/
     @Override
     public Fragment getItem(int position) {
 

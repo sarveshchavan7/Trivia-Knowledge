@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
 
 
     int numboftabs = 3;
-    public int icon[] = {R.drawable.home, R.drawable.settings, R.drawable.trophy};
+    public int icon[] = {R.drawable.homecartoon, R.drawable.settingscartoon, R.drawable.achievementcartoon};
 
 
     //google variable

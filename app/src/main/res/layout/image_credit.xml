@@ -3,61 +3,71 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-       <android.support.v7.widget.Toolbar
-           xmlns:android="http://schemas.android.com/apk/res/android"
-           android:id="@+id/toolbar"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:background="@color/darkpink"
-           android:minHeight="?actionBarSize">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/darkpink"
+            android:minHeight="?actionBarSize">
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/left_filled"
+                android:contentDescription="@string/goback"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/backcartoon"
                 android:id="@+id/left"/>
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:id="@+id/textviewimagecredit"
-               android:textSize="30sp"
-               android:text="Text"
-               android:paddingLeft="12dp"
-               android:textColor="#ffffff"/>
-       </android.support.v7.widget.Toolbar>
-   </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewimagecredit"
+                android:textSize="27sp"
+                android:text="@string/Text"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#ffffff"/>
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
     <TextView
-        android:paddingRight="10dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
         android:gravity="center"
-        android:text="Text2"
-        android:textSize="23dp"
+        android:layout_weight="1"
+        android:text="@string/imagecredits2"
+        android:textSize="20sp"
         android:textColor="@color/grey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imagecredit2"
-         android:paddingTop="40dp"
-        android:paddingBottom="40dp"/>
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"/>
     <TextView
-        android:paddingRight="10dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
         android:gravity="top|center"
-        android:text="Text3"
-        android:textSize="23dp"
+        android:layout_weight="1"
+        android:text="@string/imagecredits3"
+        android:textSize="20sp"
         android:textColor="@color/grey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imagecredit3"  android:paddingTop="40dp"
-        android:paddingBottom="40dp"/>
+        android:id="@+id/imagecredit3"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center">
         <info.hoang8f.widget.FButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Icons8"
+            android:text="@string/icons8"
             android:id="@+id/icons8"
+            android:gravity="center"
             android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>
