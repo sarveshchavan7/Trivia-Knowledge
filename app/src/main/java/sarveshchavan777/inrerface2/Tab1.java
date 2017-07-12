@@ -46,10 +46,11 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
     TextView tv;
     Button b1, b2, b3;
     FButton cancelSlider;
-
+    //private static int RC_YOUR_UNIQUE_ID = R.string.leaderboard_1;
     int i = 2;
     // Billionaires json url
-    private static final String getURL = "https://api.myjson.com/bins/8wgo1";
+   // private static final String getURL = "https://api.myjson.com/bins/8wgo1";
+    private static final String getURL2="https://api.myjson.com/bins/l208f";
     HashMap<String, String> url_maps;
     DemoHelperClass demoHelperClass;
     MediaPlayer ring;
@@ -113,15 +114,24 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
             @Override
             public void onClick(View view) {
                 //GoogleApiClient client = AppController.getInstance().getClient();
-                if (MainActivity.mGoogleApiClient.isConnected()) {
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(MainActivity.mGoogleApiClient,
-                            LEADERBOARD_ID), REQUEST_LEADERBOARD);
-                } else {
-                    BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.leaderboards_not_available)).show();
+
+
+                try {
+                    if (MainActivity.getmGoogleApiClient().isConnected()) {
+                        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(MainActivity.mGoogleApiClient,
+                                LEADERBOARD_ID), REQUEST_LEADERBOARD);
+                    } else {
+                        BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.leaderboards_not_available)).show();
+                    }
+
+
+                } catch (Exception e) {
+                   // ((MainActivity) getActivity()).onActivityResult(RC_YOUR_UNIQUE_ID,GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED,null);
                 }
 
+
                 if (checkSound()) {
-                     ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
+                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                     ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         @Override
@@ -139,7 +149,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
             public void onClick(View view) {
                 getActivity().finish();
                 if (checkSound()) {
-                     ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
+                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                     ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         @Override
@@ -161,7 +171,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.detach(Tab1.this).attach(Tab1.this).commit();
                 if (checkSound()) {
-                   ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
+                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
                     ring.start();
                     ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         @Override
@@ -197,12 +207,12 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-        Toast.makeText(getActivity(), slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(getActivity(), slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
     }
 
     public void sliderJson() {
         JsonArrayRequest billionaireReq = new JsonArrayRequest(
-                getURL,
+                getURL2,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -239,7 +249,11 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        tv.setText(getResources().getString(R.string.networkIssue));
+                       try{
+                           tv.setText(getResources().getString(R.string.networkIssue));
+                       }catch (Exception e){
+                           //
+                       }
                     }
                 });
 
@@ -249,7 +263,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Stack);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-        mDemoSlider.setDuration(4000);
+        mDemoSlider.setDuration(5500);
         mDemoSlider.setPresetTransformer("Accordion");
     }
 
@@ -267,7 +281,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(ring!=null) {
+        if (ring != null) {
             ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -279,4 +293,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
     }
 
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    }
 }

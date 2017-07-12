@@ -12,11 +12,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.games.GamesActivityResultCodes;
 import com.google.example.games.basegameutils.BaseGameUtils;
 
 import java.util.List;
@@ -28,15 +30,15 @@ public class MainActivity extends AppCompatActivity
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
+
     FloatingActionButton fab;
-
-
     int numboftabs = 3;
     public int icon[] = {R.drawable.homecartoon, R.drawable.settingscartoon, R.drawable.achievementcartoon};
 
 
     //google variable
     private static int RC_SIGN_IN = 9001;
+//    private static int RC_YOUR_UNIQUE_ID = R.string.leaderboard_1;
     private boolean mResolvingConnectionFailure = false;
 
     private boolean mSignInClicked = false;
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity
         ViewPager mPager;
         SlidingTabLayout mTabs;
 
+        //mGoogleApiClientMethod();
+
         // Create the Google Api Client with access to the Play Games services
         mGoogleApiClient = new GoogleApiClient.Builder(getApplicationContext())
                 .addConnectionCallbacks(this)
@@ -72,7 +76,7 @@ public class MainActivity extends AppCompatActivity
             // run your one time code
             //  Toast.makeText(MainActivity.this,"this is one time only",Toast.LENGTH_LONG).show();
             mSignInClicked = true;
-            if(mGoogleApiClient!=null){
+            if (mGoogleApiClient != null) {
                 if (!mGoogleApiClient.isConnected()) {
                     mGoogleApiClient.connect();
                 }
@@ -99,26 +103,36 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //sign in
-                if (mGoogleApiClient != null && !mGoogleApiClient.isConnected()) {
-                    // start the asynchronous sign in flow
-                    mSignInClicked = true;
-                    mGoogleApiClient.connect();
-                    if (mGoogleApiClient.isConnected()) {
-                        fab.setImageResource(R.drawable.gsignout);
+                try {
+                    if (mGoogleApiClient != null && !getmGoogleApiClient().isConnected()) {
+                        // start the asynchronous sign in flow
+                        mSignInClicked = true;
+                        mGoogleApiClient.connect();
+                        if (mGoogleApiClient.isConnected()) {
+                            fab.setImageResource(R.drawable.gsignout);
+                        }
                     }
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
 
+
                 // sign out.
-                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-                    mExplicitSignOut = true;
-                    mSignInClicked = false;
-                    Games.signOut(mGoogleApiClient);
-                    mGoogleApiClient.disconnect();
-                    // show sign-in button, hide the sign-out button
-                    if (!mGoogleApiClient.isConnected()) {
-                        fab.setImageResource(R.drawable.gsignin);
+                try {
+                    if (mGoogleApiClient != null && getmGoogleApiClient().isConnected()) {
+                        mExplicitSignOut = true;
+                        mSignInClicked = false;
+                        Games.signOut(mGoogleApiClient);
+                        mGoogleApiClient.disconnect();
+                        // show sign-in button, hide the sign-out button
+                        if (!mGoogleApiClient.isConnected()) {
+                            fab.setImageResource(R.drawable.gsignin);
+                        }
                     }
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
+
 
                 if (checkSound()) {
                     ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
@@ -134,6 +148,9 @@ public class MainActivity extends AppCompatActivity
         });
         if (mGoogleApiClient.isConnected()) {
             fab.setImageResource(R.drawable.gsignout);
+        }
+        if (!mGoogleApiClient.isConnected()) {
+            fab.setImageResource(R.drawable.gsignin);
         }
     }
 
@@ -190,7 +207,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-   @Override
+    @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         if (mResolvingConnectionFailure) {
             // Already resolving
@@ -219,6 +236,10 @@ public class MainActivity extends AppCompatActivity
 
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent intent) {
+
+        //Toast.makeText(getApplicationContext(), "called", Toast.LENGTH_LONG).show();
+
+
         if (requestCode == RC_SIGN_IN) {
             mSignInClicked = false;
             mResolvingConnectionFailure = false;
@@ -233,10 +254,19 @@ public class MainActivity extends AppCompatActivity
                         requestCode, resultCode, R.string.signin_failure);
             }
         }
+
+        if (/*requestCode == RC_YOUR_UNIQUE_ID*/
+               /* &&*/ resultCode == GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED) {
+            MainActivity.mGoogleApiClient.disconnect();
+            fab.setImageResource(R.drawable.gsignin);
+            // update your logic here (show login btn, hide logout btn).
+            //Toast.makeText(getApplicationContext(), "result reconnect req", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public Boolean checkSound() {
-      demoHelperClass = new DemoHelperClass(getApplicationContext());
+        demoHelperClass = new DemoHelperClass(getApplicationContext());
         List list = demoHelperClass.getSound();
         if (list != null) {
             if (list.size() % 2 == 0) {
@@ -250,7 +280,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(ring!=null){
+        if (ring != null) {
             ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -259,6 +289,11 @@ public class MainActivity extends AppCompatActivity
             });
         }
     }
+
+    public static GoogleApiClient getmGoogleApiClient() {
+        return mGoogleApiClient;
+    }
+
 
 }
 

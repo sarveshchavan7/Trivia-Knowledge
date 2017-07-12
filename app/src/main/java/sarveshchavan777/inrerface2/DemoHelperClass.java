@@ -14,7 +14,7 @@ import java.util.List;
 public class DemoHelperClass extends SQLiteOpenHelper {
     Context context;
     private static final String DATABASE_NAME = "DEMOGAMEDBB";
-    private static int DATABASE_VERSION = 971;
+    private static int DATABASE_VERSION = 973;
     private static final String TABLE_NAME = "TRIVIAQUIZ";
     private static final String UID = "_UID";
     private static final String QUESTION = "QUESTION";
@@ -2840,7 +2840,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME8, coloumns, null, null, null, null, null);
         List<Integer> list2 = new ArrayList<>();
-        list2.add(300);
+        list2.add(1000);
 
         while (cursor.moveToNext()) {
             int questionId = cursor.getInt(0);

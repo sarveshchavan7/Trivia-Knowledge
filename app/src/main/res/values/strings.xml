@@ -4,7 +4,7 @@
     <string name="fb_login_protocol_scheme">fb1044794215655698</string>
     <string name="fbText">We will never post without\nyour permission !</string>
     <string name="likeusonfb">Visit or Like us On fB\n\nso you won\'t miss any news,updates..</string>
-   <string name="joinfb">Join our fb group\n\nsuggest,rate questions in our fb group</string>
+    <string name="joinfb">Join our fb group\n\nsuggest,rate questions in our fb group</string>
 
     <string name="taptoviewachievement">Tap to view\nAchievements</string>
     <string name="achievement_not_available">Achievement not available.\nPlease sign in and try again.</string>
@@ -63,7 +63,7 @@
     <string name="cancel">✖</string>
     <string name="pause">||</string>
     <string name="artsandgk">Arts &amp; gk</string>
-        <string name="facebook1">Facebook</string>
+    <string name="facebook1">Facebook</string>
     <string name="facebook2">Login with facebook to start suggesting questions in facebook group</string>
     <string name="googleplus1">Google plus</string>
     <string name="googleplus2">Login with google + to start suggesting questions in google plus community</string>
@@ -79,13 +79,13 @@
         <item>facebook</item>
         <item>gmail</item>
         <item>whatsapp</item>
-        <item>fb messanger</item>
+        <item>fb messenger</item>
     </string-array>
     <string name="easy">EASY</string>
     <string name="medium">MEDIUM</string>
-   <string name="hard">HARD</string>
-<string name="imagecredit">Image Credit</string>
-<string name="imagecredits2">
+    <string name="hard">HARD</string>
+    <string name="imagecredit">Image Credit</string>
+    <string name="imagecredits2">
     <item>\u00A0\u00A0 Trivia Knowledge \n\n
             \u00A0\u00A0Some images where purchased\n
             \u00A0\u00A0from Shutterstock under the\nstandard license.\n
@@ -100,7 +100,7 @@
         </item>
     </string>
 
-    <string name="networkIssue">network issue: Slow network / No network</string>
+    <string name="networkIssue">network issue: Slow network /No network/Server issue</string>
     <string name="selectCategory">Select Category</string>
     <string name="AboutTriviaKnowledge">About Trivia Knowledge</string>
     <string name="Privacypolicy">Privacy policy</string>
@@ -135,4 +135,5 @@
     <string name="useless_alphabet_removed">Useless alphabet removed</string>
     <string name="sound">Sound</string>
     <string name="shop">Shop</string>
+    <string name="charetakergames"> </string>
 </resources>

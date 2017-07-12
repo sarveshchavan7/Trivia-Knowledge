@@ -249,7 +249,6 @@ public class Tab2 extends Fragment {
                     Intent intent = new Intent(getActivity(), InAppPurchase.class);
                     intent.putExtra("key",20000);
                     startActivity(intent);
-
                 }
             }
         });

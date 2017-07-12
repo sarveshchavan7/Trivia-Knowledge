@@ -44,11 +44,16 @@ public class Tab3 extends Fragment {
         achievement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.mGoogleApiClient.isConnected()) {
-                    startActivityForResult(Games.Achievements.getAchievementsIntent(MainActivity.mGoogleApiClient),
-                            REQUEST_ACHIEVEMENTS);
-                } else {
-                    BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.achievement_not_available)).show();
+
+                try{
+                    if (MainActivity.mGoogleApiClient.isConnected()) {
+                        startActivityForResult(Games.Achievements.getAchievementsIntent(MainActivity.mGoogleApiClient),
+                                REQUEST_ACHIEVEMENTS);
+                    } else {
+                        BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.achievement_not_available)).show();
+                    }
+                }catch (Exception e){
+                    //this will take care it won't crash app.
                 }
 
                 if (checkSound()) {

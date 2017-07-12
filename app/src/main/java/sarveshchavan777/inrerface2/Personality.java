@@ -163,7 +163,10 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 .build();
 
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (!prefs.getBoolean("firstTime", false)) {
             // run your one time code
             // banner  admob.
@@ -190,12 +193,10 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     mAdView = (AdView) findViewById(R.id.adView);
                     AdRequest adRequest = new AdRequest.Builder()
                             .addNetworkExtrasBundle(ChartboostAdapter.class, bundle)
-                            //c .addNetworkExtrasBundle(AdColonyAdapter.class, AdColonyBundleBuilder.build())
                             .build();
                     mAdView.loadAd(adRequest); //Your code to show add
-
                 }
-            }, 21000);
+            }, 20000);
         }
 
         /*if (DemoHelperClass.adsHelper == 1) {
@@ -1134,7 +1135,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                 cracker2.setImageResource(R.drawable.cracker77);
                 cracker3.setImageResource(R.drawable.cracker88);
-                cracker4.setImageResource(R.drawable.cracker88);
+                cracker4.setImageResource(R.drawable.cracker99);
                 //for interval...
             }
         };
@@ -1145,7 +1146,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
             public void run() {
                 cracker1.setAnimation(fadeOut2);
-                cracker2.setImageResource(R.drawable.cracker88);
+                cracker2.setImageResource(R.drawable.cracker99);
                 //for interval...
             }
         };

@@ -14,7 +14,16 @@
         android:layout_height="60dp"
         android:background="@color/colorPrimary"
         android:minHeight="?actionBarSize">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:id="@+id/gps_popup">
 
+        </View>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +68,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-
+</LinearLayout>
 </LinearLayout>
     </android.support.v7.widget.Toolbar>
 

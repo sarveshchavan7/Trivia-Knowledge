@@ -13,7 +13,7 @@
        android:textColor="@color/white"
        android:text="@string/taptoviewachievement"
        app:buttonColor="@color/darkpink"
-       android:drawableTop="@drawable/trophy2"
+       android:drawableTop="@drawable/achievementcartoon"
        android:layout_height="150dp"/>
 
 </RelativeLayout>

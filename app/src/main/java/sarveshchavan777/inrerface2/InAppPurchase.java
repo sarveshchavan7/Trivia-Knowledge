@@ -413,13 +413,13 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
 
     @Override
     public void onBackPressed() {
-        if(value!=2000){
+        if(value!=20000){
             Intent intent = new Intent(getApplicationContext(), Personality.class);
             intent.putExtra("Key", String.valueOf(value));
             startActivity(intent);
             finish();
         }
-        if(value==2000){
+        if(value==20000){
             finish();
         }
     }
