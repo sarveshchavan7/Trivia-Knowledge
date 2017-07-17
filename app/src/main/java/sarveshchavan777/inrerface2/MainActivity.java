@@ -158,6 +158,7 @@ public class MainActivity extends AppCompatActivity
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+        System.exit(0);
     }
 
     @Override
@@ -293,7 +294,6 @@ public class MainActivity extends AppCompatActivity
     public static GoogleApiClient getmGoogleApiClient() {
         return mGoogleApiClient;
     }
-
 
 }
 

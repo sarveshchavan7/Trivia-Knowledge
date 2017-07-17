@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+
 import com.beardedhen.androidbootstrap.BootstrapProgressBar;
 
 import java.util.ArrayList;
@@ -20,8 +21,9 @@ import java.util.List;
 public class Tab02 extends Fragment {
     GridView gridview;
     DemoHelperClass demoHelperClass;
- BootstrapProgressBar Progress;
+    BootstrapProgressBar Progress;
     TextView progressText;
+
     public Tab02() {
 
     }
@@ -44,8 +46,8 @@ public class Tab02 extends Fragment {
         Integer imageView[] = new Integer[60];
         String s[] = new String[60];
         String per[] = {"Politician", "Entrepreneur", "Scientist", "Singer/songwriter", "Actor",
-                "Sportsperson","Actress", "Inventor", "Mathematician", "Disc-jockey", "Comedian",
-                "Poet","Author","Writer","Explorer","Pope","Activist","Saint","Philosopher"};
+                "Sportsperson", "Actress", "Inventor", "Mathematician", "Disc-jockey", "Comedian",
+                "Poet", "Author", "Writer", "Explorer", "Pope", "Activist", "Saint", "Philosopher"};
 
         String s1[] = {per[3], per[0], per[4], per[10], per[2], per[5], per[0], per[1], per[6], per[10],
                 per[3], per[2], per[6], per[3], per[1], per[5], per[15], per[14], per[1], per[12],
@@ -74,7 +76,7 @@ public class Tab02 extends Fragment {
             for (int i = 0; i < xyz.size(); i++) {
                 int x = (Integer) xyz.get(i);
                 if (x >= 60 && x < 120) {
-                    imageView[x-60] = R.drawable.correctcartoon;
+                    imageView[x - 60] = R.drawable.correctcartoon;
                     list.add(1);
                 }
             }
@@ -98,6 +100,7 @@ public class Tab02 extends Fragment {
 
                 Intent intent = new Intent(getActivity().getApplicationContext(), Personality.class);
                 intent.putExtra("Key", Integer.toString(position + 60));
+
                 startActivity(intent);
                 getActivity().finish();
 
@@ -110,6 +113,6 @@ public class Tab02 extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Progress=null;
+        Progress = null;
     }
 }

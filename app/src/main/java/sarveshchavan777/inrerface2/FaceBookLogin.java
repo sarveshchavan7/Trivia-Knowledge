@@ -107,7 +107,7 @@ public class FaceBookLogin extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
-                Toast.makeText(FaceBookLogin.this, "some error occurred" + error, Toast.LENGTH_LONG).show();
+                Toast.makeText(FaceBookLogin.this, "error:make sure you have internet connection & try again", Toast.LENGTH_LONG).show();
                 abc = "2";
             }
         });

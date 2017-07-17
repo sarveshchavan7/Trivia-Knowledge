@@ -59,7 +59,7 @@
     <string name="rateandanswer1">Rate or Answer questions</string>
     <string name="shopGems">--------Gems--------</string>
     <string name="buyDiamond2">30 Gems\n\nUSD 0.99</string>
-    <string name="resetgameinfo">You are about to delete your game progress from your device.\n\n Your score, answers and hints will be deleted.</string>
+    <string name="resetgameinfo">You are about to delete your game progress from your device.\n\nYour score, in app purchase(if any), answers and hints will be deleted.</string>
     <string name="cancel">✖</string>
     <string name="pause">||</string>
     <string name="artsandgk">Arts &amp; gk</string>
@@ -67,6 +67,10 @@
     <string name="facebook2">Login with facebook to start suggesting questions in facebook group</string>
     <string name="googleplus1">Google plus</string>
     <string name="googleplus2">Login with google + to start suggesting questions in google plus community</string>
+    <string name="fillsomerandomeanswer">Fill some random answer boxes.</string>
+    <string name="absolutlyfree">Absolutely  Free!!!!!</string>
+    <string name="FreeHint">Free Hint</string>
+    <string name="Image">Image</string>
     <string-array name="tabsss">
         <item>TAB1</item>
         <item>TAB2</item>
@@ -88,14 +92,14 @@
     <string name="imagecredits2">
     <item>\u00A0\u00A0 Trivia Knowledge \n\n
             \u00A0\u00A0Some images where purchased\n
-            \u00A0\u00A0from Shutterstock under the\nstandard license.\n
+            \u00A0\u00A0from Shutterstock &amp; used under the\nStandard license.\n
 
     </item>
 </string>
     <string name="imagecredits3">
         <item>
            \u00A0\u00A0Icons where used from Icons8\n
-            \u00A0\u00A0under the license called\n
+            \u00A0\u00A0under the license\n
             Creative Commons Attribution-NoDerivs 3.0 Unported.
         </item>
     </string>
@@ -136,4 +140,14 @@
     <string name="sound">Sound</string>
     <string name="shop">Shop</string>
     <string name="charetakergames"> </string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="PlayGame">Play Game</string>
+    <string name="quit">Quit</string>
+    <string name="ResetGame">Reset Game!</string>
+    <string name="ok">OK</string>
+    <string name="next">Next</string>
+    <string name="shopline">-------------------Shop-------------------</string>
+    <string name="rewardline">-----------------REWARD-----------------</string>
+    <string name="cost2gems">Cost : 2 gems</string>
+    <string name="reveal">Reveal</string>
 </resources>

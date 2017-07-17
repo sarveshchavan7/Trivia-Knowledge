@@ -119,8 +119,8 @@
 
                 <info.hoang8f.widget.FButton
                     android:id="@+id/earnAchievement"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:drawableTop="@drawable/achievementunclock"
                     android:textColor="@color/grey"
                     android:textSize="15sp"
@@ -145,8 +145,8 @@
 
                 <info.hoang8f.widget.FButton
                     android:id="@+id/earnAchievementTwo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:drawableTop="@drawable/achievementunclock"
                     android:textColor="@color/grey"
                     android:textSize="13sp"

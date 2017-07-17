@@ -48,10 +48,10 @@ public class Tab11 extends Fragment {
         Integer imageView[] = new Integer[60];
         String s[] = new String[60];
 
-        String per[] = {"Phy","Chem","Bio","Maths","Sci","Tech"};
+        String per[] = {"Phy","Chem","Bio","Maths","Sci","Tech","Space"};
 
         String s1[] = {per[3], per[0], per[2], per[0], per[0], per[0], per[0], per[4], per[0], per[0],
-                per[0], per[1], per[4], per[5], per[2], per[1], per[4], per[1], per[4], per[2],
+                per[0], per[1], per[6], per[5], per[2], per[1], per[6], per[1], per[4], per[2],
                 per[1], per[3], per[2], per[1], per[2], per[4], per[1], per[1], per[5], per[1],
                 per[0], per[1], per[0], per[0], per[0], per[1], per[1], per[0], per[1], per[1],
                 per[0], per[0], per[1], per[0], per[1], per[0], per[1], per[1], per[1], per[0],

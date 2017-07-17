@@ -25,7 +25,7 @@
             android:gravity="center"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            android:text="Reveal"
+            android:text="@string/reveal"
             android:textColor="@color/white"
             android:textSize="27sp" />
 
@@ -40,8 +40,8 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:text="@string/cancel"
-                android:textSize="12sp"
                 android:textColor="@color/white"
+                android:textSize="12sp"
                 app:buttonColor="@color/cancelred" />
         </RelativeLayout>
     </LinearLayout>
@@ -58,7 +58,7 @@
         android:background="@color/transparent"
         android:gravity="center"
         android:paddingTop="5dp"
-        android:text="Cost : 2 gems"
+        android:text="@string/cost2gems"
         android:textColor="@color/white"
         android:textSize="18sp" />
 
@@ -78,6 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="115dp"
             android:layout_weight="1"
+            android:drawableEnd="@drawable/gems"
             android:drawableRight="@drawable/gems"
             android:gravity="center"
             android:paddingLeft="5dp"
@@ -98,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="--------REWARD--------"
+            android:text="@string/rewardline"
             android:textColor="@color/lightred"
             android:textSize="15sp" />
 
@@ -111,6 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="115dp"
             android:layout_weight="1"
+            android:drawableEnd="@drawable/youtube_2"
             android:drawableRight="@drawable/youtube_2"
             android:gravity="center"
             android:paddingLeft="5dp"
@@ -131,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="--------Shop--------"
+            android:text="@string/shopline"
             android:textColor="@color/lightred"
             android:textSize="15sp" />
 
@@ -144,6 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="115dp"
             android:layout_weight="1"
+            android:drawableEnd="@drawable/buydiamond"
             android:drawableRight="@drawable/buydiamond"
             android:gravity="center"
             android:paddingLeft="5dp"

@@ -51,7 +51,7 @@ public class Tab07 extends Fragment {
         String per[] = {"Landmark","Geo","Mountain","River","Ocean","Space","Desert","Capital"};
 
         String s1[] = {per[0], per[7], per[1], per[2], per[3], per[0], per[7], per[1], per[2], per[4],
-                per[0], per[7], per[5], per[2], per[1], per[0], per[7], per[1], per[1], per[1],
+                per[0], per[7], per[5], per[2], per[1], per[0], per[7], per[1], per[2], per[1],
                 per[0], per[7], per[1], per[2], per[4], per[5], per[1], per[7], per[0], per[7],
                 per[1], per[2], per[4], per[1], per[7], per[1], per[0], per[1], per[7], per[1],
                 per[0], per[7], per[6], per[2], per[4], per[0], per[7], per[1], per[2], per[3],

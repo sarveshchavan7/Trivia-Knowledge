@@ -15,7 +15,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -222,7 +221,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                             try {
 
                                 JSONObject obj = response.getJSONObject(i);
-                                url_maps.put(obj.getString("releaseYear") + " - " + obj.getString("title"), obj.getString("image"));
+                                url_maps.put(/*obj.getString("releaseYear") + " - " + */obj.getString("title"), obj.getString("image"));
                                /* Toast.makeText(getActivity(),obj.getString("title"),Toast.LENGTH_LONG).show();*/
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -292,8 +291,4 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
         }
     }
 
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-    }
 }

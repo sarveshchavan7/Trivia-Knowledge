@@ -14,7 +14,7 @@ import java.util.List;
 public class DemoHelperClass extends SQLiteOpenHelper {
     Context context;
     private static final String DATABASE_NAME = "DEMOGAMEDBB";
-    private static int DATABASE_VERSION = 973;
+    private static int DATABASE_VERSION = 983;
     private static final String TABLE_NAME = "TRIVIAQUIZ";
     private static final String UID = "_UID";
     private static final String QUESTION = "QUESTION";
@@ -156,7 +156,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Who is know as the 'King of Pop' ?", "IOKAYJLHCSMQCQNEYA", "MICHAEL", "JACKSON", "MHJSCANCI", "NDEDALKKO", "KNDD"));
 
-        allQuestions.add(new Questions("The war drama film ‘Born on the Fourth of July’ (1989) is one of best known movies of which actor ?", "HCMFSOBAIUIUCQQETR", "TOM", "CRUISE", "KCIUYMJR", "SWGCETUO", "KGWJYUC"));
+        allQuestions.add(new Questions("The war drama film ‘Born on the Fourth of July’ (1989) is one of best known movie of which actor ?", "HCMFSOBAIUIUCQQETR", "TOM", "CRUISE", "KCIUYMJR", "SWGCETUO", "KGWJYUC"));
 
         allQuestions.add(new Questions("Which cricketer is also know as 'God of Cricket'?", "HESLKTRHRIACUDAWNN", "SACHIN", "TENDULKAR", "KDCINLRTE", "HGATUHSAN", "GTH"));
 
@@ -164,7 +164,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("In 2015, who has been estimated to have a net worth of 1 billion dollars, setting the record of being the first billionaire athlete(Basketball player) ever ?", "CHEJHIQANAUFMLRDQO", "MICHAEL", "JORDAN", "RNLIHAEMV", "JDWJCOBCA", "VWJBC"));
 
-        allQuestions.add(new Questions("Who co-founded Microsoft company with  Paul Allen, which became the world's largest PC software company ?", "YUKGSACDEALTILCKBW", "BILL", "GATES", "SLELIILS", "TWSAOBPG", "PWSILOS"));
+        allQuestions.add(new Questions("Who co-founded Microsoft company with Paul Allen, which became the world's largest PC software company ?", "YUKGSACDEALTILCKBW", "BILL", "GATES", "SLELIILS", "TWSAOBPG", "PWSILOS"));
 
         allQuestions.add(new Questions("At the 2008 Beijing olympics, which athlete won gold medals in 100m, 200m and 4x100m relay ?", "XTBYRNNWOIRTUIZAGS", "USAIN", "BOLT", "NQODOLIV", "AWPSTTBU", "VTODQWP"));
 
@@ -180,7 +180,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Which famous chef revealed one of the secrets to his success thus, “If you want to become a great chef, you have to work with great chefs. And that's exactly what I did”.", "NOYORSDRRACZGANCMO", "GORDON", "RAMSAY", "RXMNRAOQN", "SABODMGFY", "BXQNMF"));
 
-        allQuestions.add(new Questions("Who became the First youtuber to hit 50 million subscribers ?", "MPPIRIERANEMFEEDWR", "PEWDIEPIE", "", "PFWEIECD", "IIDEETPC", "CTDFICE"));
+        allQuestions.add(new Questions("Who became the first youtuber to hit 56 million subscribers ?", "MPPIRIERANEMFEEDWR", "PEWDIEPIE", "", "PFWEIECD", "IIDEETPC", "CTDFICE"));
 
         allQuestions.add(new Questions("Who was a French biologist, microbiologist and chemist renowned for his discoveries of the principles of vaccination, microbial fermentation and pasteurization ?", "UEBAILRLTURZOSDPLS", "LOUIS", "PASTEUR", "FQSIOBNVS", "PTUURESLA", "QFBSVN"));
 
@@ -210,7 +210,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Who was an American professional boxer and activist ?", "ABHIPILEAIAUDMMSMA", "MUHAMMAD", "ALI", "AAMILANMN", "MZDOVSHUS", "SNVZNSO"));
 
-        allQuestions.add(new Questions("which inventor gave world the first practical electric light bulb ?\n He suffered from hearing impairment since young and became deaf as an adult.", "LIPMSTSOKXOMDNHAEA", "THOMAS", "EDISON", "IESTESPND", "DFMADMHOO", "MDPFED"));
+        allQuestions.add(new Questions("Which inventor gave world the first practical electric light bulb ?\n He suffered from hearing impairment since young and became deaf as an adult.", "LIPMSTSOKXOMDNHAEA", "THOMAS", "EDISON", "IESTESPND", "DFMADMHOO", "MDPFED"));
 
         allQuestions.add(new Questions("Who was the sixteenth President of the United States & the first US President to be assassinated ?", "IANRORBHLFUCMLANAK", "ABRAHAM", "LINCOLN", "BLMLCANRV", "AJRNTAOHI", "TRJV"));
 
@@ -291,7 +291,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Her portrayal of Rachel Green from American sitcom \"Friends\" made her a fashion icon and the hairstyle she wore began to be called ‘the Rachel’.Name her.", "TNLIINNNRJOEBMSFEA", "JENNIFER", "ANISTON", "SJNUNTIEO", "FELANORIN", "ULO"));
 
-        allQuestions.add(new Questions("\"Aubrey _______ Graham\" is a Canadian rapper, singer, songwriter, record producer, and actor.\nHis songs include \"Hotline Bling\",\"One Dance\",\"\"Over\" etc.", "GZFZBRZGBWDROAKKED", "DRAKE", "", "RDIKNE", "OXPNUA", "NOIUPXN"));
+        allQuestions.add(new Questions("\"Aubrey _______ Graham\" is a Canadian rapper, singer, songwriter, record producer, and actor.\nHis songs include \"Hotline Bling\",\"One Dance\",\"Over\" etc.", "GZFZBRZGBWDROAKKED", "DRAKE", "", "RDIKNE", "OXPNUA", "NOIUPXN"));
 
         allQuestions.add(new Questions("______ is an American businessman who co-founded Twitter.", "JPASFBARQDKOCREDYS\n", "JACK", "DORSEY", "KHOQECHD", "RUKYJASR", "QKUHHR"));
 
@@ -425,7 +425,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Who was a famous English chemist and pioneer x-ray crystallographer who unravelled the structure of DNA and RNA ?", "AANNFNKLSRLIIOIDRP", "ROSALIND", "FRANKLIN", "INKFLOWNR", "LTAIDRANS", "WT"));
 
-        allQuestions.add(new Questions("\"John Joseph ______\" is an American actor and filmmaker, who has performed for over 60 years.", "NILACNOCRSJONDOKHV", "JACK", "NICHOLSON", "ENAKHVONS", "CIDCJONLE", "EVDNE"));
+        allQuestions.add(new Questions("\"______\" is an American actor and filmmaker,has won the Academy Award for Best Actor twice, one for the drama  \"One Flew Over the Cuckoo's Nest (1975)\" and the other for the romantic comedy \"As Good as It Gets (1997)\".", "NILACNOCRSJONDOKHV", "JACK", "NICHOLSON", "ENAKHVONS", "CIDCJONLE", "EVDNE"));
 
         allQuestions.add(new Questions("Who is the founder of the Ferrari automobile marquee ?", "RETNMFROOIYRZERMAD", "ENZO", "FERRARI", "RYETORNAZ", "RIEEAFRQR", "ATQERRY"));
 
@@ -511,7 +511,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         //Sports easy
         allQuestions.add(new Questions("He was honoured with the European Golden Shoe thrice in 2010, 2011 and 2012. He won the FIFA Club World Cup Golden Ball in 2009 and 2011. He was tagged as the European Golden Boy in the year 2005. Name this football legend.", "LILELCSDOMENESUIGI", "Lionel", "MESSI", "IJSTNJONE", "MLBZESILE", "JBETNJZ"));
 
-        allQuestions.add(new Questions("How many ring are there in Olympic flag (in words) ?", "ERLUFHZOEURAFBTEIV", "FIVE", "", "ZIEVLZ", "BBZDYF", "ZLZYZBBD"));
+        allQuestions.add(new Questions("How many rings are there in Olympic flag (in words) ?", "ERLUFHZOEURAFBTEIV", "FIVE", "", "ZIEVLZ", "BBZDYF", "ZLZYZBBD"));
 
         allQuestions.add(new Questions("Famous professional wrestler who has catchphrase \"You can't see me\". Name him.", "BNHCGJPUANYOMEJYJI", "JOHN", "CENA", "JWAEHON", "SICPNZE", "EWIZPS"));
 
@@ -545,7 +545,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("What sport use the term 'home run' long before baseball ?", "CRTKFHOECVLWICCLEU", "CRICKET", "", "CBJICTE", "NUKRDIT", "BDUJNIT"));
 
-        allQuestions.add(new Questions("In a standard game of chess, each of the two players begins a game with how many pieces (Iin words)?", "IPSRNXTFBOIPASEERT", "SIXTEEN", "", "HIEMNSE", "SETZTLX", "SHLEZTM"));
+        allQuestions.add(new Questions("In a standard game of chess, each of the two players begins a game with how many pieces (in words)?", "IPSRNXTFBOIPASEERT", "SIXTEEN", "", "HIEMNSE", "SETZTLX", "SHLEZTM"));
 
         allQuestions.add(new Questions("In sport acronym MVP stands for \"Most _____ _____.\"", "YEAHBVUALVRAEGPLNL", "VALUABLE", "PLAYER", "YLLRAYLET", "AAEBUVPXL", "YTLX"));
 
@@ -633,7 +633,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         //sports medium
         allQuestions.add(new Questions("How many players including the goaltender make up an ice hockey team (In words)?", "LNQNNWEIDSEOOXTTVF", "SIX", "", "ZMPNZ", "SIXDM", "ZDMNPMZ"));
 
-        allQuestions.add(new Questions("What sports is played on the biggest pitch in terms of area ?", "HXJLQJPRUWSGOOXOCB", "POLO", "", "IPQRBR", "DCPLOO", "CBIDPRRQ"));
+        allQuestions.add(new Questions("What sport is played on the biggest pitch in terms of area ?", "HXJLQJPRUWSGOOXOCB", "POLO", "", "IPQRBR", "DCPLOO", "CBIDPRRQ"));
 
         allQuestions.add(new Questions("What is the highest score possible in 10 pin bowling ?", "374123065485209658", "300", "", "37410", "30650", "7413650"));
 
@@ -679,11 +679,11 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Which Russian professional tennis player was tested positive for a banned substance at the 2016 Australian open ?", "IHMUAAASRPARAJOVEP", "MARIA", "SHARAPOVA", "PROVASHHA", "LRMLIGAAA", "LLHG"));
 
-        allQuestions.add(new Questions("In what year were women first allowed to participate in the modern olympic games ?\n HINT: It was held in paris.", "195175349085214590", "1900", "195075", "204590", "50752459", ""));
+        allQuestions.add(new Questions("In what year were women first allowed to participate in the modern olympic games ?\n HINT: It was held in paris.", "195175349085214590", "1900", "", "195075", "204590", "50752459"));
 
         allQuestions.add(new Questions("National game of indonesia is ?", "UTHQTMBZNTFNRODAIW", "badminton", "", "TCEAINOU", "LBDDYNMH", "HDLEUYC"));
 
-        allQuestions.add(new Questions("Guess : He is the all-time top scorer and former captain of the Ivory Coast national team", "IVDEPGIIRFOBUJRADD", "DIDIER", "DROGBA", "YIARDODGY", "DIKIELBUR", "KLIYYU"));
+        allQuestions.add(new Questions("Which soccer player has won Pichichi Trophy 2016 ?", "IVDEPGIIRFOBUJRADD", "LUIS", "SUAREZ","LSIAUULL","ZQVSEQRV","LVQQLV"));
 
         allQuestions.add(new Questions("______ is a former Indian cricketer who led his team to World Cup victory in 1983.", "KSPXYDVAVPIHCTEIQL", "KAPIL", "DEV", "IDVNELK", "BAOPCNH", "BHONCN"));
 
@@ -763,7 +763,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Durbey Cup associated with which sport ?", "KSECREAOREEXRYHGJL", "HORSE", "RACE", "CRHTYCET", "LPRARESO", "PTLTYCR"));
 
-        allQuestions.add(new Questions("The five rings on the Olympic symbol represent five ______ ?", "DCCZINECINNYTTOSQD", "CONTINENTS", "", "ZEOATTLN", "SNNCGIIO", "AZLOIG"));
+        allQuestions.add(new Questions("The five rings on the Olympic flag represent five ______ ?", "DCCZINECINNYTTOSQD", "CONTINENTS", "", "ZEOATTLN", "SNNCGIIO", "AZLOIG"));
 
         allQuestions.add(new Questions("The 1968 winter Olympics where held in which French city ?", "EBJSLBNIMBHPCEOGWR", "GRENOBLE", "", "EPZOLEB", "KZNGQTR", "ZZTPQK"));
 
@@ -771,7 +771,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Olympic games were held in ancient Greece in the honour of Greek God ________.", "YAPZJDUEDBZWGQFRSS", "ZEUS", "", "QCLXUE", "GHLSZV", "LHGQLCXV"));
 
-        allQuestions.add(new Questions("Europe's largest (NOT WORLD LARGEST) football stadium name which is located in Barcelona is ?", "OPOHXWUAUTHCDNMTOB", "CAMP", "NOU", "OVGMVCU", "OWAWNJP", "VGWWVJO"));
+        allQuestions.add(new Questions("Europe's largest (NOT WORLD LARGEST) football stadium which is located in Barcelona is ?", "OPOHXWUAUTHCDNMTOB", "CAMP", "NOU", "OVGMVCU", "OWAWNJP", "VGWWVJO"));
 
         allQuestions.add(new Questions("Who became the second indian captain after kapil dev to win the icc 50 World Cup for India ?", "PHOMHREDNNQISKZIFY", "MS", "DHONI", "DHOWXNB", "NDIISMA", "BWADXIN"));
 
@@ -785,7 +785,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("In which city is the headquarter of FIFA governing body located ?", "XUCIOBOTPHZBTHLQRY", "ZURICH", "", "HSIUXZC", "RRVANES", "SAXRVSNE"));
 
-        allQuestions.add(new Questions("Which Grand Slam tennis tournament start first in the year ?", "VRNNADEPIAITBSLUAO", "AUSTRALIAN", "OPEN", "KEOPKAITS", "RULMTAANN", "KKMT"));
+        allQuestions.add(new Questions("Which Grand Slam tennis tournament starts first in the year ?", "VRNNADEPIAITBSLUAO", "AUSTRALIAN", "OPEN", "KEOPKAITS", "RULMTAANN", "KKMT"));
 
         allQuestions.add(new Questions("Which one is the oldest running Grand Slam tennis tournament ?", "DLMTGMNAZOHEBLWLIY", "WIMBLEDON", "", "UIMLBENC", "RWHSODIO", "SRUHIOC"));
 
@@ -835,7 +835,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         allQuestions.add(new Questions("Which English Football League are known as The Tykes ?", "HSHRMBLENTMQAYCPVU", "Barnsley", "", "SCYAMEB", "ELVLGNR", "MGVLCE"));
 
 
-        allQuestions.add(new Questions("When swimming, what stroke provides the fastest world record times in the 100-meter and the 200-meter races ?", "TUTBNJKEUOYRLJFTWU", "butterfly", "", "HBFERYUT", "DGLBITVO", "BIOGVDH"));
+        allQuestions.add(new Questions("The ______ is a swimming stroke swum on the breast, with both arms moving symmetrically, accompanied by the dolphin kick ?", "TUTBNJKEUOYRLJFTWU", "butterfly", "", "HBFERYUT", "DGLBITVO", "BIOGVDH"));
 
         allQuestions.add(new Questions("Which team won the FA Cup in both 2013-14 and 2014-15 ?", "VLRMAWFQAIDDEASHRN\n", "Arsenal", "", "AADLURJ", "SJSFKEN", "FKJUSJD"));
 
@@ -853,7 +853,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Which company has become the BCCI’s official associate sponsor for four years in 2016 ?", "DQZUIOPCHOESYIGKPO", "PEPSICO", "", "ELJPGPO", "PSFCVIL", "GPLLJVF"));
 
-        allQuestions.add(new Questions("Who has won the ATP Argentina Open 2016 ?\nRafael Nadal lost against him in the semifinals.", "CMLOXOOITDIAMHITNE", "Dominic", "Thiem", "ICNNJECIU", "DIHDDMMTO", "CJUDND"));
+        allQuestions.add(new Questions("Who has won the ATP Argentina Open 2016 ?\nHint:Rafael Nadal lost against him in the semifinals.", "CMLOXOOITDIAMHITNE", "Dominic", "Thiem", "ICNNJECIU", "DIHDDMMTO", "CJUDND"));
 
         allQuestions.add(new Questions("Who has won the 2016 Malaysia Masters Grand Prix Gold Badminton title ?", "VSLDPUJVRNDDPHMIMS", "PV", "Sindhu", "PCIUYTD", "RKNSVNH", "TNRKYC"));
 
@@ -1296,7 +1296,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("What country was known as siam ?", "GRHXDIATALNZWETAAB", "Thailand", "", "ILTJHAN", "EHANUDX", "HJXEUN"));
 
-        allQuestions.add(new Questions("How many total stripes are there on the flag of the USA ?", "185659876582314963", "13", "", "1856598765", "82314963", "1856598765824963"));
+        allQuestions.add(new Questions("How many total stripes are there on the flag of the USA ?", "185659876582314963", "13", "", "185659876", "582314963", "1856598765824963"));
 
         allQuestions.add(new Questions("What is the currency of Germany ?", "MUYPZEZLRNGSYCOZHD", "EURO", "", "CBUWRO", "SOEIFW", "CBIOFWSW"));
 
@@ -1348,7 +1348,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("What country do the Galapagos islands belong to ?", "KACRSRAUKUCEOFDGDZ", "Ecuador", "", "UCPFDAG", "AOERQEA", "EAAGFPQ"));
 
-        allQuestions.add(new Questions("The flag of Italy is a tricolour featuring three equally sized vertical pales of (from left) _______, white and ___.", "IDWWREFDWMBIUKIEHT", "white", "red", "DWTXHRE", "LDGKIEQ", "QKDXLG"));
+        allQuestions.add(new Questions("The flag of Italy is a tricolour featuring three equally sized vertical pales of (from left) ______, white and ___.", "IDWWREFDWMBIUKIEHT", "green", "red","EEVGRZD","GNRNEUF","FUGNZV"));
 
         allQuestions.add(new Questions("Qatari ______ is the currency used in Qatar.", "XONLMVKACIYRRLBDIP", "riyal", "", "NRCOBY", "WLYICA", "WNCBCYO"));
 
@@ -1464,7 +1464,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Non stick cooking utensils are coated with ?", "OWNFSNAEIBTWYUIFEL", "Teflon", "", "LZKXLOL", "NTYFEGV", "GLZVKXLY"));
 
-        allQuestions.add(new Questions("Electric resistance is typically measured in what units ?", "BYSUOUVMHFDTUIBUMG", "Ohms", "", "MLSAGH", "TOMMEM", "GTMAMLEM"));
+        allQuestions.add(new Questions("Electric resistance is typically measured in what unit ?", "BYSUOUVMHFDTUIBUMG", "Ohms", "", "MLSAGH", "TOMMEM", "GTMAMLEM"));
 
         allQuestions.add(new Questions("What is the name of the process used by plants to convert sunlight into food ?", "NECHSEOIPYODTTSHHS", "Photo", "synthesis", "LUOTOHSYM", "HNITBPSSE", "LBUM"));
 
@@ -1494,7 +1494,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         //science medium
         allQuestions.add(new Questions("1 dozen equals how much (number)?", "185659876582314962", "12", "", "185659876", "582314962", "8565987658231496"));
 
-        allQuestions.add(new Questions("meters (m) is SI unit of measurement of what ?", "TTUMLLLCGHIORCNAEL", "LENGTH", "", "GLINEOS", "GHERCXT", "RGOSCXIE"));
+        allQuestions.add(new Questions("Meters (m) is SI unit of measurement of what ?", "TTUMLLLCGHIORCNAEL", "LENGTH", "", "GLINEOS", "GHERCXT", "RGOSCXIE"));
 
         allQuestions.add(new Questions("Which part of the eye gets smaller when the lights go on ?", "XNPYLIWMHJWDPGDZHU", "Pupil", "", "IPVIPP", "NUKLGI", "NIKVIPG"));
 
@@ -1622,7 +1622,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("What is the solvent of gold ?", "UAQACQIEARJIKQGIAL", "Aqua", "regia", "RAACVUIT", "GQEABVAU", "BAUVTCV"));
 
-        allQuestions.add(new Questions("Which chemical is called Chile Salt peter ?", "USNANMWEDRSTTOIIXC", "Sodium", "Nitrate", "TOTSQDUZT", "RMINATMIE", "TMTZQ"));
+        allQuestions.add(new Questions("Which chemical is called Chile Saltpeter ?", "USNANMWEDRSTTOIIXC", "Sodium", "Nitrate", "TOTSQDUZT", "RMINATMIE", "TMTZQ"));
 
         allQuestions.add(new Questions("Which is the simplest sugar ?", "PYOKGUSCGCTMKLKZES", "Glucose", "", "GLUPECR", "LRSDGOU", "RGLDURP"));
 
@@ -1722,11 +1722,11 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("What does the \"E\" in E=mc^2 stand for ?", "GEYFRJRDSFNPELOPZY", "energy", "", "JYLCGAB", "LNEYREP", "PCLJBLYA"));
 
-        allQuestions.add(new Questions("What is the only human organ that can float in water ?", "NULNUBTVYDESCVBSGV", "LUNGS", "", "SGUNLL", "MYXTND", "TMLYDXN"));
+        allQuestions.add(new Questions("What is the only human organ that can float on water ?", "NULNUBTVYDESCVBSGV", "LUNGS", "", "SGUNLL", "MYXTND", "TMLYDXN"));
 
         allQuestions.add(new Questions("What is the molecular shape of C2H2 ?", "CZZTGRANEIRAHLRRMD", "Linear", "", "AXENWNH", "XLYXIYR", "WXYYNXHX"));
 
-        allQuestions.add(new Questions("What is the name of that process in which oxygen is removed ?", "ERCIDONTKHEWJROXUN", "Reduction", "", "ULMOTDRJ", "CNEEITRL", "LJRETLM"));
+        allQuestions.add(new Questions("What is the name of the process in which oxygen is removed ?", "ERCIDONTKHEWJROXUN", "Reduction", "", "ULMOTDRJ", "CNEEITRL", "LJRETLM"));
 
         allQuestions.add(new Questions("What is the formula of Sulfuric acid ?", "U2QH1HMZ4UO3KP5SSD", "H2SO4", "", "5LS8VX", "2HZOS4", "L8VXSZ5"));
 
@@ -1797,7 +1797,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("In what year was the US Constitution written ?", "328175395125874178", "1787", "", "328175", "874178", "32817584"));
 
-        allQuestions.add(new Questions("What luxury British automobile brand was purchased by by Tata motors in 2008 ?", "ROUUAQUJXHGAEGINNR", "Jaguar", "", "JDKBAPJ", "AGQBMRU", "JDPMBQBK"));
+        allQuestions.add(new Questions("What luxury British automobile brand was purchased by Tata motors in 2008 ?", "ROUUAQUJXHGAEGINNR", "Jaguar", "", "JDKBAPJ", "AGQBMRU", "JDPMBQBK"));
 
         allQuestions.add(new Questions("What does the Statue of Liberty hold in her right hand ?", "MHBQIBREATGOWBRZCU", "torch", "", "ROTCDU", "WHKHCR", "KCDRUWH"));
 
@@ -1995,7 +1995,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Which movie won Oscar in 2015 ?", "OMRBATYUPIXNDLCNND", "Birdman", "", "ABIDZWY", "NMRQBWL", "YLWZQWB"));
 
-        allQuestions.add(new Questions("What is the name of actor who  played the Character of  Peter Parker(Spider-Man ) in the Spider-Man trilogy ?", "TRUAILOEEIWBGMSOVY", "Tobey", "Maguire", "AGTQOBHRI", "PSAYMUTEE", "THAQPS"));
+        allQuestions.add(new Questions("What is the real name of the actor who played the role of Spider-Man in the \"Spider-Man: Homecoming\"(2017) ?", "TRUAILOEEIWBGMSOVY", "Tom", "Holland","LAMNODHA","LXOJPMZT","JAZXPM"));
 
         allQuestions.add(new Questions("\"Smack That\" is a song by which American singer/songwriter ?", "CCQIOMKKDNIQGCROAA", "Akon", "", "KJOCAX", "YATJON", "JJYTOXAC"));
 
@@ -2005,7 +2005,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("In what famous Disney movie does the character Jafar appear ?", "FAKDPLLVDLHTNAAXIX", "Aladdin", "", "BICLSPA", "ADDNVMI", "MVBCISP"));
 
-        allQuestions.add(new Questions("What is the real name of the American supersoldier, Captain America ?", "TOTEGSRRNRAYXEXSVE", "Steve", "Rogers", "VGQIREFVR", "ISTSLROEE", "LRVFIQI"));
+        allQuestions.add(new Questions("Who had played the role of Captain america in the movie \"Captain America: Civil War\"(2016)?", "TOTEGSRRNRAYXEXSVE", "Chris", "Evans","NEBZRAOV","JSCMIHSY","YZJBMO"));
 
         allQuestions.add(new Questions("ABBA was a pop group from what country ?", "SQDZUWKJXCWCAEEJUN", "Sweden", "", "ZVLCYCS", "NEWDCEO", "COVCLYZC"));
 
@@ -2034,7 +2034,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("“what do u mean” is a song by which Canadian singer-songwriter ?", "JLJRMNIOSUSEBGETIB", "Justin", "Bieber", "TBIRBJBIU", "BNSJLDEUE", "LBUJBD"));
 
-        allQuestions.add(new Questions("What are justin bieber super-fans called as ?", "BASIRGEEGXBLIKFEOZ", "Beliebers", "", "RSCREIWE", "ELRQBEBX", "RXEQRWC"));
+        allQuestions.add(new Questions("\"2U\" is a song by French DJ David Guetta and Canadian pop singer _________ .", "BASIRGEEGXBLIKFEOZ", "Justin", "Bieber","KQESCJBIT","INREMYUBN","NQMKYC"));
 
         allQuestions.add(new Questions("\"Not Afraid\" is a song by which American rapper from his album Recovery (2010) ?", "GPAMHDEMINRNLETOZE", "Eminem", "", "EMMINRU", "NMEMUEU", "MMRUUNUE"));
 
@@ -2060,7 +2060,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Who is lead actress in the flim lala land ?", "BAQXEOMTPXENMJSYTU", "Emma", "Stone", "MSEONYMD", "IETAAMXP", "AIYDXMP"));
 
-        allQuestions.add(new Questions("Which Australian actress played  Harley Quinn in the movie Suicide Squad (2016) ?", "EGOIPQOBSMRMXARTBA", "Margot", "Robbie", "MOEGZIIDR", "XIBRCOBTA", "DCIXZI"));
+        allQuestions.add(new Questions("Which Australian actress played Harley Quinn in the movie Suicide Squad (2016) ?", "EGOIPQOBSMRMXARTBA", "Margot", "Robbie", "MOEGZIIDR", "XIBRCOBTA", "DCIXZI"));
 
         allQuestions.add(new Questions("\"Faded\" is a song by which Norwegian record producer and DJ ?", "UHAHKIANWAALLRNLER", "Alan", "Walker", "AKELAWAL", "GNXLRRPF", "RXLPGF"));
 
@@ -2101,7 +2101,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Which movie won Oscar in 2013 ?", "FHRIOYSOUIVANYGFKG", "Argo", "", "RYQRSA", "IGSOPZ", "IQYSSRPZ"));
 
-        allQuestions.add(new Questions("Which actor has played the  joker in movie  “Suicide Squad “(2016) ?", "MLTRAEORDODZGQAEJA", "Jared", "Leto", "VOTNELER", "MYCDDAKJ", "YNCVKDM"));
+        allQuestions.add(new Questions("Which actor has played the joker in movie “Suicide Squad “(2016) ?", "MLTRAEORDODZGQAEJA", "Jared", "Leto", "VOTNELER", "MYCDDAKJ", "YNCVKDM"));
 
         allQuestions.add(new Questions("What is the name of Peter Parker’s best friend in the Spider-Man trilogy ?", "ZOHHYSNABNRRSORMJE", "Harry", "Osborn", "RAZNSOXOY", "ZHARZBGRW", "ZGWXZZA"));
 
@@ -2116,7 +2116,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("'Why are they here?' is the tagline to which mysterious science fiction film starring Amy Adams ?", "LIIUYRGZAJZLRAJVHE", "Arrival", "", "LVZJIRW", "VRZAVAZ", "ZVJZZVW"));
 
-        allQuestions.add(new Questions("Name the film about a WWII American Army Medic who becomes the first man in American history to receive the Medal of Honor without firing a shot.", "RDJKCGASMACAERNWIH", "Hacksaw", " Ridge", "ITKAESBWR", "DVCARKHGS", "RTSVKB"));
+        allQuestions.add(new Questions("Name the film about a WWII American Army Medic who becomes the first man in American history to receive the Medal of Honor without firing a shot.", "RDJKCGASMACAERNWIH", "Hacksaw", "Ridge", "ITKAESBWR", "DVCARKHGS", "RTSVKB"));
 
         allQuestions.add(new Questions("Starring Leonardo DiCaprio, the film tells the story of a frontiersman's fight for survival on a fur trading expadition. Name the film.", "VTHEETBMANPVNNEERT", "The", "Revenant", "NKHNHERZA", "ETVWETKSK", "ZKHSWKK"));
 
@@ -2154,7 +2154,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
 
         //entertainment medium
-        allQuestions.add(new Questions("\"See You Again\" ft Charlie Puth is a song recorded by which rapper ? \n The track was commissioned for the soundtrack of the 2015 action film Furious 7.", "FZWLTAIFLKAIUHHWIZ", "Wiz", "Khalifa", "GIAZIDKK", "WCFHJNAL", "KJGNCD"));
+        allQuestions.add(new Questions("\"See You Again\" ft Charlie Puth is a song recorded by which rapper ? \nHint:The track was commissioned for the soundtrack of the 2015 action film Furious 7.", "FZWLTAIFLKAIUHHWIZ", "Wiz", "Khalifa", "GIAZIDKK", "WCFHJNAL", "KJGNCD"));
 
         allQuestions.add(new Questions("What fictional city is the home of Batman ?", "AQBAXVPDMOBTQHOTGN", "Gotham", "", "ZKASHXO", "JMGTHGN", "JXKZNGSH"));
 
@@ -2176,7 +2176,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("\"Cry Me a River\" is a song recorded by which  American singer-songwriter  ?", "RISEKUMEABRTNJLTTI", "Justin", "Timberlake", "RRMIEATNB", "TEUGJLSKI", "RG"));
 
-        allQuestions.add(new Questions("\"_____\" (English: \"Crazy\") is a song by Colombian singer-songwriter Shakira, taken from her seventh studio album, Sale el Sol (2010) ?", "KSLADYRGLNCMOFYSIO", "Loca", "", "MYLNTO", "TLCASF", "SNYMFLTT"));
+        allQuestions.add(new Questions("\"_____\" (English: \"Crazy\") is a song by Colombian singer-songwriter Shakira, taken from her seventh studio album, Sale el Sol (2010).", "KSLADYRGLNCMOFYSIO", "Loca", "", "MYLNTO", "TLCASF", "SNYMFLTT"));
 
         allQuestions.add(new Questions("Which is the main character in 'Dragon Ball Z'(Japanese animated series) ?", "KOULTKKUULJGOGOSGV", "GOKU", "", "DTZBBG", "VKUOGR", "GRVTZBBD"));
 
@@ -2199,7 +2199,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("\"On the Floor\" is a song recorded by which  American singer  for her seventh studio album, Love (2011). Featuring American rapper Pitbull ?", "OPRNZJICNWVGEECFLE", "Jennifer", "Lopez", "NREPVOJLE", "FZNEIRBWN", "RWVBN"));
 
-        allQuestions.add(new Questions("selena gomez’s song “kill em with kindness” is from what album ?", "AIEVTRILSVMZNPZTFE", "Revival", "", "EIBUVVL", "ONKRHAT", "KNBTUOH"));
+        allQuestions.add(new Questions("Selena gomez’s song “kill em with kindness” is from what album ?", "AIEVTRILSVMZNPZTFE", "Revival", "", "EIBUVVL", "ONKRHAT", "KNBTUOH"));
 
         allQuestions.add(new Questions("What was the band known as Linkin Park originally called ?", "BAFAEBXVOIBZROIWON", "Xero", "", "QREUNT", "UFWOCX", "NCFQUUTW"));
 
@@ -2301,9 +2301,9 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("\"Let Me Love You\" ft justin bieber is a song recorded by which French electronic music producer ?", "KPRRNSJYEUANOXDNCL", "DJ", "Snake", "IKNEEAY", "LDJIADS", "ILEAIDY"));
 
-        allQuestions.add(new Questions("Which Indian actress first appeared as Alex Parrish  in American drama series Quantico ?", "HNRLORVPKAANIACWPY", "Priyanka", "Chopra", "IFRYRAWNP", "AAHOCKPUM", "UWMF"));
+        allQuestions.add(new Questions("Which Indian actress first appeared as Alex Parrish in American drama series Quantico ?", "HNRLORVPKAANIACWPY", "Priyanka", "Chopra", "IFRYRAWNP", "AAHOCKPUM", "UWMF"));
 
-        allQuestions.add(new Questions("\"Despacito\"(Spanish version) is a song by Daddy Yankee and ______.", "IFIXLNRNUFDIPOESZS", "Luis", "Fonsi", "TFVINIRD", "LOQISUSR", "RVDRQTI"));
+        allQuestions.add(new Questions("Fill in the blank:_______ & Daddy Yankee Despacito (Remix) featuring Justin Bieber.", "IFIXLNRNUFDIPOESZS", "Luis", "Fonsi", "TFVINIRD", "LOQISUSR", "RVDRQTI"));
 
         allQuestions.add(new Questions("In \"The Amazing Spider-Man\"(2012) which actor played Spider‑Man ?", "EAAOMDWNGDFLRIAFER", "Andrew", "Garfield", "EAFLRREQD", "DGANWIEGL", "ELQG"));
 
@@ -2376,7 +2376,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("The title role of the 1900's movie, \"Pretty Woman\", was played by which actress ?", "IUBTASNRUJOLNETQRC", "Julia", "Roberts", "RJKJLEEJI", "TAROBNSUF", "EJNFJK"));
 
-        allQuestions.add(new Questions("In what year was the original \"Jurassic Park\" film released ?", "159852364178965893", "1993", "", "159852", "965893", "58526589"));
+        allQuestions.add(new Questions("\"I'm the One\" is a song written and performed by American musician ________, Canadian singer Justin Bieber and American rappers Quavo, Chance the Rapper and Lil Wayne.", "159852364178965893", "DJ", "Khaled","QELHEJA","DDYMKHK","KYQEHM"));
 
         allQuestions.add(new Questions("Which horror movie character is a serial killer possessing a doll ?", "CRCBUFHCKWQLWRGYPC", "Chucky", "", "MATCDXG", "KHUZYCV", "MTDZAVXG"));
 

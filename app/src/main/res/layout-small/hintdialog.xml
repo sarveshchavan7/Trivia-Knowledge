@@ -25,7 +25,7 @@
             android:gravity="center"
             android:paddingLeft="12sp"
             android:paddingRight="12sp"
-            android:text="Free Hint"
+            android:text="@string/free_hint"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -61,7 +61,7 @@
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Absolutely  Free!!!!!"/>
+        android:text="@string/absolutlyfree"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="15dp"/>
@@ -73,7 +73,7 @@
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fill some random answer boxes."/>
+        android:text="@string/fillsomerandomeanswer"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="15dp"/>
@@ -86,7 +86,7 @@
 
         <info.hoang8f.widget.FButton
             android:id="@+id/ok"
-            android:text="OK"
+            android:text="@string/ok"
             android:textSize="20sp"
            app:buttonColor="@color/white"
             android:textColor="@color/grey"

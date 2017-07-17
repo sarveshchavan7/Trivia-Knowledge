@@ -66,6 +66,12 @@ public class EntertainmentSlidingMain extends AppCompatActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPageerAdapterEntertainment(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
 
+        Intent intent=getIntent();
+        if (intent != null) {
+            int xyz = intent.getIntExtra("TabNo", 0);
+            mPager.setCurrentItem(xyz);
+        }
+
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setCustomTabView(R.layout.customtablayoutentertainment, R.id.textTab);
         mTabs.setDistributeEvenly(true);

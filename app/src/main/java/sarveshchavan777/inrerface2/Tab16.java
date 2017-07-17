@@ -55,7 +55,7 @@ public class Tab16 extends Fragment {
                         per[1], per[0], per[0], per[0], per[0], per[0], per[0], per[0], per[0], per[0],
                         per[1], per[1], per[0], per[1], per[1], per[1], per[0], per[2], per[0], per[4],
                         per[1], per[0], per[2], per[3], per[4], per[0], per[1], per[0], per[0], per[0],
-                        per[0], per[0], per[1], per[1], per[1], per[2], per[2], per[1], per[1], per[0],
+                        per[0], per[1], per[1], per[1], per[1], per[2], per[2], per[1], per[1], per[0],
                         per[2], per[1], per[1], per[1], per[1], per[1], per[3], per[0], per[0], per[0],
                         per[0], per[0], per[3], per[3], per[0], per[0], per[4], per[3], per[1], per[2]};
 

@@ -25,7 +25,7 @@
             android:layout_weight="1"
             android:background="@color/darkpink"
             android:gravity="center"
-            android:text="Reset Game!"
+            android:text="@string/ResetGame"
             android:textColor="@color/white"
             android:textSize="40sp" />
 
@@ -77,7 +77,7 @@
             android:id="@+id/okrest"
             android:layout_width="120dp"
             android:layout_height="80dp"
-            android:text="OK"
+            android:text="@string/ok"
             android:textColor="@color/white"
             android:textSize="30sp"
             app:buttonColor="@color/darkpink">

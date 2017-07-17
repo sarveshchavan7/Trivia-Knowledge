@@ -57,7 +57,7 @@ public class Tab17 extends Fragment {
                         per[0], per[0], per[0], per[2], per[1], per[4], per[4], per[0], per[0], per[0],
                         per[0], per[0], per[1], per[1], per[1], per[0], per[0], per[1], per[1], per[1],
                         per[0], per[1], per[1], per[3], per[1], per[1], per[1], per[3], per[1], per[2],
-                        per[0], per[0], per[1], per[0], per[2], per[3], per[0], per[2], per[0], per[0]};
+                        per[0], per[0], per[1], per[0], per[2], per[3], per[0], per[2], per[1], per[0]};
 
 
         //Adding the images to Int array

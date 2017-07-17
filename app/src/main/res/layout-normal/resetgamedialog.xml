@@ -22,7 +22,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Reset Game!"
+            android:text="@string/ResetGame"
             android:background="@color/darkpink"
             android:textSize="27sp"
             android:textColor="@color/white"/>
@@ -69,7 +69,7 @@
 
         <info.hoang8f.widget.FButton
             android:id="@+id/okrest"
-            android:text="OK"
+            android:text="@string/ok"
             android:textSize="20sp"
             app:buttonColor="@color/darkpink"
             android:textColor="@color/white"

@@ -12,7 +12,7 @@
     <application
         android:name=".application.AppController"
         android:allowBackup="true"
-        android:icon="@drawable/triviaknowledgelogo"
+        android:icon="@drawable/logofinal"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme3">
@@ -96,7 +96,9 @@
         <activity
             android:name=".about"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
 
         <activity
             android:name=".SecoundSlidingMain"
@@ -110,42 +112,56 @@
             android:name=".SportsSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/sports"></activity>
+            android:theme="@style/sports">
+
+        </activity>
 
         <activity
             android:name=".GeoSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/geo"></activity>
+            android:theme="@style/geo">
+
+        </activity>
 
         <activity
             android:name=".ScienceSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/sci"></activity>
+            android:theme="@style/sci">
+
+        </activity>
 
         <activity
             android:name=".ArtsSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/arts"></activity>
+            android:theme="@style/arts">
+
+        </activity>
 
         <activity
             android:name=".EntertainmentSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/entertainment"></activity>
+            android:theme="@style/entertainment">
+
+        </activity>
 
         <activity
             android:name=".InAppPurchase"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
 
         <activity
             android:name=".FaceBookLogin"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Translucent"></activity>
+            android:theme="@style/Theme.AppCompat.Translucent">
+
+        </activity>
 
 
         <activity

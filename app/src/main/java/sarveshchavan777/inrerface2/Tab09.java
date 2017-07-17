@@ -54,7 +54,7 @@ public class Tab09 extends Fragment {
                 per[6], per[0], per[0], per[1], per[4], per[1], per[6], per[1], per[1], per[6],
                 per[1], per[6], per[1], per[6], per[6], per[1], per[1], per[6], per[2], per[6],
                 per[4], per[1], per[6], per[6], per[6], per[3], per[6], per[6], per[0], per[6],
-                per[1], per[5], per[1], per[1], per[6], per[1], per[1], per[4], per[6], per[3],
+                per[1], per[5], per[1], per[1], per[1], per[1], per[1], per[4], per[6], per[3],
                 per[1], per[1], per[1], per[1], per[0], per[6], per[1], per[1], per[1], per[6],
                 per[1], per[1], per[1], per[1], per[4], per[6], per[1], per[1], per[0], per[1],
                 per[1], per[1], per[1], per[1], per[6], per[5], per[1], per[5], per[0], per[5]};

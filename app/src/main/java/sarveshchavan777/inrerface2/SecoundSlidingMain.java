@@ -66,17 +66,21 @@ public class SecoundSlidingMain extends AppCompatActivity implements ComponentCa
                 }
             }
         });
+
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPageerAdapterPersonality(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
-
+        Intent intent = getIntent();
+        if (intent != null) {
+            int xyz = intent.getIntExtra("TabNo", 0);
+            mPager.setCurrentItem(xyz);
+        }
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setCustomTabView(R.layout.customtablayoutper, R.id.textTab);
         mTabs.setDistributeEvenly(true);
         mTabs.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
         mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
         mTabs.setViewPager(mPager);
-
-
     }
 
     @Override
@@ -102,6 +106,7 @@ public class SecoundSlidingMain extends AppCompatActivity implements ComponentCa
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        icon=null;
+        icon = null;
     }
+
 }

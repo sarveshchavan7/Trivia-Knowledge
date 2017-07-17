@@ -18,14 +18,14 @@
 
         <TextView
             android:id="@+id/revealtext2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:paddingLeft="40dp"
-            android:text="Reveal"
+            android:text="@string/reveal"
             android:textColor="@color/white"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
 
 
@@ -49,7 +49,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cost : 2 gems"
+        android:text="@string/cost2gems"
         android:textSize="25sp"
         android:paddingTop="5dp"
         android:id="@+id/costReavel"
@@ -75,6 +75,7 @@
             android:text="@string/useDiamond"
             android:textColor="@color/grey"
             android:drawableRight="@drawable/gems"
+           android:drawableEnd="@drawable/gems"
             android:id="@+id/usegems"
             android:textSize="19sp"
             app:buttonColor="@color/white"
@@ -87,7 +88,7 @@
             android:id="@+id/or"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="-----------------REWARD-----------------"
+            android:text="@string/rewardline"
             android:gravity="center"
             android:textColor="@color/lightred"
             android:textSize="19sp"/>
@@ -100,6 +101,7 @@
             android:paddingRight="10dp"
             app:paddingEnd="10dp"
             android:drawableRight="@drawable/youtube_2"
+            android:drawableEnd="@drawable/youtube_2"
             android:paddingStart="10dp"
             android:textSize="19sp"
             android:text="@string/watchvideo"
@@ -115,7 +117,7 @@
             android:id="@+id/shop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="-------------------Shop-------------------"
+            android:text="@string/shopline"
             android:gravity="center"
             android:textColor="@color/lightred"
             android:textSize="19sp"/>
@@ -131,6 +133,7 @@
             android:text="@string/buyDiamond"
             android:textColor="@color/grey"
             android:drawableRight="@drawable/buydiamond"
+            android:drawableEnd="@drawable/buydiamond"
             android:id="@+id/buyGems"
             android:textSize="18sp"
             app:buttonColor="@color/white"

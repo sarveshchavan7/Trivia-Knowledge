@@ -50,7 +50,7 @@ public class Tab05 extends Fragment {
 
         String per[] = {"Football","Olympic","Wrestling","Sports","Golf","Cricket",
                 "Chess","Rugby","Badminton","Bowling","Hockey","Volleyball","Athlete",
-                "Baseball","Basketball","Tennis","TableTennis"};
+                "Baseball","Basketball","Tennis","Table Tennis"};
 
         String s1[] = {per[10], per[3], per[9], per[3], per[3], per[3], per[3], per[1], per[0], per[15],
                 per[0], per[0], per[2], per[16], per[5], per[3], per[15], per[3], per[3], per[4],

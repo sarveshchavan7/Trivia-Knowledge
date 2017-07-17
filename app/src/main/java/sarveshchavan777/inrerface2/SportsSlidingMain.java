@@ -62,7 +62,11 @@ public class SportsSlidingMain extends AppCompatActivity {
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPageerAdapterSports(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
-
+       Intent intent=getIntent();
+        if (intent != null) {
+            int xyz = intent.getIntExtra("TabNo", 0);
+            mPager.setCurrentItem(xyz);
+        }
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setCustomTabView(R.layout.customtablayoutsports, R.id.textTab);
         mTabs.setDistributeEvenly(true);

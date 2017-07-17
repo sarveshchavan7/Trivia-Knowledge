@@ -45,11 +45,11 @@ public class Tab03 extends Fragment {
         Integer imageView[] = new Integer[60];
         String s[] = new String[60];
         String per[] = {"Politician", "Entrepreneur", "Scientist", "Singer/songwriter", "Actor",
-                "Sportsperson", "Astronaut", "Actress", "Journalist", "Comedian","Programmer",
-                "Revolutionist","Writer","Activist","Philosopher","Personality","Theologist","Neurologist"};
+                "Sportsperson", "Sportsperson", "Astronaut", "Actress", "Journalist","Comedian",
+                "Programmer","Revolutionist","Neurologist","Activist","Personality","Personality","Theologist","Playwright"};
 
         String s1[] = {per[0], per[1], per[2], per[3], per[0], per[6], per[1], per[2], per[4], per[0],
-                per[11], per[2], per[8], per[4], per[8], per[3], per[2], per[13], per[2], per[4],
+                per[11], per[2], per[8], per[4], per[8], per[3], per[2], per[18], per[2], per[4],
                 per[1], per[3], per[0], per[1], per[7], per[1], per[1], per[8], per[15], per[0],
                 per[13], per[3], per[9], per[6], per[14], per[16], per[0], per[1], per[3], per[0],
                 per[0], per[15], per[0], per[11], per[10], per[3], per[8], per[11], per[17], per[0],

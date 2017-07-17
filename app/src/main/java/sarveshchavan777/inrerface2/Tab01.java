@@ -23,6 +23,7 @@ public class Tab01 extends Fragment {
     DemoHelperClass demoHelperClass;
     BootstrapProgressBar Progress;
     TextView progressText;
+
     public Tab01() {
 
     }
@@ -56,7 +57,6 @@ public class Tab01 extends Fragment {
                 per[4], per[7], per[5], per[9], per[0], per[14], per[1], per[3], per[9], per[0],
                 per[4], per[7], per[3], per[10], per[8], per[0], per[7], per[12], per[0], per[13],
                 per[0], per[1], per[1], per[1], per[8], per[7], per[4], per[15], per[0], per[3]};
-
 
 
         //Adding the images to Int array
@@ -102,7 +102,6 @@ public class Tab01 extends Fragment {
                 intent.putExtra("Key", Integer.toString(position));
                 startActivity(intent);
                 getActivity().finish();
-
                 /*Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();*/
             }
@@ -112,6 +111,7 @@ public class Tab01 extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Progress=null;
+        Progress = null;
     }
+
 }

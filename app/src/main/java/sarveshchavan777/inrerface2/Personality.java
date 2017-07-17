@@ -4,7 +4,6 @@ package sarveshchavan777.inrerface2;
 import android.app.Dialog;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -12,7 +11,6 @@ import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
-import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -99,6 +97,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     GoogleApiClient mGoogleApiClient;/*= AppController.getInstance().getClient();*/
     MediaPlayer ring;
     Typeface chunkfive, grobold, openSansBold, openSansSemiBold, shablagooital, titilliumWeb;
+    Handler handler = new Handler();
+    Handler handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10, handler11, handler12, handler13, handler14, handler15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,42 +162,52 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         final Bundle bundle = new ChartboostAdapter.ChartboostExtrasBundleBuilder()
                 .build();
 
+        demoHelperClass = new DemoHelperClass(getApplicationContext());
+        SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
+        if (demoHelperClass.getCheckQadded() != null) {
+            if (demoHelperClass.getCheckQadded().size() == 0) {
+                // run your one time code
+                // banner  admob.
 
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdView = (AdView) findViewById(R.id.adView);
+                        AdRequest adRequest = new AdRequest.Builder()
+                                .addNetworkExtrasBundle(ChartboostAdapter.class, bundle)
+                                .build();
+                        mAdView.loadAd(adRequest); //Your code to show add
 
-
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if (!prefs.getBoolean("firstTime", false)) {
-            // run your one time code
-            // banner  admob.
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mAdView = (AdView) findViewById(R.id.adView);
-                    AdRequest adRequest = new AdRequest.Builder()
-                            .addNetworkExtrasBundle(ChartboostAdapter.class, bundle)
-                            .build();
-                    mAdView.loadAd(adRequest); //Your code to show add
-
-                }
-            }, 3000000);
-
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("firstTime", true);
-            editor.apply();
-        } else {
-            // banner  admob.
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mAdView = (AdView) findViewById(R.id.adView);
-                    AdRequest adRequest = new AdRequest.Builder()
-                            .addNetworkExtrasBundle(ChartboostAdapter.class, bundle)
-                            .build();
-                    mAdView.loadAd(adRequest); //Your code to show add
-                }
-            }, 20000);
+                    }
+                }, 3000000);
+            } else {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdView = (AdView) findViewById(R.id.adView);
+                        AdRequest adRequest = new AdRequest.Builder()
+                                .addNetworkExtrasBundle(ChartboostAdapter.class, bundle)
+                                .build();
+                        mAdView.loadAd(adRequest); //Your code to show add
+                    }
+                }, 22000);
+            }
         }
+
+
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//        if (!prefs.getBoolean("firstTime", false)) {
+//            // run your one time code
+//            // banner  admob.
+//
+//
+//            SharedPreferences.Editor editor = prefs.edit();
+//            editor.putBoolean("firstTime", true);
+//            editor.apply();
+//        } else {
+//            // banner  admob.
+//
+//        }
 
         /*if (DemoHelperClass.adsHelper == 1) {
             // banner  admob.
@@ -344,6 +354,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     for (int i = 0; i < 180; i++) {
                         if (clicked.equals(Integer.toString(i))) {
                             Intent intent2 = new Intent(Personality.this, SecoundSlidingMain.class);
+                            if (i < 60) {
+                                intent2.putExtra("TabNo", 0);
+                            }
+                            if (i >= 60 && i < 120) {
+                                intent2.putExtra("TabNo", 1);
+                            }
+                            if (i >= 120 && i < 180) {
+                                intent2.putExtra("TabNo", 2);
+                            }
                             startActivity(intent2);
                             finish();
                         }
@@ -351,6 +370,16 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     for (int i = 180; i < 360; i++) {
                         if (clicked.equals(Integer.toString(i))) {
                             Intent intent2 = new Intent(Personality.this, SportsSlidingMain.class);
+                            if (i < 240) {
+                                intent2.putExtra("TabNo", 0);
+                            }
+                            if (i >= 240 && i < 300) {
+                                intent2.putExtra("TabNo", 1);
+                            }
+                            if (i >= 300 && i < 360) {
+                                intent2.putExtra("TabNo", 2);
+                            }
+
                             startActivity(intent2);
                             finish();
                         }
@@ -358,6 +387,17 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     for (int i = 360; i < 600; i++) {
                         if (clicked.equals(Integer.toString(i))) {
                             Intent intent2 = new Intent(Personality.this, GeoSlidingMain.class);
+
+                            if (i < 440) {
+                                intent2.putExtra("TabNo", 0);
+                            }
+                            if (i >= 440 && i < 520) {
+                                intent2.putExtra("TabNo", 1);
+                            }
+                            if (i >= 520 && i < 600) {
+                                intent2.putExtra("TabNo", 2);
+                            }
+
                             startActivity(intent2);
                             finish();
                         }
@@ -365,6 +405,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     for (int i = 600; i < 780; i++) {
                         if (clicked.equals(Integer.toString(i))) {
                             Intent intent2 = new Intent(Personality.this, ScienceSlidingMain.class);
+                            if (i < 660) {
+                                intent2.putExtra("TabNo", 0);
+                            }
+                            if (i >= 660 && i < 720) {
+                                intent2.putExtra("TabNo", 1);
+                            }
+                            if (i >= 720 && i < 780) {
+                                intent2.putExtra("TabNo", 2);
+                            }
                             startActivity(intent2);
                             finish();
                         }
@@ -372,6 +421,16 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     for (int i = 780; i < 900; i++) {
                         if (clicked.equals(Integer.toString(i))) {
                             Intent intent2 = new Intent(Personality.this, ArtsSlidingMain.class);
+
+                            if (i < 820) {
+                                intent2.putExtra("TabNo", 0);
+                            }
+                            if (i >= 820 && i < 860) {
+                                intent2.putExtra("TabNo", 1);
+                            }
+                            if (i >= 860 && i < 900) {
+                                intent2.putExtra("TabNo", 2);
+                            }
                             startActivity(intent2);
                             finish();
                         }
@@ -379,6 +438,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     for (int i = 900; i < 1120; i++) {
                         if (clicked.equals(Integer.toString(i))) {
                             Intent intent2 = new Intent(Personality.this, EntertainmentSlidingMain.class);
+                            if (i < 980) {
+                                intent2.putExtra("TabNo", 0);
+                            }
+                            if (i >= 980 && i < 1060) {
+                                intent2.putExtra("TabNo", 1);
+                            }
+                            if (i >= 1060 && i < 1120) {
+                                intent2.putExtra("TabNo", 2);
+                            }
                             startActivity(intent2);
                             finish();
                         }
@@ -858,8 +926,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         //someSqlite stuff
-        demoHelperClass = new DemoHelperClass(getApplicationContext());
-        SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
+
         if (demoHelperClass.getCheckQadded() != null) {
             if (demoHelperClass.getCheckQadded().size() == 0) {
                 demoHelperClass.addquestions();
@@ -1017,7 +1084,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         fadeOut2.setDuration(600);
 
 
-        final Handler handler = new Handler();
+        handler1 = new Handler();
         Runnable runnable = new Runnable() {
 
             public void run() {
@@ -1025,9 +1092,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 //for interval...
             }
         };
-        handler.postDelayed(runnable, 150);
+        handler1.postDelayed(runnable, 150);
 
-        final Handler handler2 = new Handler();
+        handler2 = new Handler();
         Runnable runnable2 = new Runnable() {
 
             public void run() {
@@ -1038,7 +1105,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler2.postDelayed(runnable2, 200);
 
-        final Handler handler3 = new Handler();
+        handler3 = new Handler();
         Runnable runnable3 = new Runnable() {
 
             public void run() {
@@ -1051,7 +1118,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler3.postDelayed(runnable3, 250);
 
-        final Handler handler4 = new Handler();
+        handler4 = new Handler();
         Runnable runnable4 = new Runnable() {
 
             public void run() {
@@ -1065,7 +1132,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler4.postDelayed(runnable4, 300);
 
-        final Handler handler5 = new Handler();
+        handler5 = new Handler();
         Runnable runnable5 = new Runnable() {
 
             public void run() {
@@ -1077,7 +1144,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler5.postDelayed(runnable5, 350);
 
-        final Handler handler6 = new Handler();
+        handler6 = new Handler();
         Runnable runnable6 = new Runnable() {
 
             public void run() {
@@ -1089,7 +1156,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler6.postDelayed(runnable6, 400);
 
-        final Handler handler7 = new Handler();
+        handler7 = new Handler();
         Runnable runnable7 = new Runnable() {
 
             public void run() {
@@ -1101,7 +1168,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler7.postDelayed(runnable7, 450);
 
-        final Handler handler8 = new Handler();
+        handler8 = new Handler();
         Runnable runnable8 = new Runnable() {
 
             public void run() {
@@ -1115,7 +1182,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         handler8.postDelayed(runnable8, 500);
 
 
-        final Handler handler9 = new Handler();
+        handler9 = new Handler();
         Runnable runnable9 = new Runnable() {
 
             public void run() {
@@ -1128,7 +1195,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler9.postDelayed(runnable9, 550);
 
-        final Handler handler10 = new Handler();
+        handler10 = new Handler();
         Runnable runnable10 = new Runnable() {
 
             public void run() {
@@ -1141,7 +1208,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler10.postDelayed(runnable10, 600);
 
-        final Handler handler11 = new Handler();
+        handler11 = new Handler();
         Runnable runnable11 = new Runnable() {
 
             public void run() {
@@ -1153,7 +1220,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         handler11.postDelayed(runnable11, 650);
 
 
-        final Handler handler12 = new Handler();
+        handler12 = new Handler();
         Runnable runnable12 = new Runnable() {
 
             public void run() {
@@ -1166,7 +1233,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler12.postDelayed(runnable12, 680);
 
-        final Handler handler13 = new Handler();
+        handler13 = new Handler();
         Runnable runnable13 = new Runnable() {
 
             public void run() {
@@ -1176,7 +1243,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler13.postDelayed(runnable13, 730);
 
-        final Handler handler14 = new Handler();
+        handler14 = new Handler();
         Runnable runnable14 = new Runnable() {
 
             public void run() {
@@ -1189,7 +1256,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         handler14.postDelayed(runnable14, 780);
 
 
-        final Handler handler15 = new Handler();
+        handler15 = new Handler();
         Runnable runnable15 = new Runnable() {
 
             public void run() {
@@ -2774,6 +2841,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 0; i < 180; i++) {
                 if (clicked.equals(Integer.toString(i))) {
                     Intent intent2 = new Intent(Personality.this, SecoundSlidingMain.class);
+                    if (i < 60) {
+                        intent2.putExtra("TabNo", 0);
+                    }
+                    if (i >= 60 && i < 120) {
+                        intent2.putExtra("TabNo", 1);
+                    }
+                    if (i >= 120 && i < 180) {
+                        intent2.putExtra("TabNo", 2);
+                    }
                     startActivity(intent2);
                     finish();
                 }
@@ -2781,6 +2857,16 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 180; i < 360; i++) {
                 if (clicked.equals(Integer.toString(i))) {
                     Intent intent2 = new Intent(Personality.this, SportsSlidingMain.class);
+                    if (i < 240) {
+                        intent2.putExtra("TabNo", 0);
+                    }
+                    if (i >= 240 && i < 300) {
+                        intent2.putExtra("TabNo", 1);
+                    }
+                    if (i >= 300 && i < 360) {
+                        intent2.putExtra("TabNo", 2);
+                    }
+
                     startActivity(intent2);
                     finish();
                 }
@@ -2788,6 +2874,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 360; i < 600; i++) {
                 if (clicked.equals(Integer.toString(i))) {
                     Intent intent2 = new Intent(Personality.this, GeoSlidingMain.class);
+                    if (i < 440) {
+                        intent2.putExtra("TabNo", 0);
+                    }
+                    if (i >= 440 && i < 520) {
+                        intent2.putExtra("TabNo", 1);
+                    }
+                    if (i >= 520 && i < 600) {
+                        intent2.putExtra("TabNo", 2);
+                    }
                     startActivity(intent2);
                     finish();
                 }
@@ -2795,6 +2890,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 600; i < 780; i++) {
                 if (clicked.equals(Integer.toString(i))) {
                     Intent intent2 = new Intent(Personality.this, ScienceSlidingMain.class);
+                    if (i < 660) {
+                        intent2.putExtra("TabNo", 0);
+                    }
+                    if (i >= 660 && i < 720) {
+                        intent2.putExtra("TabNo", 1);
+                    }
+                    if (i >= 720 && i < 780) {
+                        intent2.putExtra("TabNo", 2);
+                    }
                     startActivity(intent2);
                     finish();
                 }
@@ -2802,6 +2906,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 780; i < 900; i++) {
                 if (clicked.equals(Integer.toString(i))) {
                     Intent intent2 = new Intent(Personality.this, ArtsSlidingMain.class);
+                    if (i < 820) {
+                        intent2.putExtra("TabNo", 0);
+                    }
+                    if (i >= 820 && i < 860) {
+                        intent2.putExtra("TabNo", 1);
+                    }
+                    if (i >= 860 && i < 900) {
+                        intent2.putExtra("TabNo", 2);
+                    }
                     startActivity(intent2);
                     finish();
                 }
@@ -2809,6 +2922,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             for (int i = 900; i < 1120; i++) {
                 if (clicked.equals(Integer.toString(i))) {
                     Intent intent2 = new Intent(Personality.this, EntertainmentSlidingMain.class);
+                    if (i < 980) {
+                        intent2.putExtra("TabNo", 0);
+                    }
+                    if (i >= 980 && i < 1060) {
+                        intent2.putExtra("TabNo", 1);
+                    }
+                    if (i >= 1060 && i < 1120) {
+                        intent2.putExtra("TabNo", 2);
+                    }
                     startActivity(intent2);
                     finish();
                 }
@@ -3007,6 +3129,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             String clicked = intent.getStringExtra("Key");
             for (int i = 0; i < 180; i++)
                 if (clicked.equals(Integer.toString(i))) {
+                    toolbar.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
                     tvt.setText(getResources().getString(R.string.personality));
                     queNum.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
                     break;
@@ -3409,6 +3532,56 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         cracker2.setImageDrawable(null);
         cracker3.setImageDrawable(null);
         cracker4.setImageDrawable(null);
+
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
+        }
+
+        if (handler1 != null) {
+            handler1.removeCallbacksAndMessages(null);
+        }
+        if (handler2 != null) {
+            handler2.removeCallbacksAndMessages(null);
+        }
+        if (handler3 != null) {
+            handler3.removeCallbacksAndMessages(null);
+        }
+        if (handler4 != null) {
+            handler4.removeCallbacksAndMessages(null);
+        }
+        if (handler5 != null) {
+            handler5.removeCallbacksAndMessages(null);
+        }
+        if (handler6 != null) {
+            handler6.removeCallbacksAndMessages(null);
+        }
+        if (handler7 != null) {
+            handler7.removeCallbacksAndMessages(null);
+        }
+        if (handler8 != null) {
+            handler8.removeCallbacksAndMessages(null);
+        }
+        if (handler9 != null) {
+            handler9.removeCallbacksAndMessages(null);
+        }
+        if (handler10 != null) {
+            handler10.removeCallbacksAndMessages(null);
+        }
+        if (handler11 != null) {
+            handler11.removeCallbacksAndMessages(null);
+        }
+        if (handler12 != null) {
+            handler12.removeCallbacksAndMessages(null);
+        }
+        if (handler13 != null) {
+            handler13.removeCallbacksAndMessages(null);
+        }
+        if (handler14 != null) {
+            handler14.removeCallbacksAndMessages(null);
+        }
+        if (handler15 != null) {
+            handler15.removeCallbacksAndMessages(null);
+        }
 
         finish();
     }

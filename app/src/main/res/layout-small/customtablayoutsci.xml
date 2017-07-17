@@ -8,6 +8,7 @@
     android:background="@drawable/touch_selector_sci">
 
     <ImageView
+        android:contentDescription="@string/science"
         android:id="@+id/imageTab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

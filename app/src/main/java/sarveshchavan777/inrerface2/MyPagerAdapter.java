@@ -16,13 +16,12 @@ import android.view.Display;
 import android.view.WindowManager;
 
 
-
 class MyPagerAdapter extends FragmentStatePagerAdapter {
     Context context;
-    public String yourStringArray[] = new String[3];
+  //  public String yourStringArray[] = new String[3];
     public int icon[];
 
-    int numbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
+   private int numbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
 
 
     MyPagerAdapter(FragmentManager fm, int micon[], int mNumOfTabs, Context context) {
@@ -40,15 +39,15 @@ class MyPagerAdapter extends FragmentStatePagerAdapter {
         if (position == 0) // if the position is 0 we are returning the First tab01.xml
         {
 
-            Tab1 tab1 = new Tab1();
-            return tab1;
+            return new Tab1();
+
         } else if (position == 1) // As we are having 3 tabs if the position is now 0 it must be 1 so we are returning second tab01.xml
         {
-            Tab2 tab2 = new Tab2();
-            return tab2;
+            return new Tab2();
+
         } else {
-            Tab3 tab3 = new Tab3();
-            return tab3;
+            return new Tab3();
+
         }
 
     }
@@ -57,8 +56,8 @@ class MyPagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         Drawable drawable = ContextCompat.getDrawable(context, icon[position]);
 
-        WindowManager wm = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
-        Display display =  wm.getDefaultDisplay();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int checkWidth = size.x;
@@ -69,51 +68,51 @@ class MyPagerAdapter extends FragmentStatePagerAdapter {
         try {
             if ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
                 if (checkWidth < 480 && checkHeight < 800) {
-                drawable.setBounds(0,0,24,24);
-                   // Toast.makeText(context, "Normal -less", Toast.LENGTH_LONG).show();
-                }else if(checkWidth>1080 && checkHeight>1920){
-                    drawable.setBounds(0,0,90,90);
-                   // Toast.makeText(context, "NORMAL-large", Toast.LENGTH_LONG).show();
-                }else {
-                    drawable.setBounds(0,0,50,50);
-                //    Toast.makeText(context, "NORMAL-default", Toast.LENGTH_LONG).show();
+                    drawable.setBounds(0, 0, 24, 24);
+                    // Toast.makeText(context, "Normal -less", Toast.LENGTH_LONG).show();
+                } else if (checkWidth > 1080 && checkHeight > 1920) {
+                    drawable.setBounds(0, 0, 90, 90);
+                    // Toast.makeText(context, "NORMAL-large", Toast.LENGTH_LONG).show();
+                } else {
+                    drawable.setBounds(0, 0, 50, 50);
+                    //    Toast.makeText(context, "NORMAL-default", Toast.LENGTH_LONG).show();
                 }
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             drawable.setBounds(0, 0, 50, 50);
-           // Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
 
         //LARGE
-        try{
+        try {
             if ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
                 drawable.setBounds(0, 0, 60, 60);
-            //    Toast.makeText(context, "large", Toast.LENGTH_LONG).show();
+                //    Toast.makeText(context, "large", Toast.LENGTH_LONG).show();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             drawable.setBounds(0, 0, 50, 50);
-           // Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
 
         //XLARGE
-        try{
+        try {
             if ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
                 drawable.setBounds(0, 0, 80, 80);
-              //  Toast.makeText(context, "x-large", Toast.LENGTH_LONG).show();
+                //  Toast.makeText(context, "x-large", Toast.LENGTH_LONG).show();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             drawable.setBounds(0, 0, 50, 50);
-         //   Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+            //   Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
 
         //SMALL
-        try{
+        try {
             if ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL) {
                 drawable.setBounds(0, 0, 20, 20);
-             //   Toast.makeText(context, "small", Toast.LENGTH_LONG).show();
+                //   Toast.makeText(context, "small", Toast.LENGTH_LONG).show();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             drawable.setBounds(0, 0, 50, 50);
             //Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
