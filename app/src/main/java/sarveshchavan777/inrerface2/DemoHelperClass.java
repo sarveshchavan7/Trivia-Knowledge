@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 public class DemoHelperClass extends SQLiteOpenHelper {
     Context context;
     private static final String DATABASE_NAME = "DEMOGAMEDBB";
-    private static int DATABASE_VERSION = 983;
+    private static int DATABASE_VERSION = 997;
     private static final String TABLE_NAME = "TRIVIAQUIZ";
     private static final String UID = "_UID";
     private static final String QUESTION = "QUESTION";
@@ -124,7 +125,10 @@ public class DemoHelperClass extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         // i=oldVersion i1=new newVersion
         sqLiteDatabase.execSQL(DROP_TABLE);
-        sqLiteDatabase.execSQL(DROP_TABLE2);
+        sqLiteDatabase.execSQL(DROP_TABLE14);
+        sqLiteDatabase.execSQL(CREATE_TABLE);
+        sqLiteDatabase.execSQL(CREATE_TABLE14);
+       /* sqLiteDatabase.execSQL(DROP_TABLE2);
         sqLiteDatabase.execSQL(DROP_TABLE3);
         sqLiteDatabase.execSQL(DROP_TABLE4);
         sqLiteDatabase.execSQL(DROP_TABLE5);
@@ -136,15 +140,15 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(DROP_TABLE11);
         sqLiteDatabase.execSQL(DROP_TABLE12);
         sqLiteDatabase.execSQL(DROP_TABLE13);
-        sqLiteDatabase.execSQL(DROP_TABLE14);
-        //   Toast.makeText(context,"onUpgrade called",Toast.LENGTH_LONG).show();
-        onCreate(sqLiteDatabase);
+        sqLiteDatabase.execSQL(DROP_TABLE14);*/
+        // Toast.makeText(context,String.valueOf(i+" "+i1),Toast.LENGTH_LONG).show();
+     //   onCreate(sqLiteDatabase);
     }
 
     void addquestions() {
         ArrayList<Questions> allQuestions = new ArrayList<>();
 
-        allQuestions.add(new Questions("Who was the first African American to have served as president of United States of America ?", "BAROBAACKMAQCAEMBD", "BarACK", "ObaMA", "BARIACKTE", "OBMAMAPSF", "ITEMPSF"));
+        allQuestions.add(new Questions("Who was the first African American to have served as president of United States of America ?", "BAROBAACKMAQCAEMBD", "BarACk", "ObaMA", "BARIACKTE", "OBMAMAPSF", "ITEMPSF"));
 
         allQuestions.add(new Questions("Who co-founded Apple company with Steve Wozniak & Ronald Wayne ?", "TSOVWIBYUBZRGOEJSE", "STEVE", "JOBS", "OAEESVSC", "AWOBFOTJ", "COAOFWA"));
 
@@ -683,7 +687,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("National game of indonesia is ?", "UTHQTMBZNTFNRODAIW", "badminton", "", "TCEAINOU", "LBDDYNMH", "HDLEUYC"));
 
-        allQuestions.add(new Questions("Which soccer player has won Pichichi Trophy 2016 ?", "IVDEPGIIRFOBUJRADD", "LUIS", "SUAREZ","LSIAUULL","ZQVSEQRV","LVQQLV"));
+        allQuestions.add(new Questions("Which soccer player has won Pichichi Trophy 2016 ?", "IVDEPGIIRFOBUJRADD", "LUIS", "SUAREZ", "LSIAUULL", "ZQVSEQRV", "LVQQLV"));
 
         allQuestions.add(new Questions("______ is a former Indian cricketer who led his team to World Cup victory in 1983.", "KSPXYDVAVPIHCTEIQL", "KAPIL", "DEV", "IDVNELK", "BAOPCNH", "BHONCN"));
 
@@ -1348,7 +1352,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("What country do the Galapagos islands belong to ?", "KACRSRAUKUCEOFDGDZ", "Ecuador", "", "UCPFDAG", "AOERQEA", "EAAGFPQ"));
 
-        allQuestions.add(new Questions("The flag of Italy is a tricolour featuring three equally sized vertical pales of (from left) ______, white and ___.", "IDWWREFDWMBIUKIEHT", "green", "red","EEVGRZD","GNRNEUF","FUGNZV"));
+        allQuestions.add(new Questions("The flag of Italy is a tricolour featuring three equally sized vertical pales of (from left) ______, white and ___.", "IDWWREFDWMBIUKIEHT", "green", "red", "EEVGRZD", "GNRNEUF", "FUGNZV"));
 
         allQuestions.add(new Questions("Qatari ______ is the currency used in Qatar.", "XONLMVKACIYRRLBDIP", "riyal", "", "NRCOBY", "WLYICA", "WNCBCYO"));
 
@@ -1995,7 +1999,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("Which movie won Oscar in 2015 ?", "OMRBATYUPIXNDLCNND", "Birdman", "", "ABIDZWY", "NMRQBWL", "YLWZQWB"));
 
-        allQuestions.add(new Questions("What is the real name of the actor who played the role of Spider-Man in the \"Spider-Man: Homecoming\"(2017) ?", "TRUAILOEEIWBGMSOVY", "Tom", "Holland","LAMNODHA","LXOJPMZT","JAZXPM"));
+        allQuestions.add(new Questions("What is the real name of the actor who played the role of Spider-Man in the \"Spider-Man: Homecoming\"(2017) ?", "TRUAILOEEIWBGMSOVY", "Tom", "Holland", "LAMNODHA", "LXOJPMZT", "JAZXPM"));
 
         allQuestions.add(new Questions("\"Smack That\" is a song by which American singer/songwriter ?", "CCQIOMKKDNIQGCROAA", "Akon", "", "KJOCAX", "YATJON", "JJYTOXAC"));
 
@@ -2005,7 +2009,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("In what famous Disney movie does the character Jafar appear ?", "FAKDPLLVDLHTNAAXIX", "Aladdin", "", "BICLSPA", "ADDNVMI", "MVBCISP"));
 
-        allQuestions.add(new Questions("Who had played the role of Captain america in the movie \"Captain America: Civil War\"(2016)?", "TOTEGSRRNRAYXEXSVE", "Chris", "Evans","NEBZRAOV","JSCMIHSY","YZJBMO"));
+        allQuestions.add(new Questions("Who had played the role of Captain america in the movie \"Captain America: Civil War\"(2016)?", "TOTEGSRRNRAYXEXSVE", "Chris", "Evans", "NEBZRAOV", "JSCMIHSY", "YZJBMO"));
 
         allQuestions.add(new Questions("ABBA was a pop group from what country ?", "SQDZUWKJXCWCAEEJUN", "Sweden", "", "ZVLCYCS", "NEWDCEO", "COVCLYZC"));
 
@@ -2034,7 +2038,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("“what do u mean” is a song by which Canadian singer-songwriter ?", "JLJRMNIOSUSEBGETIB", "Justin", "Bieber", "TBIRBJBIU", "BNSJLDEUE", "LBUJBD"));
 
-        allQuestions.add(new Questions("\"2U\" is a song by French DJ David Guetta and Canadian pop singer _________ .", "BASIRGEEGXBLIKFEOZ", "Justin", "Bieber","KQESCJBIT","INREMYUBN","NQMKYC"));
+        allQuestions.add(new Questions("\"2U\" is a song by French DJ David Guetta and Canadian pop singer _________ .", "BASIRGEEGXBLIKFEOZ", "Justin", "Bieber", "KQESCJBIT", "INREMYUBN", "NQMKYC"));
 
         allQuestions.add(new Questions("\"Not Afraid\" is a song by which American rapper from his album Recovery (2010) ?", "GPAMHDEMINRNLETOZE", "Eminem", "", "EMMINRU", "NMEMUEU", "MMRUUNUE"));
 
@@ -2376,7 +2380,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("The title role of the 1900's movie, \"Pretty Woman\", was played by which actress ?", "IUBTASNRUJOLNETQRC", "Julia", "Roberts", "RJKJLEEJI", "TAROBNSUF", "EJNFJK"));
 
-        allQuestions.add(new Questions("\"I'm the One\" is a song written and performed by American musician ________, Canadian singer Justin Bieber and American rappers Quavo, Chance the Rapper and Lil Wayne.", "159852364178965893", "DJ", "Khaled","QELHEJA","DDYMKHK","KYQEHM"));
+        allQuestions.add(new Questions("\"I'm the One\" is a song written and performed by American musician ________, Canadian singer Justin Bieber and American rappers Quavo, Chance the Rapper and Lil Wayne.", "159852364178965893", "DJ", "Khaled", "QELHEJA", "DDYMKHK", "KYQEHM"));
 
         allQuestions.add(new Questions("Which horror movie character is a serial killer possessing a doll ?", "CRCBUFHCKWQLWRGYPC", "Chucky", "", "MATCDXG", "KHUZYCV", "MTDZAVXG"));
 
@@ -2840,7 +2844,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         db.beginTransaction();
         Cursor cursor = db.query(TABLE_NAME8, coloumns, null, null, null, null, null);
         List<Integer> list2 = new ArrayList<>();
-        list2.add(1000);
+        list2.add(42);
 
         while (cursor.moveToNext()) {
             int questionId = cursor.getInt(0);
@@ -2895,7 +2899,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
         db.close();
     }
 
-     List getCheckQadded() {
+    List getCheckQadded() {
         String coloumns[] = {CHEKQADDED};
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();

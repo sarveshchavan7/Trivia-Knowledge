@@ -2,7 +2,6 @@ package sarveshchavan777.inrerface2;
 
 
 import android.app.Dialog;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
@@ -56,6 +55,9 @@ import com.google.android.gms.games.Games;
 
 import info.hoang8f.widget.FButton;
 
+import com.unity3d.ads.IUnityAdsListener;
+import com.unity3d.ads.UnityAds;
+import com.unity3d.ads.metadata.MediationMetaData;
 
 public class Personality extends AppCompatActivity implements RewardedVideoAdListener {
     List<Questions> quesList;
@@ -99,7 +101,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     Typeface chunkfive, grobold, openSansBold, openSansSemiBold, shablagooital, titilliumWeb;
     Handler handler = new Handler();
     Handler handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10, handler11, handler12, handler13, handler14, handler15;
-
+    private static int ordinal = 1;
+    final private UnityAdsListener unityAdsListener = new UnityAdsListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,7 +156,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         // Initialize the Google Mobile Ads SDK
-        MobileAds.initialize(this, getString(R.string.Test_admob_app_id));
+        MobileAds.initialize(this, getString(R.string.admob_app_id));
 
         //adcolony
         /*adcolony removed*/
@@ -187,6 +190,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         mAdView = (AdView) findViewById(R.id.adView);
                         AdRequest adRequest = new AdRequest.Builder()
                                 .addNetworkExtrasBundle(ChartboostAdapter.class, bundle)
+
                                 .build();
                         mAdView.loadAd(adRequest); //Your code to show add
                     }
@@ -194,6 +198,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
         }
 
+        MediationMetaData mediationMetaData = new MediationMetaData(getApplicationContext());
+        mediationMetaData.setName("Example mediation network");
+        mediationMetaData.setVersion("1.2.3");
+        mediationMetaData.commit();
+
+        UnityAds.initialize(this,getString(R.string.gameId),unityAdsListener);
 
 //        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 //        if (!prefs.getBoolean("firstTime", false)) {
@@ -2459,9 +2469,19 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
     public void left(View view) {
         // myNum = Integer.parseInt(myString.getText().toString());
-        if (qid >= 0) {
+        if (qid >= 1 && qid!=180 && qid!=360 && qid!=600 && qid!=780 && qid!=900) {
             master.setVisibility(View.INVISIBLE);
             qid--;
+
+            //this is for left and right images visibility and invisibility
+           /* if (qid == 0) {
+                leftImage.setVisibility(View.INVISIBLE);
+            }*/
+            //@@ 12
+            if (qid < 1118) {
+                rightImage.setVisibility(View.VISIBLE);
+            }
+
             currentQ = quesList.get(qid);
             hint1.setVisibility(View.VISIBLE);
             hint2.setVisibility(View.VISIBLE);
@@ -2530,15 +2550,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 hint1.setImageResource(R.drawable.idea1cartoon);
             }
 
-            //this is for left and right images visibility and invisibility
-            if (qid == 0) {
-                leftImage.setVisibility(View.INVISIBLE);
-            }
-            //@@ 12
-            if (qid <= 1118) {
-                rightImage.setVisibility(View.VISIBLE);
-            }
-        }
+        }/*else{
+            Toast.makeText(this,"qid",Toast.LENGTH_LONG).show();
+        }*/
 
 
         if (checkSound()) {
@@ -2557,9 +2571,20 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     }
 
     public void right(View view) {
-        if (qid >= 0) {
+        if (qid >= 0 && qid!=179 && qid!=359 && qid!=599 && qid!=779 && qid!=899 && qid !=1119) {
             master.setVisibility(View.INVISIBLE);
             qid++;
+
+            //this is for left and right images visibility and invisibility
+            if (qid > 0) {
+                leftImage.setVisibility(View.VISIBLE);
+            }
+
+           /* //@@ 8
+            if (qid == 1121) {
+                rightImage.setVisibility(View.INVISIBLE);
+            }*/
+
             currentQ = quesList.get(qid);
             hint1.setVisibility(View.VISIBLE);
             hint2.setVisibility(View.VISIBLE);
@@ -2626,17 +2651,10 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 hint1.setImageResource(R.drawable.idea1cartoon);
             }
 
-            //this is for left and right images visibility and invisibility
-            if (qid >= 1) {
-                leftImage.setVisibility(View.VISIBLE);
-            }
 
-            //@@ 8
-            if (qid == 1119) {
-                rightImage.setVisibility(View.INVISIBLE);
-            }
-
-        }
+        }/*else{
+            Toast.makeText(this,"qid",Toast.LENGTH_LONG).show();
+        }*/
 
 
         if (checkSound()) {
@@ -2974,7 +2992,13 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     mAd.show();
                     loadAdRewardedVideo();
                     dialog.dismiss();
-                } else {
+                }else if(UnityAds.isReady()) {
+                    MediationMetaData mediationMetaData = new MediationMetaData(getApplicationContext());
+                    mediationMetaData.setOrdinal(ordinal++);
+                    mediationMetaData.commit();
+                    UnityAds.show(Personality.this);
+                    dialog.dismiss();
+                }else {
                     String loading = "Loading..";
                     watchVideo.setText("Watch Video" + "\n" + loading);
                     loadAdRewardedVideo();
@@ -3201,7 +3225,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     }
 
     public void visiblityOfrightleft() {
-        for (int i = 0; i < qid; i++) {
+        for (int i = 0; i <=qid; i++) {
             //for rightImage
             if (qid == 179) {
                 rightImage.setVisibility(View.INVISIBLE);
@@ -3223,6 +3247,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
 
             //for leftImage
+            if (qid == 0) {
+                leftImage.setVisibility(View.INVISIBLE);
+            }
             if (qid == 180) {
                 leftImage.setVisibility(View.INVISIBLE);
             }
@@ -3397,7 +3424,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     .addNetworkExtrasBundle(ChartboostAdapter.class, extras)
                     .addNetworkExtrasBundle(UnityAdapter.class, extras)
                     .build();
-            mAd.loadAd(getString(R.string.Test_admob_unit_id_rewardedVideo), adRequest);
+            mAd.loadAd(getString(R.string.admob_unit_id_rewardedVideo), adRequest);
             // Toast.makeText(Personality.this,"called",Toast.LENGTH_LONG).show();
         }
     }
@@ -3686,6 +3713,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 } else if (mAd.isLoaded()) {
                     mAd.show();
                     loadAdRewardedVideo();
+                    dialog.dismiss();
+                }else if(UnityAds.isReady()) {
+                    MediationMetaData mediationMetaData = new MediationMetaData(getApplicationContext());
+                    mediationMetaData.setOrdinal(ordinal++);
+                    mediationMetaData.commit();
+                    UnityAds.show(Personality.this);
                     dialog.dismiss();
                 } else {
                     String loading = "Loading..";
@@ -4290,4 +4323,48 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         return false;
     }
 
+    private class UnityAdsListener implements IUnityAdsListener {
+        @Override
+        public void onUnityAdsReady(String s) {
+            //Called when Unity Ads has a video available to show
+        }
+
+        @Override
+        public void onUnityAdsStart(String s) {
+            //Called when a video begins playing
+        }
+
+        @Override
+        public void onUnityAdsFinish(String s, UnityAds.FinishState finishState) {
+            //Called when a video vinishes playing
+            //you get a reward
+            final List listgems = demoHelperClass.getGems();
+            int plusOneGem = 1;
+            int gemstext = (Integer) listgems.get(listgems.size() - 1);
+            gemstext = gemstext + plusOneGem;
+            demoHelperClass.InsertGems(gemstext);
+            diamondtext.setText(String.valueOf(gemstext));
+            //   final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
+            Toast toast = Toast.makeText(Personality.this, "+1 gem added in your bucket.", Toast.LENGTH_LONG);
+            toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
+            TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+            v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+            v.setTypeface(openSansSemiBold);
+            v.setTextSize(10);
+            toast.show();
+
+            // GoogleApiClient client = AppController.getInstance().getClient();
+            if (mGoogleApiClient.isConnected()) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
+            }
+
+            listgems.clear();
+
+        }
+
+        @Override
+        public void onUnityAdsError(UnityAds.UnityAdsError unityAdsError, String s) {
+            //Called when the Unity Ads detects an error
+        }
+    }
 }

@@ -150,4 +150,6 @@
     <string name="rewardline">-----------------REWARD-----------------</string>
     <string name="cost2gems">Cost : 2 gems</string>
     <string name="reveal">Reveal</string>
+
+    <string name="gameId">1435569</string>
 </resources>
