@@ -31,7 +31,7 @@ import util.Purchase;
 public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabBroadcastListener {
     IInAppBillingService mService;
 
-    static final String SKU_Gems = "gems";
+    static final String SKU_Gems = "4637086852927740462";
 
     static final String TAG = "Trivia Knowledge";
 
