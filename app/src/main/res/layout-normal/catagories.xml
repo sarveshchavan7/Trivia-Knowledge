@@ -60,7 +60,7 @@
             android:gravity="center"
             android:padding="1dip"
             android:layout_margin="10dp"
-            android:src="@drawable/personalityfinal" />
+             />
 
         <ImageView
             android:id="@+id/image2"
@@ -70,7 +70,7 @@
             android:gravity="center"
             android:padding="1dip"
             android:layout_margin="10dp"
-            android:src="@drawable/sportsfinal" />
+            />
     </TableRow>
 
     <TableRow>
@@ -89,7 +89,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/science"
-            android:textColor="@color/science" />
+            android:textColor="@color/science"  />
     </TableRow>
 
 
@@ -107,7 +107,7 @@
             android:gravity="center"
             android:padding="1dip"
             android:layout_margin="10dp"
-            android:src="@drawable/geographyfinal" />
+           />
 
         <ImageView
             android:id="@+id/image4"
@@ -117,7 +117,7 @@
             android:gravity="center"
             android:padding="1dip"
             android:layout_margin="10dp"
-            android:src="@drawable/sciencefinal" />
+            />
     </TableRow>
 
     <TableRow>
@@ -151,7 +151,7 @@
             android:gravity="center"
             android:padding="1dip"
             android:layout_margin="10dp"
-            android:src="@drawable/artistfinal" />
+            />
 
         <ImageView
             android:id="@+id/image6"
@@ -161,6 +161,6 @@
             android:gravity="center"
             android:padding="1dip"
             android:layout_margin="10dp"
-            android:src="@drawable/entertainmentfinal" />
+            />
     </TableRow>
 </TableLayout>

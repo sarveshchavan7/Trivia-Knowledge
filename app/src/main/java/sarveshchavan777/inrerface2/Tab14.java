@@ -105,4 +105,12 @@ public class Tab14 extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Progress = null;
+        demoHelperClass=null;
+        gridview.setOnItemClickListener(null);
+    }
 }

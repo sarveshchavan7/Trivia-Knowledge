@@ -76,8 +76,8 @@
             android:id="@+id/usegems"
             android:layout_width="match_parent"
             android:layout_height="210dp"
-            android:drawableRight="@drawable/gems"
             android:drawableEnd="@drawable/gems"
+            android:drawableRight="@drawable/gems"
             android:gravity="center"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
@@ -119,7 +119,7 @@
             android:textSize="40sp"
             app:buttonColor="@color/white" />
 
-        <View
+        <!--<View
             android:layout_width="match_parent"
             android:layout_height="4dp" />
 
@@ -134,9 +134,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="4dp" />
+            android:layout_height="4dp" />-->
 
-        <info.hoang8f.widget.FButton
+        <!--<info.hoang8f.widget.FButton
             android:id="@+id/buyGems"
             android:layout_width="match_parent"
             android:layout_height="210dp"
@@ -149,7 +149,7 @@
             android:text="@string/buyDiamond"
             android:textColor="@color/grey"
             android:textSize="40sp"
-            app:buttonColor="@color/white" />
+            app:buttonColor="@color/white" />-->
 
         <View
             android:layout_width="match_parent"

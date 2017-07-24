@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
 
     //google variable
     private static int RC_SIGN_IN = 9001;
-//    private static int RC_YOUR_UNIQUE_ID = R.string.leaderboard_1;
+    //    private static int RC_YOUR_UNIQUE_ID = R.string.leaderboard_1;
     private boolean mResolvingConnectionFailure = false;
 
     private boolean mSignInClicked = false;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
     // to connect in onStart()
     static GoogleApiClient mGoogleApiClient;  // initialized in onCreate
 
-    MediaPlayer ring;
+
     DemoHelperClass demoHelperClass;
 
     @Override
@@ -67,8 +67,10 @@ public class MainActivity extends AppCompatActivity
                 .addOnConnectionFailedListener(this)
                 .addApi(Games.API).addScope(Games.SCOPE_GAMES)
                 .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
+                .setViewForPopups(findViewById(android.R.id.content))
                 // add other APIs and scopes here as needed
                 .build();
+
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -134,24 +136,19 @@ public class MainActivity extends AppCompatActivity
                 }
 
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
-        if (mGoogleApiClient.isConnected()) {
-            fab.setImageResource(R.drawable.gsignout);
+        if(mGoogleApiClient!=null){
+            if (mGoogleApiClient.isConnected()) {
+                fab.setImageResource(R.drawable.gsignout);
+            }
         }
-        if (!mGoogleApiClient.isConnected()) {
-            fab.setImageResource(R.drawable.gsignin);
+        if(mGoogleApiClient!=null){
+            if (!mGoogleApiClient.isConnected()) {
+                fab.setImageResource(R.drawable.gsignin);
+            }
         }
+
     }
 
     @Override
@@ -164,8 +161,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        if (!mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.connect();
+        if(mGoogleApiClient!=null){
+            if (!mGoogleApiClient.isConnected()) {
+                mGoogleApiClient.connect();
+            }
         }
     }
 
@@ -245,7 +244,11 @@ public class MainActivity extends AppCompatActivity
             mSignInClicked = false;
             mResolvingConnectionFailure = false;
             if (resultCode == RESULT_OK) {
-                mGoogleApiClient.connect();
+                if(mGoogleApiClient!=null){
+                    mGoogleApiClient.connect();
+                }
+
+
             } else {
                 // Bring up an error dialog to alert the user that sign-in
                 // failed. The R.string.signin_failure should reference an error
@@ -258,15 +261,17 @@ public class MainActivity extends AppCompatActivity
 
         if (/*requestCode == RC_YOUR_UNIQUE_ID*/
                /* &&*/ resultCode == GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED) {
-            MainActivity.mGoogleApiClient.disconnect();
-            fab.setImageResource(R.drawable.gsignin);
+       if(mGoogleApiClient!=null){
+           MainActivity.mGoogleApiClient.disconnect();
+           fab.setImageResource(R.drawable.gsignin);
+       }
+
             // update your logic here (show login btn, hide logout btn).
             //Toast.makeText(getApplicationContext(), "result reconnect req", Toast.LENGTH_LONG).show();
         }
-
     }
 
-    public Boolean checkSound() {
+    /*public Boolean checkSound() {
         demoHelperClass = new DemoHelperClass(getApplicationContext());
         List list = demoHelperClass.getSound();
         if (list != null) {
@@ -276,19 +281,13 @@ public class MainActivity extends AppCompatActivity
             }
         }
         return false;
-    }
+    }*/
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (ring != null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    ring.release();
-                }
-            });
-        }
+        fab.setOnClickListener(null);
+
     }
 
     public static GoogleApiClient getmGoogleApiClient() {

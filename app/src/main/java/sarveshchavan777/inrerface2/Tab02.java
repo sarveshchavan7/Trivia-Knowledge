@@ -114,5 +114,7 @@ public class Tab02 extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         Progress = null;
+        demoHelperClass=null;
+        gridview.setOnItemClickListener(null);
     }
 }

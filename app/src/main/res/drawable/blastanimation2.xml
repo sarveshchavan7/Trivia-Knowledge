@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:id="@+id/selected"
+    android:oneshot="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/cracker11" android:duration="50" />
+    <item android:drawable="@drawable/cracker22" android:duration="50" />
+    <item android:drawable="@drawable/cracker33" android:duration="80" />
+    <item android:drawable="@drawable/cracker44" android:duration="70" />
+    <item android:drawable="@drawable/cracker55" android:duration="80" />
+    <item android:drawable="@drawable/cracker66" android:duration="50" />
+    <item android:drawable="@drawable/cracker77" android:duration="50" />
+    <item android:drawable="@drawable/cracker88" android:duration="80" />
+    <item android:drawable="@drawable/cracker99" android:duration="80" />
+</animation-list>

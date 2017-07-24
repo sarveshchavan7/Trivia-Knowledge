@@ -5,7 +5,7 @@ import android.app.Activity;
 public class Questions extends Activity {
     private int ID;
     private String Question;
-    private String Opt1;
+  //  private String Opt1;
 
     private String Answer;
     private String Answer2;
@@ -16,7 +16,7 @@ public class Questions extends Activity {
     public Questions() {
         ID = 0;
         Question = "";
-        Opt1 = "";
+      //  Opt1 = "";
 
         Answer = "";
         Answer2 = "";
@@ -26,9 +26,9 @@ public class Questions extends Activity {
         USELESSSTRING = "";
     }
 
-    public Questions(String qUESTION, String oPT1, String aNSWER, String aNSWER2, String rANDOMANS1, String rANDOMANS2, String uSLESSSTRING) {
+    public Questions(String qUESTION, String aNSWER, String aNSWER2, String rANDOMANS1, String rANDOMANS2, String uSLESSSTRING) {
         Question = qUESTION;
-        Opt1 = oPT1;
+     //   Opt1 = oPT1;
 
         Answer = aNSWER;
         Answer2 = aNSWER2;
@@ -46,9 +46,9 @@ public class Questions extends Activity {
         return Question;
     }
 
-    public String getOPT1() {
+   /* public String getOPT1() {
         return Opt1;
-    }
+    }*/
 
     public String getANSWER() {
         return Answer;
@@ -78,9 +78,9 @@ public class Questions extends Activity {
         Question = question;
     }
 
-    public void setOpt1(String opt1) {
+    /*public void setOpt1(String opt1) {
         Opt1 = opt1;
-    }
+    }*/
 
     public void setAnswer(String answer) {
         Answer = answer;

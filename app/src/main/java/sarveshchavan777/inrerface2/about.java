@@ -22,8 +22,9 @@ public class about extends Activity {
     ImageView leftabout;
     TextView imageCreditText, aboutTK, privacyPolicy, aboutText;
     Typeface typeface;
-    MediaPlayer ring;
     DemoHelperClass demoHelperClass;
+    Handler handler, handler2, handler3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,21 +71,10 @@ public class about extends Activity {
             @Override
             public void onClick(View view) {
                 finish();
-                if (checkSound()) {
-                   ring = MediaPlayer.create(about.this, R.raw.knife);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-                }
-
             }
         });
 
-        final Handler handler = new Handler();
+        handler = new Handler();
         Runnable runnable = new Runnable() {
             public void run() {
                 imageCreditText.setVisibility(View.VISIBLE);
@@ -94,7 +84,7 @@ public class about extends Activity {
         };
         handler.postDelayed(runnable, 10);
 
-        final Handler handler2 = new Handler();
+        handler2 = new Handler();
         Runnable runnable2 = new Runnable() {
 
             public void run() {
@@ -105,7 +95,7 @@ public class about extends Activity {
         };
         handler2.postDelayed(runnable2, 30);
 
-        final Handler handler3 = new Handler();
+        handler3 = new Handler();
         Runnable runnable3 = new Runnable() {
             public void run() {
                 aboutTK.setVisibility(View.VISIBLE);
@@ -152,7 +142,7 @@ public class about extends Activity {
         List list = demoHelperClass.getSound();
         if (list != null) {
             if (list.size() % 2 == 0) {
-              //  Toast.makeText(about.this,"true",Toast.LENGTH_LONG).show();
+                //  Toast.makeText(about.this,"true",Toast.LENGTH_LONG).show();
                 return true;
             }
         }
@@ -162,15 +152,12 @@ public class about extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-       if(ring!=null) {
-           ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-               @Override
-               public void onCompletion(MediaPlayer mediaPlayer) {
-
-                   ring.release();
-               }
-           });
-        }
-
+        handler = null;
+        handler2 = null;
+        handler3 = null;
+        imageCreditText.setOnClickListener(null);
+        privacyPolicy.setOnClickListener(null);
+        aboutTK.setOnClickListener(null);
+        leftabout.setOnClickListener(null);
     }
 }

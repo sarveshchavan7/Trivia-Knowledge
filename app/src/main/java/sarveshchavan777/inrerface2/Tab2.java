@@ -31,9 +31,10 @@ public class Tab2 extends Fragment {
 
     ListView lv;
     //Context context;
-    MediaPlayer ring;
+
     DemoHelperClass demoHelperClass;
     String x;
+    MediaPlayer mediaPlayer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -142,12 +143,24 @@ public class Tab2 extends Fragment {
                             v.setTypeface(typeface);
                             v.setTextSize(16);
                             toast.show();
-                            dialog.dismiss();
 
                             if (checkSound()) {
-                                 ring = MediaPlayer.create(getActivity(), R.raw.gameaudio2);
-                                ring.start();
+                                mediaPlayer = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
+                                if (mediaPlayer != null) {
+                                    mediaPlayer.start();
+                                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                        @Override
+                                        public void onCompletion(MediaPlayer mediaPlayer) {
+                                            mediaPlayer.reset();
+                                            mediaPlayer.release();
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                }
+                            } else {
+                                dialog.dismiss();
                             }
+
                         }
                     });
                     dialog.show();
@@ -247,7 +260,7 @@ public class Tab2 extends Fragment {
                 }
                 if (position == 7) {
                     Intent intent = new Intent(getActivity(), InAppPurchase.class);
-                    intent.putExtra("key",20000);
+                    intent.putExtra("key", 20000);
                     startActivity(intent);
                 }
             }
@@ -318,14 +331,9 @@ public class Tab2 extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(ring!=null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-
-                    ring.release();
-                }
-            });
+        lv.setOnItemClickListener(null);
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
         }
     }
 }

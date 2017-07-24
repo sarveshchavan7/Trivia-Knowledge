@@ -110,6 +110,8 @@ public class Tab03 extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Progress=null;
+        Progress = null;
+        demoHelperClass=null;
+        gridview.setOnItemClickListener(null);
     }
 }

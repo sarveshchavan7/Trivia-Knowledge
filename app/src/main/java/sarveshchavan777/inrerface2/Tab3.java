@@ -22,7 +22,7 @@ public class Tab3 extends Fragment {
     FButton achievement;
     private static final int REQUEST_ACHIEVEMENTS = 9004;
     DemoHelperClass demoHelperClass;
-    MediaPlayer ring;
+    MediaPlayer mediaPlayer;
 
     /* GoogleApiClient client = AppController.getInstance().getClient();*/
     @Override
@@ -36,36 +36,43 @@ public class Tab3 extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        demoHelperClass = new DemoHelperClass(getActivity());
+        demoHelperClass = new DemoHelperClass(getActivity().getApplicationContext());
 
-        final Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/shablagooital.ttf");
+        final Typeface typeface = Typeface.createFromAsset(getActivity().getApplicationContext().getAssets(), "fonts/shablagooital.ttf");
         achievement.setTypeface(typeface);
 
         achievement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                try{
-                    if (MainActivity.mGoogleApiClient.isConnected()) {
-                        startActivityForResult(Games.Achievements.getAchievementsIntent(MainActivity.mGoogleApiClient),
-                                REQUEST_ACHIEVEMENTS);
-                    } else {
-                        BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.achievement_not_available)).show();
+                if (checkSound()) {
+                    mediaPlayer = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
+                    if (mediaPlayer != null) {
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                            }
+                        });
                     }
-                }catch (Exception e){
+                }
+
+
+                try {
+                   if(MainActivity.mGoogleApiClient!=null) {
+                       if (MainActivity.mGoogleApiClient.isConnected()) {
+                           startActivityForResult(Games.Achievements.getAchievementsIntent(MainActivity.mGoogleApiClient),
+                                   REQUEST_ACHIEVEMENTS);
+                       } else {
+                           BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.achievement_not_available)).show();
+                       }
+                   }
+                } catch (Exception e) {
                     //this will take care it won't crash app.
                 }
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getActivity(), R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
     }
@@ -84,13 +91,9 @@ public class Tab3 extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(ring!=null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    ring.release();
-                }
-            });
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
         }
+        achievement.setOnClickListener(null);
     }
 }

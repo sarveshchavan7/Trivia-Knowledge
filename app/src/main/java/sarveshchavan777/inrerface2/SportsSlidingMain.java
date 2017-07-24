@@ -2,7 +2,6 @@ package sarveshchavan777.inrerface2;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +22,7 @@ public class SportsSlidingMain extends AppCompatActivity {
     ImageView leftdifficultysports;
     TextView textViewDifficultysports, easysports, mediumsports, hardsports;
     DemoHelperClass demoHelperClass;
-    MediaPlayer ring;
+
 
     //mainactivity
     @Override
@@ -40,29 +39,19 @@ public class SportsSlidingMain extends AppCompatActivity {
         easysports.setTypeface(typeface);
         mediumsports.setTypeface(typeface);
         hardsports.setTypeface(typeface);
+
         leftdifficultysports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SportsSlidingMain.this, Category.class);
                 startActivity(intent);
                 finish();
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPageerAdapterSports(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
-       Intent intent=getIntent();
+        Intent intent = getIntent();
         if (intent != null) {
             int xyz = intent.getIntExtra("TabNo", 0);
             mPager.setCurrentItem(xyz);
@@ -100,6 +89,9 @@ public class SportsSlidingMain extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        icon=null;
+        icon = null;
+        text=null;
+        demoHelperClass=null;
+        leftdifficultysports.setOnClickListener(null);
     }
 }

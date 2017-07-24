@@ -118,7 +118,7 @@
             android:textSize="25sp"
             app:buttonColor="@color/white" />
 
-        <View
+        <!--<View
             android:layout_width="match_parent"
             android:layout_height="5dp" />
 
@@ -133,22 +133,22 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="5dp" />
+            android:layout_height="5dp" />-->
 
-        <info.hoang8f.widget.FButton
-            android:id="@+id/buyGems"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:drawableEnd="@drawable/buydiamond"
-            android:drawableRight="@drawable/buydiamond"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingStart="10dp"
-            android:text="@string/buyDiamond"
-            android:textColor="@color/grey"
-            android:textSize="25sp"
-            app:buttonColor="@color/white" />
+        <!--<info.hoang8f.widget.FButton-->
+        <!--android:id="@+id/buyGems"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="170dp"-->
+        <!--android:drawableEnd="@drawable/buydiamond"-->
+        <!--android:drawableRight="@drawable/buydiamond"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:paddingRight="10dp"-->
+        <!--android:paddingStart="10dp"-->
+        <!--android:text="@string/buyDiamond"-->
+        <!--android:textColor="@color/grey"-->
+        <!--android:textSize="25sp"-->
+        <!--app:buttonColor="@color/white" />-->
 
         <View
             android:layout_width="match_parent"

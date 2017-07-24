@@ -22,7 +22,7 @@ public class EntertainmentSlidingMain extends AppCompatActivity {
     ImageView leftdifficultyent;
     TextView textViewDifficultyent, easyent, mediument, hardent;
     DemoHelperClass demoHelperClass;
-    MediaPlayer ring;
+
 
     //mainactivity
     @Override
@@ -42,31 +42,20 @@ public class EntertainmentSlidingMain extends AppCompatActivity {
         easyent.setTypeface(typeface);
         mediument.setTypeface(typeface);
         hardent.setTypeface(typeface);
+
         leftdifficultyent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Category.class);
                 startActivity(intent);
                 finish();
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPageerAdapterEntertainment(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
 
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         if (intent != null) {
             int xyz = intent.getIntExtra("TabNo", 0);
             mPager.setCurrentItem(xyz);
@@ -103,6 +92,9 @@ public class EntertainmentSlidingMain extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        icon=null;
+        icon = null;
+        text=null;
+        demoHelperClass=null;
+        leftdifficultyent=null;
     }
 }

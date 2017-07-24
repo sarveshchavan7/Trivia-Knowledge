@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.support.v4.content.ContextCompat;
@@ -97,12 +98,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     BootstrapProgressBar bootstrapProgressBar;
     private static final java.lang.String LEADERBOARD_ID = "CgkItYPd68IBEAIQBw";
     GoogleApiClient mGoogleApiClient;/*= AppController.getInstance().getClient();*/
-    MediaPlayer ring;
+
     Typeface chunkfive, grobold, openSansBold, openSansSemiBold, shablagooital, titilliumWeb;
     Handler handler = new Handler();
-    Handler handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10, handler11, handler12, handler13, handler14, handler15;
     private static int ordinal = 1;
     final private UnityAdsListener unityAdsListener = new UnityAdsListener();
+    AnimationDrawable frameAnimation;
+    MediaPlayer mediaPlayer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,10 +146,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         cracker2 = (ImageView) findViewById(R.id.cracker2);
         cracker3 = (ImageView) findViewById(R.id.cracker3);
         cracker4 = (ImageView) findViewById(R.id.cracker4);
-        cracker1.setVisibility(View.INVISIBLE);
-        cracker2.setVisibility(View.INVISIBLE);
-        cracker3.setVisibility(View.INVISIBLE);
-        cracker4.setVisibility(View.INVISIBLE);
+
 
         mGoogleApiClient = MainActivity.mGoogleApiClient;
         if (mGoogleApiClient != null) {
@@ -198,12 +199,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
         }
 
-        MediationMetaData mediationMetaData = new MediationMetaData(getApplicationContext());
+        final MediationMetaData mediationMetaData = new MediationMetaData(getApplicationContext());
         mediationMetaData.setName("Example mediation network");
         mediationMetaData.setVersion("1.2.3");
         mediationMetaData.commit();
 
-        UnityAds.initialize(this,getString(R.string.gameId),unityAdsListener);
+        UnityAds.initialize(this, getString(R.string.gameId), unityAdsListener);
 
 //        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 //        if (!prefs.getBoolean("firstTime", false)) {
@@ -252,7 +253,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
         // RewardedVideoAd=Get reference to singleton RewardedVideoAd object
-        mAd = MobileAds.getRewardedVideoAdInstance(this);
+        mAd = MobileAds.getRewardedVideoAdInstance(getApplicationContext());
         mAd.setRewardedVideoAdListener(this);
         loadAdRewardedVideo();
 
@@ -298,13 +299,14 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         tv28b = (FButton) findViewById(R.id.text28b);
         tv29b = (FButton) findViewById(R.id.text29b);
 
-        //array is created here so that it will pass the value of this array to the global varable array so it can be used in other mothds
-        final TextView textViewArrayAbove2[] = {tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20, tv11b, tv12b, tv13b, tv14b, tv15b, tv16b, tv17b, tv18b, tv19b, tv20b};
-        final TextView textfirst2[] = {tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20};
-        final TextView textsecound2[] = {tv11b, tv12b, tv13b, tv14b, tv15b, tv16b, tv17b, tv18b, tv19b, tv20b};
-        final FButton textViewArrayBelow2[] = {tv21, tv22, tv23, tv24, tv25, tv26, tv27, tv28, tv29, tv21b, tv22b, tv23b, tv24b, tv25b, tv26b, tv27b, tv28b, tv29b};
-        final FButton textViewBelowFirst2[] = {tv21, tv22, tv23, tv24, tv25, tv26, tv27, tv28, tv29};
-        final FButton textViewBelowsecond2[] = {tv21b, tv22b, tv23b, tv24b, tv25b, tv26b, tv27b, tv28b, tv29b};
+        //array is created here so that it will pass the value of this array to the global varable array so it can be used in other methods
+
+        TextView textViewArrayAbove2[] = {tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20, tv11b, tv12b, tv13b, tv14b, tv15b, tv16b, tv17b, tv18b, tv19b, tv20b};
+        TextView textfirst2[] = {tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20};
+        TextView textsecound2[] = {tv11b, tv12b, tv13b, tv14b, tv15b, tv16b, tv17b, tv18b, tv19b, tv20b};
+        FButton textViewArrayBelow2[] = {tv21, tv22, tv23, tv24, tv25, tv26, tv27, tv28, tv29, tv21b, tv22b, tv23b, tv24b, tv25b, tv26b, tv27b, tv28b, tv29b};
+        FButton textViewBelowFirst2[] = {tv21, tv22, tv23, tv24, tv25, tv26, tv27, tv28, tv29};
+        FButton textViewBelowsecond2[] = {tv21b, tv22b, tv23b, tv24b, tv25b, tv26b, tv27b, tv28b, tv29b};
 
 
         for (int i = 0; i < 20; i++) {
@@ -316,18 +318,21 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             textsecound[i] = textsecound2[i];
         }
 
-        for (int i = 0; i < 10; i++) {
-            textsecound[i] = textsecound2[i];
-        }
         for (int i = 0; i < 18; i++) {
             textViewArrayBelow[i] = textViewArrayBelow2[i];
         }
         for (int i = 0; i < 9; i++) {
             textViewBelowFirst[i] = textViewBelowFirst2[i];
-        }
-        for (int i = 0; i < 9; i++) {
             textViewBelowsecond[i] = textViewBelowsecond2[i];
         }
+
+        textViewArrayAbove2 = null;
+        textViewArrayBelow2 = null;
+        textfirst2 = null;
+        textsecound2 = null;
+        textViewBelowFirst2 = null;
+        textViewBelowsecond2 = null;
+
 
         //type faces--
         // final Typeface typeface1 = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Semibold.ttf");
@@ -363,7 +368,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                     for (int i = 0; i < 180; i++) {
                         if (clicked.equals(Integer.toString(i))) {
-                            Intent intent2 = new Intent(Personality.this, SecoundSlidingMain.class);
+                            Intent intent2 = new Intent(getApplicationContext(), SecoundSlidingMain.class);
                             if (i < 60) {
                                 intent2.putExtra("TabNo", 0);
                             }
@@ -379,7 +384,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     }
                     for (int i = 180; i < 360; i++) {
                         if (clicked.equals(Integer.toString(i))) {
-                            Intent intent2 = new Intent(Personality.this, SportsSlidingMain.class);
+                            Intent intent2 = new Intent(getApplicationContext(), SportsSlidingMain.class);
                             if (i < 240) {
                                 intent2.putExtra("TabNo", 0);
                             }
@@ -389,14 +394,13 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             if (i >= 300 && i < 360) {
                                 intent2.putExtra("TabNo", 2);
                             }
-
                             startActivity(intent2);
                             finish();
                         }
                     }
                     for (int i = 360; i < 600; i++) {
                         if (clicked.equals(Integer.toString(i))) {
-                            Intent intent2 = new Intent(Personality.this, GeoSlidingMain.class);
+                            Intent intent2 = new Intent(getApplicationContext(), GeoSlidingMain.class);
 
                             if (i < 440) {
                                 intent2.putExtra("TabNo", 0);
@@ -414,7 +418,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     }
                     for (int i = 600; i < 780; i++) {
                         if (clicked.equals(Integer.toString(i))) {
-                            Intent intent2 = new Intent(Personality.this, ScienceSlidingMain.class);
+                            Intent intent2 = new Intent(getApplicationContext(), ScienceSlidingMain.class);
                             if (i < 660) {
                                 intent2.putExtra("TabNo", 0);
                             }
@@ -430,7 +434,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     }
                     for (int i = 780; i < 900; i++) {
                         if (clicked.equals(Integer.toString(i))) {
-                            Intent intent2 = new Intent(Personality.this, ArtsSlidingMain.class);
+                            Intent intent2 = new Intent(getApplicationContext(), ArtsSlidingMain.class);
 
                             if (i < 820) {
                                 intent2.putExtra("TabNo", 0);
@@ -447,7 +451,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     }
                     for (int i = 900; i < 1120; i++) {
                         if (clicked.equals(Integer.toString(i))) {
-                            Intent intent2 = new Intent(Personality.this, EntertainmentSlidingMain.class);
+                            Intent intent2 = new Intent(getApplicationContext(), EntertainmentSlidingMain.class);
                             if (i < 980) {
                                 intent2.putExtra("TabNo", 0);
                             }
@@ -462,16 +466,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                         }
                     }
                 }
-                if (checkSound()) {
-                    ring = MediaPlayer.create(Personality.this, R.raw.knife);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-                }
+
             }
 
         });
@@ -482,7 +477,9 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                 final Dialog dialog = new Dialog(Personality.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                if (dialog.getWindow() != null) {
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                }
                 dialog.setContentView(R.layout.hintdialog);
                 dialog.setCancelable(true);
 
@@ -705,7 +702,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 }
                                 if (hintLength <= 3) {
                                     //  Toast.makeText(Personality.this, "Free hint not available for less than 4 ", Toast.LENGTH_LONG).show();
-                                    Toast toast = Toast.makeText(Personality.this, "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
+                                    Toast toast = Toast.makeText(getApplicationContext(), "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
                                     toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                                     v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -865,7 +862,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             if (hintLength <= 3) {
                                 // Toast.makeText(Personality.this, "Free hint not available for less than 4 boxes", Toast.LENGTH_LONG).show();
 
-                                Toast toast = Toast.makeText(Personality.this, "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
+                                Toast toast = Toast.makeText(getApplicationContext(), "\tFree hint not available for less than 4 boxes" + " ", Toast.LENGTH_LONG);
                                 toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                                 TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                                 v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -874,22 +871,30 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                                 toast.show();
                             }
                         }
-                        dialog.dismiss();
-                        if (mGoogleApiClient.isConnected()) {
-                            checkAchievementOne();
-                            checkAchievementTwo();
+                        if (mGoogleApiClient != null) {
+                            if (mGoogleApiClient.isConnected()) {
+                                checkAchievementOne();
+                                checkAchievementTwo();
+                            }
                         }
 
-                        if (checkSound()) {
-                            ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
-                            ring.start();
 
-                            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                @Override
-                                public void onCompletion(MediaPlayer mediaPlayer) {
-                                    ring.release();
-                                }
-                            });
+                        if (checkSound()) {
+                            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+                            if (mediaPlayer != null) {
+                                mediaPlayer.start();
+                                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                    @Override
+                                    public void onCompletion(MediaPlayer mediaPlayer) {
+                                        mediaPlayer.reset();
+                                        mediaPlayer.release();
+                                        dialog.dismiss();
+                                    }
+                                });
+                            }
+
+                        } else {
+                            dialog.dismiss();
                         }
                     }
                 });
@@ -1084,203 +1089,62 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
     public void crackerAnimation() {
 
-        final Animation fadeOut = new AlphaAnimation(1, 0);
+        /*final Animation fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
         fadeOut.setStartOffset(300);
         fadeOut.setDuration(300);
         final Animation fadeOut2 = new AlphaAnimation(1, 0);
         fadeOut2.setInterpolator(new AccelerateInterpolator()); //and this
         fadeOut2.setStartOffset(400);
-        fadeOut2.setDuration(600);
+        fadeOut2.setDuration(600);*/
 
+        cracker1.setVisibility(View.VISIBLE);
+        cracker2.setVisibility(View.VISIBLE);
+        cracker3.setVisibility(View.VISIBLE);
+        cracker4.setVisibility(View.VISIBLE);
 
-        handler1 = new Handler();
+        cracker1.setBackgroundResource(R.drawable.blastanimation);
+        cracker2.setBackgroundResource(R.drawable.blastanimation2);
+        cracker3.setBackgroundResource(R.drawable.blastanimation);
+        cracker4.setBackgroundResource(R.drawable.blastanimation2);
+
+        frameAnimation = (AnimationDrawable) cracker1.getBackground();
+        frameAnimation.start();
+
+        frameAnimation = (AnimationDrawable) cracker2.getBackground();
+        frameAnimation.start();
+
+        frameAnimation = (AnimationDrawable) cracker3.getBackground();
+        frameAnimation.start();
+
+        frameAnimation = (AnimationDrawable) cracker4.getBackground();
+        frameAnimation.start();
+
+        Handler handler1 = new Handler();
         Runnable runnable = new Runnable() {
 
             public void run() {
-                cracker1.setVisibility(View.VISIBLE);
-                //for interval...
+                /*cracker1.setVisibility(View.VISIBLE);
+                //for interval...*/
+                cracker1.setVisibility(View.INVISIBLE);
+                cracker3.setVisibility(View.INVISIBLE);
+
             }
         };
-        handler1.postDelayed(runnable, 150);
+        handler1.postDelayed(runnable, 500);
 
-        handler2 = new Handler();
+        Handler handler2 = new Handler();
         Runnable runnable2 = new Runnable() {
 
             public void run() {
-                cracker1.setImageResource(R.drawable.cracker11);
-                cracker3.setVisibility(View.VISIBLE);
-                cracker4.setVisibility(View.VISIBLE);
-            }
-        };
-        handler2.postDelayed(runnable2, 200);
-
-        handler3 = new Handler();
-        Runnable runnable3 = new Runnable() {
-
-            public void run() {
-                cracker2.setVisibility(View.VISIBLE);
-                cracker1.setImageResource(R.drawable.cracker22);
-                cracker3.setImageResource(R.drawable.cracker11);
-                cracker4.setImageResource(R.drawable.cracker11);
-                //for interval...
-            }
-        };
-        handler3.postDelayed(runnable3, 250);
-
-        handler4 = new Handler();
-        Runnable runnable4 = new Runnable() {
-
-            public void run() {
-
-                cracker1.setImageResource(R.drawable.cracker33);
-                cracker2.setImageResource(R.drawable.cracker11);
-                cracker3.setImageResource(R.drawable.cracker22);
-                cracker4.setImageResource(R.drawable.cracker22);
-
-            }
-        };
-        handler4.postDelayed(runnable4, 300);
-
-        handler5 = new Handler();
-        Runnable runnable5 = new Runnable() {
-
-            public void run() {
-                cracker1.setImageResource(R.drawable.cracker44);
-                cracker2.setImageResource(R.drawable.cracker22);
-                cracker3.setImageResource(R.drawable.cracker33);
-                cracker4.setImageResource(R.drawable.cracker33);
-            }
-        };
-        handler5.postDelayed(runnable5, 350);
-
-        handler6 = new Handler();
-        Runnable runnable6 = new Runnable() {
-
-            public void run() {
-                cracker1.setImageResource(R.drawable.cracker55);
-                cracker2.setImageResource(R.drawable.cracker33);
-                cracker3.setImageResource(R.drawable.cracker44);
-                cracker4.setImageResource(R.drawable.cracker44);
-            }
-        };
-        handler6.postDelayed(runnable6, 400);
-
-        handler7 = new Handler();
-        Runnable runnable7 = new Runnable() {
-
-            public void run() {
-                cracker1.setImageResource(R.drawable.cracker66);
-                cracker2.setImageResource(R.drawable.cracker44);
-                cracker3.setImageResource(R.drawable.cracker55);
-                cracker4.setImageResource(R.drawable.cracker55);
-            }
-        };
-        handler7.postDelayed(runnable7, 450);
-
-        handler8 = new Handler();
-        Runnable runnable8 = new Runnable() {
-
-            public void run() {
-                cracker1.setImageResource(R.drawable.cracker77);
-                cracker2.setImageResource(R.drawable.cracker55);
-                cracker3.setImageResource(R.drawable.cracker66);
-                cracker4.setImageResource(R.drawable.cracker66);
-                //for interval...
-            }
-        };
-        handler8.postDelayed(runnable8, 500);
-
-
-        handler9 = new Handler();
-        Runnable runnable9 = new Runnable() {
-
-            public void run() {
-                cracker1.setImageResource(R.drawable.cracker88);
-                cracker2.setImageResource(R.drawable.cracker66);
-                cracker3.setImageResource(R.drawable.cracker77);
-                cracker4.setImageResource(R.drawable.cracker77);
-                //for interval...
-            }
-        };
-        handler9.postDelayed(runnable9, 550);
-
-        handler10 = new Handler();
-        Runnable runnable10 = new Runnable() {
-
-            public void run() {
-
-                cracker2.setImageResource(R.drawable.cracker77);
-                cracker3.setImageResource(R.drawable.cracker88);
-                cracker4.setImageResource(R.drawable.cracker99);
-                //for interval...
-            }
-        };
-        handler10.postDelayed(runnable10, 600);
-
-        handler11 = new Handler();
-        Runnable runnable11 = new Runnable() {
-
-            public void run() {
-                cracker1.setAnimation(fadeOut2);
-                cracker2.setImageResource(R.drawable.cracker99);
-                //for interval...
-            }
-        };
-        handler11.postDelayed(runnable11, 650);
-
-
-        handler12 = new Handler();
-        Runnable runnable12 = new Runnable() {
-
-            public void run() {
-                cracker1.setVisibility(View.INVISIBLE);
-                cracker3.setAnimation(fadeOut2);
-                cracker4.setAnimation(fadeOut2);
-
-                //for interval...
-            }
-        };
-        handler12.postDelayed(runnable12, 680);
-
-        handler13 = new Handler();
-        Runnable runnable13 = new Runnable() {
-
-            public void run() {
-                cracker2.startAnimation(fadeOut);
-                //for interval...
-            }
-        };
-        handler13.postDelayed(runnable13, 730);
-
-        handler14 = new Handler();
-        Runnable runnable14 = new Runnable() {
-
-            public void run() {
-
-                cracker3.setVisibility(View.INVISIBLE);
-                cracker4.setVisibility(View.INVISIBLE);
-                //for interval...
-            }
-        };
-        handler14.postDelayed(runnable14, 780);
-
-
-        handler15 = new Handler();
-        Runnable runnable15 = new Runnable() {
-
-            public void run() {
                 cracker2.setVisibility(View.INVISIBLE);
-                //for interval...
+                cracker4.setVisibility(View.INVISIBLE);
+
+
             }
         };
-        handler15.postDelayed(runnable15, 830);
+        handler2.postDelayed(runnable2, 650);
 
-
-        cracker1.setImageResource(R.drawable.cracker11);
-        cracker2.setImageResource(R.drawable.cracker22);
-        cracker3.setImageResource(R.drawable.cracker33);
-        cracker4.setImageResource(R.drawable.cracker44);
     }
 
     //Animation method
@@ -1346,20 +1210,25 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     demoHelperClass.InsertQid(qid);
 
                     //updating leaderboard score
-                    if (mGoogleApiClient.isConnected()) {
-                        DemoHelperClass demoHelperClass = new DemoHelperClass(Personality.this);
-                        List xyz = demoHelperClass.GetQid();
-                        int noOfSolvedQuestion = xyz.size();
-                        //multiplying the no of solved Questions by 5
-                        int leaderboardScore = noOfSolvedQuestion * 5;
-                        Games.Leaderboards.submitScore(mGoogleApiClient, LEADERBOARD_ID, leaderboardScore);
-                        xyz.clear();
+                    if (mGoogleApiClient != null) {
+                        if (mGoogleApiClient.isConnected()) {
+                            DemoHelperClass demoHelperClass = new DemoHelperClass(Personality.this);
+                            List xyz = demoHelperClass.GetQid();
+                            int noOfSolvedQuestion = xyz.size();
+                            //multiplying the no of solved Questions by 5
+                            int leaderboardScore = noOfSolvedQuestion * 5;
+                            Games.Leaderboards.submitScore(mGoogleApiClient, LEADERBOARD_ID, leaderboardScore);
+                            xyz.clear();
+                        }
                     }
 
+
                     //updating the achievement
-                    if (mGoogleApiClient.isConnected()) {
-                        checkAchievementOne();
-                        checkAchievementTwo();
+                    if (mGoogleApiClient != null) {
+                        if (mGoogleApiClient.isConnected()) {
+                            checkAchievementOne();
+                            checkAchievementTwo();
+                        }
                     }
 
                     //setting the text for number of correct question solved
@@ -1496,10 +1365,17 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                             dialog.cancel();
 
-                            if (checkSound()) {
-                                ring = MediaPlayer.create(Personality.this, R.raw.wooden_stick);
+                            /*if (checkSound()) {
+                                ring = MediaPlayer.create(getApplicationContext(), R.raw.wooden_stick);
                                 ring.start();
-                            }
+
+                                ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                    @Override
+                                    public void onCompletion(MediaPlayer mediaPlayer) {
+                                        ring.release();
+                                    }
+                                });
+                            }*/
                         }
                     });
 
@@ -1508,21 +1384,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     stringBuffer2.setLength(0);
 
 
-                    if (checkSound()) {
-                        ring = MediaPlayer.create(Personality.this, R.raw.victory);
-                        ring.start();
-
-
-                        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                            @Override
-                            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                                ring.release();
-                            }
-                        });
-
-                    }
-
 //                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 //                        @Override
 //                        public void onCompletion(MediaPlayer mediaPlayer) {
@@ -1530,12 +1391,26 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 //                            ring.release();
 //                        }
 //                    });
+
+                    if (checkSound()) {
+                        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.victory);
+                        if (mediaPlayer != null) {
+                            mediaPlayer.start();
+                            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                @Override
+                                public void onCompletion(MediaPlayer mediaPlayer) {
+                                    mediaPlayer.reset();
+                                    mediaPlayer.release();
+                                }
+                            });
+                        }
+                    }
                 }
                 //@@ 7
                 else if (qid == 1119 || qid == 179 || qid == 359 || qid == 599 || qid == 779 || qid == 899) {
                     // demoHelperClass.InsertDollar(adddollar);
                     // final Typeface typeface = Typeface.createFromAsset(this.getAssets(), "fonts/shablagooital.ttf");
-                    Toast toast = Toast.makeText(this, "\tcorrect \t", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "\tcorrect \t", Toast.LENGTH_LONG);
                     toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.transparent2));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                     v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.lightgreen2));
@@ -1547,20 +1422,26 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     demoHelperClass.InsertQid(qid);
 
                     //updating leaderboard score
-                    if (mGoogleApiClient.isConnected()) {
-                        DemoHelperClass demoHelperClass = new DemoHelperClass(Personality.this);
-                        List xyz = demoHelperClass.GetQid();
-                        int noOfSolvedQuestion = xyz.size();
-                        //multiplying the no of solved Questions by 5
-                        int leaderboardScore = noOfSolvedQuestion * 5;
-                        Games.Leaderboards.submitScore(mGoogleApiClient, LEADERBOARD_ID, leaderboardScore);
+                    if (mGoogleApiClient != null) {
+                        if (mGoogleApiClient.isConnected()) {
+                            DemoHelperClass demoHelperClass = new DemoHelperClass(Personality.this);
+                            List xyz = demoHelperClass.GetQid();
+                            int noOfSolvedQuestion = xyz.size();
+                            //multiplying the no of solved Questions by 5
+                            int leaderboardScore = noOfSolvedQuestion * 5;
+                            Games.Leaderboards.submitScore(mGoogleApiClient, LEADERBOARD_ID, leaderboardScore);
+                        }
                     }
 
+
                     //updating the achievement
-                    if (mGoogleApiClient.isConnected()) {
-                        checkAchievementOne();
-                        checkAchievementTwo();
+                    if (mGoogleApiClient != null) {
+                        if (mGoogleApiClient.isConnected()) {
+                            checkAchievementOne();
+                            checkAchievementTwo();
+                        }
                     }
+
 
                     currentQ = quesList.get(qid);
                     view2();
@@ -1809,18 +1690,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         };
         handler.postDelayed(runnable, 100); //for initial delay..*/
 
-        if (checkSound()) {
-            ring = MediaPlayer.create(Personality.this, R.raw.incorrect);
-            ring.start();
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-
-                    ring.release();
-                }
-            });
-
-        }
     }
 
 
@@ -2160,316 +2029,177 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     public void text11b(View view) {
         textView = tv11b;
         Comman();
+
     }
 
     public void text12b(View view) {
         textView = tv12b;
         Comman();
+
     }
 
     public void text13b(View view) {
         textView = tv13b;
         Comman();
+
     }
 
     public void text14b(View view) {
         textView = tv14b;
         Comman();
+
     }
 
     public void text15b(View view) {
         textView = tv15b;
         Comman();
+
     }
 
     public void text16b(View view) {
         textView = tv16b;
         Comman();
+
     }
 
     public void text17b(View view) {
         textView = tv17b;
         Comman();
+
     }
 
     public void text18b(View view) {
         textView = tv18b;
         Comman();
+
     }
 
     public void text19b(View view) {
         textView = tv19b;
         Comman();
+
     }
 
     public void text20b(View view) {
         textView = tv20b;
         Comman();
+
     }
 
     public void text21(View view) {
         textView2 = tv21;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text22(View view) {
         textView2 = tv22;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text23(View view) {
         textView2 = tv23;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text24(View view) {
         textView2 = tv24;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text25(View view) {
         textView2 = tv25;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text26(View view) {
         textView2 = tv26;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text27(View view) {
         textView2 = tv27;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text28(View view) {
         textView2 = tv28;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text29(View view) {
         textView2 = tv29;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
     }
 
     public void text21b(View view) {
         textView2 = tv21b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
 
     }
 
     public void text22b(View view) {
         textView2 = tv22b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
-
+        sound();
     }
 
     public void text23b(View view) {
         textView2 = tv23b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
+        sound();
 
     }
 
     public void text24b(View view) {
         textView2 = tv24b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
-
+        sound();
     }
 
     public void text25b(View view) {
         textView2 = tv25b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
-
+        sound();
     }
 
     public void text26b(View view) {
         textView2 = tv26b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
-
+        sound();
     }
 
     public void text27b(View view) {
         textView2 = tv27b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
-
+        sound();
     }
 
     public void text28b(View view) {
         textView2 = tv28b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
+        sound();
 
-                ring.release();
-            }
-        });
     }
 
     public void text29b(View view) {
         textView2 = tv29b;
         Comman2();
-        ring = MediaPlayer.create(getApplicationContext(), R.raw.woosh);
-        ring.start();
-        ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-
-                ring.release();
-            }
-        });
-
+        sound();
     }
 
     public void left(View view) {
         // myNum = Integer.parseInt(myString.getText().toString());
-        if (qid >= 1 && qid!=180 && qid!=360 && qid!=600 && qid!=780 && qid!=900) {
+        if (qid >= 1 && qid != 180 && qid != 360 && qid != 600 && qid != 780 && qid != 900) {
             master.setVisibility(View.INVISIBLE);
             qid--;
 
@@ -2555,8 +2285,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         }*/
 
 
-        if (checkSound()) {
-            ring = MediaPlayer.create(Personality.this, R.raw.wooden_stick);
+        /*if (checkSound()) {
+            ring = MediaPlayer.create(getApplicationContext(), R.raw.wooden_stick);
             ring.start();
             ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -2565,13 +2295,13 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     ring.release();
                 }
             });
-        }
+        }*/
 
 
     }
 
     public void right(View view) {
-        if (qid >= 0 && qid!=179 && qid!=359 && qid!=599 && qid!=779 && qid!=899 && qid !=1119) {
+        if (qid >= 0 && qid != 179 && qid != 359 && qid != 599 && qid != 779 && qid != 899 && qid != 1119) {
             master.setVisibility(View.INVISIBLE);
             qid++;
 
@@ -2657,8 +2387,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         }*/
 
 
-        if (checkSound()) {
-            ring = MediaPlayer.create(Personality.this, R.raw.wooden_stick);
+        /*if (checkSound()) {
+            ring = MediaPlayer.create(getApplicationContext(), R.raw.wooden_stick);
             ring.start();
             ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -2666,7 +2396,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     ring.release();
                 }
             });
-        }
+        }*/
     }
 
     public void correctlayout() {
@@ -2858,7 +2588,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             String clicked = intent.getStringExtra("Key");
             for (int i = 0; i < 180; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    Intent intent2 = new Intent(Personality.this, SecoundSlidingMain.class);
+                    Intent intent2 = new Intent(getApplicationContext(), SecoundSlidingMain.class);
                     if (i < 60) {
                         intent2.putExtra("TabNo", 0);
                     }
@@ -2874,7 +2604,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
             for (int i = 180; i < 360; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    Intent intent2 = new Intent(Personality.this, SportsSlidingMain.class);
+                    Intent intent2 = new Intent(getApplicationContext(), SportsSlidingMain.class);
                     if (i < 240) {
                         intent2.putExtra("TabNo", 0);
                     }
@@ -2891,7 +2621,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
             for (int i = 360; i < 600; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    Intent intent2 = new Intent(Personality.this, GeoSlidingMain.class);
+                    Intent intent2 = new Intent(getApplicationContext(), GeoSlidingMain.class);
                     if (i < 440) {
                         intent2.putExtra("TabNo", 0);
                     }
@@ -2907,7 +2637,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
             for (int i = 600; i < 780; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    Intent intent2 = new Intent(Personality.this, ScienceSlidingMain.class);
+                    Intent intent2 = new Intent(getApplicationContext(), ScienceSlidingMain.class);
                     if (i < 660) {
                         intent2.putExtra("TabNo", 0);
                     }
@@ -2923,7 +2653,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
             for (int i = 780; i < 900; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    Intent intent2 = new Intent(Personality.this, ArtsSlidingMain.class);
+                    Intent intent2 = new Intent(getApplicationContext(), ArtsSlidingMain.class);
                     if (i < 820) {
                         intent2.putExtra("TabNo", 0);
                     }
@@ -2939,7 +2669,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
             for (int i = 900; i < 1120; i++) {
                 if (clicked.equals(Integer.toString(i))) {
-                    Intent intent2 = new Intent(Personality.this, EntertainmentSlidingMain.class);
+                    Intent intent2 = new Intent(getApplicationContext(), EntertainmentSlidingMain.class);
                     if (i < 980) {
                         intent2.putExtra("TabNo", 0);
                     }
@@ -2958,8 +2688,11 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
     public void revealhole(View view) {
         final Dialog dialog = new Dialog(Personality.this);
-        //dialog.requestWindowFeature(Window.);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawableResource(android.R.color.transparent);
+        }
         dialog.setContentView(R.layout.reveal);
         dialog.setCancelable(true);
 
@@ -2980,7 +2713,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 // Toast.makeText(Personality.this,"Video watched",Toast.LENGTH_LONG).show();
                 //check if the question is solved if solved then msg=Question alredy solved
                 if (returnQid() == qid) {
-                    Toast toast = Toast.makeText(Personality.this, "Question already solved.\nTry for other questions.", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Question already solved.\nTry for other questions.", Toast.LENGTH_LONG);
                     toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                     v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -2992,37 +2725,26 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     mAd.show();
                     loadAdRewardedVideo();
                     dialog.dismiss();
-                }else if(UnityAds.isReady()) {
+                } else if (UnityAds.isReady()) {
                     MediationMetaData mediationMetaData = new MediationMetaData(getApplicationContext());
                     mediationMetaData.setOrdinal(ordinal++);
                     mediationMetaData.commit();
                     UnityAds.show(Personality.this);
                     dialog.dismiss();
-                }else {
+                } else {
                     String loading = "Loading..";
                     watchVideo.setText("Watch Video" + "\n" + loading);
                     loadAdRewardedVideo();
                 }
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
         final List listgems = demoHelperClass.getGems();
         int gemstext = (Integer) listgems.get(listgems.size() - 1);
         Button usegems = (Button) dialog.findViewById(R.id.usegems);
-        FButton buyGems = (FButton) dialog.findViewById(R.id.buyGems);
+        //  FButton buyGems = (FButton) dialog.findViewById(R.id.buyGems);
 
-        buyGems.setOnClickListener(new View.OnClickListener() {
+        /*buyGems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Personality.this, InAppPurchase.class);
@@ -3042,7 +2764,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     });
                 }
             }
-        });
+        });*/
 
         usegems.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -3050,7 +2772,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                 //check if the question is solved if solved then no reveal
                 if (returnQid() == qid) {
-                    Toast toast = Toast.makeText(Personality.this, "Question already solved", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Question already solved", Toast.LENGTH_LONG);
                     toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                     v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -3066,7 +2788,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     List listgems = demoHelperClass.getGems();
                     int gemstext = (Integer) listgems.get(listgems.size() - 1);
                     if (gemstext == 0 || gemstext == 1) {
-                        Toast toast = Toast.makeText(Personality.this, "\t\t\tYou ran out of Gems.\n Please Buy them in shop or watch video.", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), "\t\t\tYou ran out of Gems.\n Please Buy them in shop or watch video.", Toast.LENGTH_LONG);
                         toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                         TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                         v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -3096,9 +2818,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                             i.setVisibility(View.INVISIBLE);
                         }
 
-                        if (mGoogleApiClient.isConnected()) {
-                            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_reveal));
+                        if (mGoogleApiClient != null) {
+                            if (mGoogleApiClient.isConnected()) {
+                                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_reveal));
+                            }
                         }
+
                     }
                     if (gemstext > 1) {
                         gemstext = gemstext - z;
@@ -3108,29 +2833,16 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 }
                 dialog.dismiss();
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
-
             }
         });
         TextView watchvideo = (TextView) dialog.findViewById(R.id.watchvideo);
         usegems.setTypeface(shablagooital);
-        TextView buyDiamond = (TextView) dialog.findViewById(R.id.buyGems);
-        buyDiamond.setTypeface(shablagooital);
-        TextView shop = (TextView) dialog.findViewById(R.id.shop);
-        shop.setTypeface(shablagooital);
+        // TextView buyDiamond = (TextView) dialog.findViewById(R.id.buyGems);
+        // buyDiamond.setTypeface(shablagooital);
+        // TextView shop = (TextView) dialog.findViewById(R.id.shop);
+        // shop.setTypeface(shablagooital);
         usegems.setText(getResources().getString(R.string.useDiamond) + "\n\n" + getResources().getString(R.string.Cost_2_Diamond) + Integer.toString(gemstext) + " " + getResources().getString(R.string.diamond_left_in_your_bucket));
-        buyDiamond.setText(getResources().getString(R.string.buyDiamond) + "\n\n" + getResources().getString(R.string.Shop_diamonds_at_cheap_price));
+        // buyDiamond.setText(getResources().getString(R.string.buyDiamond) + "\n\n" + getResources().getString(R.string.Shop_diamonds_at_cheap_price));
         watchvideo.setTypeface(shablagooital);
         watchvideo.setText(getResources().getString(R.string.watchvideo));
         or.setTypeface(shablagooital);
@@ -3225,7 +2937,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     }
 
     public void visiblityOfrightleft() {
-        for (int i = 0; i <=qid; i++) {
+        for (int i = 0; i <= qid; i++) {
             //for rightImage
             if (qid == 179) {
                 rightImage.setVisibility(View.INVISIBLE);
@@ -3421,7 +3133,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             extras.putBoolean("_noRefresh", true);
             AdRequest adRequest = new AdRequest.Builder()
                     .addNetworkExtrasBundle(AdMobAdapter.class, extras)
-                    .addNetworkExtrasBundle(ChartboostAdapter.class, extras)
+                    //.addNetworkExtrasBundle(ChartboostAdapter.class, extras)
                     .addNetworkExtrasBundle(UnityAdapter.class, extras)
                     .build();
             mAd.loadAd(getString(R.string.admob_unit_id_rewardedVideo), adRequest);
@@ -3467,7 +3179,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         demoHelperClass.InsertGems(gemstext);
         diamondtext.setText(String.valueOf(gemstext));
         //   final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
-        Toast toast = Toast.makeText(Personality.this, "+1 gem added in your bucket.", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getApplicationContext(), "+1 gem added in your bucket.", Toast.LENGTH_LONG);
         toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
         TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
         v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -3476,9 +3188,12 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         toast.show();
 
         // GoogleApiClient client = AppController.getInstance().getClient();
-        if (mGoogleApiClient.isConnected()) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
+        if (mGoogleApiClient != null) {
+            if (mGoogleApiClient.isConnected()) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
+            }
         }
+
 
         listgems.clear();
     }
@@ -3530,15 +3245,6 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         super.onDestroy();
         Chartboost.onDestroy(this);
         quesList.clear();
-        if (ring != null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-
-                    ring.release();
-                }
-            });
-        }
 
 //        imageView, imageView2, leftImage, rightImage, hint1,/* whatsapp, fbmessganger,*/
 //                master, hint2, gems, bomb, correctImage;
@@ -3546,6 +3252,16 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 //        cracker1, cracker2, cracker3, cracker4
 
 //       imageView.setImageDrawable(null);
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+        }
+        incorrect = null;
+        tvQ = null;
+        tvt = null;
+        diamondtext = null;
+        queNum = null;
+        bootstrapProgressBar = null;
+        triviaKnowldegText = null;
         imageView2.setImageDrawable(null);
         leftImage.setImageDrawable(null);
         rightImage.setImageDrawable(null);
@@ -3559,64 +3275,40 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         cracker2.setImageDrawable(null);
         cracker3.setImageDrawable(null);
         cracker4.setImageDrawable(null);
+        solvedText = null;
+        toolbar = null;
+        l1.removeAllViews();
+        l2.removeAllViews();
 
         if (handler != null) {
             handler.removeCallbacksAndMessages(null);
         }
+        imageView2.setOnClickListener(null);
+        hint1.setOnClickListener(null);
 
-        if (handler1 != null) {
-            handler1.removeCallbacksAndMessages(null);
+        for (int i = 0; i < textViewArrayAbove.length; i++) {
+            textViewArrayAbove[i] = null;
         }
-        if (handler2 != null) {
-            handler2.removeCallbacksAndMessages(null);
-        }
-        if (handler3 != null) {
-            handler3.removeCallbacksAndMessages(null);
-        }
-        if (handler4 != null) {
-            handler4.removeCallbacksAndMessages(null);
-        }
-        if (handler5 != null) {
-            handler5.removeCallbacksAndMessages(null);
-        }
-        if (handler6 != null) {
-            handler6.removeCallbacksAndMessages(null);
-        }
-        if (handler7 != null) {
-            handler7.removeCallbacksAndMessages(null);
-        }
-        if (handler8 != null) {
-            handler8.removeCallbacksAndMessages(null);
-        }
-        if (handler9 != null) {
-            handler9.removeCallbacksAndMessages(null);
-        }
-        if (handler10 != null) {
-            handler10.removeCallbacksAndMessages(null);
-        }
-        if (handler11 != null) {
-            handler11.removeCallbacksAndMessages(null);
-        }
-        if (handler12 != null) {
-            handler12.removeCallbacksAndMessages(null);
-        }
-        if (handler13 != null) {
-            handler13.removeCallbacksAndMessages(null);
-        }
-        if (handler14 != null) {
-            handler14.removeCallbacksAndMessages(null);
-        }
-        if (handler15 != null) {
-            handler15.removeCallbacksAndMessages(null);
+        for (int i = 0; i < textViewArrayBelow.length; i++) {
+            textViewArrayBelow[i] = null;
         }
 
+        textViewArrayAbove = null;
+        textfirst = null;
+        textsecound = null;
+        textViewArrayBelow = null;
+        textViewBelowFirst = null;
+        textViewBelowsecond = null;
+        demoHelperClass = null;
         finish();
     }
 
     public void bomb(View view) {
         final Dialog dialog = new Dialog(Personality.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         dialog.setContentView(R.layout.bomb);
         dialog.setCancelable(true);
         // final Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
@@ -3648,7 +3340,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
                 int gemstext = (Integer) listgems.get(listgems.size() - 1);
                 if (gemstext <= 0) {
-                    Toast toast = Toast.makeText(Personality.this, "\t\t\tYou ran out of Gems.\n Please Buy them in shop or watch video.", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "\t\t\tYou ran out of Gems.\n Please Buy them in shop or watch video.", Toast.LENGTH_LONG);
                     toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                     v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -3672,22 +3364,23 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
 
                             if (checkSound()) {
-                                ring = MediaPlayer.create(getApplicationContext(), R.raw.bombexplosion);
-                                ring.start();
-                                ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bombexplosion);
+                                if (mediaPlayer != null) {
+                                    mediaPlayer.start();
+                                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                        @Override
+                                        public void onCompletion(MediaPlayer mediaPlayer) {
+                                            mediaPlayer.reset();
+                                            mediaPlayer.release();
 
-                                        ring.release();
-                                    }
-                                });
-
-
+                                        }
+                                    });
+                                }
                             }
-
                         }
                     }
                 }
+
                 dialog.dismiss();
                 listgems.clear();
             }
@@ -3702,23 +3395,25 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                 //check if the question is solved if solved then msg=Question alredy solved
 
                 if (returnQid() == qid) {
-                    Toast toast = Toast.makeText(Personality.this, "Question already solved.\nTry for other questions.", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Question already solved.\nTry for other questions.", Toast.LENGTH_LONG);
                     toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                     v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
                     v.setTypeface(openSansSemiBold);
                     v.setTextSize(10);
                     toast.show();
+
                     dialog.dismiss();
                 } else if (mAd.isLoaded()) {
                     mAd.show();
                     loadAdRewardedVideo();
                     dialog.dismiss();
-                }else if(UnityAds.isReady()) {
+                } else if (UnityAds.isReady()) {
                     MediationMetaData mediationMetaData = new MediationMetaData(getApplicationContext());
                     mediationMetaData.setOrdinal(ordinal++);
                     mediationMetaData.commit();
                     UnityAds.show(Personality.this);
+
                     dialog.dismiss();
                 } else {
                     String loading = "Loading..";
@@ -3726,29 +3421,19 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     loadAdRewardedVideo();
                 }
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(Personality.this, R.raw.gameaudio2);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-
-
-                }
             }
         });
         dialog.show();
     }
 
     private void boomMethod() {
-        if (mGoogleApiClient.isConnected()) {
-            checkAchievementOne();
-            checkAchievementTwo();
+        if (mGoogleApiClient != null) {
+            if (mGoogleApiClient.isConnected()) {
+                checkAchievementOne();
+                checkAchievementTwo();
+            }
         }
+
         //bomb without hint1
         if (returnHint1Used() != qid) {
             refreshBoxesboth();
@@ -3985,7 +3670,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         for (TextView i : textViewArrayBelow) {
             if (currentQ.getUSELESSSTRING().length() > 17) {
                 String first = currentQ.getUSELESSSTRING().substring(17, 18).toUpperCase();
-                Toast.makeText(Personality.this, "", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
                 if (i.getVisibility() == View.VISIBLE) {
                     if (i.getText().toString().equalsIgnoreCase(first)) {
                         i.setText("");
@@ -4062,254 +3747,257 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     }//This method returns qid of questions where boom is used
 
     public void checkAchievementOne() {
-        //1-24 total=24 (You got it till viewer)
-        List xyz = demoHelperClass.GetQid();//solved questions ids
-        List abc = demoHelperClass.getBoomId(); //question ids for which bomb is used
-        List pqr = demoHelperClass.getHint();//question ids for which hint1 is used
-        // List lmn = demoHelperClass.getGems();//no of gems in bucket at that moment
+        if (mGoogleApiClient != null) {
+            //1-24 total=24 (You got it till viewer)
+            List xyz = demoHelperClass.GetQid();//solved questions ids
+            List abc = demoHelperClass.getBoomId(); //question ids for which bomb is used
+            List pqr = demoHelperClass.getHint();//question ids for which hint1 is used
+            // List lmn = demoHelperClass.getGems();//no of gems in bucket at that moment
 
 
-        //You got it solve any 3Q
-        if (xyz.size() >= 3) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_you_got_it_));
-        }
+            //You got it solve any 3Q
+            if (xyz.size() >= 3) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_you_got_it_));
+            }
 
-        //The beginner solve any 5Q
-        if (xyz.size() >= 5) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_beginner));
-        }
-        //The Novice solve any 10Q
-        if (xyz.size() >= 10) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_novice));
-        }
-        //The NewBie solve any 25Q
-        if (xyz.size() >= 25) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_newbie));
-        }
-        //The blaster  use time-bomb-5 times
-        if (abc.size() >= 5) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_blaster));
-        }
-        //Absolutely free use free hints for 10 times
-        if (pqr.size() >= 10) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_absolutely_free));
-        }
-        //Reveal
+            //The beginner solve any 5Q
+            if (xyz.size() >= 5) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_beginner));
+            }
+            //The Novice solve any 10Q
+            if (xyz.size() >= 10) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_novice));
+            }
+            //The NewBie solve any 25Q
+            if (xyz.size() >= 25) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_newbie));
+            }
+            //The blaster  use time-bomb-5 times
+            if (abc.size() >= 5) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_blaster));
+            }
+            //Absolutely free use free hints for 10 times
+            if (pqr.size() >= 10) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_absolutely_free));
+            }
+            //Reveal
        /*in side revealhole*/
 
-        //undergraduate solve any 50 questions
-        if (xyz.size() >= 50) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_undergraduate));
-        }
-        //Proficient solve any 60 questions
-        if (xyz.size() >= 60) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_proficient));
-        }
-        //Scholar solve any 90 Q
-        if (xyz.size() >= 90) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_scholar));
-        }
-        //101 not out solve any 101 Q
-        if (xyz.size() >= 101) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_101_not_out));
-        }
-        //Nerd solve any 120 questions
-        if (xyz.size() >= 120) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_nerd));
-        }
-        //Genius solve any 240 questions
-        if (xyz.size() >= 240) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_genius));
-        }
-        //Intelligent solve any 360 Q
-        if (xyz.size() >= 360) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_intelligent));
-        }
-        //wow solve any 404 Q
-        if (xyz.size() >= 404) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_wow));
-        }
-        //The Expert solve any 500Q
-        if (xyz.size() >= 500) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_expert));
-        }
-        //Mind blowing solve any 600Q
-        if (xyz.size() >= 600) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_mind_blowing));
-        }
-        //First class solve any 700 Q
-        if (xyz.size() >= 700) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_first_class));
-        }
-        //Impressive solve any 808Q
-        if (xyz.size() >= 808) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_impressive));
-        }
-        //Talented solve any 900Q
-        if (xyz.size() >= 900) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_talented));
-        }
-        //master mind solve any 1000Q
-        if (xyz.size() >= 1000) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_master_mind));
-        }
-        //the topper solve any 1100Q
-        if (xyz.size() >= 1100) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_topper));
-        }
-        //The winner 1120Q
-        if (xyz.size() >= 1120) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_winner));
-        }
+            //undergraduate solve any 50 questions
+            if (xyz.size() >= 50) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_undergraduate));
+            }
+            //Proficient solve any 60 questions
+            if (xyz.size() >= 60) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_proficient));
+            }
+            //Scholar solve any 90 Q
+            if (xyz.size() >= 90) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_scholar));
+            }
+            //101 not out solve any 101 Q
+            if (xyz.size() >= 101) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_101_not_out));
+            }
+            //Nerd solve any 120 questions
+            if (xyz.size() >= 120) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_nerd));
+            }
+            //Genius solve any 240 questions
+            if (xyz.size() >= 240) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_genius));
+            }
+            //Intelligent solve any 360 Q
+            if (xyz.size() >= 360) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_intelligent));
+            }
+            //wow solve any 404 Q
+            if (xyz.size() >= 404) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_wow));
+            }
+            //The Expert solve any 500Q
+            if (xyz.size() >= 500) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_expert));
+            }
+            //Mind blowing solve any 600Q
+            if (xyz.size() >= 600) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_mind_blowing));
+            }
+            //First class solve any 700 Q
+            if (xyz.size() >= 700) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_first_class));
+            }
+            //Impressive solve any 808Q
+            if (xyz.size() >= 808) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_impressive));
+            }
+            //Talented solve any 900Q
+            if (xyz.size() >= 900) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_talented));
+            }
+            //master mind solve any 1000Q
+            if (xyz.size() >= 1000) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_master_mind));
+            }
+            //the topper solve any 1100Q
+            if (xyz.size() >= 1100) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_topper));
+            }
+            //The winner 1120Q
+            if (xyz.size() >= 1120) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_winner));
+            }
 
-        //viewer
+            //viewer
         /*inside onRewarded*/
-        xyz.clear();
-        abc.clear();
-        pqr.clear();
+            xyz.clear();
+            abc.clear();
+            pqr.clear();
+        }
     }
 
     public void checkAchievementTwo() {
-        // 27-40  achievement total=14 (free-free-free till the hero)
-        List<Integer> xyz = demoHelperClass.GetQid();//solved questions ids
-        List abc = demoHelperClass.getBoomId(); //question ids for which bomb is used
-        List pqr = demoHelperClass.getHint();//question ids for which hint1 is used
+        if (mGoogleApiClient != null) {
+            // 27-40  achievement total=14 (free-free-free till the hero)
+            List<Integer> xyz = demoHelperClass.GetQid();//solved questions ids
+            List abc = demoHelperClass.getBoomId(); //question ids for which bomb is used
+            List pqr = demoHelperClass.getHint();//question ids for which hint1 is used
 
-        //Free free free use at least 60 free hints
-        if (pqr.size() >= 60) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_free_free_free));
-        }
-        //Boom boom use time-bomb 25 times
-        if (abc.size() >= 25) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_boom_boom));
-        }
+            //Free free free use at least 60 free hints
+            if (pqr.size() >= 60) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_free_free_free));
+            }
+            //Boom boom use time-bomb 25 times
+            if (abc.size() >= 25) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_boom_boom));
+            }
 
 
-        //personality
-        ArrayList<Integer> perList = new ArrayList<>();
-        if (xyz != null) {
-            for (int i = 0; i < xyz.size(); i++) {
-                if (xyz.get(i) >= 0 && xyz.get(i) < 180) {
-                    perList.add(i);
+            //personality
+            ArrayList<Integer> perList = new ArrayList<>();
+            if (xyz != null) {
+                for (int i = 0; i < xyz.size(); i++) {
+                    if (xyz.get(i) >= 0 && xyz.get(i) < 180) {
+                        perList.add(i);
+                    }
                 }
             }
-        }
-        //Ez pz lemon squeezy
-        if (perList.size() == 60) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_ez_pz_lemon_squeezy));
-        }
-        //Alumni
-        if (perList.size() == 120) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_alumni));
-        }
-        perList.clear();
+            //Ez pz lemon squeezy
+            if (perList.size() == 60) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_ez_pz_lemon_squeezy));
+            }
+            //Alumni
+            if (perList.size() == 120) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_alumni));
+            }
+            perList.clear();
 
-        //sports
-        ArrayList<Integer> sportlist = new ArrayList<>();
-        if (xyz != null) {
-            for (int i = 0; i < xyz.size(); i++) {
-                if (xyz.get(i) >= 180 && xyz.get(i) < 360) {
-                    sportlist.add(i);
+            //sports
+            ArrayList<Integer> sportlist = new ArrayList<>();
+            if (xyz != null) {
+                for (int i = 0; i < xyz.size(); i++) {
+                    if (xyz.get(i) >= 180 && xyz.get(i) < 360) {
+                        sportlist.add(i);
+                    }
                 }
             }
-        }
 
-        //sports lover
-        if (sportlist.size() == 60) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_sports_lover));
-        }
-        //Athlete
-        if (sportlist.size() == 120) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_athlete));
-        }
-        sportlist.clear();
+            //sports lover
+            if (sportlist.size() == 60) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_sports_lover));
+            }
+            //Athlete
+            if (sportlist.size() == 120) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_athlete));
+            }
+            sportlist.clear();
 
 
-        //Geography
-        ArrayList<Integer> geolist = new ArrayList<>();
-        if (xyz != null) {
-            for (int i = 0; i < xyz.size(); i++) {
-                if (xyz.get(i) >= 360 && xyz.get(i) < 600) {
-                    geolist.add(i);
+            //Geography
+            ArrayList<Integer> geolist = new ArrayList<>();
+            if (xyz != null) {
+                for (int i = 0; i < xyz.size(); i++) {
+                    if (xyz.get(i) >= 360 && xyz.get(i) < 600) {
+                        geolist.add(i);
+                    }
                 }
             }
-        }
-        //The explorer
-        if (geolist.size() == 60) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_explorer));
-        }
-        //geologist
-        if (geolist.size() == 120) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_geologist));
-        }
-        geolist.clear();
+            //The explorer
+            if (geolist.size() == 60) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_explorer));
+            }
+            //geologist
+            if (geolist.size() == 120) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_geologist));
+            }
+            geolist.clear();
 
 
-        //Science
-        ArrayList<Integer> sciencelist = new ArrayList<>();
-        if (xyz != null) {
-            for (int i = 0; i < xyz.size(); i++) {
-                if (xyz.get(i) >= 600 && xyz.get(i) < 780) {
-                    sciencelist.add(i);
+            //Science
+            ArrayList<Integer> sciencelist = new ArrayList<>();
+            if (xyz != null) {
+                for (int i = 0; i < xyz.size(); i++) {
+                    if (xyz.get(i) >= 600 && xyz.get(i) < 780) {
+                        sciencelist.add(i);
+                    }
                 }
             }
-        }
-        //Junior scientist
-        if (sciencelist.size() >= 60) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_junior_scientist));
-        }
-        //senior scientist
-        if (sciencelist.size() >= 120) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_senior_scientist));
-        }
-        sciencelist.clear();
+            //Junior scientist
+            if (sciencelist.size() >= 60) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_junior_scientist));
+            }
+            //senior scientist
+            if (sciencelist.size() >= 120) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_senior_scientist));
+            }
+            sciencelist.clear();
 
 
-        //arts
-        ArrayList<Integer> artsList = new ArrayList<>();
-        if (xyz != null) {
-            for (int i = 0; i < xyz.size(); i++) {
-                if (xyz.get(i) >= 780 && xyz.get(i) < 900) {
-                    artsList.add(i);
+            //arts
+            ArrayList<Integer> artsList = new ArrayList<>();
+            if (xyz != null) {
+                for (int i = 0; i < xyz.size(); i++) {
+                    if (xyz.get(i) >= 780 && xyz.get(i) < 900) {
+                        artsList.add(i);
+                    }
                 }
             }
-        }
-        //Art attack
-        if (artsList.size() == 30) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_art_attack_));
-        }
-        //Artist
-        if (artsList.size() == 60) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_artist));
-        }
-        artsList.clear();
+            //Art attack
+            if (artsList.size() == 30) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_art_attack_));
+            }
+            //Artist
+            if (artsList.size() == 60) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_artist));
+            }
+            artsList.clear();
 
 
-        //entertainment
-        ArrayList<Integer> entertainmentList = new ArrayList<>();
-        if (xyz != null) {
-            for (int i = 0; i < xyz.size(); i++) {
-                if (xyz.get(i) >= 900 && xyz.get(i) < 1120) {
-                    entertainmentList.add(i);
+            //entertainment
+            ArrayList<Integer> entertainmentList = new ArrayList<>();
+            if (xyz != null) {
+                for (int i = 0; i < xyz.size(); i++) {
+                    if (xyz.get(i) >= 900 && xyz.get(i) < 1120) {
+                        entertainmentList.add(i);
+                    }
                 }
             }
-        }
-        //e for entertainment
-        if (entertainmentList.size() == 60) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_e_for_entertainment));
-        }
-        //The hero
-        if (entertainmentList.size() == 120) {
-            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_hero));
-        }
-        entertainmentList.clear();
+            //e for entertainment
+            if (entertainmentList.size() == 60) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_e_for_entertainment));
+            }
+            //The hero
+            if (entertainmentList.size() == 120) {
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_hero));
+            }
+            entertainmentList.clear();
 
-        abc.clear();
-        pqr.clear();
-        if (xyz != null) {
-            xyz.clear();
+            abc.clear();
+            pqr.clear();
+            if (xyz != null) {
+                xyz.clear();
+            }
         }
-
     }
 
     public Boolean checkSound() {
@@ -4345,7 +4033,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             demoHelperClass.InsertGems(gemstext);
             diamondtext.setText(String.valueOf(gemstext));
             //   final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
-            Toast toast = Toast.makeText(Personality.this, "+1 gem added in your bucket.", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplication(), "+1 gem added in your bucket.", Toast.LENGTH_LONG);
             toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
             TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
             v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -4354,8 +4042,10 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             toast.show();
 
             // GoogleApiClient client = AppController.getInstance().getClient();
-            if (mGoogleApiClient.isConnected()) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
+            if (mGoogleApiClient != null) {
+                if (mGoogleApiClient.isConnected()) {
+                    Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
+                }
             }
 
             listgems.clear();
@@ -4365,6 +4055,22 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         @Override
         public void onUnityAdsError(UnityAds.UnityAdsError unityAdsError, String s) {
             //Called when the Unity Ads detects an error
+        }
+    }
+
+    public void sound() {
+        if (checkSound()) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.reset();
+                        mediaPlayer.release();
+                    }
+                });
+            }
         }
     }
 }

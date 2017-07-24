@@ -22,7 +22,6 @@ public class ScienceSlidingMain extends AppCompatActivity {
     public String[] text = {"easy", "medium", "hard"};
     ImageView leftdifficultysci;
     TextView textViewDifficultysci, easysci, mediumsci, hardsci;
-    MediaPlayer ring;
     DemoHelperClass demoHelperClass;
 
     //mainactivity
@@ -40,24 +39,14 @@ public class ScienceSlidingMain extends AppCompatActivity {
         easysci.setTypeface(typeface);
         mediumsci.setTypeface(typeface);
         hardsci.setTypeface(typeface);
+
         leftdifficultysci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ScienceSlidingMain.this, Category.class);
+                Intent intent = new Intent(getApplicationContext(), Category.class);
                 startActivity(intent);
                 finish();
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
 
@@ -101,5 +90,8 @@ public class ScienceSlidingMain extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         icon = null;
+        text=null;
+        demoHelperClass=null;
+        leftdifficultysci=null;
     }
 }

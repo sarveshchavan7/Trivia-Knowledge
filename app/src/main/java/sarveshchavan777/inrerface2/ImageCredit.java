@@ -22,7 +22,7 @@ public class ImageCredit extends Activity {
     ImageView im;
     Toolbar toolbar;
     DemoHelperClass demoHelperClass;
-    MediaPlayer ring;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +47,6 @@ public class ImageCredit extends Activity {
             @Override
             public void onClick(View view) {
                 finish();
-                if (checkSound()) {
-                    ring = MediaPlayer.create(ImageCredit.this, R.raw.knife);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
         icons8.setOnClickListener(new View.OnClickListener() {
@@ -64,16 +54,18 @@ public class ImageCredit extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://icons8.com/"));
                 startActivity(intent);
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(ImageCredit.this, R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
+                if(checkSound()){
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+                    if(mediaPlayer!=null){
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -100,13 +92,14 @@ public class ImageCredit extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(ring!=null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    ring.release();
-                }
-            });
+        tv = null;
+        tv2 = null;
+        tv3 = null;
+        im.setOnClickListener(null);
+        icons8.setOnClickListener(null);
+        demoHelperClass = null;
+        if(mediaPlayer!=null){
+            mediaPlayer.release();
         }
     }
 }

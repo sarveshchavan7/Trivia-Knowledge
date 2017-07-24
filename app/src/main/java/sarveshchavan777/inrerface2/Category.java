@@ -2,6 +2,8 @@ package sarveshchavan777.inrerface2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import android.content.ComponentCallbacks2;
 
+
 import java.util.List;
 
 
@@ -23,7 +26,8 @@ public class Category extends Activity implements ComponentCallbacks2 {
     ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6;
     DemoHelperClass demoHelperClass;
     Typeface typeface;
-    MediaPlayer ring;
+    Bitmap myBitmap1, myBitmap2, myBitmap3, myBitmap4, myBitmap5, myBitmap6, myBitmap;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,30 @@ public class Category extends Activity implements ComponentCallbacks2 {
         imageView5 = (ImageView) findViewById(R.id.image5);
         imageView6 = (ImageView) findViewById(R.id.image6);
 
+        /*imageView1.setImageResource(R.drawable.personalityfinal);
+        imageView2.setImageResource(R.drawable.sportsfinal);
+        imageView3.setImageResource(R.drawable.geographyfinal);
+        imageView4.setImageResource(R.drawable.sciencefinal);
+        imageView5.setImageResource(R.drawable.artistfinal);
+        imageView6.setImageResource(R.drawable.entertainmentfinal);*/
+
+
+        myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.backcartoon);
+        myBitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.personalityfinal);
+        myBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.sportsfinal);
+        myBitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.geographyfinal);
+        myBitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.sciencefinal);
+        myBitmap5 = BitmapFactory.decodeResource(getResources(), R.drawable.artistfinal);
+        myBitmap6 = BitmapFactory.decodeResource(getResources(), R.drawable.entertainmentfinal);
+        imageView.setImageBitmap(myBitmap);
+        imageView1.setImageBitmap(myBitmap1);
+        imageView2.setImageBitmap(myBitmap2);
+        imageView3.setImageBitmap(myBitmap3);
+        imageView4.setImageBitmap(myBitmap4);
+        imageView5.setImageBitmap(myBitmap5);
+        imageView6.setImageBitmap(myBitmap6);
+
+
         tv = (TextView) findViewById(R.id.textviewcategory);
         tvPersonality = (TextView) findViewById(R.id.Personality);
         tvSports = (TextView) findViewById(R.id.Sports);
@@ -48,7 +76,6 @@ public class Category extends Activity implements ComponentCallbacks2 {
         tvArts = (TextView) findViewById(R.id.Arts);
         tvEntertainment = (TextView) findViewById(R.id.Entertainment);
         tv.setText(getString(R.string.selectCategory));
-
       /*  //admob
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -72,27 +99,13 @@ public class Category extends Activity implements ComponentCallbacks2 {
         imageView5.startAnimation(inFromLeftAnimation());
         imageView6.startAnimation(inFromRightAnimation());
 
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(Category.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-
-                }
-
-
             }
         });
         imageView1.setOnClickListener(new View.OnClickListener() {
@@ -101,21 +114,7 @@ public class Category extends Activity implements ComponentCallbacks2 {
                 Intent intent = new Intent(getApplicationContext(), SecoundSlidingMain.class);
                 // intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-                finish();
-
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
+                sound();
 
             }
         });
@@ -125,20 +124,7 @@ public class Category extends Activity implements ComponentCallbacks2 {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SportsSlidingMain.class);
                 startActivity(intent);
-                finish();
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
+                sound();
             }
         });
         imageView3.setOnClickListener(new View.OnClickListener() {
@@ -146,21 +132,7 @@ public class Category extends Activity implements ComponentCallbacks2 {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), GeoSlidingMain.class);
                 startActivity(intent);
-                finish();
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
-
+                sound();
 
             }
         });
@@ -169,20 +141,7 @@ public class Category extends Activity implements ComponentCallbacks2 {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ScienceSlidingMain.class);
                 startActivity(intent);
-                finish();
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
+                sound();
 
             }
         });
@@ -191,20 +150,7 @@ public class Category extends Activity implements ComponentCallbacks2 {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ArtsSlidingMain.class);
                 startActivity(intent);
-                finish();
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
+                sound();
 
 
             }
@@ -214,20 +160,7 @@ public class Category extends Activity implements ComponentCallbacks2 {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EntertainmentSlidingMain.class);
                 startActivity(intent);
-                finish();
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
+                sound();
 
             }
         });
@@ -296,21 +229,54 @@ public class Category extends Activity implements ComponentCallbacks2 {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (ring != null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-
-                    ring.release();
-                }
-            });
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
         }
-        imageView1.setImageDrawable(null);
+    /*imageView1.setImageDrawable(null);
         imageView2.setImageDrawable(null);
         imageView3.setImageDrawable(null);
         imageView4.setImageDrawable(null);
         imageView5.setImageDrawable(null);
-        imageView6.setImageDrawable(null);
+        imageView6.setImageDrawable(null);*/
+        myBitmap.recycle();
+        myBitmap1.recycle(); // Don't need myBitmap1 anymore
+        myBitmap2.recycle();
+        myBitmap3.recycle();
+        myBitmap4.recycle();
+        myBitmap5.recycle();
+        myBitmap6.recycle();
+        myBitmap1 = null;
+        myBitmap2 = null;
+        myBitmap3 = null;
+        myBitmap4 = null;
+        myBitmap5 = null;
+        myBitmap6 = null;
+        imageView.setOnClickListener(null);
+        imageView1.setOnClickListener(null);
+        imageView2.setOnClickListener(null);
+        imageView3.setOnClickListener(null);
+        imageView4.setOnClickListener(null);
+        imageView5.setOnClickListener(null);
+        imageView6.setOnClickListener(null);
     }
 
+    public void sound() {
+        if (checkSound()) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+           if(mediaPlayer!=null){
+               mediaPlayer.start();
+               mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                   @Override
+                   public void onCompletion(MediaPlayer mediaPlayer) {
+                       mediaPlayer.reset();
+                       mediaPlayer.release();
+                       finish();
+                   }
+               });
+           }
+        } else {
+            finish();
+        }
+
+    }
 }

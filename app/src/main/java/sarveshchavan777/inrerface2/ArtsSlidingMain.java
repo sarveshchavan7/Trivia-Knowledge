@@ -23,7 +23,7 @@ public class ArtsSlidingMain extends AppCompatActivity {
     ImageView leftdifficultyarts;
     TextView textViewDifficultyarts, easyarts, mediumarts, hardarts;
     Typeface typeface;
-    MediaPlayer ring;
+
 
     //mainactivity
     @Override
@@ -44,31 +44,19 @@ public class ArtsSlidingMain extends AppCompatActivity {
         easyarts.setTypeface(typeface);
         mediumarts.setTypeface(typeface);
         hardarts.setTypeface(typeface);
-
         leftdifficultyarts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Category.class);
                 startActivity(intent);
                 finish();
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPageerAdapterArts(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
 
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         if (intent != null) {
             int xyz = intent.getIntExtra("TabNo", 0);
             mPager.setCurrentItem(xyz);
@@ -85,7 +73,7 @@ public class ArtsSlidingMain extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, Category.class);
+        Intent intent = new Intent(getApplicationContext(), Category.class);
         startActivity(intent);
         finish();
     }
@@ -104,6 +92,9 @@ public class ArtsSlidingMain extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        icon=null;
+        icon = null;
+        text = null;
+        demoHelperClass = null;
+        leftdifficultyarts=null;
     }
 }

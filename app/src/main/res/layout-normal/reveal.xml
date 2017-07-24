@@ -77,7 +77,6 @@
             android:id="@+id/usegems"
             android:layout_width="match_parent"
             android:layout_height="115dp"
-            android:layout_weight="1"
             android:drawableEnd="@drawable/gems"
             android:drawableRight="@drawable/gems"
             android:gravity="center"
@@ -111,7 +110,6 @@
             android:id="@+id/watchvideo"
             android:layout_width="match_parent"
             android:layout_height="115dp"
-            android:layout_weight="1"
             android:drawableEnd="@drawable/youtube_2"
             android:drawableRight="@drawable/youtube_2"
             android:gravity="center"
@@ -124,24 +122,24 @@
             app:buttonColor="@color/white"
             app:paddingEnd="0dp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp" />
+        <!-- <View
+             android:layout_width="match_parent"
+             android:layout_height="5dp" />
 
-        <TextView
-            android:id="@+id/shop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/shopline"
-            android:textColor="@color/lightred"
-            android:textSize="15sp" />
+         <TextView
+             android:id="@+id/shop"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:gravity="center"
+             android:text="@string/shopline"
+             android:textColor="@color/lightred"
+             android:textSize="15sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp" />
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="5dp" />-->
 
-        <info.hoang8f.widget.FButton
+        <!--<info.hoang8f.widget.FButton
             android:id="@+id/buyGems"
             android:layout_width="match_parent"
             android:layout_height="115dp"
@@ -156,7 +154,7 @@
             android:textColor="@color/grey"
             android:textSize="17sp"
             app:buttonColor="@color/white"
-            app:paddingEnd="0dp" />
+            app:paddingEnd="0dp" />-->
 
         <View
             android:layout_width="match_parent"

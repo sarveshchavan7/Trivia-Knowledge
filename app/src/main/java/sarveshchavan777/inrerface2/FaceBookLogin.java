@@ -51,7 +51,7 @@ public class FaceBookLogin extends AppCompatActivity {
     //get
     GoogleApiClient mGoogleApiClient/*=AppController.getInstance().getClient()*/;
     Typeface typeface;
-    MediaPlayer ring;
+    MediaPlayer mediaPlayer;
 
     private static final String Group_ID = "288637851555189";
     private static final String PAGE_ID = "1357616140975878";
@@ -85,9 +85,12 @@ public class FaceBookLogin extends AppCompatActivity {
         earnAchievementTwo.setTypeface(typeface);
         rewardstwo.setTypeface(typeface);
         mGoogleApiClient = MainActivity.mGoogleApiClient;
-        if (mGoogleApiClient.isConnected()) {
-            Games.setViewForPopups(MainActivity.mGoogleApiClient, findViewById(R.id.gps_popup));
+        if(mGoogleApiClient!=null){
+            if (mGoogleApiClient.isConnected()) {
+                Games.setViewForPopups(MainActivity.mGoogleApiClient, findViewById(R.id.gps_popup));
+            }
         }
+
 
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -124,7 +127,7 @@ public class FaceBookLogin extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (isLoggedIn()) {
-                    Toast toast = Toast.makeText(FaceBookLogin.this, "\tPlease login first" + " ", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "\tPlease login first" + " ", Toast.LENGTH_SHORT);
                     toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                     v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -145,15 +148,19 @@ public class FaceBookLogin extends AppCompatActivity {
 
                 }
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(FaceBookLogin.this, R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
+
+                if(checkSound()){
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+                    if(mediaPlayer!=null){
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                            }
+                        });
+                    }
                 }
 
             }
@@ -185,16 +192,20 @@ public class FaceBookLogin extends AppCompatActivity {
 
                 }
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(FaceBookLogin.this, R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
+                if(checkSound()){
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+                    if(mediaPlayer!=null){
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                            }
+                        });
+                    }
                 }
+
             }
         });
 
@@ -203,22 +214,27 @@ public class FaceBookLogin extends AppCompatActivity {
             public void onClick(View view) {
                 if (i == 100) {
                     //  GoogleApiClient client = AppController.getInstance().getClient();
-                    if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-                        Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_visitor));
-                        // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
+                    if (mGoogleApiClient != null ) {
+                        if ( mGoogleApiClient.isConnected()) {
+                            Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_visitor));
+                            // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 }
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(FaceBookLogin.this, R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
+                if(checkSound()){
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+                    if(mediaPlayer!=null){
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -240,9 +256,11 @@ public class FaceBookLogin extends AppCompatActivity {
                                             //if user is group member
                                             //  Toast.makeText(FaceBookLogin.this, "Is a group member"+idOfUser, Toast.LENGTH_LONG).show();
 
-                                            if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-                                                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_crew_member));
-                                                // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
+                                            if (mGoogleApiClient != null ) {
+                                                if ( mGoogleApiClient.isConnected()) {
+                                                    Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_crew_member));
+                                                    // Toast.makeText(FaceBookLogin.this,"achievement unlocked",Toast.LENGTH_LONG).show();
+                                                }
                                             }
                                             break;
                                         }/* else {
@@ -265,17 +283,20 @@ public class FaceBookLogin extends AppCompatActivity {
                 );
                 requestQueue.add(jsonObjectRequest);
 
-                if (checkSound()) {
-                    ring = MediaPlayer.create(FaceBookLogin.this, R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-
+                if(checkSound()){
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+                    if(mediaPlayer!=null){
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                            }
+                        });
+                    }
                 }
+
             }
         });
 
@@ -300,6 +321,12 @@ public class FaceBookLogin extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        /*ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                ring.release();
+            }
+        });*/
         finish();
     }
 
@@ -333,13 +360,19 @@ public class FaceBookLogin extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (ring != null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    ring.release();
-                }
-            });
-        }
+//        if (ring != null) {
+//            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mediaPlayer) {
+//                    ring.release();
+//                }
+//            });
+//        }
+        demoHelperClass = null;
+        likeFb.setOnClickListener(null);
+        earnAchievement.setOnClickListener(null);
+        earnAchievementTwo.setOnClickListener(null);
+        joinFb.setOnClickListener(null);
+        fButton.setOnClickListener(null);
     }
 }

@@ -22,7 +22,6 @@ public class SecoundSlidingMain extends AppCompatActivity implements ComponentCa
     ImageView leftdifficulty;
     TextView textViewDifficulty, easyper, mediumper, hardper;
     DemoHelperClass demoHelperClass;
-    MediaPlayer ring;
 
     //mainactivity
     @Override
@@ -50,23 +49,8 @@ public class SecoundSlidingMain extends AppCompatActivity implements ComponentCa
                 //intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 finish();
-
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getApplicationContext(), R.raw.knife);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-
-                }
             }
         });
-
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPageerAdapterPersonality(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
@@ -107,6 +91,9 @@ public class SecoundSlidingMain extends AppCompatActivity implements ComponentCa
     protected void onDestroy() {
         super.onDestroy();
         icon = null;
+        text=null;
+        demoHelperClass=null;
+        leftdifficulty.setOnClickListener(null);
     }
 
 }

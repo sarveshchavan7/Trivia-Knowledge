@@ -62,7 +62,7 @@
             android:contentDescription="@string/personality"
             android:gravity="center"
             android:padding="5dip"
-            android:src="@drawable/personalityfinal" />
+            />
 
         <ImageView
             android:id="@+id/image2"
@@ -72,7 +72,7 @@
             android:contentDescription="@string/sports"
             android:gravity="center"
             android:padding="5dip"
-            android:src="@drawable/sportsfinal" />
+            />
     </TableRow>
 
     <TableRow>
@@ -111,7 +111,7 @@
             android:contentDescription="@string/geography"
             android:gravity="center"
             android:padding="5dip"
-            android:src="@drawable/geographyfinal" />
+            />
 
         <ImageView
             android:id="@+id/image4"
@@ -121,7 +121,7 @@
             android:contentDescription="@string/science"
             android:gravity="center"
             android:padding="5dip"
-            android:src="@drawable/sciencefinal" />
+           />
     </TableRow>
 
     <TableRow>
@@ -156,8 +156,7 @@
             android:layout_weight="1"
             android:contentDescription="@string/arts_gk"
             android:gravity="center"
-            android:padding="5dip"
-            android:src="@drawable/artistfinal" />
+            android:padding="5dip" />
 
         <ImageView
             android:id="@+id/image6"
@@ -167,6 +166,6 @@
             android:contentDescription="@string/entertainment"
             android:gravity="center"
             android:padding="5dip"
-            android:src="@drawable/entertainmentfinal" />
+           />
     </TableRow>
 </TableLayout>

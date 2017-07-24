@@ -58,8 +58,10 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
     TextView shopGemsText;
     TextView shopText;
     ImageView leftShop;
-    MediaPlayer ring;
     Integer value;
+
+    MediaPlayer mediaPlayer;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,25 +82,16 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
             @Override
             public void onClick(View view) {
 
-              if(value!=20000){
+              /*if(value!=20000){
                   Intent intent = new Intent(getApplicationContext(), Personality.class);
                   intent.putExtra("Key", String.valueOf(value));
                   startActivity(intent);
                   finish();
               }
-              if(value==20000){
-                  finish();
-              }
-                if (checkSound()) {
-                    ring = MediaPlayer.create(InAppPurchase.this, R.raw.knife);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-                }
+              if(value==20000){*/
+                finish();
+//              }
+
             }
         });
 
@@ -215,23 +208,27 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
          *        an empty string, but on a production app you should carefully generate this. */
         String payload = "";
 
+        if (checkSound()) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
+            if(mediaPlayer!=null){
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.reset();
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        }
+
         try {
             mHelper.launchPurchaseFlow(this, SKU_Gems, RC_REQUEST,
                     mPurchaseFinishedListener, payload);
         } catch (IabHelper.IabAsyncInProgressException e) {
             complain("Error launching purchase flow. Another async operation in progress.");
+        }
 
-        }
-        if (checkSound()) {
-            ring = MediaPlayer.create(InAppPurchase.this, R.raw.gameaudio2);
-            ring.start();
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    ring.release();
-                }
-            });
-        }
 
     }
 
@@ -252,7 +249,7 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
     }
 
     boolean verifyDeveloperPayload(Purchase p) {
-       String payload = p.getDeveloperPayload();
+        String payload = p.getDeveloperPayload();
 
         /*
          * TODO: verify that the developer payload of the purchase is correct. It will be
@@ -301,8 +298,11 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
 
             Log.d(TAG, "Purchase successful.");
 
+
             if (purchase.getSku().equals(SKU_Gems)) {
+                leftShop.setEnabled(false);
                 // bought gems tank of gas. So consume it.
+                Toast.makeText(getApplicationContext(), "Please wait on this page..Starting gems consumption.", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "Purchase is gems. Starting gems consumption.");
                 try {
                     mHelper.consumeAsync(purchase, mConsumeFinishedListener);
@@ -311,8 +311,6 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
 
                 }
             }
-
-
         }
     };
 
@@ -332,16 +330,16 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
                 // game world's logic, which in our case means filling the gas tank a bit
                 Log.d(TAG, "Consumption successful. Provisioning.");
                 //someSqlite stuff
-             demoHelperClass = new DemoHelperClass(getApplicationContext());
+                demoHelperClass = new DemoHelperClass(getApplicationContext());
                 List listgems = demoHelperClass.getGems();
                 int gems = (Integer) listgems.get(listgems.size() - 1);
                 int totalGems = 30 + gems;
                 demoHelperClass.InsertGems(totalGems);
 
-                alert("30 more Gems add in your bucket");
+                alert("30 more Gems added in your bucket");
                 final Typeface typeface2 = Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Semibold.ttf");
 
-                Toast toast = Toast.makeText(InAppPurchase.this, "30 more Gems add in your bucket ", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "30 more Gems added in your bucket ", Toast.LENGTH_LONG);
                 toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
                 TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                 v.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -354,6 +352,8 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
             }
 
             Log.d(TAG, "End consumption flow.");
+
+            leftShop.setEnabled(true);
         }
     };
 
@@ -374,19 +374,7 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
             mHelper = null;
         }
 
-        if(ring!=null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-                }
-            });
-        }
+        leftShop.setOnClickListener(null);
     }
 
     void complain(String message) {
@@ -413,15 +401,15 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
 
     @Override
     public void onBackPressed() {
-        if(value!=20000){
+       /* if(value!=20000){
             Intent intent = new Intent(getApplicationContext(), Personality.class);
             intent.putExtra("Key", String.valueOf(value));
             startActivity(intent);
             finish();
         }
-        if(value==20000){
-            finish();
-        }
+        if(value==20000){*/
+        finish();
+      /*  }*/
     }
 
     public Boolean checkSound() {
@@ -435,4 +423,5 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
         }
         return false;
     }
+
 }

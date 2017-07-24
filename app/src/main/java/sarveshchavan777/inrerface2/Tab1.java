@@ -48,11 +48,11 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
     //private static int RC_YOUR_UNIQUE_ID = R.string.leaderboard_1;
     int i = 2;
     // Billionaires json url
-   // private static final String getURL = "https://api.myjson.com/bins/8wgo1";
-    private static final String getURL2="https://api.myjson.com/bins/l208f";
+    // private static final String getURL = "https://api.myjson.com/bins/8wgo1";
+    private static final String getURL2 = "https://api.myjson.com/bins/l208f";
     HashMap<String, String> url_maps;
     DemoHelperClass demoHelperClass;
-    MediaPlayer ring;
+    MediaPlayer mediaPlayer;
        /*GoogleApiClient mGoogleApiClient= AppController.getInstance().getClient();*/
 
     @Override
@@ -93,17 +93,21 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), Category.class);
                 startActivity(intent);
-                getActivity().finish();
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
+                if(checkSound()){
+                    mediaPlayer=MediaPlayer.create(getActivity().getApplicationContext(),R.raw.gameaudio2);
+                    if(mediaPlayer!=null){
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                                getActivity().finish();
+                            }
+                        });
+                    }
+                }else {
+                    getActivity().finish();
                 }
 
             }
@@ -114,7 +118,19 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
             public void onClick(View view) {
                 //GoogleApiClient client = AppController.getInstance().getClient();
 
-
+                if(checkSound()){
+                    mediaPlayer=MediaPlayer.create(getActivity().getApplicationContext(),R.raw.gameaudio2);
+                    if(mediaPlayer!=null){
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                            }
+                        });
+                    }
+                }
                 try {
                     if (MainActivity.getmGoogleApiClient().isConnected()) {
                         startActivityForResult(Games.Leaderboards.getLeaderboardIntent(MainActivity.mGoogleApiClient,
@@ -125,39 +141,31 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
 
 
                 } catch (Exception e) {
-                   // ((MainActivity) getActivity()).onActivityResult(RC_YOUR_UNIQUE_ID,GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED,null);
+                    // ((MainActivity) getActivity()).onActivityResult(RC_YOUR_UNIQUE_ID,GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED,null);
                 }
 
-
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
-
-                }
             }
         });
 
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finish();
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
+                if(checkSound()){
+                    mediaPlayer=MediaPlayer.create(getActivity().getApplicationContext(),R.raw.gameaudio2);
+                    if(mediaPlayer!=null){
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mediaPlayer.reset();
+                                mediaPlayer.release();
+                                getActivity().finish();
+                            }
+                        });
+                    }
+                }else{
+                    getActivity().finish();
                 }
-
                 System.exit(0);
             }
         });
@@ -169,17 +177,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 demoHelperClass.insertPauseValue(0);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.detach(Tab1.this).attach(Tab1.this).commit();
-                if (checkSound()) {
-                    ring = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.gameaudio2);
-                    ring.start();
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ring.release();
-                        }
-                    });
 
-                }
             }
 
         });
@@ -206,7 +204,7 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-      //  Toast.makeText(getActivity(), slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(getActivity(), slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
     }
 
     public void sliderJson() {
@@ -248,11 +246,11 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                       try{
-                           tv.setText(getResources().getString(R.string.networkIssue));
-                       }catch (Exception e){
-                           //
-                       }
+                        try {
+                            tv.setText(getResources().getString(R.string.networkIssue));
+                        } catch (Exception e) {
+                            //
+                        }
                     }
                 });
 
@@ -280,15 +278,12 @@ public class Tab1 extends Fragment implements BaseSliderView.OnSliderClickListen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (ring != null) {
-            ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-
-                    ring.release();
-                }
-            });
+        if(mediaPlayer!=null){
+            mediaPlayer.release();
         }
+        b1.setOnClickListener(null);
+        b2.setOnClickListener(null);
+        b3.setOnClickListener(null);
     }
 
 }

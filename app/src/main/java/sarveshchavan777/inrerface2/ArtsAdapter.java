@@ -63,7 +63,6 @@ class ArtsAdapter extends ArrayAdapter<String> {
         holder.imageView.setImageResource(img[position]);
         holder.mQueNo.setText(s[position]);
         holder.mtext.setText(strings[position]);
-
         return row;
     }
 }

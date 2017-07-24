@@ -14,26 +14,26 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public  class GeoSlidingMain extends AppCompatActivity {
+public class GeoSlidingMain extends AppCompatActivity {
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
-    int numboftabs =3;
+    int numboftabs = 3;
     public int icon[] = {R.drawable.boam1, R.drawable.boam2, R.drawable.boam3};
-    public String[] text= {"easy", "medium","hard"};
+    public String[] text = {"easy", "medium", "hard"};
     ImageView leftdifficultygeo;
-    TextView textViewDifficultygeo,easygeo,mediumgeo,hardgeo;
-    MediaPlayer ring;
+    TextView textViewDifficultygeo, easygeo, mediumgeo, hardgeo;
     DemoHelperClass demoHelperClass;
+
     //mainactivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.geoslidingmain);
-        leftdifficultygeo=(ImageView)findViewById(R.id.leftdifficultygeo);
-        textViewDifficultygeo=(TextView)findViewById(R.id.textviewdifficultygeo);
-        easygeo=(TextView)findViewById(R.id.easygeo);
-        mediumgeo=(TextView)findViewById(R.id.mediumgeo);
-        hardgeo=(TextView)findViewById(R.id.hardgeo);
+        leftdifficultygeo = (ImageView) findViewById(R.id.leftdifficultygeo);
+        textViewDifficultygeo = (TextView) findViewById(R.id.textviewdifficultygeo);
+        easygeo = (TextView) findViewById(R.id.easygeo);
+        mediumgeo = (TextView) findViewById(R.id.mediumgeo);
+        hardgeo = (TextView) findViewById(R.id.hardgeo);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
         textViewDifficultygeo.setTypeface(typeface);
         easygeo.setTypeface(typeface);
@@ -42,54 +42,42 @@ public  class GeoSlidingMain extends AppCompatActivity {
         leftdifficultygeo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              Intent intent=new Intent(getApplicationContext(),Category.class);
+                Intent intent = new Intent(getApplicationContext(), Category.class);
                 startActivity(intent);
                 finish();
-
-                if(checkSound()){
-                    ring= MediaPlayer.create(getApplicationContext(),R.raw.knife);
-                    ring.start();
-
-                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-
-                            ring.release();
-                        }
-                    });
-                }
             }
         });
 
-        mPager=(ViewPager)findViewById(R.id.pager);
-        mPager.setAdapter(new MyPageerAdapterGeo(getSupportFragmentManager(),icon,numboftabs,getApplicationContext()));
-        Intent intent=getIntent();
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager.setAdapter(new MyPageerAdapterGeo(getSupportFragmentManager(), icon, numboftabs, getApplicationContext()));
+        Intent intent = getIntent();
         if (intent != null) {
             int xyz = intent.getIntExtra("TabNo", 0);
             mPager.setCurrentItem(xyz);
         }
 
-        mTabs=(SlidingTabLayout)findViewById(R.id.tabs);
-        mTabs.setCustomTabView(R.layout.customtablayoutgeo,R.id.textTab);
+        mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        mTabs.setCustomTabView(R.layout.customtablayoutgeo, R.id.textTab);
         mTabs.setDistributeEvenly(true);
-        mTabs.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.geography));
-        mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
+        mTabs.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.geography));
+        mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
         mTabs.setViewPager(mPager);
 
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent=new Intent(getApplicationContext(),Category.class);
+        Intent intent = new Intent(getApplicationContext(), Category.class);
         startActivity(intent);
         finish();
     }
 
-    public Boolean checkSound(){
-       demoHelperClass=new DemoHelperClass(this);
-        List list=demoHelperClass.getSound();
-        if(list!=null){
-            if( list.size()%2==0 ){
+    public Boolean checkSound() {
+        demoHelperClass = new DemoHelperClass(this);
+        List list = demoHelperClass.getSound();
+        if (list != null) {
+            if (list.size() % 2 == 0) {
                 //  Toast.makeText(getActivity(),"true",Toast.LENGTH_LONG).show();
                 return true;
             }
@@ -100,6 +88,9 @@ public  class GeoSlidingMain extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        icon=null;
+        icon = null;
+        text=null;
+        demoHelperClass=null;
+        leftdifficultygeo=null;
     }
 }

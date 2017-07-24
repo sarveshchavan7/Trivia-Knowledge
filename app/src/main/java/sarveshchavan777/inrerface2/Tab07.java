@@ -48,7 +48,7 @@ public class Tab07 extends Fragment {
         Integer imageView[] = new Integer[80];
         String s[] = new String[80];
 
-        String per[] = {"Landmark","Geo","Mountain","River","Ocean","Space","Desert","Capital"};
+        String per[] = {"Landmark", "Geo", "Mountain", "River", "Ocean", "Space", "Desert", "Capital"};
 
         String s1[] = {per[0], per[7], per[1], per[2], per[3], per[0], per[7], per[1], per[2], per[4],
                 per[0], per[7], per[5], per[2], per[1], per[0], per[7], per[1], per[2], per[1],
@@ -78,7 +78,7 @@ public class Tab07 extends Fragment {
             for (int i = 0; i < xyz.size(); i++) {
                 int x = (Integer) xyz.get(i);
                 if (x >= 360 && x < 440) {
-                    imageView[x - 360] =R.drawable.correctcartoon;
+                    imageView[x - 360] = R.drawable.correctcartoon;
                     list.add(1);
                 }
             }
@@ -108,5 +108,13 @@ public class Tab07 extends Fragment {
                         Toast.LENGTH_SHORT).show();*/
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Progress = null;
+        demoHelperClass = null;
+        gridview.setOnItemClickListener(null);
     }
 }

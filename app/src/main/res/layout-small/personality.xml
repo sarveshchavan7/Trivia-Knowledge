@@ -938,7 +938,7 @@
                 android:layout_height="75dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:src="@drawable/cracker11" />
+                />
 
             <ImageView
                 android:contentDescription="@string/useless_alphabet_removed"
@@ -949,7 +949,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/cracker11" />
+                />
 
             <ImageView
                 android:contentDescription="@string/useless_alphabet_removed"
@@ -960,7 +960,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_toLeftOf="@+id/cracker2"
                 android:layout_toStartOf="@+id/cracker2"
-                android:src="@drawable/cracker11" />
+                />
 
             <ImageView
                 android:contentDescription="@string/useless_alphabet_removed"
@@ -972,7 +972,7 @@
                 android:layout_alignTop="@+id/cracker1"
                 android:layout_toEndOf="@id/cracker1"
                 android:layout_toRightOf="@+id/cracker1"
-                android:src="@drawable/cracker11" />
+                />
         </RelativeLayout>
 
         <View
