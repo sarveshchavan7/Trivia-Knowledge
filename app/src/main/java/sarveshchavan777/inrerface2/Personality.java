@@ -2581,6 +2581,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
 
     @Override
     public void onBackPressed() {
+
+
         super.onBackPressed();
         Intent intent = getIntent();
                 /* Obtain String from Intent  */
@@ -3172,6 +3174,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
     @Override
     public void onRewarded(RewardItem rewardItem) {
         //you get a reward
+        DemoHelperClass demoHelperClass = new DemoHelperClass(getApplicationContext());
+        SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
         final List listgems = demoHelperClass.getGems();
         int plusOneGem = 1;
         int gemstext = (Integer) listgems.get(listgems.size() - 1);
@@ -3194,7 +3198,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
             }
         }
 
-
+        sqLiteDatabase.close();
         listgems.clear();
     }
 
@@ -4026,6 +4030,8 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         public void onUnityAdsFinish(String s, UnityAds.FinishState finishState) {
             //Called when a video vinishes playing
             //you get a reward
+            DemoHelperClass demoHelperClass = new DemoHelperClass(getApplicationContext());
+            SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
             final List listgems = demoHelperClass.getGems();
             int plusOneGem = 1;
             int gemstext = (Integer) listgems.get(listgems.size() - 1);
@@ -4047,7 +4053,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
                 }
             }
-
+            sqLiteDatabase.close();
             listgems.clear();
 
         }

@@ -210,7 +210,7 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
 
         if (checkSound()) {
             mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.gameaudio2);
-            if(mediaPlayer!=null){
+            if (mediaPlayer != null) {
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -408,7 +408,12 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
             finish();
         }
         if(value==20000){*/
-        finish();
+        if (leftShop.isEnabled()) {
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Please wait", Toast.LENGTH_SHORT).show();
+        }
+
       /*  }*/
     }
 
