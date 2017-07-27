@@ -1,6 +1,7 @@
 package sarveshchavan777.inrerface2;
 
 import android.content.Intent;
+import android.util.Log;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
@@ -12,12 +13,19 @@ public class SplashScreen extends AwesomeSplash {
 
     //DO NOT OVERRIDE onCreate()!
     //if you need to start some services do it in initSplash()!
-
+    String LOG_TAG = "this is my tag";
 
     @Override
     public void initSplash(ConfigSplash configSplash) {
-
-			/* you don't have to override every property */
+        if (!isTaskRoot()) {
+            final Intent intent = getIntent();
+            if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(intent.getAction())) {
+                Log.w(LOG_TAG, "Main Activity is not the root.  Finishing Main Activity instead of launching.");
+                finish();
+                return;
+            }
+        }
+            /* you don't have to override every property */
 
         //Customize Circular Reveal
         configSplash.setBackgroundColor(R.color.lightbluesplash); //any color you want form colors.xml
