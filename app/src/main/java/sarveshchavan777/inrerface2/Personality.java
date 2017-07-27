@@ -1,6 +1,7 @@
 package sarveshchavan777.inrerface2;
 
 
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -21,7 +22,6 @@ import android.view.View;
 import android.os.Handler;
 import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
@@ -2733,6 +2733,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     mediationMetaData.commit();
                     UnityAds.show(Personality.this);
                     dialog.dismiss();
+
+                    final List listgems = demoHelperClass.getGems();
+                    int plusOneGem = 1;
+                    int gemstext = (Integer) listgems.get(listgems.size() - 1);
+                    gemstext = gemstext + plusOneGem;
+                    demoHelperClass.InsertGems(gemstext);
+                    diamondtext.setText(String.valueOf(gemstext));
+                    listgems.clear();
+
                 } else {
                     String loading = "Loading..";
                     watchVideo.setText("Watch Video" + "\n" + loading);
@@ -3417,8 +3426,15 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     mediationMetaData.setOrdinal(ordinal++);
                     mediationMetaData.commit();
                     UnityAds.show(Personality.this);
-
                     dialog.dismiss();
+
+                    final List listgems = demoHelperClass.getGems();
+                    int plusOneGem = 1;
+                    int gemstext = (Integer) listgems.get(listgems.size() - 1);
+                    gemstext = gemstext + plusOneGem;
+                    demoHelperClass.InsertGems(gemstext);
+                    diamondtext.setText(String.valueOf(gemstext));
+                    listgems.clear();
                 } else {
                     String loading = "Loading..";
                     watchVideoBoom.setText("Watch Video" + "\n" + loading);
@@ -4030,14 +4046,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
         public void onUnityAdsFinish(String s, UnityAds.FinishState finishState) {
             //Called when a video vinishes playing
             //you get a reward
-            DemoHelperClass demoHelperClass = new DemoHelperClass(getApplicationContext());
-            SQLiteDatabase sqLiteDatabase = demoHelperClass.getWritableDatabase();
-            final List listgems = demoHelperClass.getGems();
-            int plusOneGem = 1;
-            int gemstext = (Integer) listgems.get(listgems.size() - 1);
-            gemstext = gemstext + plusOneGem;
-            demoHelperClass.InsertGems(gemstext);
-            diamondtext.setText(String.valueOf(gemstext));
+
             //   final Typeface typeface2 = Typeface.createFromAsset(this.getAssets(), "fonts/OpenSans-Semibold.ttf");
             Toast toast = Toast.makeText(getApplication(), "+1 gem added in your bucket.", Toast.LENGTH_LONG);
             toast.getView().setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkpink));
@@ -4053,8 +4062,7 @@ public class Personality extends AppCompatActivity implements RewardedVideoAdLis
                     Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
                 }
             }
-            sqLiteDatabase.close();
-            listgems.clear();
+
 
         }
 

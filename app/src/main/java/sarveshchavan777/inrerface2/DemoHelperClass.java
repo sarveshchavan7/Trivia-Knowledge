@@ -14,7 +14,7 @@ import java.util.List;
 public class DemoHelperClass extends SQLiteOpenHelper {
     Context context;
     private static final String DATABASE_NAME = "DEMOGAMEDBB";
-    private static int DATABASE_VERSION = 1014;
+    private static int DATABASE_VERSION = 1015;
     private static final String TABLE_NAME = "TRIVIAQUIZ";
     private static final String UID = "_UID";
     private static final String QUESTION = "QUESTION";
@@ -123,7 +123,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         // i=oldVersion i1=new newVersion
-       sqLiteDatabase.execSQL(DROP_TABLE);
+        sqLiteDatabase.execSQL(DROP_TABLE);
         sqLiteDatabase.execSQL(DROP_TABLE14);
 
         sqLiteDatabase.execSQL(CREATE_TABLE);
@@ -365,7 +365,7 @@ public class DemoHelperClass extends SQLiteOpenHelper {
 
         allQuestions.add(new Questions("One of the founding fathers of the USA, _______ was a multi-talented personality. He was a scientist, inventor, author, musician and a statesman.", "BENJAMIN", "FRANKLIN", "LBRMJHFNF", "INENKNIAA", "FH"));
 
-        allQuestions.add(new Questions("Who was a singer & actor, known as ‘The king of Rock and Roll’ ?", "ELVIS", "PRESLEY", "SHREVLEGT", "PUYLIQLSE", ""));
+        allQuestions.add(new Questions("Who was a singer & actor, known as ‘The king of Rock and Roll’ ?", "ELVIS", "PRESLEY", "VSYPDSHRE", "LWAOBEILE", "WHOADB"));
 
         allQuestions.add(new Questions("Who's roles in films like ‘Punch-Drunk Love’ and ‘The Wedding Singer’ are well known ?", "ADAM", "SANDLER", "NMNAUXDER", "SDLAZCAQN", "NNZXQUC"));
 

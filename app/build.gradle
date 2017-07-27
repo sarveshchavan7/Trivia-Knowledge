@@ -11,8 +11,8 @@ android {
         applicationId "sarveshchavan777.inrerface2"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 7
-        versionName "1.2.5"
+        versionCode 9
+        versionName "1.2.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }

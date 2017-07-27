@@ -346,7 +346,7 @@ public class InAppPurchase extends Activity implements IabBroadcastReceiver.IabB
                 v.setTypeface(typeface2);
                 v.setTextSize(10);
                 toast.show();
-
+                listgems.clear();
             } else {
                 complain("Error while consuming: " + result);
             }
