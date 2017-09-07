@@ -24,7 +24,7 @@
         android:layout_height="50dp"
         android:src="@mipmap/ic_launcher" />
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/text1"
         android:textColor="@color/white"
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         android:layout_below="@id/pfirst"
         android:gravity="center"
         android:textSize="16sp"
-        android:text="@string/Text" />
+        android:text="@string/Text" />-->
 </RelativeLayout>
 
 

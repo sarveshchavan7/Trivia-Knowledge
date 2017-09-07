@@ -24,17 +24,17 @@
         android:layout_height="35dp"
         android:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/text1"
-        android:textColor="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/pfirst"
-        android:layout_alignRight="@+id/pfirst"
-        android:layout_below="@id/pfirst"
-        android:gravity="center"
-        android:textSize="11sp"
-        android:text="@string/Text" />
+    <!--<TextView-->
+        <!--android:id="@+id/text1"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignEnd="@+id/pfirst"-->
+        <!--android:layout_alignRight="@+id/pfirst"-->
+        <!--android:layout_below="@id/pfirst"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="11sp"-->
+        <!--android:text="@string/Text" />-->
 </RelativeLayout>
 
 

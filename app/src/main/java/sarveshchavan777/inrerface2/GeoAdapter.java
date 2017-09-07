@@ -17,26 +17,26 @@ class GeoAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private final Integer[] img;
     private final String[] s;
-    private final String[] strings;
+   // private final String[] strings;
 
 
-    GeoAdapter(Activity context, Integer[] img, String[] s, String[] strings) {
+    GeoAdapter(Activity context, Integer[] img, String[] s/*, String[] strings*/) {
         super(context, R.layout.geo_grid_view, s);
         this.context = context;
         this.img = img;
         this.s = s;
-        this.strings = strings;
+       // this.strings = strings;
     }
 
     private class MyViewHolder {
         ImageView imageView;
         TextView mQueNo;
-        TextView mtext;
+        //TextView mtext;
 
         MyViewHolder(View v) {
             imageView = (ImageView) v.findViewById(R.id.tick);
             mQueNo = (TextView) v.findViewById(R.id.pfirst);
-            mtext = (TextView) v.findViewById(R.id.text1);
+            //mtext = (TextView) v.findViewById(R.id.text1);
         }
     }
 
@@ -58,11 +58,11 @@ class GeoAdapter extends ArrayAdapter<String> {
 
         Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/grobold.ttf");
         holder.mQueNo.setTypeface(typeface);
-        holder.mtext.setTypeface(typeface);
+        //holder.mtext.setTypeface(typeface);
 
         holder.imageView.setImageResource(img[position]);
         holder.mQueNo.setText(s[position]);
-        holder.mtext.setText(strings[position]);
+        //holder.mtext.setText(strings[position]);
 
         return row;
     }

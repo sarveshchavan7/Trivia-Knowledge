@@ -48,12 +48,12 @@ public class Tab13 extends Fragment {
         Integer imageView[] = new Integer[40];
         String s[] = new String[40];
 
-        String per[] = {"Arts","Gk"};
+        /*String per[] = {"Arts","Gk"};
 
         String s1[] = {per[0], per[0], per[1], per[1], per[1], per[1], per[1], per[1], per[1], per[1],
                 per[0], per[1], per[0], per[1], per[1], per[0], per[1], per[1], per[0], per[0],
                 per[1], per[1], per[0], per[1], per[1], per[0], per[1], per[1], per[1], per[1],
-                per[1], per[1], per[0], per[1], per[0], per[0], per[0], per[0], per[1], per[0]};
+                per[1], per[1], per[0], per[1], per[0], per[0], per[0], per[0], per[1], per[0]};*/
 
 
         //Adding the images to Int array
@@ -87,7 +87,7 @@ public class Tab13 extends Fragment {
         list.clear();
 
         //setting adapter
-        ArtsAdapter adapter = new ArtsAdapter(getActivity(), imageView, s, s1);
+        ArtsAdapter adapter = new ArtsAdapter(getActivity(), imageView, s/*, s1*/);
         gridview.setAdapter(adapter);
 
         //OnClick Listner

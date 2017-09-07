@@ -46,18 +46,18 @@ public class Tab01 extends Fragment {
         Integer imageView[] = new Integer[60];
         String s[] = new String[60];
 
-        String per[] = {"Politician", "Entrepreneur", "Scientist", "Singer/songwriter",
+       /* String per[] = {"Politician", "Entrepreneur", "Scientist", "Singer/songwriter",
                 "Actor", "Sportsperson", "Astronaut", "Actress",
                 "Mathematician", "Inventor", "Comedian", "Chef", "Writer",
-                "Poet", "Martial artist", "Painter", "Saint"};
+                "Poet", "Martial artist", "Painter", "Saint"};*/
 
 
-        String s1[] = {per[0], per[1], per[0], per[2], per[1], per[3], per[4], per[5], per[6], per[5],
+        /*String s1[] = {per[0], per[1], per[0], per[2], per[1], per[3], per[4], per[5], per[6], per[5],
                 per[1], per[5], per[4], per[4], per[1], per[16], per[6], per[11], per[10], per[2],
                 per[9], per[0], per[4], per[1], per[4], per[3], per[9], per[0], per[0], per[1],
                 per[4], per[7], per[5], per[9], per[0], per[14], per[1], per[3], per[9], per[0],
                 per[4], per[7], per[3], per[10], per[8], per[0], per[7], per[12], per[0], per[13],
-                per[0], per[1], per[1], per[1], per[8], per[7], per[4], per[15], per[0], per[3]};
+                per[0], per[1], per[1], per[1], per[8], per[7], per[4], per[15], per[0], per[3]};*/
 
 
         //Adding the images to Int array
@@ -91,7 +91,7 @@ public class Tab01 extends Fragment {
 
 
         //setting adapter
-        PersonalityAdapter adapter = new PersonalityAdapter(getActivity(), imageView, s, s1);
+        PersonalityAdapter adapter = new PersonalityAdapter(getActivity(), imageView, s);
         gridview.setAdapter(adapter);
 
         //OnClick Listner

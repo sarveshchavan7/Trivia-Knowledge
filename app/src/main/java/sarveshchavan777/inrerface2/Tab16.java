@@ -48,7 +48,7 @@ public class Tab16 extends Fragment {
         Integer imageView[] = new Integer[80];
         String s[] = new String[80];
 
-        String per[] = {"Music","Movie/Film","Superhero","Cartoon/Manga","Entertainment"};
+        /*String per[] = {"Music","Movie/Film","Superhero","Cartoon/Manga","Entertainment"};
 
         String s1[] = { per[0], per[1], per[1], per[2], per[0], per[0], per[2], per[3], per[2], per[0],
                         per[0], per[0], per[2], per[3], per[1], per[1], per[2], per[1], per[1], per[0],
@@ -57,7 +57,7 @@ public class Tab16 extends Fragment {
                         per[1], per[0], per[2], per[3], per[4], per[0], per[1], per[0], per[0], per[0],
                         per[0], per[1], per[1], per[1], per[1], per[2], per[2], per[1], per[1], per[0],
                         per[2], per[1], per[1], per[1], per[1], per[1], per[3], per[0], per[0], per[0],
-                        per[0], per[0], per[3], per[3], per[0], per[0], per[4], per[3], per[1], per[2]};
+                        per[0], per[0], per[3], per[3], per[0], per[0], per[4], per[3], per[1], per[2]};*/
 
 
         //Adding the images to Int array
@@ -91,7 +91,7 @@ public class Tab16 extends Fragment {
         list.clear();
 
         //setting adapter
-        EntertainmentAdapter adapter = new EntertainmentAdapter(getActivity(), imageView, s, s1);
+        EntertainmentAdapter adapter = new EntertainmentAdapter(getActivity(), imageView, s/*, s1*/);
         gridview.setAdapter(adapter);
 
         //OnClick Listner

@@ -48,7 +48,7 @@ public class Tab05 extends Fragment {
         Integer imageView[] = new Integer[60];
         String s[] = new String[60];
 
-        String per[] = {"Football","Olympic","Wrestling","Sports","Golf","Cricket",
+        /*String per[] = {"Football","Olympic","Wrestling","Sports","Golf","Cricket",
                 "Chess","Rugby","Badminton","Bowling","Hockey","Volleyball","Athlete",
                 "Baseball","Basketball","Tennis","Table Tennis"};
 
@@ -57,7 +57,7 @@ public class Tab05 extends Fragment {
                 per[3], per[3], per[14], per[15], per[1], per[3], per[0], per[5], per[15], per[2],
                 per[8], per[15], per[6], per[3], per[5], per[5], per[1], per[3], per[5], per[12],
                 per[3], per[1], per[13], per[3], per[10], per[0], per[14], per[15], per[0], per[0],
-                per[13], per[3], per[11], per[7], per[0], per[0], per[3], per[0], per[14], per[0]};
+                per[13], per[3], per[11], per[7], per[0], per[0], per[3], per[0], per[14], per[0]};*/
 
 
         //Adding the images to Int array
@@ -91,7 +91,7 @@ public class Tab05 extends Fragment {
         list.clear();
 
         //setting adapter
-        SportsAdapter adapter = new SportsAdapter(getActivity(), imageView, s, s1);
+        SportsAdapter adapter = new SportsAdapter(getActivity(), imageView, s/*, s1*/);
         gridview.setAdapter(adapter);
 
         //OnClick Listner

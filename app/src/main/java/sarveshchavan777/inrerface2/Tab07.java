@@ -48,7 +48,7 @@ public class Tab07 extends Fragment {
         Integer imageView[] = new Integer[80];
         String s[] = new String[80];
 
-        String per[] = {"Landmark", "Geo", "Mountain", "River", "Ocean", "Space", "Desert", "Capital"};
+        /*String per[] = {"Landmark", "Geo", "Mountain", "River", "Ocean", "Space", "Desert", "Capital"};
 
         String s1[] = {per[0], per[7], per[1], per[2], per[3], per[0], per[7], per[1], per[2], per[4],
                 per[0], per[7], per[5], per[2], per[1], per[0], per[7], per[1], per[2], per[1],
@@ -57,7 +57,7 @@ public class Tab07 extends Fragment {
                 per[0], per[7], per[6], per[2], per[4], per[0], per[7], per[1], per[2], per[3],
                 per[1], per[7], per[1], per[1], per[2], per[3], per[0], per[7], per[1], per[5],
                 per[2], per[1], per[1], per[0], per[7], per[4], per[1], per[2], per[4], per[0],
-                per[0], per[7], per[7], per[1], per[4], per[2], per[0], per[1], per[4], per[1]};
+                per[0], per[7], per[7], per[1], per[4], per[2], per[0], per[1], per[4], per[1]};*/
 
 
         //Adding the images to Int array
@@ -91,7 +91,7 @@ public class Tab07 extends Fragment {
         list.clear();
 
         //setting adapter
-        GeoAdapter adapter = new GeoAdapter(getActivity(), imageView, s, s1);
+        GeoAdapter adapter = new GeoAdapter(getActivity(), imageView, s/*, s1*/);
         gridview.setAdapter(adapter);
 
         //OnClick Listner
