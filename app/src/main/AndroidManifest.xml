@@ -54,7 +54,7 @@
         </activity>
 
         <activity
-            android:name=".SplashScreen"
+            android:name=".SplashScreen.SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
@@ -66,19 +66,19 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".HolderActivities.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".ImageCredit"
+            android:name=".Activity.ImageCredit"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".Category"
+            android:name=".Activity.Category"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
 
@@ -86,7 +86,7 @@
 
 
         <activity
-            android:name=".Personality"
+            android:name=".Activity.MainGameActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">
@@ -94,14 +94,14 @@
         </activity>
 
         <activity
-            android:name=".about"
+            android:name=".Activity.about"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
 
         </activity>
 
         <activity
-            android:name=".SecoundSlidingMain"
+            android:name=".HolderActivities.PersonalitySlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -109,7 +109,7 @@
         </activity>
 
         <activity
-            android:name=".SportsSlidingMain"
+            android:name=".HolderActivities.SportsSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/sports">
@@ -117,7 +117,7 @@
         </activity>
 
         <activity
-            android:name=".GeoSlidingMain"
+            android:name=".HolderActivities.GeoSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/geo">
@@ -125,7 +125,7 @@
         </activity>
 
         <activity
-            android:name=".ScienceSlidingMain"
+            android:name=".HolderActivities.ScienceSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/sci">
@@ -133,7 +133,7 @@
         </activity>
 
         <activity
-            android:name=".ArtsSlidingMain"
+            android:name=".HolderActivities.ArtsSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/arts">
@@ -141,7 +141,7 @@
         </activity>
 
         <activity
-            android:name=".EntertainmentSlidingMain"
+            android:name=".HolderActivities.EntertainmentSlidingMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/entertainment">
@@ -149,14 +149,14 @@
         </activity>
 
         <activity
-            android:name=".InAppPurchase"
+            android:name=".Google.GoogleInAppBilling.InAppPurchase"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
 
         </activity>
 
         <activity
-            android:name=".FaceBookLogin"
+            android:name=".Facebook.FaceBookLogin"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent">
@@ -171,13 +171,13 @@
             android:hardwareAccelerated="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name=".Google.GoogleFirebase.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".FirebaseIDService">
+        <service android:name=".Google.GoogleFirebase.FirebaseIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

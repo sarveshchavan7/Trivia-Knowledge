@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?actionBarSize">
+
+        <ImageView
+            android:contentDescription="@string/goback"
+            android:id="@+id/leftdifficulty"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/backcartoon" />
+
+        <TextView
+            android:id="@+id/textviewdifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/CHOOSEDIFFICULTY"
+            android:textColor="#ffffff"
+            android:textSize="40sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/easyper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingRight="40dp"
+            android:paddingLeft="40dp"
+            android:text="@string/easy"
+            android:textColor="#ffffff"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/mediumper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/medium"
+            android:textColor="#ffffff"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/hardper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/hard"
+            android:textColor="#ffffff"
+            android:textSize="27sp" />
+    </LinearLayout>
+
+
+    <sarveshchavan777.inrerface2.HolderActivities.SlidingTabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
