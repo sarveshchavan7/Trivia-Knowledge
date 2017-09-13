@@ -22,7 +22,7 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 - Can be played from kids to adults, a super family friendly trivia game
 
 # Gifs / ScreenShots
-### How to play the game&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fill some random ans boxes   
+### How to play the game&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fill some random ans boxes   
 ![answer](https://user-images.githubusercontent.com/22947683/30382249-44efde84-9864-11e7-9644-716deac6e6a5.gif)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![freehint](https://user-images.githubusercontent.com/22947683/30382256-4acdcb5e-9864-11e7-9591-11c9c904872c.gif)
@@ -43,6 +43,16 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 - [Android-Bootstrap](https://github.com/Bearded-Hen/Android-Bootstrap)
 - [AwesomeSplash](https://github.com/ViksaaSkool/AwesomeSplash)
 - [Android Image Slider](https://github.com/daimajia/AndroidImageSlider)
+
+# Notice
+- I decided to open source this game becuase it may help beginners in developing new games and play with different libraries
+- Feel free to import the project in android studio it is for educational purpose (to learn to build the quiz type android appication)
+- If you do like what you saw please give it a star!! it mean a lot to me it boosts me to build more game and help you guys
+- For any details or query fill free to email me - sarveshchavan777@gmail.com
+
+# Donation
+- If this project helps you in any way you can give me a cup of coffee :)
+- It will help me a lot since i get less time to devlop games from my busy schedule and make them open source
 
 
 # Developed By
