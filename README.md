@@ -22,17 +22,17 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 - Can be played from kids to adults, a super family friendly trivia game
 
 # Gifs / ScreenShots
-- How to play            
+### How to play            
 ![answer](https://user-images.githubusercontent.com/22947683/30382249-44efde84-9864-11e7-9644-716deac6e6a5.gif)
-- Fill some random ans boxes
+### Fill some random ans boxes
 ![freehint](https://user-images.githubusercontent.com/22947683/30382256-4acdcb5e-9864-11e7-9591-11c9c904872c.gif)
-- Reveal the ans using gems    
+### Reveal the ans using gems    
 ![reveal](https://user-images.githubusercontent.com/22947683/30382258-4e198a3c-9864-11e7-9344-2e9ba0a7fe06.gif)
-- Remove letters which are not the part of ans
+### Remove letters which are not the part of ans
 ![cracker](https://user-images.githubusercontent.com/22947683/30382261-4f77eb58-9864-11e7-89e4-b3175757e69a.gif)
-- Switch between difficulty level
+### Switch between difficulty level
 ![diff level](https://user-images.githubusercontent.com/22947683/30382270-54a9b124-9864-11e7-9397-86132d43e007.gif)
-- Home Screen
+### Home Screen
 ![home](https://user-images.githubusercontent.com/22947683/30382271-55315b74-9864-11e7-8627-146c4ecdb186.gif)
 
 
