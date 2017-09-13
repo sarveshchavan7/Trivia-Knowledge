@@ -22,11 +22,11 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 - Can be played from kids to adults, a super family friendly trivia game
 
 # Gifs / ScreenShots
-### How to play&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fill some random ans boxes   
+### How to play&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fill some random ans boxes   
 ![answer](https://user-images.githubusercontent.com/22947683/30382249-44efde84-9864-11e7-9644-716deac6e6a5.gif)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![freehint](https://user-images.githubusercontent.com/22947683/30382256-4acdcb5e-9864-11e7-9591-11c9c904872c.gif)
-### Reveal the ans using gems&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove letters which are not part of ans   
+### Reveal the ans using gems&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove letters which are not part of ans   
 ![reveal](https://user-images.githubusercontent.com/22947683/30382258-4e198a3c-9864-11e7-9344-2e9ba0a7fe06.gif)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![cracker](https://user-images.githubusercontent.com/22947683/30382261-4f77eb58-9864-11e7-89e4-b3175757e69a.gif)
