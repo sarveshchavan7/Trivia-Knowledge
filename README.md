@@ -45,9 +45,10 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 - [Android Image Slider](https://github.com/daimajia/AndroidImageSlider)
 
 # Notice
-- I decided to open source this game becuase it may help beginners in developing new games and play with different libraries
+- I decided to open source this game becuase it may help beginners in developing new games and play with different libraries.
 - Feel free to import the project in android studio it is for educational purpose (to learn to build the quiz type android appication)
 - If you do like what you saw please give it a star!! it mean a lot to me it boosts me to build more game and help you guys
+- I have added comments in the MainGameActivity which may help you understand code better !
 - For any details or query fill free to email me - sarveshchavan777@gmail.com
 
 # Donation
