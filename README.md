@@ -7,7 +7,8 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 - targetSdkVersion 25
 
 # Available On
-[<img src="https://i.imgur.com/U1reLcR.png">](https://play.google.com/store/apps/details?id=sarveshchavan777.inrerface2&hl=en)
+[<img src="https://i.imgur.com/V1oCmpL.png">](https://play.google.com/store/apps/details?id=sarveshchavan777.inrerface2&hl=en)
+[<img src="https://i.imgur.com/VT8YDwJ.png">](https://www.amazon.com/gp/product/B075KQ7P9N)
 
 # Features
 - Six different trivia categories to choose from 
