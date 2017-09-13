@@ -1,7 +1,7 @@
 # Trivia-Knowledge
 
 # Available On
-[<img src="http://www.google.com.au/images/nav_logo7.png">](https://play.google.com/store/apps/details?id=sarveshchavan777.inrerface2&hl=en)
+[<img src="https://i.imgur.com/iYwmzEr.png">](https://play.google.com/store/apps/details?id=sarveshchavan777.inrerface2&hl=en)
 
 # Developed By
 sarvesh chavan @sarveshchavan7
