@@ -53,7 +53,7 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 # Donation
 - If this project helps you in any way you can give me a cup of coffee :)
 - It will help me a lot since i get less time to devlop games from my busy schedule and make them open source
-
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/sarveshchavan)
 
 # Developed By
 sarvesh chavan @sarveshchavan7
