@@ -20,6 +20,8 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 - Don't know the answer ? No problem reveal them using gems
 - Can be played from kids to adults, a super family friendly trivia game
 
+# Gifs / ScreenShots
+
 
 # Credit
 - Image credit : Some images where purchased from Shutterstock and used under standard licence.
