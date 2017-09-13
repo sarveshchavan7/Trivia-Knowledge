@@ -10,24 +10,24 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 [<img src="https://i.imgur.com/U1reLcR.png">](https://play.google.com/store/apps/details?id=sarveshchavan777.inrerface2&hl=en)
 
 # Features
-● Six different trivia categories to choose from 
-● 1100+ exciting trivia questions
-● Switch between three different difficulty level easy, medium and hard
-● Free hint for each trivia question let's you fill some random answer boxes which take care you won't get stuck on any question 
-● Can be played offline 
-● You can switch between questions any time
-● Learn something new while having fun
-● Don't know the answer ? No problem reveal them using gems
-● Can be played from kids to adults, a super family friendly trivia game
+- Six different trivia categories to choose from 
+- 1100+ exciting trivia questions
+- Switch between three different difficulty level easy, medium and hard
+- Free hint for each trivia question let's you fill some random answer boxes which take care you won't get stuck on any question 
+- Can be played offline 
+- You can switch between questions any time
+- Learn something new while having fun
+- Don't know the answer ? No problem reveal them using gems
+- Can be played from kids to adults, a super family friendly trivia game
 
 
 # Credit
-● Image credit : Some images where purchased from Shutterstock and used under standard licence.
+- Image credit : Some images where purchased from Shutterstock and used under standard licence.
   Icons where used from Icons8 under the license Creative commons Attribution-NoDerivs 3.0 Unported.
-● [Fbutton](https://github.com/hoang8f/android-flat-button) 
-● [Android-Bootstrap](https://github.com/Bearded-Hen/Android-Bootstrap)
-● [AwesomeSplash](https://github.com/ViksaaSkool/AwesomeSplash)
-● [Android Image Slider](https://github.com/daimajia/AndroidImageSlider)
+- [Fbutton](https://github.com/hoang8f/android-flat-button) 
+- [Android-Bootstrap](https://github.com/Bearded-Hen/Android-Bootstrap)
+- [AwesomeSplash](https://github.com/ViksaaSkool/AwesomeSplash)
+- [Android Image Slider](https://github.com/daimajia/AndroidImageSlider)
 
 
 # Developed By
