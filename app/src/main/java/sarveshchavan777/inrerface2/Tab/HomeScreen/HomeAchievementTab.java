@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.games.Games;
 
@@ -23,11 +24,9 @@ import sarveshchavan777.inrerface2.db.DemoHelperClass;
 
 public class HomeAchievementTab extends Fragment {
     FButton achievement;
-    private static final int REQUEST_ACHIEVEMENTS = 9004;
     DemoHelperClass demoHelperClass;
     MediaPlayer mediaPlayer;
 
-    /* GoogleApiClient client = AppController.getInstance().getClient();*/
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.h_homeachievement, container, false);
@@ -61,21 +60,7 @@ public class HomeAchievementTab extends Fragment {
                         });
                     }
                 }
-
-
-                try {
-                   if(MainActivity.mGoogleApiClient!=null) {
-                       if (MainActivity.mGoogleApiClient.isConnected()) {
-                           startActivityForResult(Games.Achievements.getAchievementsIntent(MainActivity.mGoogleApiClient),
-                                   REQUEST_ACHIEVEMENTS);
-                       } else {
-                           BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.achievement_not_available)).show();
-                       }
-                   }
-                } catch (Exception e) {
-                    //this will take care it won't crash app.
-                }
-
+                Toast.makeText(getContext(),"Achievements not available for now",Toast.LENGTH_SHORT).show();
             }
         });
     }

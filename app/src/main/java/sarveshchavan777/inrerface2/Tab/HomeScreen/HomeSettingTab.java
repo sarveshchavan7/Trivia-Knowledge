@@ -27,8 +27,6 @@ import java.util.List;
 
 import info.hoang8f.widget.FButton;
 import sarveshchavan777.inrerface2.Adapter.HomeSettingAdapter;
-import sarveshchavan777.inrerface2.Facebook.FaceBookLogin;
-import sarveshchavan777.inrerface2.Google.GoogleInAppBilling.InAppPurchase;
 import sarveshchavan777.inrerface2.R;
 import sarveshchavan777.inrerface2.Activity.about;
 import sarveshchavan777.inrerface2.db.DemoHelperClass;
@@ -53,9 +51,9 @@ public class HomeSettingTab extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Integer[] img = {R.drawable.international_music, R.drawable.reset, R.drawable.google_play,
-                R.drawable.facebook, R.drawable.share, R.drawable.error, R.drawable.about, R.drawable.shop};
+                R.drawable.share, R.drawable.error, R.drawable.about};
 
-        final String[] s = {"Sound", "Reset  Game", "Rate  on  PlayStore", "Like/join Us on Fb", "Share", "Report bug/contact us", "About ", "Shop"};
+        final String[] s = {"Sound", "Reset  Game", "Rate  on  PlayStore", "Share", "Report bug/contact us", "About "};
 
         HomeSettingAdapter adapter = new HomeSettingAdapter(getActivity(), img, s);
         lv.setAdapter(adapter);
@@ -181,56 +179,9 @@ public class HomeSettingTab extends Fragment {
                                 Uri.parse("http://play.google.com/store/apps/details?id=sarveshchavan777.inrerface2")));
                     }
                 }
+
+
                 if (position == 3) {
-                    Intent intent = new Intent(getActivity(), FaceBookLogin.class);
-                    startActivity(intent);
-                   /* final Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Translucent_NoTitleBar);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setContentView(R.layout.a_facebooklogin);
-                    dialog.setCancelable(false);
-                    FButton fButton=(FButton)dialog.findViewById(R.id.cancelButton);
-                    LoginButton loginButton = (LoginButton) dialog.findViewById(R.id.login_button);
-
-
-                    loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                        @Override
-                        public void onSuccess(LoginResult loginResult) {
-                            x = loginResult.getAccessToken().getToken();
-                            idOfUser = loginResult.getAccessToken().getUserId();
-                            abc="1";
-
-                        }
-
-                        @Override
-                        public void onCancel() {
-                            Toast.makeText(getActivity(),"canceled",Toast.LENGTH_LONG).show();
-                            abc="0";
-                        }
-
-                        @Override
-                        public void onError(FacebookException error) {
-                            Toast.makeText(getActivity(),"some error occurred"+error,Toast.LENGTH_LONG).show();
-                            abc="2";
-                        }
-                    });
-
-
-                    fButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-
-
-                    dialog.show();*/
-
-
-                    /*Intent facebookIntent = getOpenFacebookIntent(getActivity(),"1357616140975878");
-                    startActivity(facebookIntent);*/
-                }
-
-                if (position == 4) {
                     try {
                         Intent i = new Intent(Intent.ACTION_SEND);
                         i.setType("text/plain");
@@ -243,7 +194,7 @@ public class HomeSettingTab extends Fragment {
                         //e.toString();
                     }
                 }
-                if (position == 5) {
+                if (position == 4) {
                     try {
                         Intent sendIntent = new Intent(Intent.ACTION_VIEW);
                         sendIntent.setType("plain/text");
@@ -260,13 +211,8 @@ public class HomeSettingTab extends Fragment {
                         startActivity(intent);
                     }
                 }
-                if (position == 6) {
+                if (position == 5) {
                     Intent intent = new Intent(getActivity(), about.class);
-                    startActivity(intent);
-                }
-                if (position == 7) {
-                    Intent intent = new Intent(getActivity(), InAppPurchase.class);
-                    intent.putExtra("key", 20000);
                     startActivity(intent);
                 }
             }

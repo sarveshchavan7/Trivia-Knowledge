@@ -15,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -58,7 +59,7 @@ public class HomePlayTab extends Fragment implements BaseSliderView.OnSliderClic
     HashMap<String, String> url_maps;
     DemoHelperClass demoHelperClass;
     MediaPlayer mediaPlayer;
-       /*GoogleApiClient mGoogleApiClient= AppController.getInstance().getClient();*/
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -121,7 +122,6 @@ public class HomePlayTab extends Fragment implements BaseSliderView.OnSliderClic
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GoogleApiClient client = AppController.getInstance().getClient();
 
                 if(checkSound()){
                     mediaPlayer=MediaPlayer.create(getActivity().getApplicationContext(),R.raw.gameaudio2);
@@ -136,18 +136,7 @@ public class HomePlayTab extends Fragment implements BaseSliderView.OnSliderClic
                         });
                     }
                 }
-                try {
-                    if (MainActivity.getmGoogleApiClient().isConnected()) {
-                        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(MainActivity.mGoogleApiClient,
-                                LEADERBOARD_ID), REQUEST_LEADERBOARD);
-                    } else {
-                        BaseGameUtils.makeSimpleDialog(getActivity(), getString(R.string.leaderboards_not_available)).show();
-                    }
-
-
-                } catch (Exception e) {
-                    // ((MainActivity) getActivity()).onActivityResult(RC_YOUR_UNIQUE_ID,GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED,null);
-                }
+                Toast.makeText(getContext(),"LeaderBoard not available for now",Toast.LENGTH_SHORT).show();
 
             }
         });

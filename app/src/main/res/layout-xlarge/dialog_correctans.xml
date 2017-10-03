@@ -68,7 +68,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             ads:adSize="330x150"
-            ads:adUnitId="@string/admob_Nativeads_id">
+            ads:adUnitId="@string/Test_admob_Native_ads">
 
         </com.google.android.gms.ads.NativeExpressAdView>
 

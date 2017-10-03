@@ -1,14 +1,11 @@
 <resources>
     <string name="app_name">Trivia Knowledge</string>
-    <string name="facebook_app_id">1044794215655698</string>
-    <string name="fb_login_protocol_scheme">fb1044794215655698</string>
     <string name="fbText">We will never post without\nyour permission !</string>
     <string name="likeusonfb">Visit or Like us On fB\n\nso you won\'t miss any news,updates..</string>
     <string name="joinfb">Join our fb group\n\nsuggest,rate questions in our fb group</string>
 
     <string name="taptoviewachievement">Tap to view\nAchievements</string>
     <string name="achievement_not_available">Achievement not available.\nPlease sign in and try again.</string>
-    <string name="webclient_id">52302397877-v3e2hb9i38v64q11q84dv6jo0l11pdr9.apps.googleusercontent.com</string>
     <string name="signin_other_error">There was an issue with sign-in, please try again later.</string>
     <string name="signin_failure">Unable to sign in.</string>
     <string name="loading_from_cloud">Loading your progress.</string>
@@ -35,16 +32,11 @@
     <string name="Cost_2_Diamond">Cost: 2 Gems\n</string>
     <string name="diamond_left_in_your_bucket">Gems left in your bucket.</string>
     <string name="Shop_diamonds_at_cheap_price">Shop Gems at cheap price.</string>
-    <string name="admob_unit_id_banner">ca-app-pub-3533790242716669/6266214638</string>
-    <string name="admob_unit_id_rewardedVideo">ca-app-pub-3533790242716669/1173207032</string>
-    <string name="admob_app_id">ca-app-pub-3533790242716669~3871151430</string>
-    <string name="admob_Nativeads_id">ca-app-pub-3533790242716669/1936113036</string>
     <string name="Test_admob_unit_id_banner">ca-app-pub-3940256099942544/6300978111</string>
     <string name="Test_admob_unit_id_rewardedVideo">ca-app-pub-3940256099942544/5224354917</string>
     <string name="Test_admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="Test_admob_Native_ads">ca-app-pub-3940256099942544/2247696110</string>
 
-    <string name="adcolony_zone_id">vzeb59e668b2884e0d8a</string>
 
     <string name="buyDiamond">Buy Gems</string>
     <string name="watchvideo">Watch Video\nWatch rewarded video get 1 gem</string>

@@ -1020,7 +1020,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 ads:adSize="BANNER"
-                ads:adUnitId="@string/admob_unit_id_banner">
+                ads:adUnitId="@string/Test_admob_unit_id_banner">
 
             </com.google.android.gms.ads.AdView>
         </RelativeLayout>

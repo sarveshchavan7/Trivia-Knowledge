@@ -41,7 +41,6 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.+'
     compile 'info.hoang8f:fbutton:1.0.5'
     compile 'com.beardedhen:androidbootstrap:2.3.1'
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile "com.android.support:support-v4:+"
     compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.nineoldandroids:library:2.4.0'
@@ -51,10 +50,7 @@ dependencies {
     compile 'com.google.firebase:firebase-ads:11.0.4'
     compile 'com.google.ads.mediation:unity:2.1.0.0'
     compile project(':unity-ads')
-    compile 'com.google.ads.mediation:chartboost:6.6.3.0'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.google.firebase:firebase-core:11.0.4'
-    compile 'com.google.firebase:firebase-messaging:11.0.4'
     compile 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
 }
 configurations.all {

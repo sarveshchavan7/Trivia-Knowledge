@@ -106,7 +106,7 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
     Boolean boomClicked = false;
     BootstrapProgressBar bootstrapProgressBar;
     private static final java.lang.String LEADERBOARD_ID = "CgkItYPd68IBEAIQBw";
-    GoogleApiClient mGoogleApiClient;
+
 
     Typeface chunkfive, grobold, openSansBold, openSansSemiBold, shablagooital, titilliumWeb;
     Handler handler = new Handler();
@@ -157,15 +157,10 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
         cracker4 = (ImageView) findViewById(R.id.cracker4);
         demoHelperClass = new DemoHelperClass(getApplicationContext());
 
-        mGoogleApiClient = MainActivity.mGoogleApiClient;
-        if (mGoogleApiClient != null) {
-            if (mGoogleApiClient.isConnected()) {
-                Games.setViewForPopups(MainActivity.mGoogleApiClient, findViewById(R.id.gps_popup));
-            }
-        }
+
 
         // Initialize the Google Mobile Ads SDK
-        MobileAds.initialize(this, getString(R.string.admob_app_id));
+        MobileAds.initialize(this, getString(R.string.Test_admob_app_id));
 
 
         //Your code to show add
@@ -925,12 +920,7 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
                                 toast.show();
                             }
                         }
-                        if (mGoogleApiClient != null) {
-                            if (mGoogleApiClient.isConnected()) {
-                                checkAchievementOne();
-                                checkAchievementTwo();
-                            }
-                        }
+
 
                         //If dialog_sound is on then play it first and then dismiss dialog else directly dismiss it
                         //to avoid memory loss
@@ -1064,34 +1054,9 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
                 if (qid < 1119 && qid != 179 && qid != 359 && qid != 599 && qid != 779 && qid != 899) {
                     demoHelperClass.InsertQid(qid);
 
-                    //updating leaderboard score
-                    if (mGoogleApiClient != null) {
-                        if (mGoogleApiClient.isConnected()) {
-                            DemoHelperClass demoHelperClass = new DemoHelperClass(MainGameActivity.this);
-                            List xyz = demoHelperClass.GetQid();
-                            int noOfSolvedQuestion = xyz.size();
-                            //multiplying the no of solved Questions by 5
-                            int leaderboardScore = noOfSolvedQuestion * 5;
-                            Games.Leaderboards.submitScore(mGoogleApiClient, LEADERBOARD_ID, leaderboardScore);
-                            xyz.clear();
-                        }
-                    }
-
-
-                    //updating the achievement
-                    if (mGoogleApiClient != null) {
-                        if (mGoogleApiClient.isConnected()) {
-                            checkAchievementOne();
-                            checkAchievementTwo();
-                        }
-                    }
-
                     //setting the text for number of correct question solved
                     setNoOfSolvedQueText();
 
-                    //Incrementing the question no
-                    qid = qid + 1;
-                    currentQ = quesList.get(qid);
 
                     //left
                     //@@ 4
@@ -1134,6 +1099,9 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
                     answerorrect.setTypeface(chunkfive);
                     answerorrect.setText(stringanswer.toUpperCase());
 
+                    //Incrementing the question no
+                    qid = qid + 1;
+                    currentQ = quesList.get(qid);
 
                     //set up button (Next Button)
                     Button nextbutton = (Button) dialog.findViewById(R.id.Button01);
@@ -1266,26 +1234,6 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
                     //Inserting the id of solved que in table
                     demoHelperClass.InsertQid(qid);
 
-                    //updating leaderboard score
-                    if (mGoogleApiClient != null) {
-                        if (mGoogleApiClient.isConnected()) {
-                            DemoHelperClass demoHelperClass = new DemoHelperClass(MainGameActivity.this);
-                            List xyz = demoHelperClass.GetQid();
-                            int noOfSolvedQuestion = xyz.size();
-                            //multiplying the no of solved Questions by 5
-                            int leaderboardScore = noOfSolvedQuestion * 5;
-                            Games.Leaderboards.submitScore(mGoogleApiClient, LEADERBOARD_ID, leaderboardScore);
-                        }
-                    }
-
-
-                    //updating the achievement
-                    if (mGoogleApiClient != null) {
-                        if (mGoogleApiClient.isConnected()) {
-                            checkAchievementOne();
-                            checkAchievementTwo();
-                        }
-                    }
 
                     //No increment of que since it is last question in it's category
                     currentQ = quesList.get(qid);
@@ -2376,11 +2324,6 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
                             i.setVisibility(View.INVISIBLE);
                         }
 
-                        if (mGoogleApiClient != null) {
-                            if (mGoogleApiClient.isConnected()) {
-                                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_reveal));
-                            }
-                        }
 
                     }
                     if (gemstext > 1) {
@@ -2702,7 +2645,7 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
                     //.addNetworkExtrasBundle(ChartboostAdapter.class, extras)
                     .addNetworkExtrasBundle(UnityAdapter.class, extras)
                     .build();
-            mAd.loadAd(getString(R.string.admob_unit_id_rewardedVideo), adRequest);
+            mAd.loadAd(getString(R.string.Test_admob_unit_id_rewardedVideo), adRequest);
             // Toast.makeText(MainGameActivity.this,"called",Toast.LENGTH_LONG).show();
         }
     }
@@ -2759,12 +2702,6 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
         v.setTextSize(10);
         toast.show();
 
-        //Update achievement if any
-        if (mGoogleApiClient != null) {
-            if (mGoogleApiClient.isConnected()) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
-            }
-        }
 
         sqLiteDatabase.close();
         listgems.clear();
@@ -3015,13 +2952,6 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
     }
 
     private void boomMethod() {
-
-        if (mGoogleApiClient != null) {
-            if (mGoogleApiClient.isConnected()) {
-                checkAchievementOne();
-                checkAchievementTwo();
-            }
-        }
 
         //dialog_bomb without FreeHint(hint1) i.e FreeHint is not used
         if (returnFreeHintUsed() != qid) {
@@ -3352,261 +3282,6 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
         return y;
     }
 
-    //Function to unlock achievements
-    public void checkAchievementOne() {
-        if (mGoogleApiClient != null) {
-            //1-24 total=24 (You got it till viewer)
-            List xyz = demoHelperClass.GetQid();//solved questions ids
-            List abc = demoHelperClass.getBoomId(); //question ids for which dialog_bomb is used
-            List pqr = demoHelperClass.getHint();//question ids for which hint1 is used
-            // List lmn = demoHelperClass.getGems();//no of gems in bucket at that moment
-
-
-            //You got it solve any 3Q
-            if (xyz.size() >= 3) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_you_got_it_));
-            }
-
-            //The beginner solve any 5Q
-            if (xyz.size() >= 5) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_beginner));
-            }
-            //The Novice solve any 10Q
-            if (xyz.size() >= 10) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_novice));
-            }
-            //The NewBie solve any 25Q
-            if (xyz.size() >= 25) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_newbie));
-            }
-            //The blaster  use time-dialog_bomb-5 times
-            if (abc.size() >= 5) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_blaster));
-            }
-            //Absolutely free use free hints for 10 times
-            if (pqr.size() >= 10) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_absolutely_free));
-            }
-            //Reveal
-       /*in side revealhole*/
-
-            //undergraduate solve any 50 questions
-            if (xyz.size() >= 50) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_undergraduate));
-            }
-            //Proficient solve any 60 questions
-            if (xyz.size() >= 60) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_proficient));
-            }
-            //Scholar solve any 90 Q
-            if (xyz.size() >= 90) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_scholar));
-            }
-            //101 not out solve any 101 Q
-            if (xyz.size() >= 101) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_101_not_out));
-            }
-            //Nerd solve any 120 questions
-            if (xyz.size() >= 120) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_nerd));
-            }
-            //Genius solve any 240 questions
-            if (xyz.size() >= 240) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_genius));
-            }
-            //Intelligent solve any 360 Q
-            if (xyz.size() >= 360) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_intelligent));
-            }
-            //wow solve any 404 Q
-            if (xyz.size() >= 404) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_wow));
-            }
-            //The Expert solve any 500Q
-            if (xyz.size() >= 500) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_expert));
-            }
-            //Mind blowing solve any 600Q
-            if (xyz.size() >= 600) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_mind_blowing));
-            }
-            //First class solve any 700 Q
-            if (xyz.size() >= 700) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_first_class));
-            }
-            //Impressive solve any 808Q
-            if (xyz.size() >= 808) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_impressive));
-            }
-            //Talented solve any 900Q
-            if (xyz.size() >= 900) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_talented));
-            }
-            //master mind solve any 1000Q
-            if (xyz.size() >= 1000) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_master_mind));
-            }
-            //the topper solve any 1100Q
-            if (xyz.size() >= 1100) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_topper));
-            }
-            //The winner 1120Q
-            if (xyz.size() >= 1120) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_winner));
-            }
-
-            //viewer
-        /*inside onRewarded*/
-            xyz.clear();
-            abc.clear();
-            pqr.clear();
-        }
-    }
-
-    //Function to unlock achievements
-    public void checkAchievementTwo() {
-        if (mGoogleApiClient != null) {
-            // 27-40  achievement total=14 (free-free-free till the hero)
-            List<Integer> xyz = demoHelperClass.GetQid();//solved questions ids
-            List abc = demoHelperClass.getBoomId(); //question ids for which dialog_bomb is used
-            List pqr = demoHelperClass.getHint();//question ids for which hint1 is used
-
-            //Free free free use at least 60 free hints
-            if (pqr.size() >= 60) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_free_free_free));
-            }
-            //Boom boom use time-dialog_bomb 25 times
-            if (abc.size() >= 25) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_boom_boom));
-            }
-
-
-            //a_maingame
-            ArrayList<Integer> perList = new ArrayList<>();
-            if (xyz != null) {
-                for (int i = 0; i < xyz.size(); i++) {
-                    if (xyz.get(i) >= 0 && xyz.get(i) < 180) {
-                        perList.add(i);
-                    }
-                }
-            }
-            //Ez pz lemon squeezy
-            if (perList.size() == 60) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_ez_pz_lemon_squeezy));
-            }
-            //Alumni
-            if (perList.size() == 120) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_alumni));
-            }
-            perList.clear();
-
-            //sports
-            ArrayList<Integer> sportlist = new ArrayList<>();
-            if (xyz != null) {
-                for (int i = 0; i < xyz.size(); i++) {
-                    if (xyz.get(i) >= 180 && xyz.get(i) < 360) {
-                        sportlist.add(i);
-                    }
-                }
-            }
-
-            //sports lover
-            if (sportlist.size() == 60) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_sports_lover));
-            }
-            //Athlete
-            if (sportlist.size() == 120) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_athlete));
-            }
-            sportlist.clear();
-
-
-            //Geography
-            ArrayList<Integer> geolist = new ArrayList<>();
-            if (xyz != null) {
-                for (int i = 0; i < xyz.size(); i++) {
-                    if (xyz.get(i) >= 360 && xyz.get(i) < 600) {
-                        geolist.add(i);
-                    }
-                }
-            }
-            //The explorer
-            if (geolist.size() == 60) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_explorer));
-            }
-            //geologist
-            if (geolist.size() == 120) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_geologist));
-            }
-            geolist.clear();
-
-
-            //Science
-            ArrayList<Integer> sciencelist = new ArrayList<>();
-            if (xyz != null) {
-                for (int i = 0; i < xyz.size(); i++) {
-                    if (xyz.get(i) >= 600 && xyz.get(i) < 780) {
-                        sciencelist.add(i);
-                    }
-                }
-            }
-            //Junior scientist
-            if (sciencelist.size() >= 60) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_junior_scientist));
-            }
-            //senior scientist
-            if (sciencelist.size() >= 120) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_senior_scientist));
-            }
-            sciencelist.clear();
-
-
-            //arts
-            ArrayList<Integer> artsList = new ArrayList<>();
-            if (xyz != null) {
-                for (int i = 0; i < xyz.size(); i++) {
-                    if (xyz.get(i) >= 780 && xyz.get(i) < 900) {
-                        artsList.add(i);
-                    }
-                }
-            }
-            //Art attack
-            if (artsList.size() == 30) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_art_attack_));
-            }
-            //Artist
-            if (artsList.size() == 60) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_artist));
-            }
-            artsList.clear();
-
-
-            //entertainment
-            ArrayList<Integer> entertainmentList = new ArrayList<>();
-            if (xyz != null) {
-                for (int i = 0; i < xyz.size(); i++) {
-                    if (xyz.get(i) >= 900 && xyz.get(i) < 1120) {
-                        entertainmentList.add(i);
-                    }
-                }
-            }
-            //e for entertainment
-            if (entertainmentList.size() == 60) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_e_for_entertainment));
-            }
-            //The hero
-            if (entertainmentList.size() == 120) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_the_hero));
-            }
-            entertainmentList.clear();
-
-            abc.clear();
-            pqr.clear();
-            if (xyz != null) {
-                xyz.clear();
-            }
-        }
-    }
 
     //return true if dialog_sound is on or else false
     public Boolean checkSound() {
@@ -3644,14 +3319,6 @@ public class MainGameActivity extends AppCompatActivity implements RewardedVideo
             v.setTypeface(openSansSemiBold);
             v.setTextSize(10);
             toast.show();
-
-            // GoogleApiClient client = AppController.getInstance().getClient();
-            if (mGoogleApiClient != null) {
-                if (mGoogleApiClient.isConnected()) {
-                    Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_viewer));
-                }
-            }
-
 
         }
 
