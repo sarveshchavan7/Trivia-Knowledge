@@ -46,11 +46,12 @@ Trivia knowledge is a fun trivia game in which players have to guess the answers
 
 # Notice
 ### Copying/Editing the app and uploading again to google play store is violation of [Google play Developer Policy](https://play.google.com/about/developer-content-policy/) and against the charetaker games [privacy policy](https://charetakergames.wordpress.com/2017/02/27/charetakergamesprivacy/). 
-- If you import the project you will need to add questions in the database to make it total 1120 questions. I have removed the questions   for the sake of not getting copied 
+- If you import the project you will need to add questions in the database to make it total 1120 questions. I have removed the questions   for the sake of not getting copied. 
 - I decided to open source this game becuase it may help beginners in developing new games and play with different libraries.
 - Feel free to import the project in android studio it is for educational purpose (to learn to build the quiz type android appication)
 - If you do like what you saw please give it a star!! ![star](https://user-images.githubusercontent.com/22947683/30509991-c2950a48-9a81-11e7-9023-48796c02d00f.PNG) it mean a lot to me it boosts me to build more game and help you guys
 - I have added comments in the MainGameActivity which may help you understand code better !
+- Images and Fonts are purchased and used under the license so if you import project make sure they should not to be used for any        commerical purpose.
 - For any details or query fill free to email me - sarveshchavan777@gmail.com
 
 # Donation
